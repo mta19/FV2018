@@ -14,7 +14,12 @@
 #ifndef PERSONAJE_HPP
 #define PERSONAJE_HPP
 
-
+class Personaje{
+    
+    
+    
+    
+};
 
 #endif /* PERSONAJE_HPP */
 
