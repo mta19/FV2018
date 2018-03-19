@@ -41,6 +41,25 @@
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
+        <ccTool>
+          <incDir>
+            <pElem>/usr/include/Box2D</pElem>
+            <pElem>/usr/include/SFML</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <linkerAddLib>
+            <pElem>/usr/lib/gcc/x86_64-pc-linux-gnu</pElem>
+          </linkerAddLib>
+          <linkerLibItems>
+            <linkerLibFileItem>/usr/lib/libBox2D.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/lib/libsfml-audio.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/lib/libsfml-graphics.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/lib/libsfml-network.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/lib/libsfml-system.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/lib/libsfml-window.so</linkerLibFileItem>
+          </linkerLibItems>
+        </linkerTool>
       </compileType>
       <item path="Arena.cpp" ex="false" tool="1" flavor2="0">
       </item>

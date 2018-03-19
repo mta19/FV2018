@@ -12,15 +12,16 @@
  */
 
 #include <cstdlib>
-
-using namespace std;
+#include "SFML/Graphics.hpp"
+#include "Box2D/Box2D.h"
+using namespace sf;
 
 /*
  * 
  */
 int main(int argc, char** argv) {
 
-    int hola;
+    
     
     return 0;
 }

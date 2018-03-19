@@ -55,11 +55,23 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=
+LDLIBSOPTIONS=-L/usr/lib/gcc/x86_64-pc-linux-gnu /usr/lib/libBox2D.so /usr/lib/libsfml-audio.so /usr/lib/libsfml-graphics.so /usr/lib/libsfml-network.so /usr/lib/libsfml-system.so /usr/lib/libsfml-window.so
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
 	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kittygames
+
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kittygames: /usr/lib/libBox2D.so
+
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kittygames: /usr/lib/libsfml-audio.so
+
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kittygames: /usr/lib/libsfml-graphics.so
+
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kittygames: /usr/lib/libsfml-network.so
+
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kittygames: /usr/lib/libsfml-system.so
+
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kittygames: /usr/lib/libsfml-window.so
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kittygames: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
@@ -68,22 +80,22 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kittygames: ${OBJECTFILES}
 ${OBJECTDIR}/Arena.o: Arena.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Arena.o Arena.cpp
+	$(COMPILE.cc) -g -I/usr/include/Box2D -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Arena.o Arena.cpp
 
 ${OBJECTDIR}/Arma.o: Arma.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Arma.o Arma.cpp
+	$(COMPILE.cc) -g -I/usr/include/Box2D -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Arma.o Arma.cpp
 
 ${OBJECTDIR}/Personaje.o: Personaje.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Personaje.o Personaje.cpp
+	$(COMPILE.cc) -g -I/usr/include/Box2D -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Personaje.o Personaje.cpp
 
 ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -g -I/usr/include/Box2D -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
 # Subprojects
 .build-subprojects:
@@ -91,6 +103,8 @@ ${OBJECTDIR}/main.o: main.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
+	${RM} -r ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libsfml-system.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libBox2D.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libsfml-network.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libsfml-window.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libsfml-audio.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libsfml-graphics.so
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kittygames
 
 # Subprojects
 .clean-subprojects:
