@@ -21,7 +21,7 @@ using namespace sf;
  */
 int main(int argc, char** argv) {
 
-    int testeand2;
+    int testeand3;
     
     return 0;
 }
