@@ -4,3 +4,17 @@
  * and open the template in the editor.
  */
 
+/* 
+ * File:   Personaje.cpp
+ * Author: pedro
+ * 
+ * Created on 19 de marzo de 2018, 19:12
+ */
+
+#include "Personaje.h"
+
+
+
+Personaje::~Personaje() {
+}
+

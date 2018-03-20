@@ -10,10 +10,13 @@
  *
  * Created on 14 de marzo de 2018, 14:51
  */
-
+#include <iostream>
 #include <cstdlib>
 #include "SFML/Graphics.hpp"
 #include "Box2D/Box2D.h"
+#include "Estado.h"
+#include "Nivel.h"
+#include "Partida.h"
 using namespace sf;
 
 /*
@@ -21,7 +24,11 @@ using namespace sf;
  */
 int main(int argc, char** argv) {
 
-    int testeand3;
+    Partida * partida=new Partida({800,600},"Empieza la partida");
+
+    delete partida;
+    
+    
     
     return 0;
 }
