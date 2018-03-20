@@ -37,7 +37,12 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/Arena.o \
 	${OBJECTDIR}/Arma.o \
+	${OBJECTDIR}/Ensamblador.o \
+	${OBJECTDIR}/Estado.o \
+	${OBJECTDIR}/Nivel.o \
+	${OBJECTDIR}/Partida.o \
 	${OBJECTDIR}/Personaje.o \
+	${OBJECTDIR}/SpawnerMonstruo.o \
 	${OBJECTDIR}/main.o
 
 
@@ -75,10 +80,35 @@ ${OBJECTDIR}/Arma.o: Arma.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Arma.o Arma.cpp
 
+${OBJECTDIR}/Ensamblador.o: Ensamblador.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Ensamblador.o Ensamblador.cpp
+
+${OBJECTDIR}/Estado.o: Estado.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Estado.o Estado.cpp
+
+${OBJECTDIR}/Nivel.o: Nivel.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Nivel.o Nivel.cpp
+
+${OBJECTDIR}/Partida.o: Partida.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Partida.o Partida.cpp
+
 ${OBJECTDIR}/Personaje.o: Personaje.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Personaje.o Personaje.cpp
+
+${OBJECTDIR}/SpawnerMonstruo.o: SpawnerMonstruo.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/SpawnerMonstruo.o SpawnerMonstruo.cpp
 
 ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}

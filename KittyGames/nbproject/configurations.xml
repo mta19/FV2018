@@ -6,7 +6,12 @@
                    projectFiles="true">
       <itemPath>Arena.hpp</itemPath>
       <itemPath>Arma.hpp</itemPath>
-      <itemPath>Personaje.hpp</itemPath>
+      <itemPath>Ensamblador.h</itemPath>
+      <itemPath>Estado.h</itemPath>
+      <itemPath>Nivel.h</itemPath>
+      <itemPath>Partida.h</itemPath>
+      <itemPath>Personaje.h</itemPath>
+      <itemPath>SpawnerMonstruo.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -17,7 +22,12 @@
                    projectFiles="true">
       <itemPath>Arena.cpp</itemPath>
       <itemPath>Arma.cpp</itemPath>
+      <itemPath>Ensamblador.cpp</itemPath>
+      <itemPath>Estado.cpp</itemPath>
+      <itemPath>Nivel.cpp</itemPath>
+      <itemPath>Partida.cpp</itemPath>
       <itemPath>Personaje.cpp</itemPath>
+      <itemPath>SpawnerMonstruo.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -69,9 +79,29 @@
       </item>
       <item path="Arma.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Ensamblador.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Ensamblador.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Estado.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Estado.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Nivel.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Nivel.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Partida.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Partida.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Personaje.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="Personaje.hpp" ex="false" tool="3" flavor2="0">
+      <item path="Personaje.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SpawnerMonstruo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SpawnerMonstruo.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -104,9 +134,29 @@
       </item>
       <item path="Arma.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Ensamblador.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Ensamblador.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Estado.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Estado.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Nivel.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Nivel.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Partida.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Partida.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Personaje.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="Personaje.hpp" ex="false" tool="3" flavor2="0">
+      <item path="Personaje.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SpawnerMonstruo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SpawnerMonstruo.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
