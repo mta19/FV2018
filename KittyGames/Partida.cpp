@@ -28,7 +28,9 @@ Partida::Partida(Vector2i resolucion, std::string titulo) {
     //por ahora pondre que una partida tiene solo un personaje y un nivel
     niveles=new Nivel();
     
-    niveles->iniciar_fisica();
+    niveles->anyadirObjetoDinamico(50.0f,50.0f);
+    niveles->anyadirPlataforma(50.0f,100.0f);
+    
     
     std::cout<<"Por ahora funciona1"<<std::endl;
     

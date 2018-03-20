@@ -25,8 +25,10 @@ public:
     Nivel();
     Nivel(const Nivel& orig);
     virtual ~Nivel();
-    void iniciar_fisica();
+   
     void actualizar_fisica();
+    void anyadirPlataforma(float x, float y);
+    void anyadirObjetoDinamico(float x, float y);
     Ensamblador* getSuelo(){return ensambladorSuelo;};
     Ensamblador* getCaja(){return ensambladorCaja;};
     

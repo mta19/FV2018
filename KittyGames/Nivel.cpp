@@ -28,7 +28,7 @@ Nivel::Nivel() {
     
     std::cout<<"Por ahora funciona3"<<std::endl;
     
-    
+     mundo= new b2World(b2Vec2(0.f,9.81f));
 }
 
 Nivel::Nivel(const Nivel& orig) {
@@ -37,14 +37,11 @@ Nivel::Nivel(const Nivel& orig) {
 Nivel::~Nivel() {
 }
 
-void Nivel::iniciar_fisica(){
+
+void Nivel::anyadirPlataforma(float x, float y){
     
-    mundo= new b2World(b2Vec2(0.f,9.81f));
-    
-    //Suelo
-    
-    bdydef_suelo.type= b2_staticBody;
-    bdydef_suelo.position=b2Vec2(50.f,100.f);
+     bdydef_suelo.type= b2_staticBody;
+    bdydef_suelo.position=b2Vec2(x,y);
     
     bdy_suelo=mundo->CreateBody(&bdydef_suelo);
     
@@ -58,13 +55,15 @@ void Nivel::iniciar_fisica(){
     
     fix_suelo=bdy_suelo->CreateFixture(&fixdef_suelo);
     
+      ensambladorSuelo=new Ensamblador (bdy_suelo,spr_suelo);
     
-    //Caja
+}
+
+void Nivel::anyadirObjetoDinamico(float x, float y){
     
-    
-       
+   
     bdydef_caja.type= b2_dynamicBody;
-    bdydef_caja.position=b2Vec2(50.f,50.f);
+    bdydef_caja.position=b2Vec2(x,y);
     
     bdy_caja=mundo->CreateBody(&bdydef_caja);
     
@@ -79,7 +78,7 @@ void Nivel::iniciar_fisica(){
     fix_caja=bdy_caja->CreateFixture(&fixdef_caja);
     
     
-    ensambladorSuelo=new Ensamblador (bdy_suelo,spr_suelo);
+  
     ensambladorCaja= new Ensamblador (bdy_caja,spr_caja);
     
     

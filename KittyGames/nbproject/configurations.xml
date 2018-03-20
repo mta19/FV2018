@@ -12,6 +12,7 @@
       <itemPath>Partida.h</itemPath>
       <itemPath>Personaje.h</itemPath>
       <itemPath>SpawnerMonstruo.h</itemPath>
+      <itemPath>motor2D.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -29,6 +30,7 @@
       <itemPath>Personaje.cpp</itemPath>
       <itemPath>SpawnerMonstruo.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
+      <itemPath>motor2D.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -105,6 +107,10 @@
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="motor2D.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="motor2D.h" ex="false" tool="3" flavor2="0">
+      </item>
     </conf>
     <conf name="Release" type="1">
       <toolsSet>
@@ -159,6 +165,10 @@
       <item path="SpawnerMonstruo.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="motor2D.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="motor2D.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>
