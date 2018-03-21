@@ -14,6 +14,13 @@
 #include "Personaje.h"
 
 
+Personaje::Personaje(){
+    
+}
+
+Personaje::Personaje(const Personaje& orig) {
+}
+
 
 Personaje::~Personaje() {
 }

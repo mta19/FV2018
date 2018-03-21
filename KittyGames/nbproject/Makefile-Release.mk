@@ -35,6 +35,8 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/Alien.o \
+	${OBJECTDIR}/Animacion.o \
 	${OBJECTDIR}/Arena.o \
 	${OBJECTDIR}/Arma.o \
 	${OBJECTDIR}/Ensamblador.o \
@@ -70,6 +72,16 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kittygames: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/kittygames ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/Alien.o: Alien.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Alien.o Alien.cpp
+
+${OBJECTDIR}/Animacion.o: Animacion.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Animacion.o Animacion.cpp
 
 ${OBJECTDIR}/Arena.o: Arena.cpp
 	${MKDIR} -p ${OBJECTDIR}

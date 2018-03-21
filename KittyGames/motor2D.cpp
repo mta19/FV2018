@@ -12,12 +12,15 @@
  */
 
 #include "motor2D.h"
-
+#include <iostream>
 #include "SFML/Graphics.hpp"
 #include "Box2D/Box2D.h"
 #include "Ensamblador.h"
+#include "Personaje.h"
 
 motor2D::motor2D() {
+    
+     
 }
 
 motor2D::motor2D(const motor2D& orig) {
@@ -26,9 +29,8 @@ motor2D::motor2D(const motor2D& orig) {
 motor2D::~motor2D() {
 }
 
-
-b2Body motor2D::crearBody(int x, int y, b2BodyType tipo, b2World *mundo){
+void motor2D::anyadirTextura(Texture * textura){
     
- 
+    std::cout<<"va bien"<<std::endl;
     
 }

@@ -12,6 +12,9 @@
  */
 #include <iostream>
 #include "Partida.h"
+#include "Personaje.h"
+#include "Alien.h"
+#include "Animacion.h"
 
 Partida::Partida(Vector2i resolucion, std::string titulo) {
     
@@ -27,7 +30,8 @@ Partida::Partida(Vector2i resolucion, std::string titulo) {
     
     //por ahora pondre que una partida tiene solo un personaje y un nivel
     niveles=new Nivel();
-    
+    personajes= new Alien();
+    personajes->setSprite();
     niveles->anyadirObjetoDinamico(50.0f,50.0f);
     niveles->anyadirPlataforma(50.0f,100.0f);
     
@@ -64,21 +68,30 @@ Nivel Partida::get_Nivel(){
 
 void Partida::gameLoop(){
     
+    Clock clock;
+    float deltaTime=0.0f;
     
+    Animacion * animacion = personajes->getAnimacion();
       while(ventana->isOpen()){
         
+          deltaTime=clock.restart().asSeconds();
+          
         *tiempo1=reloj1->getElapsedTime();
         
         if(tiempo2 + frameRate < tiempo1->asSeconds()){
-            std::cout<<"hola"<<std::endl;
+        
             tiempo2=tiempo1->asSeconds();
             
             ventana->clear();
             
             this->niveles->actualizar_fisica();
             
+            animacion->Update(0,deltaTime);
+            std::cout<<animacion->uvRect.left<<std::endl;
+            std::cout<<animacion->uvRect.width<<std::endl;
+            personajes->getSprite().setTextureRect(animacion->uvRect);
             dibujar();
-            std::cout<<"hola"<<std::endl;
+            
             ventana->display();
         }
         
@@ -91,5 +104,7 @@ void Partida::dibujar(){
     niveles->getCaja()->dibujar(*ventana);
     
     niveles->getSuelo()->dibujar(*ventana);
+    
+    ventana->draw(personajes->getSprite());
     
 }

@@ -14,25 +14,37 @@
 #ifndef PERSONAJE_H
 #define PERSONAJE_H
 
-#include "Ensamblador.h"
+
 #include "SpawnerMonstruo.h"
+#include "SFML/Graphics.hpp"
+#include "Animacion.h"
+using namespace sf;
+
 class Personaje {
 public:
- 
+
+    Personaje();
+    Personaje(const Personaje& orig);
     virtual ~Personaje();
-    
+    virtual void setSprite() = 0;
+    virtual Sprite getSprite() = 0;
+    virtual Texture* getTextura() = 0;
+    virtual void setAnimacion()= 0;
+    virtual Animacion * getAnimacion()=0;
+    virtual void setFrame(Sprite &spr)=0;
     
 private:
 
-    
+
 protected:
-    Ensamblador ensamblador;
-    SpawnerMonstruo * respawn;
+
+
+
     int vida;
     int vidaActual;
     int velocidad;
     int defensa;
-    
+
 };
 
 #endif /* PERSONAJE_H */

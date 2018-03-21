@@ -17,6 +17,7 @@
 #include "SFML/Graphics.hpp"
 #include "Box2D/Box2D.h"
 #include "Ensamblador.h"
+#include "Personaje.h"
 using namespace sf;
 
 class motor2D {
@@ -26,8 +27,8 @@ public:
     virtual ~motor2D();
     
     b2Body crearBody(int x, int y, b2BodyType tipo, b2World* mundo);
-    void anyadirTextura(Texture textura);
-    Ensamblador ensamblar(b2Body * cuerpo, Sprite * sprite);
+    void anyadirTextura(Texture *textura);
+    void setSprite(Texture* texture,String nombre, Personaje * personaje);
     
 private:
 

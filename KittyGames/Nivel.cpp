@@ -11,6 +11,7 @@
  * Created on 19 de marzo de 2018, 19:54
  */
 #include <iostream>
+#include "Partida.h"
 #include "Nivel.h"
 #include "Box2D/Box2D.h"
 
@@ -49,7 +50,7 @@ void Nivel::anyadirPlataforma(float x, float y) {
 
     fixdef_suelo.shape = &shp_suelo;
     fixdef_suelo.density = 1.f;
-    fixdef_suelo.restitution = 0.1f;
+    fixdef_suelo.restitution = 0.5f;
     fixdef_suelo.friction = 0.3f;
 
     fix_suelo = bdy_suelo->CreateFixture(&fixdef_suelo);
@@ -60,7 +61,8 @@ void Nivel::anyadirPlataforma(float x, float y) {
 
 void Nivel::anyadirObjetoDinamico(float x, float y) {
 
-
+    
+  
     bdydef_caja.type = b2_dynamicBody;
     bdydef_caja.position = b2Vec2(x, y);
 
@@ -71,7 +73,7 @@ void Nivel::anyadirObjetoDinamico(float x, float y) {
 
     fixdef_caja.shape = &shp_caja;
     fixdef_caja.density = 1.f;
-    fixdef_caja.restitution = 0.1f;
+    fixdef_caja.restitution = 0.5f;
     fixdef_caja.friction = 0.3f;
 
     fix_caja = bdy_caja->CreateFixture(&fixdef_caja);

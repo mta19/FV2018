@@ -14,6 +14,7 @@
 #include "SFML/Graphics.hpp"
 #include "Nivel.h"
 #include "Estado.h"
+#include "motor2D.h"
 #include "Personaje.h"
 using namespace sf;
 
@@ -31,6 +32,8 @@ public:
     void gameLoop();
     void dibujar();
     Nivel get_Nivel();
+    
+   
 private:
 
     Personaje * personajes;
@@ -40,6 +43,8 @@ private:
     
     
 };
+
+
 
 #endif /* PARTIDA_H */
 
