@@ -33,17 +33,34 @@ public:
     virtual Animacion * getAnimacion()=0;
     virtual void setFrame(Sprite &spr)=0;
     
+    //Sistema de vida y ataque
+    
+    //UpdateVida
+    virtual void updateVidaActual(int);
+    //GetVida
+    virtual int getVida();
+    virtual int getVidaActual();
+    //Muerte (?)
+    virtual void morir();
+    //UpdatePuntuacion
+    virtual void updatePuntuacion(int);
+    //GetPuntuacion
+    virtual int getPuntuacion();
+    
+    
 private:
+    
 
 
 protected:
-
-
-
     int vida;
     int vidaActual;
     int velocidad;
-    int defensa;
+    int puntuacion;
+    int defensa; // (?)
+
+
+    
 
 };
 

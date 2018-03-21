@@ -25,7 +25,7 @@ Alien::~Alien() {
 
 
 void Alien::setSprite(){
-    
+   
     textura= new Texture();
     textura->loadFromFile("alien_idle.png");
     sprite=new Sprite(*textura);
@@ -60,6 +60,11 @@ void Alien::setFrame(Sprite& spr){
     
     IntRect posicion (0,0,spr.getTexture()->getSize().x/3,spr.getTexture()->getSize().y);
     spr.setTextureRect(posicion);
+    
+    
 }
+
+
+
 
 
