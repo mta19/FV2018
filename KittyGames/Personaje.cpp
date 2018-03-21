@@ -40,10 +40,14 @@ int Personaje::getVidaActual(){
 void Personaje::updateVidaActual(int cambio){
     //Si recibe un entero negativo, se le resta por signo
     vidaActual+= cambio;
+    if(vidaActual<=0){
+        morir();
+    }
 }
 
 void Personaje::morir(){
     //(?)
+    //Eliminar Textura, Sprite y Personaje (Alien) -- (???)
 }
 
 int Personaje::getPuntuacion(){
@@ -51,5 +55,7 @@ int Personaje::getPuntuacion(){
 }
 
 void Personaje::updatePuntuacion(int cambio){
-    puntuacion+= cambio;
+    if(puntuacion>=cambio){
+        puntuacion+= cambio;
+    }
 }
