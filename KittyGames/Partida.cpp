@@ -86,10 +86,10 @@ void Partida::gameLoop(){
             
             this->niveles->actualizar_fisica();
             
-            animacion->Update(0,deltaTime);
+            animacion->Update(0,deltaTime,personajes->getSprite());
             std::cout<<animacion->uvRect.left<<std::endl;
             std::cout<<animacion->uvRect.width<<std::endl;
-            personajes->getSprite().setTextureRect(animacion->uvRect);
+          
             dibujar();
             
             ventana->display();
@@ -105,6 +105,6 @@ void Partida::dibujar(){
     
     niveles->getSuelo()->dibujar(*ventana);
     
-    ventana->draw(personajes->getSprite());
+    ventana->draw(*personajes->getSprite());
     
 }

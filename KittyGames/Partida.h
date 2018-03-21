@@ -16,6 +16,7 @@
 #include "Estado.h"
 #include "motor2D.h"
 #include "Personaje.h"
+#include "Alien.h"
 using namespace sf;
 
 #ifndef PARTIDA_H
@@ -36,7 +37,7 @@ public:
    
 private:
 
-    Personaje * personajes;
+    Alien * personajes;
     Nivel * niveles;
     int numRondas;
     int tiempoRonda;

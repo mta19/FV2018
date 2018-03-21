@@ -39,9 +39,9 @@ void Alien::setSprite(){
 }
 
 
-Sprite Alien::getSprite(){
+Sprite* Alien::getSprite(){
     
-    return *sprite;
+    return sprite;
     
 }
 
@@ -58,7 +58,7 @@ void Alien::setAnimacion(){
 
 void Alien::setFrame(Sprite& spr){
     
-    IntRect posicion (0,0,spr.getTexture()->getSize().x/3.15,spr.getTexture()->getSize().y);
+    IntRect posicion (0,0,spr.getTexture()->getSize().x/3,spr.getTexture()->getSize().y);
     spr.setTextureRect(posicion);
 }
 

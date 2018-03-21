@@ -23,7 +23,7 @@ public:
     Animacion(Texture *texture, Vector2u imageCount, float switchTime);
     Animacion(const Animacion& orig);
     virtual ~Animacion();
-    void Update (int row, float deltaTime);
+    void Update (int row, float deltaTime, Sprite * sprite);
 private:
 
     Vector2u imageCount;

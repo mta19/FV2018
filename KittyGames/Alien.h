@@ -23,7 +23,7 @@ public:
     Alien(const Alien& orig);
     virtual ~Alien();
     void setSprite ();
-    Sprite getSprite();
+    Sprite* getSprite();
     Texture* getTextura();
     void setAnimacion();
     Animacion * getAnimacion(){ return animacion;};

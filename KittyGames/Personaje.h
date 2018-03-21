@@ -27,7 +27,7 @@ public:
     Personaje(const Personaje& orig);
     virtual ~Personaje();
     virtual void setSprite() = 0;
-    virtual Sprite getSprite() = 0;
+    virtual Sprite* getSprite() = 0;
     virtual Texture* getTextura() = 0;
     virtual void setAnimacion()= 0;
     virtual Animacion * getAnimacion()=0;
