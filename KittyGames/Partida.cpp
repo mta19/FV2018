@@ -101,6 +101,9 @@ void Partida::gameLoop(){
 
 void Partida::dibujar(){
     
+    
+    //nivel->dibujar
+    //Personajes->dibujar
     niveles->getCaja()->dibujar(*ventana);
     
     niveles->getSuelo()->dibujar(*ventana);
