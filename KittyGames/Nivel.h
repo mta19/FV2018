@@ -29,13 +29,15 @@ public:
     void actualizar_fisica();
     void anyadirPlataforma(float x, float y);
     void anyadirObjetoDinamico(float x, float y);
+    void anyadirPersonaje(float x, float y, Sprite * personaje);
     Ensamblador* getSuelo(){return ensambladorSuelo;};
     Ensamblador* getCaja(){return ensambladorCaja;};
-    
+    Ensamblador* getPersonaje(){return ensambladorPersonaje;};
 private:
 
     Ensamblador * ensambladorSuelo;
     Ensamblador * ensambladorCaja;
+    Ensamblador * ensambladorPersonaje;
     
     SpawnerMonstruo * spawnerMonstruo;
     
@@ -61,6 +63,11 @@ private:
     b2BodyDef  bdydef_caja;
     b2Fixture * fix_caja;
     b2FixtureDef  fixdef_caja;
+    
+     b2Body * bdy_personaje;
+    b2BodyDef  bdydef_personaje;
+    b2Fixture * fix_personaje;
+    b2FixtureDef  fixdef_personaje;
     
 };
 

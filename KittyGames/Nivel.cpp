@@ -46,11 +46,11 @@ void Nivel::anyadirPlataforma(float x, float y) {
     bdy_suelo = mundo->CreateBody(&bdydef_suelo);
 
     b2PolygonShape shp_suelo;
-    shp_suelo.SetAsBox(50.f, 5.f);
+    shp_suelo.SetAsBox(400.f, 30.f);
 
     fixdef_suelo.shape = &shp_suelo;
     fixdef_suelo.density = 1.f;
-    fixdef_suelo.restitution = 0.5f;
+    fixdef_suelo.restitution = 0.0f;
     fixdef_suelo.friction = 0.3f;
 
     fix_suelo = bdy_suelo->CreateFixture(&fixdef_suelo);
@@ -69,7 +69,7 @@ void Nivel::anyadirObjetoDinamico(float x, float y) {
     bdy_caja = mundo->CreateBody(&bdydef_caja);
 
     b2PolygonShape shp_caja;
-    shp_caja.SetAsBox(2.5f, 2.5f);
+    shp_caja.SetAsBox(20.f, 20.f);
 
     fixdef_caja.shape = &shp_caja;
     fixdef_caja.density = 1.f;
@@ -81,6 +81,33 @@ void Nivel::anyadirObjetoDinamico(float x, float y) {
 
 
     ensambladorCaja = new Ensamblador(bdy_caja, spr_caja);
+
+
+}
+
+void Nivel::anyadirPersonaje(float x, float y, Sprite *sprite) {
+
+    
+  
+    bdydef_personaje.type = b2_dynamicBody;
+    bdydef_personaje.position = b2Vec2(x, y);
+
+    bdy_personaje = mundo->CreateBody(&bdydef_personaje);
+
+    b2PolygonShape shp_personaje;
+    shp_personaje.SetAsBox(sprite->getTextureRect().width*sprite->getScale().x, sprite->getTextureRect().height*sprite->getScale().y);
+    
+
+    fixdef_personaje.shape = &shp_personaje;
+    fixdef_personaje.density = 0.f;
+    fixdef_personaje.restitution = 0.0f;
+    fixdef_personaje.friction = 1.0f;
+
+    fix_personaje = bdy_personaje->CreateFixture(&fixdef_personaje);
+
+
+
+    ensambladorPersonaje = new Ensamblador(bdy_personaje, sprite);
 
 
 }

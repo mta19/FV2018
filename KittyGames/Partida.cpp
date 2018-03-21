@@ -32,9 +32,9 @@ Partida::Partida(Vector2i resolucion, std::string titulo) {
     niveles=new Nivel();
     personajes= new Alien();
     personajes->setSprite();
-    niveles->anyadirObjetoDinamico(50.0f,50.0f);
-    niveles->anyadirPlataforma(50.0f,100.0f);
-    
+    niveles->anyadirObjetoDinamico(688.0f,500.0f);
+    niveles->anyadirPlataforma(688.f,600.0f);
+    niveles->anyadirPersonaje(personajes->getSprite()->getPosition().x, personajes->getSprite()->getPosition().y, personajes->getSprite());
     
     std::cout<<"Por ahora funciona1"<<std::endl;
     
@@ -50,8 +50,8 @@ Partida::~Partida() {
 
 void Partida::set_camera(){
     
-    camara1=new View({50.f,50.f},{100.f,100.f});
-    ventana->setView(*camara1);
+    //camara1=new View({50.f,50.f},{1376.f,768.f});
+    //ventana->setView(*camara1);
     
 }
 
@@ -105,6 +105,6 @@ void Partida::dibujar(){
     
     niveles->getSuelo()->dibujar(*ventana);
     
-    ventana->draw(*personajes->getSprite());
+    niveles->getPersonaje()->dibujar(*ventana);
     
 }
