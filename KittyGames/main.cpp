@@ -19,6 +19,8 @@
 #include "Partida.h"
 using namespace sf;
 
+
+
 /*
  * 
  */

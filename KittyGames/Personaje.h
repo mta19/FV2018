@@ -18,7 +18,11 @@
 #include "SpawnerMonstruo.h"
 #include "SFML/Graphics.hpp"
 #include "Animacion.h"
+#include "Nivel.h"
+
 using namespace sf;
+
+class EstadoPersonaje;
 
 class Personaje {
 public:
@@ -32,18 +36,24 @@ public:
     virtual void setAnimacion()= 0;
     virtual Animacion * getAnimacion()=0;
     virtual void setFrame(Sprite &spr)=0;
-    
+    virtual void handleInput(Event* tecla, Nivel* nivel);
+    b2Vec2 getspeed(){return speed;};
+    void setSpeed(b2Vec2  vector){ speed=vector;}
 private:
 
 
 protected:
 
-
+    EstadoPersonaje * estado_;
 
     int vida;
     int vidaActual;
     int velocidad;
     int defensa;
+    
+    //variables para las fisicas
+    
+    b2Vec2  speed;
 
 };
 

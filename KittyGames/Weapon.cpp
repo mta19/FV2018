@@ -5,16 +5,20 @@
  */
 
 /* 
- * File:   Arena.hpp
- * Author: manjaro
- *
- * Created on 14 de marzo de 2018, 15:37
+ * File:   Weapon.cpp
+ * Author: pedro
+ * 
+ * Created on 21 de marzo de 2018, 15:46
  */
 
-#ifndef ARENA_HPP
-#define ARENA_HPP
+#include "Weapon.h"
 
+Weapon::Weapon() {
+}
 
+Weapon::Weapon(const Weapon& orig) {
+}
 
-#endif /* ARENA_HPP */
+Weapon::~Weapon() {
+}
 

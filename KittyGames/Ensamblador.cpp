@@ -13,7 +13,8 @@
 #include <iostream>
 #include "Ensamblador.h"
 
-Ensamblador::Ensamblador(b2Body * cuerpo, Sprite * sprite) {
+
+Ensamblador::Ensamblador(b2Body * cuerpo, Sprite * sprite, float * weight, float* heidht){
     
     
     bdy_actor=cuerpo;
@@ -22,15 +23,17 @@ Ensamblador::Ensamblador(b2Body * cuerpo, Sprite * sprite) {
     
   
     posicion=bdy_actor->GetPosition();
-    spr_actor->setOrigin(spr_actor->getTexture()->getSize().x/2.f, spr_actor->getTexture()->getSize().y/2.f);
+    spr_actor->setOrigin(*weight/2.f, *heidht/2.f);
     
     spr_actor->setPosition(posicion.x,posicion.y);
     spr_actor->setRotation(rad2deg(bdy_actor->GetAngle()));
  
+    float aux=*weight;
+    float aux2=*heidht;
     
     b2AABB dimension;
     
-    dimension.upperBound= b2Vec2(-FLT_MAX,FLT_MAX);
+    dimension.upperBound= b2Vec2(-FLT_MAX,-FLT_MAX);
     dimension.lowerBound=b2Vec2(FLT_MAX,FLT_MAX);
     
     for(b2Fixture *f =bdy_actor->GetFixtureList(); f;f=f->GetNext()){
@@ -39,8 +42,8 @@ Ensamblador::Ensamblador(b2Body * cuerpo, Sprite * sprite) {
           
     }
       std::cout<<"Por ahora funciona7"<<std::endl;
-    spr_actor->setScale(dimension.GetExtents().x*2/spr_actor->getTexture()->getSize().x, dimension.GetExtents().y*2/spr_actor->getTexture()->getSize().y);
-    
+    spr_actor->setScale(dimension.GetExtents().x*2.0f/aux, dimension.GetExtents().y*2.0f/aux2);
+   
   
 }
 
@@ -63,4 +66,10 @@ void Ensamblador::dibujar(RenderWindow& r){
     
     spr_actor->setRotation(rad2deg(bdy_actor->GetAngle()));
     r.draw(*spr_actor);
+}
+
+b2Body* Ensamblador::getBody(){
+    
+    return bdy_actor;
+    
 }

@@ -37,14 +37,19 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/Alien.o \
 	${OBJECTDIR}/Animacion.o \
-	${OBJECTDIR}/Arena.o \
-	${OBJECTDIR}/Arma.o \
+	${OBJECTDIR}/Bala.o \
+	${OBJECTDIR}/Collision.o \
 	${OBJECTDIR}/Ensamblador.o \
 	${OBJECTDIR}/Estado.o \
+	${OBJECTDIR}/EstadoJumping.o \
+	${OBJECTDIR}/EstadoPersonaje.o \
+	${OBJECTDIR}/EstadoStanding.o \
 	${OBJECTDIR}/Nivel.o \
 	${OBJECTDIR}/Partida.o \
 	${OBJECTDIR}/Personaje.o \
+	${OBJECTDIR}/Pistola.o \
 	${OBJECTDIR}/SpawnerMonstruo.o \
+	${OBJECTDIR}/Weapon.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/motor2D.o
 
@@ -95,15 +100,15 @@ ${OBJECTDIR}/Animacion.o: Animacion.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/usr/include/Box2D -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Animacion.o Animacion.cpp
 
-${OBJECTDIR}/Arena.o: Arena.cpp
+${OBJECTDIR}/Bala.o: Bala.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/usr/include/Box2D -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Arena.o Arena.cpp
+	$(COMPILE.cc) -g -I/usr/include/Box2D -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Bala.o Bala.cpp
 
-${OBJECTDIR}/Arma.o: Arma.cpp
+${OBJECTDIR}/Collision.o: Collision.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/usr/include/Box2D -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Arma.o Arma.cpp
+	$(COMPILE.cc) -g -I/usr/include/Box2D -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Collision.o Collision.cpp
 
 ${OBJECTDIR}/Ensamblador.o: Ensamblador.cpp
 	${MKDIR} -p ${OBJECTDIR}
@@ -114,6 +119,21 @@ ${OBJECTDIR}/Estado.o: Estado.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/usr/include/Box2D -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Estado.o Estado.cpp
+
+${OBJECTDIR}/EstadoJumping.o: EstadoJumping.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/usr/include/Box2D -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/EstadoJumping.o EstadoJumping.cpp
+
+${OBJECTDIR}/EstadoPersonaje.o: EstadoPersonaje.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/usr/include/Box2D -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/EstadoPersonaje.o EstadoPersonaje.cpp
+
+${OBJECTDIR}/EstadoStanding.o: EstadoStanding.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/usr/include/Box2D -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/EstadoStanding.o EstadoStanding.cpp
 
 ${OBJECTDIR}/Nivel.o: Nivel.cpp
 	${MKDIR} -p ${OBJECTDIR}
@@ -130,10 +150,20 @@ ${OBJECTDIR}/Personaje.o: Personaje.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/usr/include/Box2D -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Personaje.o Personaje.cpp
 
+${OBJECTDIR}/Pistola.o: Pistola.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/usr/include/Box2D -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Pistola.o Pistola.cpp
+
 ${OBJECTDIR}/SpawnerMonstruo.o: SpawnerMonstruo.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/usr/include/Box2D -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/SpawnerMonstruo.o SpawnerMonstruo.cpp
+
+${OBJECTDIR}/Weapon.o: Weapon.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/usr/include/Box2D -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Weapon.o Weapon.cpp
 
 ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}

@@ -37,7 +37,8 @@ public:
    
 private:
 
-    Alien * personajes;
+    Event * evento;
+    Personaje * personajes;
     Nivel * niveles;
     int numRondas;
     int tiempoRonda;

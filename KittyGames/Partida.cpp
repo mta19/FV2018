@@ -18,6 +18,7 @@
 
 Partida::Partida(Vector2i resolucion, std::string titulo) {
     
+    evento=new Event;
     fps=60;
     frameRate=1/fps;
     
@@ -25,18 +26,17 @@ Partida::Partida(Vector2i resolucion, std::string titulo) {
     ventana->setFramerateLimit(fps);
     
     set_camera();
-    
-    std::cout<<"Por ahora funciona0"<<std::endl;
+
     
     //por ahora pondre que una partida tiene solo un personaje y un nivel
     niveles=new Nivel();
     personajes= new Alien();
     personajes->setSprite();
-    niveles->anyadirObjetoDinamico(688.0f,500.0f);
-    niveles->anyadirPlataforma(688.f,600.0f);
+    niveles->anyadirObjetoDinamico(800.0f,500.0f, 20.f, 20.f);
+   
+    niveles->anyadirPlataforma(688.f,600.0f, 400.f, 50.f);
     niveles->anyadirPersonaje(personajes->getSprite()->getPosition().x, personajes->getSprite()->getPosition().y, personajes->getSprite());
-    
-    std::cout<<"Por ahora funciona1"<<std::endl;
+
     
     gameLoop();
     
@@ -51,7 +51,7 @@ Partida::~Partida() {
 void Partida::set_camera(){
     
     //camara1=new View({50.f,50.f},{1376.f,768.f});
-    //ventana->setView(*camara1);
+    //ventana->setView(*camara1);any
     
 }
 
@@ -74,6 +74,18 @@ void Partida::gameLoop(){
     Animacion * animacion = personajes->getAnimacion();
       while(ventana->isOpen()){
         
+           while (ventana->pollEvent(*evento)) {
+
+        if (evento->type == Event::Closed) {
+            ventana->close();
+        }
+
+        if (evento->type == Event::KeyPressed) {
+                 
+            this->personajes->handleInput(evento,this->niveles);
+            
+        }
+           }
           deltaTime=clock.restart().asSeconds();
           
         *tiempo1=reloj1->getElapsedTime();
@@ -87,9 +99,7 @@ void Partida::gameLoop(){
             this->niveles->actualizar_fisica();
             
             animacion->Update(0,deltaTime,personajes->getSprite());
-            std::cout<<animacion->uvRect.left<<std::endl;
-            std::cout<<animacion->uvRect.width<<std::endl;
-          
+            
             dibujar();
             
             ventana->display();

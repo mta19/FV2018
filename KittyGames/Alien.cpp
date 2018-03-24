@@ -13,7 +13,7 @@
 
 #include "Alien.h"
 #include "Animacion.h"
-
+#include "EstadoPersonaje.h"
 Alien::Alien() {
 }
 
@@ -31,8 +31,9 @@ void Alien::setSprite(){
     sprite=new Sprite(*textura);
     
 
+    
     setFrame(*sprite);
-    sprite->setPosition(600.0f,550.0f-sprite->getTexture()->getSize().y*0.3);
+    sprite->setPosition(610.0f,200.0f-sprite->getTexture()->getSize().y*0.3);
     sprite->setScale(150.f/sprite->getTexture()->getSize().x,75.f/sprite->getTexture()->getSize().y);
     
      animacion= new Animacion(textura,Vector2u(3,1),0.3f);
@@ -58,8 +59,32 @@ void Alien::setAnimacion(){
 
 void Alien::setFrame(Sprite& spr){
     
-    IntRect posicion (0,0,spr.getTexture()->getSize().x/3,spr.getTexture()->getSize().y);
+    IntRect posicion (0,0,spr.getTexture()->getSize().x/3.15,spr.getTexture()->getSize().y);
     spr.setTextureRect(posicion);
 }
 
 
+void Alien::handleInput(Event* tecla, Nivel* nivel){
+    
+               
+    EstadoPersonaje* estado= estado_->handleInput(*this, tecla, nivel);
+    
+    
+    if(estado!=NULL){
+       
+ 
+        
+        delete estado_;
+        
+        estado_=estado;
+      
+        
+         
+        
+        estado_->accion(*this, nivel, tecla);
+        
+    }
+   
+    
+    
+}

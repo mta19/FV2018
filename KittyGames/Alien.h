@@ -16,7 +16,9 @@
 #include "Personaje.h"
 #include "SFML/Graphics.hpp"
 #include "Animacion.h"
+#include <iostream>
 using namespace sf;
+
 class Alien : public Personaje {
 public:
     Alien();
@@ -28,6 +30,7 @@ public:
     void setAnimacion();
     Animacion * getAnimacion(){ return animacion;};
     void setFrame(Sprite &spr);
+    void handleInput(Event* tecla, Nivel* nivel);
 private:
     
     Animacion * animacion;

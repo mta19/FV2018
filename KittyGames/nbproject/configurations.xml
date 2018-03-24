@@ -6,14 +6,19 @@
                    projectFiles="true">
       <itemPath>Alien.h</itemPath>
       <itemPath>Animacion.h</itemPath>
-      <itemPath>Arena.hpp</itemPath>
-      <itemPath>Arma.hpp</itemPath>
+      <itemPath>Bala.h</itemPath>
+      <itemPath>Collision.h</itemPath>
       <itemPath>Ensamblador.h</itemPath>
       <itemPath>Estado.h</itemPath>
+      <itemPath>EstadoJumping.h</itemPath>
+      <itemPath>EstadoPersonaje.h</itemPath>
+      <itemPath>EstadoStanding.h</itemPath>
       <itemPath>Nivel.h</itemPath>
       <itemPath>Partida.h</itemPath>
       <itemPath>Personaje.h</itemPath>
+      <itemPath>Pistola.h</itemPath>
       <itemPath>SpawnerMonstruo.h</itemPath>
+      <itemPath>Weapon.h</itemPath>
       <itemPath>motor2D.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
@@ -25,14 +30,19 @@
                    projectFiles="true">
       <itemPath>Alien.cpp</itemPath>
       <itemPath>Animacion.cpp</itemPath>
-      <itemPath>Arena.cpp</itemPath>
-      <itemPath>Arma.cpp</itemPath>
+      <itemPath>Bala.cpp</itemPath>
+      <itemPath>Collision.cpp</itemPath>
       <itemPath>Ensamblador.cpp</itemPath>
       <itemPath>Estado.cpp</itemPath>
+      <itemPath>EstadoJumping.cpp</itemPath>
+      <itemPath>EstadoPersonaje.cpp</itemPath>
+      <itemPath>EstadoStanding.cpp</itemPath>
       <itemPath>Nivel.cpp</itemPath>
       <itemPath>Partida.cpp</itemPath>
       <itemPath>Personaje.cpp</itemPath>
+      <itemPath>Pistola.cpp</itemPath>
       <itemPath>SpawnerMonstruo.cpp</itemPath>
+      <itemPath>Weapon.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
       <itemPath>motor2D.cpp</itemPath>
     </logicalFolder>
@@ -96,13 +106,13 @@
       </item>
       <item path="Animacion.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Arena.cpp" ex="false" tool="1" flavor2="0">
+      <item path="Bala.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="Arena.hpp" ex="false" tool="3" flavor2="0">
+      <item path="Bala.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Arma.cpp" ex="false" tool="1" flavor2="0">
+      <item path="Collision.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="Arma.hpp" ex="false" tool="3" flavor2="0">
+      <item path="Collision.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Ensamblador.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -111,6 +121,18 @@
       <item path="Estado.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Estado.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="EstadoJumping.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="EstadoJumping.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="EstadoPersonaje.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="EstadoPersonaje.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="EstadoStanding.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="EstadoStanding.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Nivel.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -124,9 +146,17 @@
       </item>
       <item path="Personaje.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Pistola.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Pistola.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="SpawnerMonstruo.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="SpawnerMonstruo.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Weapon.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Weapon.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -163,13 +193,13 @@
       </item>
       <item path="Animacion.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Arena.cpp" ex="false" tool="1" flavor2="0">
+      <item path="Bala.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="Arena.hpp" ex="false" tool="3" flavor2="0">
+      <item path="Bala.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Arma.cpp" ex="false" tool="1" flavor2="0">
+      <item path="Collision.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="Arma.hpp" ex="false" tool="3" flavor2="0">
+      <item path="Collision.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Ensamblador.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -178,6 +208,18 @@
       <item path="Estado.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Estado.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="EstadoJumping.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="EstadoJumping.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="EstadoPersonaje.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="EstadoPersonaje.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="EstadoStanding.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="EstadoStanding.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Nivel.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -191,9 +233,17 @@
       </item>
       <item path="Personaje.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Pistola.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Pistola.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="SpawnerMonstruo.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="SpawnerMonstruo.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Weapon.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Weapon.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
