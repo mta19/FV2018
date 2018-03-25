@@ -14,11 +14,20 @@
 #ifndef COLLISION_H
 #define COLLISION_H
 
-class Collision {
+
+#include "Box2D/Box2D.h"
+
+
+class Ensamblador;
+
+class Collision: public b2ContactListener {
 public:
     Collision();
     Collision(const Collision& orig);
     virtual ~Collision();
+    
+    void BeginContact (b2Contact* contacto);
+    void checkaabb(Ensamblador& ensambladorA, Ensamblador& ensambladorB);
 private:
 
 };

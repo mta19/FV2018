@@ -37,6 +37,7 @@ Partida::Partida(Vector2i resolucion, std::string titulo) {
     niveles->anyadirPlataforma(688.f,600.0f, 400.f, 50.f);
     niveles->anyadirPersonaje(personajes->getSprite()->getPosition().x, personajes->getSprite()->getPosition().y, personajes->getSprite());
 
+    niveles->getPersonaje()->setEntidad(this->personajes);
     
     gameLoop();
     

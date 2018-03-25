@@ -22,28 +22,32 @@ using namespace sf;
 #ifndef PARTIDA_H
 #define PARTIDA_H
 
-class Partida: public Estado {
+#include "Collision.h"
+
+class Partida : public Estado {
 public:
     Partida(Vector2i resolucion, std::string titulo);
     Partida(const Partida& orig);
     virtual ~Partida();
-    
+
     void set_camera();
     void set_Nivel(Nivel* nivel);
     void gameLoop();
     void dibujar();
     Nivel get_Nivel();
-    
-   
+
+
 private:
+
+    Collision procesadorColisiones;
 
     Event * evento;
     Personaje * personajes;
     Nivel * niveles;
     int numRondas;
     int tiempoRonda;
-    
-    
+
+
 };
 
 

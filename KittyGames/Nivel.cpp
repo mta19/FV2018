@@ -13,6 +13,8 @@
 #include <iostream>
 #include "Partida.h"
 #include "Nivel.h"
+#include "Entidad.h"
+
 
 #include "Box2D/Box2D.h"
 
@@ -31,17 +33,18 @@ Nivel::Nivel() {
     spr_caja = new Sprite(*txt_caja);
 
     
-    b2Vec2 gravity(0, -9.8); //normal earth gravity, 9.8 m/s/s straight down!
+    b2Vec2 gravity(0, 25.8); //normal earth gravity, 9.8 m/s/s straight down!
     bool doSleep = true;
 
     mundo = new b2World(gravity);
     
+    mundo->SetContactListener(&procesadorColisiones);
 
-    float32 timeStep = 1 / 20.0; //the length of time passed to simulate (seconds)
+  /*  float32 timeStep = 1 / 20.0; //the length of time passed to simulate (seconds)
     int32 velocityIterations = 8; //how strongly to correct velocity
     int32 positionIterations = 3; //how strongly to correct position
 
-    mundo->Step(timeStep, velocityIterations, positionIterations);
+    mundo->Step(timeStep, velocityIterations, positionIterations);*/
 
 }
 
@@ -73,6 +76,7 @@ void Nivel::anyadirPlataforma(float x, float y, float weight, float height) {
     fix_suelo = bdy_suelo->CreateFixture(&fixdef_suelo);
 
     ensambladorSuelo = new Ensamblador(bdy_suelo, spr_suelo, &weight, &height);
+    ensambladorSuelo->set_id_id(plataforma);
 
 }
 
@@ -102,8 +106,9 @@ void Nivel::anyadirObjetoDinamico(float x, float y, float weight, float height) 
 
 
     ensambladorCaja = new Ensamblador(bdy_caja, spr_caja, &weight, &height);
+    ensambladorCaja->set_id_id(caja);
 
-
+    
 }
 
 void Nivel::anyadirPersonaje(float x, float y, Sprite *sprite) {
@@ -130,7 +135,7 @@ void Nivel::anyadirPersonaje(float x, float y, Sprite *sprite) {
 
 
     fixdef_personaje.shape = &shp_personaje;
-    fixdef_personaje.density = 1.0f;
+    fixdef_personaje.density = 0.0001f;
 
     fixdef_personaje.restitution = 0.0f;
     fixdef_personaje.friction = 0.1f;
@@ -141,8 +146,7 @@ void Nivel::anyadirPersonaje(float x, float y, Sprite *sprite) {
 
 
     ensambladorPersonaje = new Ensamblador(bdy_personaje, sprite, &weight, &height);
-
-
+    ensambladorPersonaje->set_id_id(identificador::jugador);
 }
 
 void Nivel::actualizar_fisica() {

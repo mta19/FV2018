@@ -9,6 +9,7 @@
       <itemPath>Bala.h</itemPath>
       <itemPath>Collision.h</itemPath>
       <itemPath>Ensamblador.h</itemPath>
+      <itemPath>Entidad.h</itemPath>
       <itemPath>Estado.h</itemPath>
       <itemPath>EstadoJumping.h</itemPath>
       <itemPath>EstadoPersonaje.h</itemPath>
@@ -33,6 +34,7 @@
       <itemPath>Bala.cpp</itemPath>
       <itemPath>Collision.cpp</itemPath>
       <itemPath>Ensamblador.cpp</itemPath>
+      <itemPath>Entidad.cpp</itemPath>
       <itemPath>Estado.cpp</itemPath>
       <itemPath>EstadoJumping.cpp</itemPath>
       <itemPath>EstadoPersonaje.cpp</itemPath>
@@ -117,6 +119,10 @@
       <item path="Ensamblador.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Ensamblador.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Entidad.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Entidad.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Estado.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -204,6 +210,10 @@
       <item path="Ensamblador.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Ensamblador.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Entidad.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Entidad.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Estado.cpp" ex="false" tool="1" flavor2="0">
       </item>

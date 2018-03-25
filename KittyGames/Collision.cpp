@@ -12,8 +12,11 @@
  */
 
 #include "Collision.h"
+#include "Ensamblador.h"
+#include "EstadoStanding.h"
 
 Collision::Collision() {
+    
 }
 
 Collision::Collision(const Collision& orig) {
@@ -21,4 +24,41 @@ Collision::Collision(const Collision& orig) {
 
 Collision::~Collision() {
 }
+
+void Collision::BeginContact(b2Contact* contacto) {
+
+
+
+    if (Ensamblador * cuerpoA = (Ensamblador*) contacto->GetFixtureA()->GetBody()->GetUserData()) {
+
+        
+             
+        if (Ensamblador * cuerpoB = (Ensamblador*) contacto->GetFixtureB()->GetBody()->GetUserData()) {
+            
+            checkaabb(*cuerpoA, *cuerpoB);
+            checkaabb(*cuerpoB, *cuerpoA);
+            
+        }
+    }
+
+
+}
+
+void Collision::checkaabb(Ensamblador& a, Ensamblador& b) {
+
+    if (a.get_id_id() == identificador::jugador) {
+
+        switch (b.get_id_id()) {
+
+            case identificador::plataforma:
+
+                std::cout<<"hola4"<<std::endl;
+                a.getEntidad()->setEstado(new EstadoStanding());
+
+                break;
+
+        }
+    }
+}
+
 

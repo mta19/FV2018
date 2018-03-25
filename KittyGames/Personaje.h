@@ -19,12 +19,14 @@
 #include "SFML/Graphics.hpp"
 #include "Animacion.h"
 #include "Nivel.h"
+#include "Entidad.h"
 
 using namespace sf;
 
-class EstadoPersonaje;
+class EstadoPersonaje ;
 
-class Personaje {
+class Personaje : public Entidad {
+    
 public:
 
     Personaje();
@@ -39,6 +41,8 @@ public:
     virtual void handleInput(Event* tecla, Nivel* nivel);
     b2Vec2 getspeed(){return speed;};
     void setSpeed(b2Vec2  vector){ speed=vector;}
+    
+    EstadoPersonaje* setEstado(EstadoPersonaje* estado){estado_=estado;};
 private:
 
 

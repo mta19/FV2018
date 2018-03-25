@@ -40,6 +40,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Bala.o \
 	${OBJECTDIR}/Collision.o \
 	${OBJECTDIR}/Ensamblador.o \
+	${OBJECTDIR}/Entidad.o \
 	${OBJECTDIR}/Estado.o \
 	${OBJECTDIR}/EstadoJumping.o \
 	${OBJECTDIR}/EstadoPersonaje.o \
@@ -114,6 +115,11 @@ ${OBJECTDIR}/Ensamblador.o: Ensamblador.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/usr/include/Box2D -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Ensamblador.o Ensamblador.cpp
+
+${OBJECTDIR}/Entidad.o: Entidad.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/usr/include/Box2D -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Entidad.o Entidad.cpp
 
 ${OBJECTDIR}/Estado.o: Estado.cpp
 	${MKDIR} -p ${OBJECTDIR}

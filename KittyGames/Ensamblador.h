@@ -16,26 +16,53 @@
 
 #include "SFML/Graphics.hpp"
 #include "Box2D/Box2D.h"
+
+class Personaje;
+
+enum identificador {
+    jugador, enemigo, caja, plataforma
+};
+
 using namespace sf;
+
+
 
 class Ensamblador {
 public:
     Ensamblador(b2Body * cuerpo, Sprite * sprite, float *width, float *height);
     Ensamblador(const Ensamblador& orig);
     virtual ~Ensamblador();
-    
+
     float rad2deg(float radianes);
-    void dibujar (RenderWindow& r);
-    
+    void dibujar(RenderWindow& r);
+
     b2Body* getBody();
+
+    void set_id_id(identificador id) {
+        id_id = id;
+    };
+
+    identificador get_id_id() {
+        return id_id;
+    };
     
+    void setEntidad(Personaje *e);
+    
+    Personaje* getEntidad();
+ 
+
 private:
+    
 
     Sprite * spr_actor;
     b2Body * bdy_actor;
-    
+
     b2Vec2 posicion;
+
+    identificador id_id;
     
+    Personaje* entidad;
+
 };
 
 #endif /* ENSAMBLADOR_H */
