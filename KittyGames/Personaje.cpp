@@ -17,6 +17,9 @@
 #include "EstadoStanding.h"
 
 Personaje::Personaje(){
+    vida= 100;
+    vidaActual= vida;
+    puntuacion= 0;
     
     estado_=new EstadoStanding();
     
@@ -48,5 +51,37 @@ void Personaje::handleInput(Event* tecla, Nivel* nivel){
         
     }
    
+}
+
+int Personaje::getVida(){
+    return vida;
+}
+
+
+int Personaje::getVidaActual(){
+    return vidaActual;
+}
+
+void Personaje::updateVidaActual(int cambio){
+    //Si recibe un entero negativo, se le resta por signo
+    vidaActual+= cambio;
+    if(vidaActual<=0){
+        morir();
+    }
+}
+
+void Personaje::morir(){
+    //(?)
+    //Eliminar Textura, Sprite y Personaje (Alien) -- (???)
+}
+
+int Personaje::getPuntuacion(){
+    return puntuacion;
+}
+
+void Personaje::updatePuntuacion(int cambio){
+    if(puntuacion>=cambio){
+        puntuacion+= cambio;
+    }
 }
 
