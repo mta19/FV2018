@@ -39,15 +39,15 @@ public:
 
 private:
 
-    Collision procesadorColisiones;
 
-    Event * evento;
     Personaje * personajes;
     Nivel * niveles;
     int numRondas;
     int tiempoRonda;
 
+ Collision procesadorColisiones;
 
+    Event * evento;
 };
 
 

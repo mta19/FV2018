@@ -42,22 +42,46 @@ public:
     b2Vec2 getspeed(){return speed;};
     void setSpeed(b2Vec2  vector){ speed=vector;}
     
+
     EstadoPersonaje* setEstado(EstadoPersonaje* estado){estado_=estado;};
+
+    //Sistema de vida y ataque
+    
+    //UpdateVida
+    virtual void updateVidaActual(int);
+    //GetVida
+    virtual int getVida();
+    virtual int getVidaActual();
+    //Muerte (?)
+    virtual void morir();
+    //UpdatePuntuacion
+    virtual void updatePuntuacion(int);
+    //GetPuntuacion
+    virtual int getPuntuacion();
+    
+    
+
 private:
+    
 
 
 protected:
+
 
     EstadoPersonaje * estado_;
 
     int vida;
     int vidaActual;
     int velocidad;
+    int puntuacion;
     int defensa;
     
     //variables para las fisicas
     
     b2Vec2  speed;
+
+
+    
 
 };
 
