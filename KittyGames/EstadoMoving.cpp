@@ -15,7 +15,7 @@
 
 EstadoMoving::EstadoMoving() {
 
-    std::cout << "alehop1" << std::endl;
+ 
 
 }
 
@@ -38,9 +38,6 @@ EstadoPersonaje* EstadoMoving::handleInput(Personaje& persona, Event* tecla, Niv
 
         if (tecla->key.code == Keyboard::X) {
 
-
-
-            std::cout << body->GetMass() << std::endl;
 
             body->SetFixedRotation(true); //YOU WORK
             vel.y = body->GetWorld()->GetGravity().y * body->GetMass()*100;

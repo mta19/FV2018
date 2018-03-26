@@ -20,8 +20,6 @@
 
 EstadoJumping::EstadoJumping() {
 
-    std::cout << "estoy saltando" << std::endl;
-
 }
 
 EstadoJumping::EstadoJumping(const EstadoJumping& orig) {
@@ -46,7 +44,9 @@ EstadoPersonaje* EstadoJumping::handleInput(Personaje& persona, Event* tecla, Ni
 
             body->SetLinearVelocity(vel);
             persona.setface(true);
-
+            
+            
+            
             return new EstadoMoving();
 
         } else if (Keyboard::isKeyPressed(Keyboard::A)) {

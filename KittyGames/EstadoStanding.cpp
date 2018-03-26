@@ -19,8 +19,7 @@
 #include "EstadoPersonaje.h"
 
 EstadoStanding::EstadoStanding() {
-    
-    std::cout<<"alehop"<<std::endl;
+
     
 }
 
@@ -43,7 +42,6 @@ EstadoPersonaje* EstadoStanding::handleInput(Personaje& persona, Event* tecla, N
         if (tecla->key.code == Keyboard::X) {
 
           
-            std::cout << body->GetMass() << std::endl;
 
             body->SetFixedRotation(true); //YOU WORK
             vel.y = body->GetWorld()->GetGravity().y * body->GetMass()*100;

@@ -90,6 +90,8 @@ void Partida::gameLoop() {
                     
                     
                 this->personajes->handleInput(evento, this->niveles);
+                
+                this->niveles->getColisiones()->setId(0);
 
                 }
             }

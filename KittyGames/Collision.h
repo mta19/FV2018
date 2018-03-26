@@ -30,6 +30,7 @@ public:
     void checkaabb(Ensamblador& ensambladorA, Ensamblador& ensambladorB);
     
     int getId(){return id;};
+    void setId(int i){id=i;};
 private:
 
     int id=0;

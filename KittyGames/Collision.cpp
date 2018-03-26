@@ -54,9 +54,7 @@ void Collision::checkaabb(Ensamblador& a, Ensamblador& b) {
             case identificador::plataforma:
                 
                 id=1;
-                
-              
-                
+            
                 break;
 
         }
