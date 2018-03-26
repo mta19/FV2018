@@ -5,44 +5,41 @@
  */
 
 /* 
- * File:   EstadoStanding.cpp
+ * File:   EstadoMoving.cpp
  * Author: pedro
  * 
- * Created on 21 de marzo de 2018, 17:04
+ * Created on 26 de marzo de 2018, 0:39
  */
 
-#include <SFML/Audio/AlResource.hpp>
-
 #include "EstadoMoving.h"
-#include "EstadoJumping.h"
-#include "EstadoStanding.h"
-#include "EstadoPersonaje.h"
 
-EstadoStanding::EstadoStanding() {
-    
-    std::cout<<"alehop"<<std::endl;
-    
+EstadoMoving::EstadoMoving() {
+
+    std::cout << "alehop1" << std::endl;
+
 }
 
-EstadoStanding::EstadoStanding(const EstadoStanding& orig) {
+EstadoMoving::EstadoMoving(const EstadoMoving& orig) {
 }
 
-EstadoStanding::~EstadoStanding() {
+EstadoMoving::~EstadoMoving() {
 }
 
-EstadoPersonaje* EstadoStanding::handleInput(Personaje& persona, Event* tecla, Nivel * nivel) {
-
-    
+EstadoPersonaje* EstadoMoving::handleInput(Personaje& persona, Event* tecla, Nivel * nivel) {
 
     b2Body * body = nivel->getPersonaje()->getBody();
+
+
 
     b2Vec2 vel = body->GetLinearVelocity();
 
     if (tecla->type == Event::KeyPressed) {
 
+
         if (tecla->key.code == Keyboard::X) {
 
-          
+
+
             std::cout << body->GetMass() << std::endl;
 
             body->SetFixedRotation(true); //YOU WORK
@@ -102,14 +99,13 @@ EstadoPersonaje* EstadoStanding::handleInput(Personaje& persona, Event* tecla, N
             return new EstadoMoving();
         }
 
-        return new EstadoStanding();
+
 
     }
 
 }
 
-void EstadoStanding::accion(Personaje& personaje, Nivel* nivel, Event * tecla) {
+void EstadoMoving::accion(Personaje& personaje, Nivel* nivel, Event * tecla) {
 
 
 }
-

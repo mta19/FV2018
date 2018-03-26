@@ -29,16 +29,16 @@ void Alien::setSprite() {
 
     textura = new Texture();
 
-    textura->loadFromFile("alien_idle.png");
+    textura->loadFromFile("Verde.png");
     sprite = new Sprite(*textura);
 
 
 
     setFrame(*sprite);
-    sprite->setPosition(610.0f, 200.0f - sprite->getTexture()->getSize().y * 0.3);
-    sprite->setScale(150.f / sprite->getTexture()->getSize().x, 75.f / sprite->getTexture()->getSize().y);
+    sprite->setPosition(610.0f, 200.0f);
+    sprite->setScale(150.f / sprite->getTexture()->getSize().x, 500.f / sprite->getTexture()->getSize().y);
 
-    animacion = new Animacion(textura, Vector2u(3, 1), 0.3f);
+    animacion = new Animacion(textura, Vector2u(3, 7), 0.3f);
 }
 
 Sprite* Alien::getSprite() {
@@ -60,7 +60,7 @@ void Alien::setAnimacion() {
 
 void Alien::setFrame(Sprite& spr) {
 
-    IntRect posicion(0, 0, spr.getTexture()->getSize().x / 3.15, spr.getTexture()->getSize().y);
+    IntRect posicion(0, 0, spr.getTexture()->getSize().x / 3, spr.getTexture()->getSize().y/7);
     spr.setTextureRect(posicion);
     
     
@@ -78,7 +78,6 @@ void Alien::handleInput(Event* tecla, Nivel* nivel) {
 
         estado_ = estado;
 
-        estado_->accion(*this, nivel, tecla); //manejar los sprites;
     }
 
 

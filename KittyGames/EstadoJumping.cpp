@@ -14,10 +14,14 @@
 #include "EstadoJumping.h"
 #include "Box2D/Box2D.h"
 
+#include "EstadoMoving.h"
+#include "EstadoMoving.h"
+#include "EstadoStanding.h"
+
 EstadoJumping::EstadoJumping() {
-    
-    std::cout<<"estoy saltando"<<std::endl;
-    
+
+    std::cout << "estoy saltando" << std::endl;
+
 }
 
 EstadoJumping::EstadoJumping(const EstadoJumping& orig) {
@@ -26,21 +30,43 @@ EstadoJumping::EstadoJumping(const EstadoJumping& orig) {
 EstadoJumping::~EstadoJumping() {
 }
 
-EstadoPersonaje* EstadoJumping::handleInput(Personaje& personaje, Event* tecla, Nivel * nivel) {
+EstadoPersonaje* EstadoJumping::handleInput(Personaje& persona, Event* tecla, Nivel * nivel) {
+
+
+
+    if (nivel->getColisiones()->getId() == 1) {
+
+        b2Body * body = nivel->getPersonaje()->getBody();
+
+        b2Vec2 vel = body->GetLinearVelocity();
+
+        if (Keyboard::isKeyPressed(Keyboard::D)) {
+
+            vel.x = 20;
+
+            body->SetLinearVelocity(vel);
+            persona.setface(true);
+
+            return new EstadoMoving();
+
+        } else if (Keyboard::isKeyPressed(Keyboard::A)) {
+
+            vel.x = -20;
+
+            persona.setface(false);
+            body->SetLinearVelocity(vel);
+            return new EstadoMoving();
+        }
+        
+         return new EstadoStanding;
+
+    }
 
     return new EstadoJumping();
 }
 
-void EstadoJumping::accion(Personaje& personaje, Nivel* nivel, Event * tecla){
-    
-    
-   
-    b2Body * body= nivel->getPersonaje()->getBody();
-     
-    
+void EstadoJumping::accion(Personaje& personaje, Nivel* nivel, Event * tecla) {
 
-    
-    std::cout<<personaje.getSprite()->getPosition().y<<std::endl;
-    std::cout<<nivel->getPersonaje()->getBody()->GetPosition().y<<std::endl;
+
 }
 

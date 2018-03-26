@@ -28,8 +28,12 @@ public:
     
     void BeginContact (b2Contact* contacto);
     void checkaabb(Ensamblador& ensambladorA, Ensamblador& ensambladorB);
+    
+    int getId(){return id;};
 private:
 
+    int id=0;
+    
 };
 
 #endif /* COLLISION_H */

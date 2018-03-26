@@ -43,6 +43,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Entidad.o \
 	${OBJECTDIR}/Estado.o \
 	${OBJECTDIR}/EstadoJumping.o \
+	${OBJECTDIR}/EstadoMoving.o \
 	${OBJECTDIR}/EstadoPersonaje.o \
 	${OBJECTDIR}/EstadoStanding.o \
 	${OBJECTDIR}/Nivel.o \
@@ -130,6 +131,11 @@ ${OBJECTDIR}/EstadoJumping.o: EstadoJumping.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/usr/include/Box2D -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/EstadoJumping.o EstadoJumping.cpp
+
+${OBJECTDIR}/EstadoMoving.o: EstadoMoving.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/usr/include/Box2D -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/EstadoMoving.o EstadoMoving.cpp
 
 ${OBJECTDIR}/EstadoPersonaje.o: EstadoPersonaje.cpp
 	${MKDIR} -p ${OBJECTDIR}

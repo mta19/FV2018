@@ -38,7 +38,9 @@ Nivel::Nivel() {
 
     mundo = new b2World(gravity);
     
-    mundo->SetContactListener(&procesadorColisiones);
+    procesadorColisiones=new Collision();
+    
+    mundo->SetContactListener(procesadorColisiones);
 
   /*  float32 timeStep = 1 / 20.0; //the length of time passed to simulate (seconds)
     int32 velocityIterations = 8; //how strongly to correct velocity
@@ -123,19 +125,19 @@ void Nivel::anyadirPersonaje(float x, float y, Sprite *sprite) {
 
 
     float weight = (sprite->getTextureRect().width * sprite->getScale().x);
-    float height = sprite->getTextureRect().height * sprite->getScale().y;
+    float height = (sprite->getTextureRect().height * sprite->getScale().y);
 
     b2PolygonShape shp_personaje;
     shp_personaje.SetAsBox(weight, height);
 
 
-    weight = sprite->getTexture()->getSize().x / 3.5;
-    height = sprite->getTexture()->getSize().y;
+    weight = sprite->getTexture()->getSize().x / 3;
+    height = sprite->getTexture()->getSize().y / 7;
 
 
 
     fixdef_personaje.shape = &shp_personaje;
-    fixdef_personaje.density = 0.0001f;
+    fixdef_personaje.density = 1.f;
 
     fixdef_personaje.restitution = 0.0f;
     fixdef_personaje.friction = 0.1f;

@@ -14,6 +14,7 @@
 #include "Collision.h"
 #include "Ensamblador.h"
 #include "EstadoStanding.h"
+#include "EstadoMoving.h"
 
 Collision::Collision() {
     
@@ -51,10 +52,11 @@ void Collision::checkaabb(Ensamblador& a, Ensamblador& b) {
         switch (b.get_id_id()) {
 
             case identificador::plataforma:
-
-                std::cout<<"hola4"<<std::endl;
-                a.getEntidad()->setEstado(new EstadoStanding());
-
+                
+                id=1;
+                
+              
+                
                 break;
 
         }

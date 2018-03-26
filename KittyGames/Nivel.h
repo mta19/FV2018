@@ -21,7 +21,6 @@
 
 using namespace sf;
 
-
 class Nivel {
 public:
     Nivel();
@@ -45,6 +44,11 @@ public:
         return ensambladorPersonaje;
     };
     
+    Collision* getColisiones(){
+        
+        return procesadorColisiones;
+    }
+
 private:
 
     Ensamblador * ensambladorSuelo;
@@ -81,7 +85,7 @@ private:
     b2Fixture * fix_personaje;
     b2FixtureDef fixdef_personaje;
 
-    Collision  procesadorColisiones;
+    Collision * procesadorColisiones;
 
 };
 

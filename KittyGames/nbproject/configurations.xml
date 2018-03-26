@@ -12,6 +12,7 @@
       <itemPath>Entidad.h</itemPath>
       <itemPath>Estado.h</itemPath>
       <itemPath>EstadoJumping.h</itemPath>
+      <itemPath>EstadoMoving.h</itemPath>
       <itemPath>EstadoPersonaje.h</itemPath>
       <itemPath>EstadoStanding.h</itemPath>
       <itemPath>Nivel.h</itemPath>
@@ -37,6 +38,7 @@
       <itemPath>Entidad.cpp</itemPath>
       <itemPath>Estado.cpp</itemPath>
       <itemPath>EstadoJumping.cpp</itemPath>
+      <itemPath>EstadoMoving.cpp</itemPath>
       <itemPath>EstadoPersonaje.cpp</itemPath>
       <itemPath>EstadoStanding.cpp</itemPath>
       <itemPath>Nivel.cpp</itemPath>
@@ -132,6 +134,10 @@
       </item>
       <item path="EstadoJumping.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="EstadoMoving.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="EstadoMoving.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="EstadoPersonaje.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="EstadoPersonaje.h" ex="false" tool="3" flavor2="0">
@@ -222,6 +228,10 @@
       <item path="EstadoJumping.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="EstadoJumping.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="EstadoMoving.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="EstadoMoving.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="EstadoPersonaje.cpp" ex="false" tool="1" flavor2="0">
       </item>

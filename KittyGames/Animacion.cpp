@@ -21,8 +21,8 @@ Animacion::Animacion(Texture *texture, Vector2u imageCount, float switchTime) {
     totalTime=0.0f;
     currentImage.x=0;
     
-    uvRect.width=texture->getSize().x / float(imageCount.x) ;
-    uvRect.height=texture->getSize().y/ float(imageCount.y);
+    uvRect.width=texture->getSize().x/float(imageCount.x);
+    uvRect.height=texture->getSize().y/float(imageCount.y);
 }
 
 Animacion::Animacion(const Animacion& orig) {
@@ -31,7 +31,9 @@ Animacion::Animacion(const Animacion& orig) {
 Animacion::~Animacion() {
 }
 
-void Animacion::Update (int row, float deltatime, Sprite *sprite){
+void Animacion::Update (int row, float deltatime, Sprite *sprite, bool faceRight){
+    
+    
     currentImage.y=row;
     totalTime += deltatime;
     
@@ -49,7 +51,17 @@ void Animacion::Update (int row, float deltatime, Sprite *sprite){
     uvRect.left=currentImage.x*uvRect.width;
     uvRect.top=currentImage.y*uvRect.height;
     
+    if(faceRight){
+        
+        uvRect.left= currentImage.x*uvRect.width;
+        uvRect.width=abs(uvRect.width); 
+    }
+    else{
+        uvRect.left= (currentImage.x+1) * abs(uvRect.width);
+        uvRect.width=-abs(uvRect.width);
+        
+    }
+    sprite->setTextureRect(uvRect);
     
-    sprite->setTextureRect(IntRect(uvRect.left,uvRect.top,uvRect.width,uvRect.height));
     
 }

@@ -76,12 +76,13 @@ void Personaje::morir(){
 }
 
 int Personaje::getPuntuacion(){
+    
     return puntuacion;
+    
 }
 
 void Personaje::updatePuntuacion(int cambio){
     if(puntuacion>=cambio){
         puntuacion+= cambio;
     }
-}
-
+}  
