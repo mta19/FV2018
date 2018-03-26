@@ -15,7 +15,8 @@
 
 EstadoMoving::EstadoMoving() {
 
- 
+
+
 
 }
 
@@ -27,8 +28,10 @@ EstadoMoving::~EstadoMoving() {
 
 EstadoPersonaje* EstadoMoving::handleInput(Personaje& persona, Event* tecla, Nivel * nivel) {
 
-    b2Body * body = nivel->getPersonaje()->getBody();
 
+    persona.setFila(5);
+
+    b2Body * body = nivel->getPersonaje()->getBody();
 
 
     b2Vec2 vel = body->GetLinearVelocity();
@@ -53,6 +56,7 @@ EstadoPersonaje* EstadoMoving::handleInput(Personaje& persona, Event* tecla, Niv
                 body->ApplyForceToCenter({vel.x, -vel.y}, true);
 
 
+                persona.setFila(5);
 
                 return new EstadoJumping();
 
@@ -67,6 +71,8 @@ EstadoPersonaje* EstadoMoving::handleInput(Personaje& persona, Event* tecla, Niv
                 persona.setface(false);
                 body->ApplyForceToCenter({vel.x, -vel.y}, true);
 
+                persona.setFila(5);
+
                 return new EstadoJumping();
 
             }
@@ -75,6 +81,8 @@ EstadoPersonaje* EstadoMoving::handleInput(Personaje& persona, Event* tecla, Niv
             body->ApplyForceToCenter({vel.x, -vel.y}, true);
 
 
+
+            persona.setFila(5);
             return new EstadoJumping();
 
 
@@ -85,6 +93,8 @@ EstadoPersonaje* EstadoMoving::handleInput(Personaje& persona, Event* tecla, Niv
             body->SetLinearVelocity(vel);
             persona.setface(true);
 
+
+            persona.setFila(5);
             return new EstadoMoving();
 
         } else if (Keyboard::isKeyPressed(Keyboard::A)) {
@@ -93,11 +103,25 @@ EstadoPersonaje* EstadoMoving::handleInput(Personaje& persona, Event* tecla, Niv
 
             persona.setface(false);
             body->SetLinearVelocity(vel);
+
+            persona.setFila(5);
             return new EstadoMoving();
+        }
+        
+        else if(tecla->key.code==Keyboard::S){
+            
+            vel.x=0;
+            
+            body->SetLinearVelocity(vel);
+            
+            persona.setFila(0);
+            return new EstadoStanding;
         }
 
 
-
+    } else {
+        persona.setFila(0);
+        return new EstadoStanding;
     }
 
 }

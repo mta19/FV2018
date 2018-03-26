@@ -40,28 +40,35 @@ EstadoPersonaje* EstadoJumping::handleInput(Personaje& persona, Event* tecla, Ni
 
         if (Keyboard::isKeyPressed(Keyboard::D)) {
 
+
             vel.x = 20;
 
             body->SetLinearVelocity(vel);
             persona.setface(true);
-            
-            
-            
+
+
+            persona.setFila(5);
+
             return new EstadoMoving();
 
         } else if (Keyboard::isKeyPressed(Keyboard::A)) {
 
             vel.x = -20;
 
+
+            persona.setFila(5);
             persona.setface(false);
             body->SetLinearVelocity(vel);
             return new EstadoMoving();
         }
         
-         return new EstadoStanding;
+                  
+    persona.setFila(0); 
+    
+        return new EstadoStanding;
 
     }
-
+    
     return new EstadoJumping();
 }
 

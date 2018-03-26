@@ -95,6 +95,7 @@ void Partida::gameLoop() {
 
                 }
             }
+        
         }
         deltaTime = clock.restart().asSeconds();
 

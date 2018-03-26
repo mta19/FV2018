@@ -20,7 +20,8 @@
 
 EstadoStanding::EstadoStanding() {
 
-    
+
+
 }
 
 EstadoStanding::EstadoStanding(const EstadoStanding& orig) {
@@ -31,9 +32,12 @@ EstadoStanding::~EstadoStanding() {
 
 EstadoPersonaje* EstadoStanding::handleInput(Personaje& persona, Event* tecla, Nivel * nivel) {
 
-    
+
+    persona.setFila(0);
 
     b2Body * body = nivel->getPersonaje()->getBody();
+    
+   
 
     b2Vec2 vel = body->GetLinearVelocity();
 
@@ -41,7 +45,7 @@ EstadoPersonaje* EstadoStanding::handleInput(Personaje& persona, Event* tecla, N
 
         if (tecla->key.code == Keyboard::X) {
 
-          
+
 
             body->SetFixedRotation(true); //YOU WORK
             vel.y = body->GetWorld()->GetGravity().y * body->GetMass()*100;
@@ -58,6 +62,7 @@ EstadoPersonaje* EstadoStanding::handleInput(Personaje& persona, Event* tecla, N
 
 
 
+                persona.setFila(5);
                 return new EstadoJumping();
 
 
@@ -71,11 +76,14 @@ EstadoPersonaje* EstadoStanding::handleInput(Personaje& persona, Event* tecla, N
                 persona.setface(false);
                 body->ApplyForceToCenter({vel.x, -vel.y}, true);
 
+                persona.setFila(5);
+
                 return new EstadoJumping();
 
             }
 
 
+            persona.setFila(5);
             body->ApplyForceToCenter({vel.x, -vel.y}, true);
 
 
@@ -89,12 +97,14 @@ EstadoPersonaje* EstadoStanding::handleInput(Personaje& persona, Event* tecla, N
             body->SetLinearVelocity(vel);
             persona.setface(true);
 
+            persona.setFila(5);
             return new EstadoMoving();
 
         } else if (Keyboard::isKeyPressed(Keyboard::A)) {
 
             vel.x = -20;
 
+            persona.setFila(5);
             persona.setface(false);
             body->SetLinearVelocity(vel);
             return new EstadoMoving();
