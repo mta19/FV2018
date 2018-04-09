@@ -35,8 +35,8 @@ void Alien::setSprite() {
 
 
     setFrame(*sprite);
-    sprite->setPosition(610.0f, 200.0f);
-    sprite->setScale(150.f / sprite->getTexture()->getSize().x, 500.f / sprite->getTexture()->getSize().y);
+    sprite->setPosition(300.0f, 200.0f);
+    sprite->setScale(37.f / sprite->getTexture()->getSize().x, 125.f / sprite->getTexture()->getSize().y);
 
     animacion = new Animacion(textura, Vector2u(3, 7), 0.3f);
 }

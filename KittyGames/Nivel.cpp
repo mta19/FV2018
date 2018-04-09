@@ -33,7 +33,7 @@ Nivel::Nivel() {
     spr_caja = new Sprite(*txt_caja);
 
     
-    b2Vec2 gravity(0, 25.8); //normal earth gravity, 9.8 m/s/s straight down!
+    b2Vec2 gravity(0, 9.8); //normal earth gravity, 9.8 m/s/s straight down!
     bool doSleep = true;
 
     mundo = new b2World(gravity);
@@ -70,9 +70,9 @@ void Nivel::anyadirPlataforma(float x, float y, float weight, float height) {
     height = spr_suelo->getTexture()->getSize().y;
 
     fixdef_suelo.shape = &shp_suelo;
-    fixdef_suelo.density = 1.f;
+    fixdef_suelo.density = 0.f;
     fixdef_suelo.restitution = 0.01f;
-    fixdef_suelo.friction = 0.7f;
+    fixdef_suelo.friction = 1.f;
 
 
     fix_suelo = bdy_suelo->CreateFixture(&fixdef_suelo);
@@ -105,7 +105,7 @@ void Nivel::anyadirObjetoDinamico(float x, float y, float weight, float height) 
     fixdef_caja.friction = 0.3f;
 
     fix_caja = bdy_caja->CreateFixture(&fixdef_caja);
-
+    
 
     ensambladorCaja = new Ensamblador(bdy_caja, spr_caja, &weight, &height);
     ensambladorCaja->set_id_id(caja);
@@ -137,15 +137,15 @@ void Nivel::anyadirPersonaje(float x, float y, Sprite *sprite) {
 
 
     fixdef_personaje.shape = &shp_personaje;
-    fixdef_personaje.density = 1.f;
+    fixdef_personaje.density = 0.05f;
 
     fixdef_personaje.restitution = 0.0f;
-    fixdef_personaje.friction = 0.1f;
+    fixdef_personaje.friction = 0.3f;
 
 
     fix_personaje = bdy_personaje->CreateFixture(&fixdef_personaje);
 
-
+    bdy_personaje->SetGravityScale(1.5f);
 
     ensambladorPersonaje = new Ensamblador(bdy_personaje, sprite, &weight, &height);
     ensambladorPersonaje->set_id_id(identificador::jugador);

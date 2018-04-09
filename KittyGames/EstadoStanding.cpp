@@ -48,19 +48,18 @@ EstadoPersonaje* EstadoStanding::handleInput(Personaje& persona, Event* tecla, N
             nivel->getColisiones()->setId(0);
 
             body->SetFixedRotation(true); //YOU WORK
-            vel.y = body->GetWorld()->GetGravity().y * body->GetMass()*100;
-
+            vel.y = body->GetWorld()->GetGravity().y * body->GetMass()*1000;
+            
 
             if (Keyboard::isKeyPressed(Keyboard::D)) {
 
-                vel.x = body->GetMass()*1000;
+                vel.x = body->GetMass()*5000;
                 vel.y = vel.y;
 
                 persona.setface(true);
 
                 body->ApplyForceToCenter({vel.x, -vel.y}, true);
-
-
+               
 
                 persona.setFila(5);
                 return new EstadoJumping();
@@ -70,7 +69,7 @@ EstadoPersonaje* EstadoStanding::handleInput(Personaje& persona, Event* tecla, N
 
             if (Keyboard::isKeyPressed(Keyboard::A)) {
 
-                vel.x = -body->GetMass()*1000;
+                vel.x = -body->GetMass()*5000;
                 vel.y = vel.y;
 
                 persona.setface(false);
@@ -85,8 +84,9 @@ EstadoPersonaje* EstadoStanding::handleInput(Personaje& persona, Event* tecla, N
 
             persona.setFila(5);
             body->ApplyForceToCenter({vel.x, -vel.y}, true);
+           
 
-
+   
             return new EstadoJumping();
 
 

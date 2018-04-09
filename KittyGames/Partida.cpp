@@ -33,9 +33,9 @@ Partida::Partida(Vector2i resolucion, std::string titulo) {
     niveles = new Nivel();
     personajes = new Alien();
     personajes->setSprite();
-    niveles->anyadirObjetoDinamico(800.0f, 500.0f, 20.f, 20.f);
+    niveles->anyadirObjetoDinamico(400.0f, 250.0f, 5.f, 5.f);
 
-    niveles->anyadirPlataforma(688.f, 600.0f, 400.f, 50.f);
+    niveles->anyadirPlataforma(340.f, 300.0f, 100.f, 12.f);
     niveles->anyadirPersonaje(personajes->getSprite()->getPosition().x, personajes->getSprite()->getPosition().y, personajes->getSprite());
 
     niveles->getPersonaje()->setEntidad(this->personajes);
@@ -105,9 +105,11 @@ void Partida::gameLoop() {
                  this->personajes->handleInput(evento, this->niveles);
                 
             }
-
-
         }
+        
+        
+        
+        
 
         //fin del testeo
         deltaTime = clock.restart().asSeconds();

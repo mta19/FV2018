@@ -48,6 +48,11 @@ public:
         
         return procesadorColisiones;
     }
+    
+    b2World* getMundo(){
+        
+        return mundo;
+    }
 
 private:
 

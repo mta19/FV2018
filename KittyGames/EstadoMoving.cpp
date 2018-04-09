@@ -44,13 +44,13 @@ EstadoPersonaje* EstadoMoving::handleInput(Personaje& persona, Event* tecla, Niv
             nivel->getColisiones()->setId(0);
 
             body->SetFixedRotation(true); //YOU WORK
-            vel.y = body->GetWorld()->GetGravity().y * body->GetMass()*100;
+            vel.y = body->GetWorld()->GetGravity().y * body->GetMass()*1000;
 
-
+            std::cout<<body->GetMass()<<std::endl;
 
             if (Keyboard::isKeyPressed(Keyboard::D)) {
 
-                vel.x = body->GetMass()*1000;
+                vel.x = body->GetMass()*5000;
                 vel.y = vel.y;
 
                 persona.setface(true);
@@ -67,7 +67,7 @@ EstadoPersonaje* EstadoMoving::handleInput(Personaje& persona, Event* tecla, Niv
 
             if (Keyboard::isKeyPressed(Keyboard::A)) {
 
-                vel.x = -body->GetMass()*1000;
+                vel.x = -body->GetMass()*5000;
                 vel.y = vel.y;
 
                 persona.setface(false);
