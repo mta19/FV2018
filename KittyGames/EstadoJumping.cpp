@@ -63,7 +63,7 @@ EstadoPersonaje* EstadoJumping::handleInput(Personaje& persona, Event* tecla, Ni
         }
         
                   
-    persona.setFila(0); 
+        persona.setFila(0); 
     
         return new EstadoStanding;
 

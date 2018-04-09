@@ -17,7 +17,7 @@
 #include "EstadoMoving.h"
 
 Collision::Collision() {
-    
+    id = 0;
 }
 
 Collision::Collision(const Collision& orig) {
@@ -32,13 +32,13 @@ void Collision::BeginContact(b2Contact* contacto) {
 
     if (Ensamblador * cuerpoA = (Ensamblador*) contacto->GetFixtureA()->GetBody()->GetUserData()) {
 
-        
-             
+
+
         if (Ensamblador * cuerpoB = (Ensamblador*) contacto->GetFixtureB()->GetBody()->GetUserData()) {
-            
+
             checkaabb(*cuerpoA, *cuerpoB);
             checkaabb(*cuerpoB, *cuerpoA);
-            
+
         }
     }
 
@@ -52,9 +52,13 @@ void Collision::checkaabb(Ensamblador& a, Ensamblador& b) {
         switch (b.get_id_id()) {
 
             case identificador::plataforma:
-                
-                id=1;
-            
+
+                id = 1;
+
+                break;
+
+            default:
+                id = 0;
                 break;
 
         }

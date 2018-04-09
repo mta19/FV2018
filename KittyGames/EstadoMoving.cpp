@@ -41,9 +41,11 @@ EstadoPersonaje* EstadoMoving::handleInput(Personaje& persona, Event* tecla, Niv
 
         if (tecla->key.code == Keyboard::X) {
 
+            nivel->getColisiones()->setId(0);
 
             body->SetFixedRotation(true); //YOU WORK
             vel.y = body->GetWorld()->GetGravity().y * body->GetMass()*100;
+
 
 
             if (Keyboard::isKeyPressed(Keyboard::D)) {
@@ -107,22 +109,42 @@ EstadoPersonaje* EstadoMoving::handleInput(Personaje& persona, Event* tecla, Niv
             persona.setFila(5);
             return new EstadoMoving();
         }
-        
-        else if(tecla->key.code==Keyboard::S){
-            
-            vel.x=0;
-            
+        else if (tecla->key.code == Keyboard::S) {
+
+            vel.x = 0;
+
             body->SetLinearVelocity(vel);
-            
+
             persona.setFila(0);
             return new EstadoStanding;
         }
 
 
-    } else {
-        persona.setFila(0);
-        return new EstadoStanding;
+    }else {
+        
+        if (Keyboard::isKeyPressed(Keyboard::D)) {
+
+            vel.x = 20;
+
+            body->SetLinearVelocity(vel);
+            persona.setface(true);
+
+            persona.setFila(5);
+            return new EstadoMoving();
+
+        } else if (Keyboard::isKeyPressed(Keyboard::A)) {
+
+            vel.x = -20;
+
+            persona.setFila(5);
+            persona.setface(false);
+            body->SetLinearVelocity(vel);
+            return new EstadoMoving();
+        }
+
     }
+    return new EstadoStanding;
+
 
 }
 

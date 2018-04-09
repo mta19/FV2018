@@ -86,17 +86,30 @@ void Partida::gameLoop() {
 
                 this->personajes->handleInput(evento, this->niveles);
 
-                if(this->niveles->getColisiones()->getId()==1){
-                    
-                    
-                this->personajes->handleInput(evento, this->niveles);
-                
-                this->niveles->getColisiones()->setId(0);
+                if (this->niveles->getColisiones()->getId() == 1) {
+
+
+                    this->personajes->handleInput(evento, this->niveles);
+
+                    this->niveles->getColisiones()->setId(0);
 
                 }
             }
-        
+
         }
+
+        //nuevo testeando
+        if (this->niveles->getColisiones()->getId() == 1) {
+            if (Keyboard::isKeyPressed(Keyboard::D) || Keyboard::isKeyPressed(Keyboard::A)) {
+                
+                 this->personajes->handleInput(evento, this->niveles);
+                
+            }
+
+
+        }
+
+        //fin del testeo
         deltaTime = clock.restart().asSeconds();
 
         *tiempo1 = reloj1->getElapsedTime();
