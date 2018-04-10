@@ -46,7 +46,7 @@ Partida::Partida(Vector2i resolucion, std::string titulo) {
         Nivel::contadorEn++;
      niveles->anyadirPlataforma(500.f, 250.0f, 50.f, 12.f);
         Nivel::contadorEn++;     
-    niveles->anyadirObjetoDinamico(400.0f, 250.0f, 5.f, 5.f);
+    niveles->anyadirObjetoDinamico(400.0f, 250.0f, 15.f, 10.f);
 
      
     niveles->anyadirPersonaje(personajes[0]->getSprite()->getPosition().x, personajes[0]->getSprite()->getPosition().y, personajes[0]->getSprite());

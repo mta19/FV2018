@@ -85,7 +85,7 @@ void Nivel::anyadirObjetoDinamico(float x, float y, float weight, float height) 
 
     fixdef_caja.shape = &shp_caja;
     fixdef_caja.density = 1.f;
-    fixdef_caja.restitution = 0.5f;
+    fixdef_caja.restitution = 0.f;
     fixdef_caja.friction = 0.3f;
 
     fix_caja = bdy_caja->CreateFixture(&fixdef_caja);

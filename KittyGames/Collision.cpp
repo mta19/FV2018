@@ -57,6 +57,11 @@ void Collision::checkaabb(Ensamblador& a, Ensamblador& b) {
 
                 break;
 
+            case identificador::caja:
+                
+                id=1;
+                
+                break;
             default:
                 id = 0;
                 break;
