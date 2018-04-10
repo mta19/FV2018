@@ -22,7 +22,7 @@
 #define SCALE 30.0f
 
 
-int Nivel::contadorEn=0;
+int Nivel::contadorEn = 0;
 
 Nivel::Nivel() {
 
@@ -34,7 +34,7 @@ Nivel::Nivel() {
 
     spr_suelo = new Sprite*[3];
     for (int i = 0; i < 3; i++) {
-        spr_suelo[i]=new Sprite(*txt_suelo);
+        spr_suelo[i] = new Sprite(*txt_suelo);
 
     }
 
@@ -51,7 +51,7 @@ Nivel::Nivel() {
     mundo->SetContactListener(procesadorColisiones);
 
     ensambladores = new Ensamblador*[10];
-    bdy= new b2Body*[10];
+    bdy = new b2Body*[10];
     /*  float32 timeStep = 1 / 20.0; //the length of time passed to simulate (seconds)
       int32 velocityIterations = 8; //how strongly to correct velocity
       int32 positionIterations = 3; //how strongly to correct position
@@ -66,33 +66,6 @@ Nivel::Nivel(const Nivel& orig) {
 Nivel::~Nivel() {
 }
 
-void Nivel::anyadirPlataforma(float x, float y, float weight, float height) {
-
-    bdydef_suelo[Nivel::contadorEn].type = b2_staticBody;
-    bdydef_suelo[Nivel::contadorEn].position = b2Vec2(x, y);
-
-    bdy[Nivel::contadorEn] = mundo->CreateBody(&bdydef_suelo[Nivel::contadorEn]);
-
-    
-    shp_suelo[contadorEn].SetAsBox(weight, height);
-
-    
-    
-    weight = spr_suelo[Nivel::contadorEn]->getTexture()->getSize().x;
-    height = spr_suelo[Nivel::contadorEn]->getTexture()->getSize().y;
-
-    fixdef_suelo[Nivel::contadorEn].shape = &shp_suelo[contadorEn];
-    fixdef_suelo[Nivel::contadorEn].density = 0.f;
-    fixdef_suelo[Nivel::contadorEn].restitution = 0.01f;
-    fixdef_suelo[Nivel::contadorEn].friction = 1.f;
-
-    fix_suelo[Nivel::contadorEn] =bdy[Nivel::contadorEn]->CreateFixture(&fixdef_suelo[Nivel::contadorEn]);
-
-    ensambladores[Nivel::contadorEn] = new Ensamblador(bdy[Nivel::contadorEn], spr_suelo[Nivel::contadorEn], weight, height);
-    ensambladores[Nivel::contadorEn]->set_id_id(plataforma);
-
-
-}
 void Nivel::anyadirObjetoDinamico(float x, float y, float weight, float height) {
 
 
@@ -120,8 +93,36 @@ void Nivel::anyadirObjetoDinamico(float x, float y, float weight, float height) 
 
     ensambladores[Nivel::contadorEn] = new Ensamblador(bdy_caja, spr_caja, weight, height);
     ensambladores[Nivel::contadorEn]->set_id_id(caja);
-    
+
     Nivel::contadorEn++;
+
+}
+
+void Nivel::anyadirPlataforma(float x, float y, float weight, float height) {
+
+    bdydef_suelo[Nivel::contadorEn].type = b2_staticBody;
+    bdydef_suelo[Nivel::contadorEn].position = b2Vec2(x, y);
+
+    bdy[Nivel::contadorEn] = mundo->CreateBody(&bdydef_suelo[Nivel::contadorEn]);
+
+
+    shp_suelo[contadorEn].SetAsBox(weight, height);
+
+
+
+    weight = spr_suelo[Nivel::contadorEn]->getTexture()->getSize().x;
+    height = spr_suelo[Nivel::contadorEn]->getTexture()->getSize().y;
+
+    fixdef_suelo[Nivel::contadorEn].shape = &shp_suelo[contadorEn];
+    fixdef_suelo[Nivel::contadorEn].density = 0.f;
+    fixdef_suelo[Nivel::contadorEn].restitution = 0.01f;
+    fixdef_suelo[Nivel::contadorEn].friction = 1.f;
+
+    fix_suelo[Nivel::contadorEn] = bdy[Nivel::contadorEn]->CreateFixture(&fixdef_suelo[Nivel::contadorEn]);
+
+    ensambladores[Nivel::contadorEn] = new Ensamblador(bdy[Nivel::contadorEn], spr_suelo[Nivel::contadorEn], weight, height);
+    ensambladores[Nivel::contadorEn]->set_id_id(plataforma);
+
 
 }
 
@@ -129,10 +130,10 @@ void Nivel::anyadirPersonaje(float x, float y, Sprite *sprite) {
 
 
 
-    bdydef_personaje.type = b2_dynamicBody;
-    bdydef_personaje.position = b2Vec2(x, y);
+    bdydef_suelo[Nivel::contadorEn].type = b2_dynamicBody;
+    bdydef_suelo[Nivel::contadorEn].position = b2Vec2(x, y);
 
-    bdy_personaje = mundo->CreateBody(&bdydef_personaje);
+    bdy[Nivel::contadorEn] = mundo->CreateBody(&bdydef_suelo[Nivel::contadorEn]);
 
 
 
@@ -148,21 +149,20 @@ void Nivel::anyadirPersonaje(float x, float y, Sprite *sprite) {
 
 
 
-    fixdef_personaje.shape = &shp_personaje;
-    fixdef_personaje.density = 0.05f;
+    fixdef_suelo[Nivel::contadorEn].shape = &shp_personaje;
+    fixdef_suelo[Nivel::contadorEn].density = 0.05f;
 
-    fixdef_personaje.restitution = 0.0f;
-    fixdef_personaje.friction = 0.3f;
+    fixdef_suelo[Nivel::contadorEn].restitution = 0.0f;
+    fixdef_suelo[Nivel::contadorEn].friction = 0.3f;
 
 
-    fix_personaje = bdy_personaje->CreateFixture(&fixdef_personaje);
+    fix_suelo[Nivel::contadorEn] = bdy[Nivel::contadorEn]->CreateFixture(&fixdef_suelo[Nivel::contadorEn]);
 
-    bdy_personaje->SetGravityScale(1.5f);
+    bdy[Nivel::contadorEn]->SetGravityScale(1.5f);
 
-    ensambladores[Nivel::contadorEn]  = new Ensamblador(bdy_personaje, sprite, weight, height);
+    ensambladores[Nivel::contadorEn] = new Ensamblador(bdy[Nivel::contadorEn], sprite, weight, height);
     ensambladores[Nivel::contadorEn]->set_id_id(identificador::jugador);
-    
-    Nivel::contadorEn;
+
 }
 
 void Nivel::actualizar_fisica() {

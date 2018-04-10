@@ -40,7 +40,7 @@ public:
 private:
 
 
-    Personaje * personajes;
+    Personaje **personajes;
     Nivel * niveles;
     int numRondas;
     int tiempoRonda;

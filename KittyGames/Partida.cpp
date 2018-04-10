@@ -16,6 +16,8 @@
 #include "Alien.h"
 #include "Animacion.h"
 #include "EstadoStanding.h"
+#include "AlienRojo.h"
+#include "AlienRojo.h"
 
 Partida::Partida(Vector2i resolucion, std::string titulo) {
 
@@ -31,8 +33,12 @@ Partida::Partida(Vector2i resolucion, std::string titulo) {
 
     //por ahora pondre que una partida tiene solo un personaje y un nivel
     niveles = new Nivel();
-    personajes = new Alien();
-    personajes->setSprite();
+    personajes = new Personaje*[2];
+    personajes[0]=new Alien();
+    personajes[1]=new AlienRojo();
+    
+    personajes[0]->setSprite();
+    personajes[1]->setSprite();
     
     niveles->anyadirPlataforma(340.f, 300.0f, 100.f, 12.f);
         Nivel::contadorEn++;
@@ -42,12 +48,14 @@ Partida::Partida(Vector2i resolucion, std::string titulo) {
         Nivel::contadorEn++;     
     niveles->anyadirObjetoDinamico(400.0f, 250.0f, 5.f, 5.f);
 
-  
+     
+    niveles->anyadirPersonaje(personajes[0]->getSprite()->getPosition().x, personajes[0]->getSprite()->getPosition().y, personajes[0]->getSprite());
     
+         
+    Nivel::contadorEn++;
+    niveles->anyadirPersonaje(personajes[1]->getSprite()->getPosition().x, personajes[1]->getSprite()->getPosition().y, personajes[1]->getSprite());
     
-    niveles->anyadirPersonaje(personajes->getSprite()->getPosition().x, personajes->getSprite()->getPosition().y, personajes->getSprite());
-
-    niveles->getPersonaje()->setEntidad(this->personajes);
+    niveles->getPersonaje()->setEntidad(this->personajes[0]);
 
     gameLoop();
 
@@ -82,7 +90,7 @@ void Partida::gameLoop() {
     Clock clock;
     float deltaTime = 0.0f;
 
-    Animacion * animacion = personajes->getAnimacion();
+    Animacion * animacion = personajes[0]->getAnimacion();
     while (ventana->isOpen()) {
 
         while (ventana->pollEvent(*evento)) {
@@ -93,12 +101,12 @@ void Partida::gameLoop() {
 
             if (evento->type == Event::KeyPressed) {
 
-                this->personajes->handleInput(evento, this->niveles);
+                this->personajes[0]->handleInput(evento, this->niveles);
 
                 if (this->niveles->getColisiones()->getId() == 1) {
 
 
-                    this->personajes->handleInput(evento, this->niveles);
+                    this->personajes[0]->handleInput(evento, this->niveles);
 
                     this->niveles->getColisiones()->setId(0);
 
@@ -111,7 +119,7 @@ void Partida::gameLoop() {
         if (this->niveles->getColisiones()->getId() == 1) {
             if (Keyboard::isKeyPressed(Keyboard::D) || Keyboard::isKeyPressed(Keyboard::A)) {
                 
-                 this->personajes->handleInput(evento, this->niveles);
+                 this->personajes[0]->handleInput(evento, this->niveles);
                 
             }
         }
@@ -133,7 +141,7 @@ void Partida::gameLoop() {
 
             this->niveles->actualizar_fisica();
 
-            animacion->Update(personajes->getFila(), deltaTime, personajes->getSprite(), personajes->getface());
+            animacion->Update(personajes[0]->getFila(), deltaTime, personajes[0]->getSprite(), personajes[0]->getface());
 
             dibujar();
 

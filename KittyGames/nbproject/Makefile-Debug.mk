@@ -36,6 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/Alien.o \
+	${OBJECTDIR}/AlienRojo.o \
 	${OBJECTDIR}/Animacion.o \
 	${OBJECTDIR}/Bala.o \
 	${OBJECTDIR}/Collision.o \
@@ -96,6 +97,11 @@ ${OBJECTDIR}/Alien.o: Alien.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/usr/include/Box2D -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Alien.o Alien.cpp
+
+${OBJECTDIR}/AlienRojo.o: AlienRojo.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/usr/include/Box2D -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/AlienRojo.o AlienRojo.cpp
 
 ${OBJECTDIR}/Animacion.o: Animacion.cpp
 	${MKDIR} -p ${OBJECTDIR}
