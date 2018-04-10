@@ -38,12 +38,13 @@ EstadoPersonaje* EstadoMoving::handleInput(Personaje& persona, Event* tecla, Niv
 
     if (tecla->type == Event::KeyPressed) {
 
-
+  body->SetFixedRotation(true); //YOU WORK
+  
         if (tecla->key.code == Keyboard::X) {
 
             nivel->getColisiones()->setId(0);
 
-            body->SetFixedRotation(true); //YOU WORK
+          
             vel.y = body->GetWorld()->GetGravity().y * body->GetMass()*1000;
 
             std::cout<<body->GetMass()<<std::endl;

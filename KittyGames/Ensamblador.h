@@ -29,7 +29,7 @@ using namespace sf;
 
 class Ensamblador {
 public:
-    Ensamblador(b2Body * cuerpo, Sprite * sprite, float *width, float *height);
+    Ensamblador(b2Body * cuerpo, Sprite * sprite, float width, float height);
     Ensamblador(const Ensamblador& orig);
     virtual ~Ensamblador();
 

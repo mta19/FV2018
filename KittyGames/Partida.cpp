@@ -33,9 +33,18 @@ Partida::Partida(Vector2i resolucion, std::string titulo) {
     niveles = new Nivel();
     personajes = new Alien();
     personajes->setSprite();
+    
+    niveles->anyadirPlataforma(340.f, 300.0f, 100.f, 12.f);
+        Nivel::contadorEn++;
+    niveles->anyadirPlataforma(200.f, 250.0f, 50.f, 12.f);
+        Nivel::contadorEn++;
+     niveles->anyadirPlataforma(500.f, 250.0f, 50.f, 12.f);
+        Nivel::contadorEn++;     
     niveles->anyadirObjetoDinamico(400.0f, 250.0f, 5.f, 5.f);
 
-    niveles->anyadirPlataforma(340.f, 300.0f, 100.f, 12.f);
+  
+    
+    
     niveles->anyadirPersonaje(personajes->getSprite()->getPosition().x, personajes->getSprite()->getPosition().y, personajes->getSprite());
 
     niveles->getPersonaje()->setEntidad(this->personajes);
@@ -140,10 +149,18 @@ void Partida::dibujar() {
 
     //nivel->dibujar
     //Personajes->dibujar
-    niveles->getCaja()->dibujar(*ventana);
+    /*niveles->getCaja()->dibujar(*ventana);
 
-    niveles->getSuelo()->dibujar(*ventana);
+    niveles->getSuelo()[0]->dibujar(*ventana);
 
     niveles->getPersonaje()->dibujar(*ventana);
+*/
+    
+    for (int i = 0; i <= Nivel::contadorEn; i++) {
+        
+        if(niveles->getEnsambladores()[i]!=NULL)
+        niveles->getEnsambladores()[i]->dibujar(*ventana);
+
+    }
 
 }

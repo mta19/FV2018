@@ -13,7 +13,7 @@
 #include <iostream>
 #include "Ensamblador.h"
 #include "Personaje.h"
-Ensamblador::Ensamblador(b2Body * cuerpo, Sprite * sprite, float * weight, float* heidht) {
+Ensamblador::Ensamblador(b2Body * cuerpo, Sprite * sprite, float  weight, float  heidht) {
 
     this->entidad = entidad;
 
@@ -22,13 +22,13 @@ Ensamblador::Ensamblador(b2Body * cuerpo, Sprite * sprite, float * weight, float
     spr_actor = sprite;
     
     posicion = bdy_actor->GetPosition();
-    spr_actor->setOrigin(*weight / 2.f, *heidht / 2.f);
+    spr_actor->setOrigin(weight / 2.f, heidht / 2.f);
 
     spr_actor->setPosition(posicion.x, posicion.y);
     spr_actor->setRotation(rad2deg(bdy_actor->GetAngle()));
 
-    float aux = *weight;
-    float aux2 = *heidht;
+    float aux = weight;
+    float aux2 = heidht;
 
     b2AABB dimension;
 

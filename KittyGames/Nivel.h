@@ -32,16 +32,19 @@ public:
     void anyadirObjetoDinamico(float x, float y, float weight, float height);
     void anyadirPersonaje(float x, float y, Sprite * personaje);
 
-    Ensamblador* getSuelo() {
-        return ensambladorSuelo;
-    };
-
-    Ensamblador* getCaja() {
-        return ensambladorCaja;
+    Ensamblador** getEnsambladores() {
+        return ensambladores;
     };
 
     Ensamblador* getPersonaje() {
-        return ensambladorPersonaje;
+          
+    for (int i = 0; i < 10; i++) {
+        
+        if(this->getEnsambladores()[i]!=NULL && this->getEnsambladores()[i]->get_id_id()==identificador::jugador)
+       
+            return this->getEnsambladores()[i];
+    }
+        return NULL;
     };
     
     Collision* getColisiones(){
@@ -53,21 +56,18 @@ public:
         
         return mundo;
     }
+    
+    static int contadorEn;
 
 private:
 
-    Ensamblador * ensambladorSuelo;
-    Ensamblador * ensambladorCaja;
-    Ensamblador * ensambladorPersonaje;
-
-    //SpawnerMonstruo * spawnerMonstruo;
-
+    Ensamblador ** ensambladores;
     int marcadores;
 
     Texture * txt_suelo;
     Texture * txt_caja;
 
-    Sprite * spr_suelo;
+    Sprite **spr_suelo;
     Sprite * spr_caja;
 
 
@@ -75,11 +75,13 @@ private:
 
     b2World * mundo;
 
-    b2Body * bdy_suelo;
-    b2BodyDef bdydef_suelo;
-    b2Fixture * fix_suelo;
-    b2FixtureDef fixdef_suelo;
-
+    b2Body ** bdy;
+    b2BodyDef bdydef_suelo[10];
+    b2Fixture * fix_suelo[10];
+    b2FixtureDef fixdef_suelo[10];
+    
+    b2PolygonShape shp_suelo[3];
+    
     b2Body * bdy_caja;
     b2BodyDef bdydef_caja;
     b2Fixture * fix_caja;
@@ -93,6 +95,7 @@ private:
     Collision * procesadorColisiones;
 
 };
+
 
 #endif /* NIVEL_H */
 
