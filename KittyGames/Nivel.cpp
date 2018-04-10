@@ -146,7 +146,8 @@ void Nivel::anyadirPersonaje(float x, float y, Sprite *sprite) {
 
     weight = sprite->getTexture()->getSize().x / 3;
     height = sprite->getTexture()->getSize().y / 7;
-
+    
+    
 
 
     fixdef_suelo[Nivel::contadorEn].shape = &shp_personaje;
@@ -154,7 +155,8 @@ void Nivel::anyadirPersonaje(float x, float y, Sprite *sprite) {
 
     fixdef_suelo[Nivel::contadorEn].restitution = 0.0f;
     fixdef_suelo[Nivel::contadorEn].friction = 0.3f;
-
+    fixdef_suelo[Nivel::contadorEn].filter.categoryBits=entityCategory::FRIENDLY_PLAYER;
+    fixdef_suelo[Nivel::contadorEn].filter.maskBits=entityCategory::BOUNDARY;
 
     fix_suelo[Nivel::contadorEn] = bdy[Nivel::contadorEn]->CreateFixture(&fixdef_suelo[Nivel::contadorEn]);
 
