@@ -16,8 +16,6 @@
 EstadoMoving::EstadoMoving() {
 
 
-
-
 }
 
 EstadoMoving::EstadoMoving(const EstadoMoving& orig) {

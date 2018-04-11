@@ -17,6 +17,8 @@
 #include "EstadoMoving.h"
 
 Collision::Collision() {
+    sensorA=false;
+    sensorB=false;
     id = 0;
 }
 
@@ -30,6 +32,7 @@ void Collision::BeginContact(b2Contact* contacto) {
 
 
 
+
     if (Ensamblador * cuerpoA = (Ensamblador*) contacto->GetFixtureA()->GetBody()->GetUserData()) {
 
 
@@ -37,13 +40,56 @@ void Collision::BeginContact(b2Contact* contacto) {
 
             checkaabb(*cuerpoA, *cuerpoB);
             checkaabb(*cuerpoB, *cuerpoA);
-            
+
+            sensorA = contacto->GetFixtureA()->IsSensor();
+            sensorB = contacto->GetFixtureA()->IsSensor();
+
+            if (sensorA == true || sensorB == true) {
+
+                std::cout << "hay sensor" << std::endl;
+
+                if (cuerpoA->get_id_id() == identificador::jugador) {
+
+                    cuerpoA->isOnStair(sensorA);
+
+                }
+
+                if (cuerpoB->get_id_id() == identificador::jugador) {
+
+                    cuerpoB->isOnStair(sensorB);
+
+                }
+
+            }
+
+        }
+
+    }
+}
+
+void Collision::EndContact(b2Contact* contacto) {
+
+
+    if (Ensamblador * cuerpoA = (Ensamblador*) contacto->GetFixtureA()->GetBody()->GetUserData()) {
+
+
+        if (Ensamblador * cuerpoB = (Ensamblador*) contacto->GetFixtureB()->GetBody()->GetUserData()) {
+
+           
+
+                sensorA = contacto->GetFixtureA()->IsSensor();
+                sensorB = contacto->GetFixtureA()->IsSensor();
+
+                if(sensorA || sensorB){
+                
+                    cuerpoA->isOnStair(false);
+                    cuerpoB->isOnStair(false);
+
+                }
+            }
 
         }
     }
-
-
-}
 
 void Collision::checkaabb(Ensamblador& a, Ensamblador& b) {
 
@@ -54,13 +100,13 @@ void Collision::checkaabb(Ensamblador& a, Ensamblador& b) {
             case identificador::plataforma:
 
                 id = 1;
-
+                
                 break;
 
             case identificador::caja:
-                
-                id=1;
-                
+
+                id = 1;
+
                 break;
             default:
                 id = 0;

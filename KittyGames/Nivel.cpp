@@ -30,7 +30,7 @@ Nivel::Nivel() {
 
     //creamos el mundo
 
-    b2Vec2 gravity(0, 9.8); //normal earth gravity, 9.8 m/s/s straight down!
+    b2Vec2 gravity(0, 11.0f); //normal earth gravity, 9.8 m/s/s straight down!
 
     mundo = new b2World(gravity);
 
@@ -78,6 +78,7 @@ void Nivel::anyadirObjetoDinamico(float x, float y, float weight, float height) 
     fixdef_[Nivel::contadorEn].restitution = 0.f;
     fixdef_[Nivel::contadorEn].friction = 0.3f;
 
+
     fix_[Nivel::contadorEn] = bdy[Nivel::contadorEn]->CreateFixture(&fixdef_[Nivel::contadorEn]);
 
 
@@ -116,7 +117,8 @@ void Nivel::anyadirEscalera(float x, float y, float weight, float height) {
     fixdef_[Nivel::contadorEn].friction = 0.3f;
 
     fixdef_[Nivel::contadorEn].filter.categoryBits = entityCategory::STAIRS;
-    fixdef_[Nivel::contadorEn].filter.maskBits = entityCategory::STAIRS;
+    fixdef_[Nivel::contadorEn].filter.maskBits = entityCategory::FRIENDLY_PLAYER;
+    fixdef_[Nivel::contadorEn].isSensor = true;
 
     fix_[Nivel::contadorEn] = bdy[Nivel::contadorEn]->CreateFixture(&fixdef_[Nivel::contadorEn]);
 
@@ -190,7 +192,7 @@ void Nivel::anyadirPersonaje(float x, float y, Sprite *sprite) {
     fixdef_[Nivel::contadorEn].restitution = 0.0f;
     fixdef_[Nivel::contadorEn].friction = 0.3f;
     fixdef_[Nivel::contadorEn].filter.categoryBits = entityCategory::FRIENDLY_PLAYER;
-    fixdef_[Nivel::contadorEn].filter.maskBits = entityCategory::BOUNDARY;
+    fixdef_[Nivel::contadorEn].filter.maskBits = entityCategory::BOUNDARY | entityCategory::STAIRS;
 
     fix_[Nivel::contadorEn] = bdy[Nivel::contadorEn]->CreateFixture(&fixdef_[Nivel::contadorEn]);
 

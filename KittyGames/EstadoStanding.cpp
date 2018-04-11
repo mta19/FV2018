@@ -20,7 +20,7 @@
 
 EstadoStanding::EstadoStanding() {
 
-
+    
 
 }
 
@@ -46,6 +46,31 @@ EstadoPersonaje* EstadoStanding::handleInput(Personaje& persona, Event* tecla, N
     if(vel.x<=1 && vel.x>=-1) persona.setFila(0);
     
     if (tecla->type == Event::KeyPressed) {
+        
+        if(nivel->getPersonaje()->getisOnstair()==true){
+            
+              if (Keyboard::isKeyPressed(Keyboard::W)) {
+
+                vel.x=0;
+                vel.y = body->GetWorld()->GetGravity().y * body->GetMass()*100;
+
+                persona.setface(true);
+
+                body->SetLinearVelocity(-vel);
+               
+                nivel->getColisiones()->setId(0);
+
+                persona.setFila(5);
+                
+             
+               
+                return new EstadoJumping();
+
+
+            }
+            
+            
+        }
 
         if (tecla->key.code == Keyboard::X) {
 

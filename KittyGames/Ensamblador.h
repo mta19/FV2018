@@ -20,7 +20,7 @@
 class Personaje;
 
 enum identificador {
-    jugador, enemigo, caja, plataforma
+    jugador, enemigo, caja, plataforma, escalera
 };
 
 using namespace sf;
@@ -48,6 +48,8 @@ public:
     
     void setEntidad(Personaje *e);
     
+    void isOnStair(bool aux){onStair=aux;};
+    bool getisOnstair(){return onStair;};
     Personaje* getEntidad();
  
 
@@ -63,6 +65,7 @@ private:
     
     Personaje* entidad;
 
+    bool onStair=false;
 };
 
 #endif /* ENSAMBLADOR_H */

@@ -34,6 +34,7 @@ public:
     virtual ~Collision();
     
     void BeginContact (b2Contact* contacto);
+    void EndContact(b2Contact* contacto);
     void checkaabb(Ensamblador& ensambladorA, Ensamblador& ensambladorB);
     
     int getId(){return id;};
@@ -41,7 +42,8 @@ public:
 private:
 
     int id=0;
-    
+    bool sensorA;
+    bool sensorB;
 };
 
 #endif /* COLLISION_H */

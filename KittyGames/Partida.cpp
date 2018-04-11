@@ -30,8 +30,6 @@ Partida::Partida(Vector2i resolucion, std::string titulo) {
 
     set_camera();
 
-
-
     niveles = new Nivel();
     personajes = new Personaje*[2];
     personajes[0] = new Alien();
@@ -40,17 +38,17 @@ Partida::Partida(Vector2i resolucion, std::string titulo) {
     personajes[0]->setSprite();
     personajes[1]->setSprite();
 
-    niveles->anyadirEscalera(400.f, 230.f, 14.f, 100.f);
+    niveles->anyadirEscalera(400.f, 200.f, 12.f, 115.f);
     Nivel::contadorEn++;
-    niveles->anyadirPlataforma(340.f, 300.0f, 100.f, 12.f);
+    niveles->anyadirPlataforma(340.f, 300.0f, 80.f, 8.f);
     Nivel::contadorEn++;
-    niveles->anyadirPlataforma(335.f, 175.0f, 50.f, 12.f);
+    niveles->anyadirPlataforma(347.f, 140.0f, 40.f, 8.f);
     Nivel::contadorEn++;
-    niveles->anyadirPlataforma(200.f, 250.0f, 50.f, 12.f);
+    niveles->anyadirPlataforma(200.f, 250.0f, 40.f, 8.f);
     Nivel::contadorEn++;
-    niveles->anyadirPlataforma(500.f, 250.0f, 50.f, 12.f);
+    niveles->anyadirPlataforma(500.f, 250.0f, 40.f, 8.f);
     Nivel::contadorEn++;
-    niveles->anyadirObjetoDinamico(400.0f, 250.0f, 15.f, 10.f);
+    niveles->anyadirObjetoDinamico(350.0f, 250.0f, 12.5f, 8.f);
     Nivel::contadorEn++;
 
     niveles->anyadirPersonaje(personajes[0]->getSprite()->getPosition().x, personajes[0]->getSprite()->getPosition().y, personajes[0]->getSprite());
@@ -73,9 +71,9 @@ Partida::~Partida() {
 
 void Partida::set_camera() {
 
-    camara1 = new View({360.f, 200.f},
+    camara1 = new View({349.f, 210.f},
     {
-        550.f, 400.f
+        450.f, 325.f
     });
     ventana->setView(*camara1);
 
@@ -108,12 +106,17 @@ void Partida::gameLoop() {
 
             if (evento->type == Event::KeyPressed) {
 
+
+
+
                 this->personajes[0]->handleInput(evento, this->niveles);
+
 
                 if (this->niveles->getColisiones()->getId() == 1) {
 
 
                     this->personajes[0]->handleInput(evento, this->niveles);
+
 
                     this->niveles->getColisiones()->setId(0);
 
@@ -121,7 +124,7 @@ void Partida::gameLoop() {
             }
 
         }
-
+        
         //nuevo testeando
         if (this->niveles->getColisiones()->getId() == 1) {
             if (Keyboard::isKeyPressed(Keyboard::D) || Keyboard::isKeyPressed(Keyboard::A)) {
@@ -132,6 +135,8 @@ void Partida::gameLoop() {
         }
 
         b2Vec2 vel = this->niveles->getPersonaje()->getBody()->GetLinearVelocity();
+
+  
         if (vel.x <= 1 && vel.x >= -1) this->personajes[0]->setFila(0);
 
 
