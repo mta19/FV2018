@@ -35,6 +35,9 @@ EstadoPersonaje* EstadoMoving::handleInput(Personaje& persona, Event* tecla, Niv
 
 
     b2Vec2 vel = body->GetLinearVelocity();
+    
+    
+    if(vel.x<=1 && vel.x>=-1) persona.setFila(0);
 
     if (tecla->type == Event::KeyPressed) {
 

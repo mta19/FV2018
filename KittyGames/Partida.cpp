@@ -124,7 +124,8 @@ void Partida::gameLoop() {
             }
         }
         
-        
+        b2Vec2 vel= this->niveles->getPersonaje()->getBody()->GetLinearVelocity();
+        if(vel.x<=1 && vel.x>=-1) this->personajes[0]->setFila(0);
         
         
 

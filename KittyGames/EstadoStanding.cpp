@@ -37,10 +37,14 @@ EstadoPersonaje* EstadoStanding::handleInput(Personaje& persona, Event* tecla, N
 
     b2Body * body = nivel->getPersonaje()->getBody();
 
-
-
+    
     b2Vec2 vel = body->GetLinearVelocity();
 
+    
+
+    
+    if(vel.x<=1 && vel.x>=-1) persona.setFila(0);
+    
     if (tecla->type == Event::KeyPressed) {
 
         if (tecla->key.code == Keyboard::X) {
