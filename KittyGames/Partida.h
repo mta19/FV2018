@@ -44,7 +44,7 @@ private:
     Nivel * niveles;
     int numRondas;
     int tiempoRonda;
-
+  
  Collision procesadorColisiones;
 
     Event * evento;

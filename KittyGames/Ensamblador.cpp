@@ -39,6 +39,7 @@ Ensamblador::Ensamblador(b2Body * cuerpo, Sprite * sprite, float  weight, float 
 
         dimension = f->GetAABB(0);
 
+        
     }
     std::cout << "Por ahora funciona7" << std::endl;
     spr_actor->setScale(dimension.GetExtents().x * 2.0f / aux, dimension.GetExtents().y * 2.0f / aux2);

@@ -33,11 +33,11 @@ void Collision::BeginContact(b2Contact* contacto) {
     if (Ensamblador * cuerpoA = (Ensamblador*) contacto->GetFixtureA()->GetBody()->GetUserData()) {
 
 
-
         if (Ensamblador * cuerpoB = (Ensamblador*) contacto->GetFixtureB()->GetBody()->GetUserData()) {
 
             checkaabb(*cuerpoA, *cuerpoB);
             checkaabb(*cuerpoB, *cuerpoA);
+            
 
         }
     }

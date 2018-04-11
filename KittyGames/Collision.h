@@ -21,7 +21,7 @@
     BOUNDARY =          0x0001,
     FRIENDLY_PLAYER =     0x0002,
     ENEMY_PLAYER =        0x0004,
-    FRIENDLY_AIRCRAFT = 0x0008,
+    STAIRS = 0x0008,
     ENEMY_AIRCRAFT =    0x0010,
   };
 

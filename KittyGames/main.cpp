@@ -26,7 +26,7 @@ using namespace sf;
  */
 int main(int argc, char** argv) {
 
-    Estado * partida=new Partida({720,480},"Empieza la partida");
+    Estado * partida=new Partida({1920,1080},"Empieza la partida");
 
     delete partida;
     

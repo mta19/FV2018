@@ -31,30 +31,34 @@ Partida::Partida(Vector2i resolucion, std::string titulo) {
     set_camera();
 
 
-    //por ahora pondre que una partida tiene solo un personaje y un nivel
+
     niveles = new Nivel();
     personajes = new Personaje*[2];
-    personajes[0]=new Alien();
-    personajes[1]=new AlienRojo();
-    
+    personajes[0] = new Alien();
+    personajes[1] = new AlienRojo();
+
     personajes[0]->setSprite();
     personajes[1]->setSprite();
-    
-    niveles->anyadirPlataforma(340.f, 300.0f, 100.f, 12.f);
-        Nivel::contadorEn++;
-    niveles->anyadirPlataforma(200.f, 250.0f, 50.f, 12.f);
-        Nivel::contadorEn++;
-     niveles->anyadirPlataforma(500.f, 250.0f, 50.f, 12.f);
-        Nivel::contadorEn++;     
-    niveles->anyadirObjetoDinamico(400.0f, 250.0f, 15.f, 10.f);
 
-     
+    niveles->anyadirEscalera(400.f, 230.f, 14.f, 100.f);
+    Nivel::contadorEn++;
+    niveles->anyadirPlataforma(340.f, 300.0f, 100.f, 12.f);
+    Nivel::contadorEn++;
+    niveles->anyadirPlataforma(335.f, 175.0f, 50.f, 12.f);
+    Nivel::contadorEn++;
+    niveles->anyadirPlataforma(200.f, 250.0f, 50.f, 12.f);
+    Nivel::contadorEn++;
+    niveles->anyadirPlataforma(500.f, 250.0f, 50.f, 12.f);
+    Nivel::contadorEn++;
+    niveles->anyadirObjetoDinamico(400.0f, 250.0f, 15.f, 10.f);
+    Nivel::contadorEn++;
+
     niveles->anyadirPersonaje(personajes[0]->getSprite()->getPosition().x, personajes[0]->getSprite()->getPosition().y, personajes[0]->getSprite());
-    
-         
+
+
     Nivel::contadorEn++;
     niveles->anyadirPersonaje(personajes[1]->getSprite()->getPosition().x, personajes[1]->getSprite()->getPosition().y, personajes[1]->getSprite());
-    
+
     niveles->getPersonaje()->setEntidad(this->personajes[0]);
 
     gameLoop();
@@ -69,8 +73,11 @@ Partida::~Partida() {
 
 void Partida::set_camera() {
 
-    //camara1=new View({50.f,50.f},{1376.f,768.f});
-    //ventana->setView(*camara1);any
+    camara1 = new View({360.f, 200.f},
+    {
+        550.f, 400.f
+    });
+    ventana->setView(*camara1);
 
 }
 
@@ -118,16 +125,16 @@ void Partida::gameLoop() {
         //nuevo testeando
         if (this->niveles->getColisiones()->getId() == 1) {
             if (Keyboard::isKeyPressed(Keyboard::D) || Keyboard::isKeyPressed(Keyboard::A)) {
-                
-                 this->personajes[0]->handleInput(evento, this->niveles);
-                
+
+                this->personajes[0]->handleInput(evento, this->niveles);
+
             }
         }
-        
-        b2Vec2 vel= this->niveles->getPersonaje()->getBody()->GetLinearVelocity();
-        if(vel.x<=1 && vel.x>=-1) this->personajes[0]->setFila(0);
-        
-        
+
+        b2Vec2 vel = this->niveles->getPersonaje()->getBody()->GetLinearVelocity();
+        if (vel.x <= 1 && vel.x >= -1) this->personajes[0]->setFila(0);
+
+
 
         //fin del testeo
         deltaTime = clock.restart().asSeconds();
@@ -146,7 +153,9 @@ void Partida::gameLoop() {
 
             dibujar();
 
+
             ventana->display();
+
         }
 
     }
@@ -163,12 +172,12 @@ void Partida::dibujar() {
     niveles->getSuelo()[0]->dibujar(*ventana);
 
     niveles->getPersonaje()->dibujar(*ventana);
-*/
-    
+     */
+
     for (int i = 0; i <= Nivel::contadorEn; i++) {
-        
-        if(niveles->getEnsambladores()[i]!=NULL)
-        niveles->getEnsambladores()[i]->dibujar(*ventana);
+
+        if (niveles->getEnsambladores()[i] != NULL)
+            niveles->getEnsambladores()[i]->dibujar(*ventana);
 
     }
 
