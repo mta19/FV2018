@@ -14,7 +14,7 @@
 #include "Partida.h"
 #include "Nivel.h"
 #include "Entidad.h"
-
+#include <cstdint>
 
 #include "Box2D/Box2D.h"
 
@@ -30,7 +30,7 @@ Nivel::Nivel() {
 
     //creamos el mundo
 
-    b2Vec2 gravity(0, 11.0f); //normal earth gravity, 9.8 m/s/s straight down!
+    b2Vec2 gravity(0, 15.0f); //normal earth gravity, 9.8 m/s/s straight down!
 
     mundo = new b2World(gravity);
 
@@ -168,7 +168,8 @@ void Nivel::anyadirPersonaje(float x, float y, Sprite *sprite) {
 
     bdydef_[Nivel::contadorEn].type = b2_dynamicBody;
     bdydef_[Nivel::contadorEn].position = b2Vec2(x, y);
-
+     bdydef_[Nivel::contadorEn].fixedRotation=true;
+    
     bdy[Nivel::contadorEn] = mundo->CreateBody(&bdydef_[Nivel::contadorEn]);
 
 
@@ -190,16 +191,29 @@ void Nivel::anyadirPersonaje(float x, float y, Sprite *sprite) {
     fixdef_[Nivel::contadorEn].density = 0.05f;
 
     fixdef_[Nivel::contadorEn].restitution = 0.0f;
-    fixdef_[Nivel::contadorEn].friction = 0.3f;
+    fixdef_[Nivel::contadorEn].friction = 0.f;
     fixdef_[Nivel::contadorEn].filter.categoryBits = entityCategory::FRIENDLY_PLAYER;
     fixdef_[Nivel::contadorEn].filter.maskBits = entityCategory::BOUNDARY | entityCategory::STAIRS;
 
     fix_[Nivel::contadorEn] = bdy[Nivel::contadorEn]->CreateFixture(&fixdef_[Nivel::contadorEn]);
 
+    b2PolygonShape polygonShape;
+
+    
+    shp_personaje.SetAsBox(4.3, 4.3, b2Vec2(0,8.f), 0);
+    
+    fixdef_[Nivel::contadorEn].isSensor=false;
+    fixdef_[Nivel::contadorEn].friction=1.f;
+    bdy[Nivel::contadorEn]->CreateFixture(&fixdef_[Nivel::contadorEn]);
+    
+
     bdy[Nivel::contadorEn]->SetGravityScale(1.5f);
 
     ensambladores[Nivel::contadorEn] = new Ensamblador(bdy[Nivel::contadorEn], sprite, weight, height);
     ensambladores[Nivel::contadorEn]->set_id_id(identificador::jugador);
+    
+    intptr_t aux=3;
+    ensambladores[Nivel::contadorEn]->getBody()->GetFixtureList()->SetUserData((void*)aux);
 
 }
 

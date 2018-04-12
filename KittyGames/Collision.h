@@ -16,32 +16,41 @@
 
 
 #include "Box2D/Box2D.h"
+#include <cstdint>
 
-  enum entityCategory {
-    BOUNDARY =          0x0001,
-    FRIENDLY_PLAYER =     0x0002,
-    ENEMY_PLAYER =        0x0004,
+enum entityCategory {
+    BOUNDARY = 0x0001,
+    FRIENDLY_PLAYER = 0x0002,
+    ENEMY_PLAYER = 0x0004,
     STAIRS = 0x0008,
-    ENEMY_AIRCRAFT =    0x0010,
-  };
+    ENEMY_AIRCRAFT = 0x0010,
+};
+
+
 
 class Ensamblador;
 
-class Collision: public b2ContactListener {
+class Collision : public b2ContactListener {
 public:
     Collision();
     Collision(const Collision& orig);
     virtual ~Collision();
-    
-    void BeginContact (b2Contact* contacto);
+
+    static int numFootContacts;
+    void BeginContact(b2Contact* contacto);
     void EndContact(b2Contact* contacto);
     void checkaabb(Ensamblador& ensambladorA, Ensamblador& ensambladorB);
-    
-    int getId(){return id;};
-    void setId(int i){id=i;};
+
+    int getId() {
+        return id;
+    };
+
+    void setId(int i) {
+        id = i;
+    };
 private:
 
-    int id=0;
+    int id = 0;
     bool sensorA;
     bool sensorB;
 };

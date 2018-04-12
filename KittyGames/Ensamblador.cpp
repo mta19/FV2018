@@ -47,6 +47,7 @@ Ensamblador::Ensamblador(b2Body * cuerpo, Sprite * sprite, float  weight, float 
 
     bdy_actor->SetUserData((void*) this);
     bdy_actor->GetFixtureList()->SetUserData((void*) this);
+    
 }
 
 Ensamblador::Ensamblador(const Ensamblador& orig) {

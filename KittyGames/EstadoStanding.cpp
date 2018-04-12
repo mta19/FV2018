@@ -72,7 +72,7 @@ EstadoPersonaje* EstadoStanding::handleInput(Personaje& persona, Event* tecla, N
             
         }
 
-        if (tecla->key.code == Keyboard::X) {
+        if (tecla->key.code == Keyboard::X && Collision::numFootContacts > 1 ) {
 
             nivel->getColisiones()->setId(0);
 

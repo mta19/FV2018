@@ -34,10 +34,14 @@ EstadoPersonaje* EstadoJumping::handleInput(Personaje& persona, Event* tecla, Ni
     b2Body * body = nivel->getPersonaje()->getBody();
 
     b2Vec2 vel = body->GetLinearVelocity();
+    
+         
+     std::cout<<Collision::numFootContacts<<std::endl;
 
     if (vel.x <= 1 && vel.x >= -1) persona.setFila(0);
 
-    if (/*nivel->getColisiones()->getId() == 1*/ vel.y<1 && vel.y>-1) {
+   
+    if (/*nivel->getColisiones()->getId() == 1*/ /*vel.y<1 && vel.y>-1*/Collision::numFootContacts > 1 ) {
 
 
 
