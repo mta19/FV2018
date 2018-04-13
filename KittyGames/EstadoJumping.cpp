@@ -109,9 +109,7 @@ EstadoPersonaje* EstadoJumping::handleInput(Personaje& persona, Event* tecla, Ni
 
                 body->SetLinearVelocity(-vel);
 
-                nivel->getColisiones()->setId(0);
-
-                persona.setFila(5);
+                persona.setFila(2);
 
                 body->SetGravityScale(0);
 

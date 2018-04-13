@@ -57,10 +57,8 @@ EstadoPersonaje* EstadoStanding::handleInput(Personaje& persona, Event* tecla, N
                 persona.setface(true);
 
                 body->SetLinearVelocity(-vel);
-               
-                nivel->getColisiones()->setId(0);
-
-                persona.setFila(5);
+           
+                persona.setFila(2);
                 
                 body->SetGravityScale(0.f);
                
@@ -75,8 +73,7 @@ EstadoPersonaje* EstadoStanding::handleInput(Personaje& persona, Event* tecla, N
 
         if (tecla->key.code == Keyboard::X && Collision::numFootContacts > 1 ) {
 
-            nivel->getColisiones()->setId(0);
-
+        
             body->SetFixedRotation(true); //YOU WORK
             vel.y = body->GetWorld()->GetGravity().y * body->GetMass()*1000;
             

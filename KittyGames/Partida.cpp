@@ -38,13 +38,15 @@ Partida::Partida(Vector2i resolucion, std::string titulo) {
     personajes[0]->setSprite();
     personajes[1]->setSprite();
 
-    niveles->anyadirEscalera(400.f, 200.f, 12.f, 115.f);
+    niveles->anyadirEscalera(400.f, 220.f, 12.f, 105.f);
+    Nivel::contadorEn++;
+     niveles->anyadirEscalera(273.f, 240.f, 12.f, 85.f);
     Nivel::contadorEn++;
     niveles->anyadirPlataforma(340.f, 300.0f, 80.f, 8.f);
     Nivel::contadorEn++;
     niveles->anyadirPlataforma(347.f, 140.0f, 40.f, 8.f);
     Nivel::contadorEn++;
-    niveles->anyadirPlataforma(200.f, 250.0f, 40.f, 8.f);
+    niveles->anyadirPlataforma(220.f, 177.0f, 40.f, 8.f);
     Nivel::contadorEn++;
     niveles->anyadirPlataforma(500.f, 250.0f, 40.f, 8.f);
     Nivel::contadorEn++;
