@@ -113,12 +113,14 @@ EstadoPersonaje* EstadoJumping::handleInput(Personaje& persona, Event* tecla, Ni
 
                 persona.setFila(5);
 
-
+                body->SetGravityScale(0);
 
                 return new EstadoJumping();
 
 
             }
+            
+            else   body->SetGravityScale(1.5f);
         }
 
         return new EstadoJumping();

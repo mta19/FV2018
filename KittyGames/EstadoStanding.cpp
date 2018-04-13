@@ -52,7 +52,7 @@ EstadoPersonaje* EstadoStanding::handleInput(Personaje& persona, Event* tecla, N
               if (Keyboard::isKeyPressed(Keyboard::W)) {
 
                 vel.x=0;
-                vel.y = body->GetWorld()->GetGravity().y * body->GetMass()*100;
+                vel.y = body->GetWorld()->GetGravity().y*1.5;
 
                 persona.setface(true);
 
@@ -62,15 +62,16 @@ EstadoPersonaje* EstadoStanding::handleInput(Personaje& persona, Event* tecla, N
 
                 persona.setFila(5);
                 
-             
+                body->SetGravityScale(0.f);
                
                 return new EstadoJumping();
 
 
             }
-            
+             
             
         }
+    
 
         if (tecla->key.code == Keyboard::X && Collision::numFootContacts > 1 ) {
 

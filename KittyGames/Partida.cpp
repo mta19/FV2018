@@ -111,33 +111,29 @@ void Partida::gameLoop() {
 
                 this->personajes[0]->handleInput(evento, this->niveles);
 
-
-                if (this->niveles->getColisiones()->getId() == 1) {
+                if (Collision::numFootContacts > 1 ) {
 
 
                     this->personajes[0]->handleInput(evento, this->niveles);
 
 
-                    this->niveles->getColisiones()->setId(0);
-
                 }
             }
 
         }
-        
-        //nuevo testeando
-        if (this->niveles->getColisiones()->getId() == 1) {
+  
             if (Keyboard::isKeyPressed(Keyboard::D) || Keyboard::isKeyPressed(Keyboard::A)) {
 
                 this->personajes[0]->handleInput(evento, this->niveles);
 
             }
-        }
+        
 
         b2Vec2 vel = this->niveles->getPersonaje()->getBody()->GetLinearVelocity();
 
   
         if (vel.x <= 1 && vel.x >= -1) this->personajes[0]->setFila(0);
+        if(!this->niveles->getPersonaje()->getisOnstair()) this->niveles->getPersonaje()->getBody()->SetGravityScale(1.5f);
 
 
 

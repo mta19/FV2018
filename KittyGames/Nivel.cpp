@@ -105,7 +105,7 @@ void Nivel::anyadirEscalera(float x, float y, float weight, float height) {
 
     b2PolygonShape shp_caja;
 
-
+    
     shp_[contadorEn].SetAsBox(weight, height);
 
     weight = spr_[Nivel::contadorEn]->getTextureRect().width;
