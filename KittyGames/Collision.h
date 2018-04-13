@@ -36,7 +36,7 @@ public:
     Collision(const Collision& orig);
     virtual ~Collision();
 
-    static int numFootContacts;
+    
     void BeginContact(b2Contact* contacto);
     void EndContact(b2Contact* contacto);
     void checkaabb(Ensamblador& ensambladorA, Ensamblador& ensambladorB);

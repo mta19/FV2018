@@ -214,6 +214,7 @@ void Nivel::anyadirPersonaje(float x, float y, Sprite *sprite) {
     
     intptr_t aux=3;
     ensambladores[Nivel::contadorEn]->getBody()->GetFixtureList()->SetUserData((void*)aux);
+    
 
 }
 

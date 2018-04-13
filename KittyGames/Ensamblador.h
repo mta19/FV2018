@@ -26,7 +26,6 @@ enum identificador {
 using namespace sf;
 
 
-
 class Ensamblador {
 public:
     Ensamblador(b2Body * cuerpo, Sprite * sprite, float width, float height);
@@ -48,8 +47,7 @@ public:
     
     void setEntidad(Personaje *e);
     
-    void isOnStair(bool aux){onStair=aux;};
-    bool getisOnstair(){return onStair;};
+  
     Personaje* getEntidad();
  
 
@@ -65,7 +63,7 @@ private:
     
     Personaje* entidad;
 
-    bool onStair=false;
+ 
 };
 
 #endif /* ENSAMBLADOR_H */

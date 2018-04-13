@@ -20,6 +20,7 @@ Personaje::Personaje(){
     vida= 100;
     vidaActual= vida;
     puntuacion= 0;
+    numFootContacts=0;
     
     estado_=new EstadoStanding();
     

@@ -15,8 +15,7 @@
 #include "Personaje.h"
 Ensamblador::Ensamblador(b2Body * cuerpo, Sprite * sprite, float  weight, float  heidht) {
 
-    this->entidad = entidad;
-
+    entidad=NULL;
     bdy_actor = cuerpo;
 
     spr_actor = sprite;

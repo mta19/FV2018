@@ -33,6 +33,7 @@ public:
     virtual ~EstadoPersonaje();
     virtual EstadoPersonaje* handleInput(Personaje& persona, Event* tecla, Nivel * nivel)=0;
     virtual void accion(Personaje& personaje, Nivel* nivel, Event * tecla)=0;
+    
 public:
     
    static EstadoStanding parado;

@@ -16,8 +16,6 @@
 #include "EstadoStanding.h"
 #include "EstadoMoving.h"
 
-int Collision::numFootContacts = 0;
-
 Collision::Collision() {
     sensorA = false;
     sensorB = false;
@@ -40,8 +38,8 @@ void Collision::BeginContact(b2Contact* contacto) {
 
 
         if (Ensamblador * cuerpoB = (Ensamblador*) contacto->GetFixtureB()->GetBody()->GetUserData()) {
-            
-        
+
+
             checkaabb(*cuerpoA, *cuerpoB);
             checkaabb(*cuerpoB, *cuerpoA);
 
@@ -53,19 +51,35 @@ void Collision::BeginContact(b2Contact* contacto) {
                 std::cout << "hay sensor" << std::endl;
 
                 if (cuerpoA->get_id_id() == identificador::jugador) {
+                       if(cuerpoA->getEntidad()!=NULL)
+                    cuerpoA->getEntidad()->isOnStair(sensorA);
 
-                    cuerpoA->isOnStair(sensorA);
-                    
                 }
 
                 if (cuerpoB->get_id_id() == identificador::jugador) {
 
-                    cuerpoB->isOnStair(sensorB);
-                 
+                       if(cuerpoB->getEntidad()!=NULL)
+                    cuerpoB->getEntidad()->isOnStair(sensorB);
+
                 }
 
             }
 
+            void* fixtureUserData = contacto->GetFixtureA()->GetUserData();
+
+
+            if ((intptr_t) fixtureUserData == 3) {
+                if (cuerpoA->getEntidad() != NULL)
+                    cuerpoA->getEntidad()->subirNumFoot();
+            }
+
+            fixtureUserData = contacto->GetFixtureB()->GetUserData();
+
+            if ((intptr_t) fixtureUserData == 3) {
+                std::cout << "sube" << std::endl;
+                if (cuerpoB->getEntidad() != NULL)
+                    cuerpoB->getEntidad()->subirNumFoot();
+            }
 
         }
 
@@ -73,22 +87,6 @@ void Collision::BeginContact(b2Contact* contacto) {
 
 
 
-    void* fixtureUserData = contacto->GetFixtureA()->GetUserData();
-
-
-    if ((intptr_t) fixtureUserData == 3) {
-
-        std::cout << "sube" << std::endl;
-        numFootContacts++;
-
-    }
-
-    fixtureUserData = contacto->GetFixtureB()->GetUserData();
-
-    if ((intptr_t) fixtureUserData == 3) {
-        std::cout << "sube" << std::endl;
-        numFootContacts++;
-    }
 }
 
 void Collision::EndContact(b2Contact* contacto) {
@@ -105,28 +103,35 @@ void Collision::EndContact(b2Contact* contacto) {
             sensorB = contacto->GetFixtureA()->IsSensor();
 
             if (sensorA || sensorB) {
-
-                cuerpoA->isOnStair(false);
-                cuerpoB->isOnStair(false);
+                   if(cuerpoA->getEntidad()!=NULL)
+                cuerpoA->getEntidad()->isOnStair(false);
+                      if(cuerpoB->getEntidad()!=NULL)
+                cuerpoB->getEntidad()->isOnStair(false);
 
             }
+
+            void *fixtureUserData = contacto->GetFixtureA()->GetUserData();
+            if ((intptr_t) fixtureUserData == 3) {
+                std::cout << "baja" << std::endl;
+                if (cuerpoA->getEntidad() != NULL)
+                    cuerpoA->getEntidad()->bajarNumFoot();
+
+            }
+
+            //check if fixture B was the foot sensor
+            fixtureUserData = contacto->GetFixtureB()->GetUserData();
+            if ((intptr_t) fixtureUserData == 3) {
+                std::cout << "baja" << std::endl;
+                if (cuerpoB->getEntidad() != NULL)
+                    cuerpoB->getEntidad()->bajarNumFoot();
+            }
+
         }
 
+
     }
 
-    void *fixtureUserData = contacto->GetFixtureA()->GetUserData();
-    if ((intptr_t) fixtureUserData == 3){
-               std::cout << "baja" << std::endl;
-           numFootContacts--;
-    }
-     
-    //check if fixture B was the foot sensor
-    fixtureUserData = contacto->GetFixtureB()->GetUserData();
-    if ((intptr_t) fixtureUserData == 3){
-           std::cout << "baja" << std::endl;
-          numFootContacts--;
-    }
-      
+
 
 }
 
@@ -139,7 +144,7 @@ void Collision::checkaabb(Ensamblador& a, Ensamblador& b) {
             case identificador::plataforma:
 
                 id = 1;
-               
+
 
 
                 break;

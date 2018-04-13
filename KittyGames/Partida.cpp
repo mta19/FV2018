@@ -53,14 +53,14 @@ Partida::Partida(Vector2i resolucion, std::string titulo) {
     niveles->anyadirObjetoDinamico(350.0f, 250.0f, 12.5f, 8.f);
     Nivel::contadorEn++;
 
+    //modificiar anyadir personaje para pasar el personaje directamente
     niveles->anyadirPersonaje(personajes[0]->getSprite()->getPosition().x, personajes[0]->getSprite()->getPosition().y, personajes[0]->getSprite());
-
-
     Nivel::contadorEn++;
     niveles->anyadirPersonaje(personajes[1]->getSprite()->getPosition().x, personajes[1]->getSprite()->getPosition().y, personajes[1]->getSprite());
-
+    
     niveles->getPersonaje()->setEntidad(this->personajes[0]);
-
+    niveles->getEnsambladores()[Nivel::contadorEn]->setEntidad(this->personajes[1]);
+    
     gameLoop();
 
 }
@@ -113,7 +113,7 @@ void Partida::gameLoop() {
 
                 this->personajes[0]->handleInput(evento, this->niveles);
 
-                if (Collision::numFootContacts > 1 ) {
+                if (this->personajes[0]->getNumFoot()>=1) {
 
 
                     this->personajes[0]->handleInput(evento, this->niveles);
@@ -135,7 +135,7 @@ void Partida::gameLoop() {
 
   
         if (vel.x <= 1 && vel.x >= -1) this->personajes[0]->setFila(0);
-        if(!this->niveles->getPersonaje()->getisOnstair()) this->niveles->getPersonaje()->getBody()->SetGravityScale(1.5f);
+        if(!this->personajes[0]->getisOnstair()) this->niveles->getPersonaje()->getBody()->SetGravityScale(1.5f);
 
 
 

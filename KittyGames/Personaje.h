@@ -23,10 +23,9 @@
 
 using namespace sf;
 
-class EstadoPersonaje ;
+class EstadoPersonaje;
 
 class Personaje : public Entidad {
-    
 public:
 
     Personaje();
@@ -35,18 +34,28 @@ public:
     virtual void setSprite() = 0;
     virtual Sprite* getSprite() = 0;
     virtual Texture* getTextura() = 0;
-    virtual void setAnimacion()= 0;
-    virtual Animacion * getAnimacion()=0;
-    virtual void setFrame(Sprite &spr)=0;
+    virtual void setAnimacion() = 0;
+    virtual Animacion * getAnimacion() = 0;
+    virtual void setFrame(Sprite &spr) = 0;
     virtual void handleInput(Event* tecla, Nivel* nivel);
-    b2Vec2 getspeed(){return speed;};
-    void setSpeed(b2Vec2  vector){ speed=vector;}
-    
 
-    void setEstado(EstadoPersonaje* estado){estado_=estado;};
-    EstadoPersonaje* getEstado(){return estado_;};
+    b2Vec2 getspeed() {
+        return speed;
+    };
+
+    void setSpeed(b2Vec2 vector) {
+        speed = vector;
+    }
+
+    void setEstado(EstadoPersonaje* estado) {
+        estado_ = estado;
+    };
+
+    EstadoPersonaje* getEstado() {
+        return estado_;
+    };
     //Sistema de vida y ataque
-    
+
     //UpdateVida
     virtual void updateVidaActual(int);
     //GetVida
@@ -58,19 +67,45 @@ public:
     virtual void updatePuntuacion(int);
     //GetPuntuacion
     virtual int getPuntuacion();
-    
-    
-    bool getface(){return faceRight;};
-    
-    void setface(bool f){faceRight=f;};
-   
-     
-    int getFila(){return row;};
-    void setFila(int r){row=r;};
-    
+
+    bool getface() {
+        return faceRight;
+    };
+
+    void setface(bool f) {
+        faceRight = f;
+    };
+
+    int getFila() {
+        return row;
+    };
+
+    void setFila(int r) {
+        row = r;
+    };
+
+    void isOnStair(bool aux) {
+        onStair = aux;
+    };
+
+    bool getisOnstair() {
+        return onStair;
+    };
+
+    int getNumFoot() {
+        return numFootContacts;
+    };
+
+    void subirNumFoot() {
+        numFootContacts++;
+    };
+
+    void bajarNumFoot() {
+        numFootContacts--;
+    };
 
 private:
-    
+
 
 
 protected:
@@ -85,11 +120,14 @@ protected:
     int defensa;
     int row;
     //variables para las fisicas
-    
-    b2Vec2  speed;
+
+    b2Vec2 speed;
     bool faceRight;
 
-    
+    bool onStair = false;
+
+    int numFootContacts;
+
 
 };
 
