@@ -40,7 +40,7 @@ Partida::Partida(Vector2i resolucion, std::string titulo) {
 
     niveles->anyadirEscalera(400.f, 220.f, 12.f, 105.f);
     Nivel::contadorEn++;
-     niveles->anyadirEscalera(273.f, 240.f, 12.f, 85.f);
+    niveles->anyadirEscalera(273.f, 240.f, 12.f, 85.f);
     Nivel::contadorEn++;
     niveles->anyadirPlataforma(340.f, 300.0f, 80.f, 8.f);
     Nivel::contadorEn++;
@@ -52,15 +52,9 @@ Partida::Partida(Vector2i resolucion, std::string titulo) {
     Nivel::contadorEn++;
     niveles->anyadirObjetoDinamico(350.0f, 250.0f, 12.5f, 8.f);
     Nivel::contadorEn++;
-
-    //modificiar anyadir personaje para pasar el personaje directamente
-    niveles->anyadirPersonaje(personajes[0]->getSprite()->getPosition().x, personajes[0]->getSprite()->getPosition().y, personajes[0]->getSprite());
+    niveles->anyadirPersonaje(personajes[0]);
     Nivel::contadorEn++;
-    niveles->anyadirPersonaje(personajes[1]->getSprite()->getPosition().x, personajes[1]->getSprite()->getPosition().y, personajes[1]->getSprite());
-    
-    niveles->getPersonaje()->setEntidad(this->personajes[0]);
-    niveles->getEnsambladores()[Nivel::contadorEn]->setEntidad(this->personajes[1]);
-    
+    niveles->anyadirPersonaje(personajes[1]);
     gameLoop();
 
 }
@@ -105,37 +99,31 @@ void Partida::gameLoop() {
             if (evento->type == Event::Closed) {
                 ventana->close();
             }
+            
 
             if (evento->type == Event::KeyPressed) {
-
-
-
-
+                
                 this->personajes[0]->handleInput(evento, this->niveles);
 
-                if (this->personajes[0]->getNumFoot()>=1) {
-
+                if (this->personajes[0]->getNumFoot() >= 1) {
 
                     this->personajes[0]->handleInput(evento, this->niveles);
-
-
                 }
             }
+        }
+
+        if (Keyboard::isKeyPressed(Keyboard::D) || Keyboard::isKeyPressed(Keyboard::A)) {
+
+            this->personajes[0]->handleInput(evento, this->niveles);
 
         }
-  
-            if (Keyboard::isKeyPressed(Keyboard::D) || Keyboard::isKeyPressed(Keyboard::A)) {
 
-                this->personajes[0]->handleInput(evento, this->niveles);
-
-            }
-        
 
         b2Vec2 vel = this->niveles->getPersonaje()->getBody()->GetLinearVelocity();
 
-  
+
         if (vel.x <= 1 && vel.x >= -1) this->personajes[0]->setFila(0);
-        if(!this->personajes[0]->getisOnstair()) this->niveles->getPersonaje()->getBody()->SetGravityScale(1.5f);
+        if (!this->personajes[0]->getisOnstair()) this->niveles->getPersonaje()->getBody()->SetGravityScale(1.5f);
 
 
 

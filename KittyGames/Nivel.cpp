@@ -162,27 +162,27 @@ void Nivel::anyadirPlataforma(float x, float y, float weight, float height) {
 
 }
 
-void Nivel::anyadirPersonaje(float x, float y, Sprite *sprite) {
+void Nivel::anyadirPersonaje(Personaje * personaje) {
 
 
 
     bdydef_[Nivel::contadorEn].type = b2_dynamicBody;
-    bdydef_[Nivel::contadorEn].position = b2Vec2(x, y);
+    bdydef_[Nivel::contadorEn].position = b2Vec2(personaje->getSprite()->getPosition().x, personaje->getSprite()->getPosition().y);
      bdydef_[Nivel::contadorEn].fixedRotation=true;
     
     bdy[Nivel::contadorEn] = mundo->CreateBody(&bdydef_[Nivel::contadorEn]);
 
 
 
-    float weight = (sprite->getTextureRect().width * sprite->getScale().x);
-    float height = (sprite->getTextureRect().height * sprite->getScale().y);
+    float weight = (personaje->getSprite()->getTextureRect().width * personaje->getSprite()->getScale().x);
+    float height = (personaje->getSprite()->getTextureRect().height * personaje->getSprite()->getScale().y);
 
     b2PolygonShape shp_personaje;
     shp_personaje.SetAsBox(weight, height);
 
 
-    weight = sprite->getTexture()->getSize().x / 3;
-    height = sprite->getTexture()->getSize().y / 7;
+    weight = personaje->getSprite()->getTexture()->getSize().x / 3;
+    height = personaje->getSprite()->getTexture()->getSize().y / 7;
 
 
 
@@ -209,7 +209,8 @@ void Nivel::anyadirPersonaje(float x, float y, Sprite *sprite) {
 
     bdy[Nivel::contadorEn]->SetGravityScale(1.5f);
 
-    ensambladores[Nivel::contadorEn] = new Ensamblador(bdy[Nivel::contadorEn], sprite, weight, height);
+    ensambladores[Nivel::contadorEn] = new Ensamblador(bdy[Nivel::contadorEn], personaje->getSprite(), weight, height);
+    ensambladores[Nivel::contadorEn]->setEntidad(personaje);
     ensambladores[Nivel::contadorEn]->set_id_id(identificador::jugador);
     
     intptr_t aux=3;

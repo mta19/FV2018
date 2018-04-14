@@ -31,7 +31,7 @@ public:
     void anyadirPlataforma(float x, float y, float weight, float height);
     void anyadirObjetoDinamico(float x, float y, float weight, float height);
     void anyadirEscalera(float x, float y, float weight, float height);
-    void anyadirPersonaje(float x, float y, Sprite * personaje);
+    void anyadirPersonaje(Personaje * personaje);
 
     Ensamblador** getEnsambladores() {
         return ensambladores;
