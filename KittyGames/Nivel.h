@@ -18,6 +18,8 @@
 #include "Box2D/Box2D.h"
 #include "Ensamblador.h"
 #include "Collision.h"
+#include "Caja.h"
+#include "Entidad.h"
 
 using namespace sf;
 
@@ -33,17 +35,19 @@ public:
     void anyadirEscalera(float x, float y, float weight, float height);
     void anyadirPersonaje(Personaje * personaje);
 
-    Ensamblador** getEnsambladores() {
-        return ensambladores;
+
+
+    Entidad** getEntidades() {
+        return entidades;
     };
 
     Ensamblador* getPersonaje() {
 
         for (int i = 0; i < 10; i++) {
 
-            if (this->getEnsambladores()[i] != NULL && this->getEnsambladores()[i]->get_id_id() == identificador::jugador)
+            if (this->getEntidades()[i]!= NULL && this->getEntidades()[i]->getCuerpo()->get_id_id() == identificador::jugador)
 
-                return this->getEnsambladores()[i];
+                return this->getEntidades()[i]->getCuerpo();
         }
         return NULL;
     };
@@ -62,7 +66,8 @@ public:
 
 private:
 
-    Ensamblador ** ensambladores;
+    Entidad ** entidades;
+ 
     int marcadores;
 
     Texture * txt_;

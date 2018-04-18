@@ -45,10 +45,30 @@ public:
         return id_id;
     };
     
-    void setEntidad(Personaje *e);
-    
+   
   
-    Personaje* getEntidad();
+    
+    
+    void isOnStair(bool aux) {
+        onStair = aux;
+    };
+
+    bool getisOnstair() {
+        return onStair;
+    };
+
+    
+    int getNumFoot() {
+        return numFootContacts;
+    };
+
+    void subirNumFoot() {
+        numFootContacts++;
+    };
+
+    void bajarNumFoot() {
+        numFootContacts--;
+    };
  
 
 private:
@@ -62,6 +82,11 @@ private:
     identificador id_id;
     
     Personaje* entidad;
+    
+    
+    int numFootContacts;
+    
+    bool onStair = false;
 
  
 };

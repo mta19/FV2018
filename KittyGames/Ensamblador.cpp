@@ -12,10 +12,10 @@
  */
 #include <iostream>
 #include "Ensamblador.h"
-#include "Personaje.h"
+
 Ensamblador::Ensamblador(b2Body * cuerpo, Sprite * sprite, float  weight, float  heidht) {
 
-    entidad=NULL;
+    numFootContacts=0;
     bdy_actor = cuerpo;
 
     spr_actor = sprite;
@@ -76,10 +76,3 @@ b2Body* Ensamblador::getBody() {
 
 }
 
-Personaje* Ensamblador::getEntidad() {
-    return entidad;
-}
-
-void Ensamblador::setEntidad(Personaje* e) {
-    entidad = e;
-}

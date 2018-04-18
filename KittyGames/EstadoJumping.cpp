@@ -34,11 +34,13 @@ EstadoPersonaje* EstadoJumping::handleInput(Personaje& persona, Event* tecla, Ni
     b2Body * body = nivel->getPersonaje()->getBody();
 
     b2Vec2 vel = body->GetLinearVelocity();
+   
+    std::cout<<persona.getCuerpo()->getNumFoot()<<std::endl;
     
     if (vel.x <= 1 && vel.x >= -1) persona.setFila(0);
 
    
-    if (/*nivel->getColisiones()->getId() == 1*/ /*vel.y<1 && vel.y>-1*/ persona.getNumFoot()>= 1 ) {
+    if (/*nivel->getColisiones()->getId() == 1*/ /*vel.y<1 && vel.y>-1*/ persona.getCuerpo()->getNumFoot()>= 1 ) {
 
 
 
@@ -95,7 +97,7 @@ EstadoPersonaje* EstadoJumping::handleInput(Personaje& persona, Event* tecla, Ni
 
 
 
-        if (persona.getisOnstair() == true) {
+        if (persona.getCuerpo()->getisOnstair() == true) {
 
             if (Keyboard::isKeyPressed(Keyboard::W)) {
 

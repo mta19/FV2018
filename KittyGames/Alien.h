@@ -24,19 +24,14 @@ public:
     Alien();
     Alien(const Alien& orig);
     virtual ~Alien();
-    void setSprite ();
-    Sprite* getSprite();
-    Texture* getTextura();
-    void setAnimacion();
+    void setSprite();
     Animacion * getAnimacion(){ return animacion;};
-    void setFrame(Sprite &spr);
+   
     void handleInput(Event* tecla, Nivel* nivel);
 private:
     
     Animacion * animacion;
-    Texture * textura;
-    Sprite * sprite;
-    
+
     
     //Animacion * animacion;
 };

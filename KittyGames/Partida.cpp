@@ -32,10 +32,13 @@ Partida::Partida(Vector2i resolucion, std::string titulo) {
 
     niveles = new Nivel();
     personajes = new Personaje*[2];
-    personajes[0] = new Alien();
-    personajes[1] = new AlienRojo();
 
+    personajes[0] = new Alien();
+      
+    personajes[1] = new AlienRojo();
+    
     personajes[0]->setSprite();
+
     personajes[1]->setSprite();
 
     niveles->anyadirEscalera(400.f, 220.f, 12.f, 105.f);
@@ -105,7 +108,7 @@ void Partida::gameLoop() {
                 
                 this->personajes[0]->handleInput(evento, this->niveles);
 
-                if (this->personajes[0]->getNumFoot() >= 1) {
+                if (this->personajes[0]->getCuerpo()->getNumFoot()>= 1) {
 
                     this->personajes[0]->handleInput(evento, this->niveles);
                 }
@@ -123,7 +126,7 @@ void Partida::gameLoop() {
 
 
         if (vel.x <= 1 && vel.x >= -1) this->personajes[0]->setFila(0);
-        if (!this->personajes[0]->getisOnstair()) this->niveles->getPersonaje()->getBody()->SetGravityScale(1.5f);
+        if (!this->personajes[0]->getCuerpo()->getisOnstair()) this->niveles->getPersonaje()->getBody()->SetGravityScale(1.5f);
 
 
 
@@ -143,8 +146,8 @@ void Partida::gameLoop() {
             animacion->Update(personajes[0]->getFila(), deltaTime, personajes[0]->getSprite(), personajes[0]->getface());
 
             dibujar();
-
-
+            
+            
             ventana->display();
 
         }
@@ -167,8 +170,11 @@ void Partida::dibujar() {
 
     for (int i = 0; i <= Nivel::contadorEn; i++) {
 
-        if (niveles->getEnsambladores()[i] != NULL)
-            niveles->getEnsambladores()[i]->dibujar(*ventana);
+       /* if (niveles->getEnsambladores()[i] != NULL)
+            niveles->getEnsambladores()[i]->dibujar(*ventana);*/
+        
+        if(niveles->getEntidades()[i]->getCuerpo()!=NULL)
+            niveles->getEntidades()[i]->getCuerpo()->dibujar(*ventana);
 
     }
 

@@ -51,15 +51,14 @@ void Collision::BeginContact(b2Contact* contacto) {
                 std::cout << "hay sensor" << std::endl;
 
                 if (cuerpoA->get_id_id() == identificador::jugador) {
-                       if(cuerpoA->getEntidad()!=NULL)
-                    cuerpoA->getEntidad()->isOnStair(sensorA);
+                    
+                    cuerpoA->isOnStair(sensorA);
 
                 }
 
                 if (cuerpoB->get_id_id() == identificador::jugador) {
 
-                       if(cuerpoB->getEntidad()!=NULL)
-                    cuerpoB->getEntidad()->isOnStair(sensorB);
+                    cuerpoB->isOnStair(sensorB);
 
                 }
 
@@ -69,16 +68,16 @@ void Collision::BeginContact(b2Contact* contacto) {
 
 
             if ((intptr_t) fixtureUserData == 3) {
-                if (cuerpoA->getEntidad() != NULL)
-                    cuerpoA->getEntidad()->subirNumFoot();
+               
+                    cuerpoA->subirNumFoot();
             }
 
             fixtureUserData = contacto->GetFixtureB()->GetUserData();
 
             if ((intptr_t) fixtureUserData == 3) {
-                std::cout << "sube" << std::endl;
-                if (cuerpoB->getEntidad() != NULL)
-                    cuerpoB->getEntidad()->subirNumFoot();
+                //std::cout << "sube" << std::endl;
+           
+                    cuerpoB->subirNumFoot();
             }
 
         }
@@ -103,27 +102,27 @@ void Collision::EndContact(b2Contact* contacto) {
             sensorB = contacto->GetFixtureA()->IsSensor();
 
             if (sensorA || sensorB) {
-                   if(cuerpoA->getEntidad()!=NULL)
-                cuerpoA->getEntidad()->isOnStair(false);
-                      if(cuerpoB->getEntidad()!=NULL)
-                cuerpoB->getEntidad()->isOnStair(false);
+                
+                cuerpoA->isOnStair(false);
+                
+                cuerpoB->isOnStair(false);
 
             }
 
             void *fixtureUserData = contacto->GetFixtureA()->GetUserData();
             if ((intptr_t) fixtureUserData == 3) {
-                std::cout << "baja" << std::endl;
-                if (cuerpoA->getEntidad() != NULL)
-                    cuerpoA->getEntidad()->bajarNumFoot();
+            //    std::cout << "baja" << std::endl;
+                
+                    cuerpoA->bajarNumFoot();
 
             }
 
             //check if fixture B was the foot sensor
             fixtureUserData = contacto->GetFixtureB()->GetUserData();
             if ((intptr_t) fixtureUserData == 3) {
-                std::cout << "baja" << std::endl;
-                if (cuerpoB->getEntidad() != NULL)
-                    cuerpoB->getEntidad()->bajarNumFoot();
+              //  std::cout << "baja" << std::endl;
+           
+                    cuerpoB->bajarNumFoot();
             }
 
         }

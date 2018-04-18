@@ -24,7 +24,7 @@ public:
     AlienRojo();
     AlienRojo(const AlienRojo& orig);
     virtual ~AlienRojo();
-      void setSprite ();
+    void setSprite ();
     Sprite* getSprite();
     Texture* getTextura();
     void setAnimacion();

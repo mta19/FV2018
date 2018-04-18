@@ -20,6 +20,7 @@
 #include "Animacion.h"
 #include "Nivel.h"
 #include "Entidad.h"
+#include "Box2D/Box2D.h"
 
 using namespace sf;
 
@@ -31,13 +32,13 @@ public:
     Personaje();
     Personaje(const Personaje& orig);
     virtual ~Personaje();
-    virtual void setSprite() = 0;
-    virtual Sprite* getSprite() = 0;
-    virtual Texture* getTextura() = 0;
-    virtual void setAnimacion() = 0;
+    virtual void setSprite()=0;
+    Sprite* getSprite();
+    Texture* getTextura();
     virtual Animacion * getAnimacion() = 0;
-    virtual void setFrame(Sprite &spr) = 0;
+     void setFrame(Sprite &spr);
     virtual void handleInput(Event* tecla, Nivel* nivel);
+    void setBody(b2World * mundo, float x, float y);
 
     b2Vec2 getspeed() {
         return speed;
@@ -84,25 +85,8 @@ public:
         row = r;
     };
 
-    void isOnStair(bool aux) {
-        onStair = aux;
-    };
+    void setFixture(b2PolygonShape * forma, float density, float restitution, float friction);
 
-    bool getisOnstair() {
-        return onStair;
-    };
-
-    int getNumFoot() {
-        return numFootContacts;
-    };
-
-    void subirNumFoot() {
-        numFootContacts++;
-    };
-
-    void bajarNumFoot() {
-        numFootContacts--;
-    };
 
 private:
 
@@ -124,9 +108,6 @@ protected:
     b2Vec2 speed;
     bool faceRight;
 
-    bool onStair = false;
-
-    int numFootContacts;
 
 
 };

@@ -27,29 +27,29 @@ AlienRojo::~AlienRojo() {
 void AlienRojo::setSprite() {
 
 
-    textura = new Texture();
+    txt = new Texture();
 
-    textura->loadFromFile("Rojo.png");
-    sprite = new Sprite(*textura);
+    txt->loadFromFile("Rojo.png");
+    spr = new Sprite(*txt);
 
 
 
-    setFrame(*sprite);
-    sprite->setPosition(300.0f, 200.0f);
-    sprite->setScale(28.f / sprite->getTexture()->getSize().x, 80.f / sprite->getTexture()->getSize().y);
+    setFrame(*spr);
+    spr->setPosition(300.0f, 200.0f);
+    spr->setScale(28.f / spr->getTexture()->getSize().x, 80.f / spr->getTexture()->getSize().y);
 
-    animacion = new Animacion(textura, Vector2u(3, 7), 0.3f);
+    animacion = new Animacion(txt, Vector2u(3, 7), 0.3f);
 }
 
 Sprite* AlienRojo::getSprite() {
 
-    return sprite;
+    return spr;
 
 }
 
 Texture* AlienRojo::getTextura() {
 
-    return textura;
+    return txt;
 
 }
 

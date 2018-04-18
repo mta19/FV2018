@@ -14,6 +14,7 @@
 #include "Entidad.h"
 
 Entidad::Entidad() {
+
 }
 
 Entidad::Entidad(const Entidad& orig) {
@@ -21,4 +22,11 @@ Entidad::Entidad(const Entidad& orig) {
 
 Entidad::~Entidad() {
 }
+
+void Entidad::setPosition(float x, float y) {
+
+    this->spr->setPosition(x, y);
+
+}
+
 

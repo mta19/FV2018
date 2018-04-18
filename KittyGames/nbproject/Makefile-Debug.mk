@@ -39,9 +39,11 @@ OBJECTFILES= \
 	${OBJECTDIR}/AlienRojo.o \
 	${OBJECTDIR}/Animacion.o \
 	${OBJECTDIR}/Bala.o \
+	${OBJECTDIR}/Caja.o \
 	${OBJECTDIR}/Collision.o \
 	${OBJECTDIR}/Ensamblador.o \
 	${OBJECTDIR}/Entidad.o \
+	${OBJECTDIR}/Escalera.o \
 	${OBJECTDIR}/Estado.o \
 	${OBJECTDIR}/EstadoJumping.o \
 	${OBJECTDIR}/EstadoMoving.o \
@@ -51,6 +53,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Partida.o \
 	${OBJECTDIR}/Personaje.o \
 	${OBJECTDIR}/Pistola.o \
+	${OBJECTDIR}/Plataforma.o \
 	${OBJECTDIR}/SpawnerMonstruo.o \
 	${OBJECTDIR}/Weapon.o \
 	${OBJECTDIR}/main.o \
@@ -113,6 +116,11 @@ ${OBJECTDIR}/Bala.o: Bala.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/usr/include/Box2D -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Bala.o Bala.cpp
 
+${OBJECTDIR}/Caja.o: Caja.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/usr/include/Box2D -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Caja.o Caja.cpp
+
 ${OBJECTDIR}/Collision.o: Collision.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -127,6 +135,11 @@ ${OBJECTDIR}/Entidad.o: Entidad.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/usr/include/Box2D -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Entidad.o Entidad.cpp
+
+${OBJECTDIR}/Escalera.o: Escalera.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/usr/include/Box2D -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Escalera.o Escalera.cpp
 
 ${OBJECTDIR}/Estado.o: Estado.cpp
 	${MKDIR} -p ${OBJECTDIR}
@@ -172,6 +185,11 @@ ${OBJECTDIR}/Pistola.o: Pistola.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/usr/include/Box2D -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Pistola.o Pistola.cpp
+
+${OBJECTDIR}/Plataforma.o: Plataforma.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/usr/include/Box2D -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Plataforma.o Plataforma.cpp
 
 ${OBJECTDIR}/SpawnerMonstruo.o: SpawnerMonstruo.cpp
 	${MKDIR} -p ${OBJECTDIR}

@@ -47,7 +47,7 @@ EstadoPersonaje* EstadoStanding::handleInput(Personaje& persona, Event* tecla, N
     
     if (tecla->type == Event::KeyPressed) {
         
-        if(persona.getisOnstair()==true){
+        if(persona.getCuerpo()->getisOnstair()==true){
             
               if (Keyboard::isKeyPressed(Keyboard::W)) {
 
@@ -71,7 +71,7 @@ EstadoPersonaje* EstadoStanding::handleInput(Personaje& persona, Event* tecla, N
         }
     
 
-        if (tecla->key.code == Keyboard::X && persona.getNumFoot() >= 1 ) {
+        if (tecla->key.code == Keyboard::X && persona.getCuerpo()->getNumFoot() >= 1 ) {
 
         
             body->SetFixedRotation(true); //YOU WORK

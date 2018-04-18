@@ -41,7 +41,7 @@ EstadoPersonaje* EstadoMoving::handleInput(Personaje& persona, Event* tecla, Niv
 
   body->SetFixedRotation(true); //YOU WORK
   
-        if (tecla->key.code == Keyboard::X && persona.getNumFoot() >= 1 ) {
+        if (tecla->key.code == Keyboard::X && persona.getCuerpo()->getNumFoot() >= 1 ) {
 
             nivel->getColisiones()->setId(0);
 

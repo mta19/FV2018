@@ -14,6 +14,9 @@
 #include "Partida.h"
 #include "Nivel.h"
 #include "Entidad.h"
+#include "Escalera.h"
+#include "Caja.h"
+#include "Plataforma.h"
 #include <cstdint>
 
 #include "Box2D/Box2D.h"
@@ -28,8 +31,6 @@ Nivel::Nivel() {
 
     spr_ = new Sprite*[10];
 
-    //creamos el mundo
-
     b2Vec2 gravity(0, 15.0f); //normal earth gravity, 9.8 m/s/s straight down!
 
     mundo = new b2World(gravity);
@@ -38,13 +39,10 @@ Nivel::Nivel() {
 
     mundo->SetContactListener(procesadorColisiones);
 
-    ensambladores = new Ensamblador*[10];
-    bdy = new b2Body*[10];
-    /*  float32 timeStep = 1 / 20.0; //the length of time passed to simulate (seconds)
-      int32 velocityIterations = 8; //how strongly to correct velocity
-      int32 positionIterations = 3; //how strongly to correct position
 
-      mundo->Step(timeStep, velocityIterations, positionIterations);*/
+    entidades = new Entidad*[10];
+
+    bdy = new b2Body*[10];
 
 }
 
@@ -55,109 +53,44 @@ Nivel::~Nivel() {
 }
 
 void Nivel::anyadirObjetoDinamico(float x, float y, float weight, float height) {
+   
 
-    txt_ = new Texture;
-    txt_->loadFromFile("caja.jpg");
+    entidades[Nivel::contadorEn] = new Caja("caja.jpg");
+    entidades[Nivel::contadorEn]->setBody(mundo, x, y);
 
-    spr_[Nivel::contadorEn] = new Sprite(*txt_);
+    shp_[contadorEn].SetAsBox(weight, height); // esto estaba en el de antes
 
-
-    bdydef_[Nivel::contadorEn].type = b2_dynamicBody;
-    bdydef_[Nivel::contadorEn].position = b2Vec2(x, y);
-
-    bdy[Nivel::contadorEn] = mundo->CreateBody(&bdydef_[Nivel::contadorEn]);
-
-
-    shp_[contadorEn].SetAsBox(weight, height);
-
-    weight = spr_[Nivel::contadorEn]->getTexture()->getSize().x;
-    height = spr_[Nivel::contadorEn]->getTexture()->getSize().y;
-
-    fixdef_[Nivel::contadorEn].shape = &shp_[contadorEn];
-    fixdef_[Nivel::contadorEn].density = 1.f;
-    fixdef_[Nivel::contadorEn].restitution = 0.f;
-    fixdef_[Nivel::contadorEn].friction = 0.3f;
-
-
-    fix_[Nivel::contadorEn] = bdy[Nivel::contadorEn]->CreateFixture(&fixdef_[Nivel::contadorEn]);
-
-
-    ensambladores[Nivel::contadorEn] = new Ensamblador(bdy[Nivel::contadorEn], spr_[Nivel::contadorEn], weight, height);
-    ensambladores[Nivel::contadorEn]->set_id_id(caja);
-
+    entidades[Nivel::contadorEn]->setFixture(&shp_[contadorEn], 1.f, 0.f, 0.3f);
+   
 
 }
 
 void Nivel::anyadirEscalera(float x, float y, float weight, float height) {
 
-    txt_ = new Texture;
-    txt_->loadFromFile("stairs.png");
-
-    spr_[Nivel::contadorEn] = new Sprite(*txt_);
-
-    IntRect posicion(0, 0, spr_[Nivel::contadorEn]->getTexture()->getSize().x / 7, spr_[Nivel::contadorEn]->getTexture()->getSize().y / 5);
-    spr_[Nivel::contadorEn]->setTextureRect(posicion);
-
-    bdydef_[Nivel::contadorEn].type = b2_staticBody;
-    bdydef_[Nivel::contadorEn].position = b2Vec2(x, y);
-
-    bdy[Nivel::contadorEn] = mundo->CreateBody(&bdydef_[Nivel::contadorEn]);
-
-    b2PolygonShape shp_caja;
-
-    
-    shp_[contadorEn].SetAsBox(weight, height);
-
-    weight = spr_[Nivel::contadorEn]->getTextureRect().width;
-    height = spr_[Nivel::contadorEn]->getTextureRect().height;
-
-    fixdef_[Nivel::contadorEn].shape = &shp_[contadorEn];
-    fixdef_[Nivel::contadorEn].density = 1.f;
-    fixdef_[Nivel::contadorEn].restitution = 0.f;
-    fixdef_[Nivel::contadorEn].friction = 0.3f;
-
-    fixdef_[Nivel::contadorEn].filter.categoryBits = entityCategory::STAIRS;
-    fixdef_[Nivel::contadorEn].filter.maskBits = entityCategory::FRIENDLY_PLAYER;
-    fixdef_[Nivel::contadorEn].isSensor = true;
-
-    fix_[Nivel::contadorEn] = bdy[Nivel::contadorEn]->CreateFixture(&fixdef_[Nivel::contadorEn]);
 
 
-    ensambladores[Nivel::contadorEn] = new Ensamblador(bdy[Nivel::contadorEn], spr_[Nivel::contadorEn], weight, height);
-    ensambladores[Nivel::contadorEn]->set_id_id(caja);
+    entidades[Nivel::contadorEn] = new Escalera("stairs.png");
+    entidades[Nivel::contadorEn]->setBody(mundo, x, y);
+
+    shp_[contadorEn].SetAsBox(weight, height); // esto estaba en el de antes
+
+    entidades[Nivel::contadorEn]->setFixture(&shp_[contadorEn], 1.f, 0.f, 0.3f);
+
 
 
 }
 
 void Nivel::anyadirPlataforma(float x, float y, float weight, float height) {
 
-    txt_ = new Texture;
-    txt_->loadFromFile("suelo.jpg");
-
-    spr_[Nivel::contadorEn] = new Sprite(*txt_);
-
-    bdydef_[Nivel::contadorEn].type = b2_staticBody;
-    bdydef_[Nivel::contadorEn].position = b2Vec2(x, y);
-
-    bdy[Nivel::contadorEn] = mundo->CreateBody(&bdydef_[Nivel::contadorEn]);
-
-
-    shp_[contadorEn].SetAsBox(weight, height);
 
 
 
-    weight = spr_[Nivel::contadorEn]->getTexture()->getSize().x;
-    height = spr_[Nivel::contadorEn]->getTexture()->getSize().y;
+    entidades[Nivel::contadorEn] = new Plataforma("suelo.jpg");
+    entidades[Nivel::contadorEn]->setBody(mundo, x, y);
 
-    fixdef_[Nivel::contadorEn].shape = &shp_[contadorEn];
-    fixdef_[Nivel::contadorEn].density = 0.f;
-    fixdef_[Nivel::contadorEn].restitution = 0.01f;
-    fixdef_[Nivel::contadorEn].friction = 1.f;
+    shp_[contadorEn].SetAsBox(weight, height); // esto estaba en el de antes
 
-    fix_[Nivel::contadorEn] = bdy[Nivel::contadorEn]->CreateFixture(&fixdef_[Nivel::contadorEn]);
-
-    ensambladores[Nivel::contadorEn] = new Ensamblador(bdy[Nivel::contadorEn], spr_[Nivel::contadorEn], weight, height);
-    ensambladores[Nivel::contadorEn]->set_id_id(plataforma);
+    entidades[Nivel::contadorEn]->setFixture(&shp_[contadorEn], 0.f, 0.01f, 1.f);
 
 
 }
@@ -165,14 +98,8 @@ void Nivel::anyadirPlataforma(float x, float y, float weight, float height) {
 void Nivel::anyadirPersonaje(Personaje * personaje) {
 
 
-
-    bdydef_[Nivel::contadorEn].type = b2_dynamicBody;
-    bdydef_[Nivel::contadorEn].position = b2Vec2(personaje->getSprite()->getPosition().x, personaje->getSprite()->getPosition().y);
-     bdydef_[Nivel::contadorEn].fixedRotation=true;
-    
-    bdy[Nivel::contadorEn] = mundo->CreateBody(&bdydef_[Nivel::contadorEn]);
-
-
+    entidades[Nivel::contadorEn] = personaje;
+    entidades[Nivel::contadorEn]->setBody(mundo, personaje->getSprite()->getPosition().x, personaje->getSprite()->getPosition().y);
 
     float weight = (personaje->getSprite()->getTextureRect().width * personaje->getSprite()->getScale().x);
     float height = (personaje->getSprite()->getTextureRect().height * personaje->getSprite()->getScale().y);
@@ -180,42 +107,7 @@ void Nivel::anyadirPersonaje(Personaje * personaje) {
     b2PolygonShape shp_personaje;
     shp_personaje.SetAsBox(weight, height);
 
-
-    weight = personaje->getSprite()->getTexture()->getSize().x / 3;
-    height = personaje->getSprite()->getTexture()->getSize().y / 7;
-
-
-
-
-    fixdef_[Nivel::contadorEn].shape = &shp_personaje;
-    fixdef_[Nivel::contadorEn].density = 0.05f;
-
-    fixdef_[Nivel::contadorEn].restitution = 0.0f;
-    fixdef_[Nivel::contadorEn].friction = 0.f;
-    fixdef_[Nivel::contadorEn].filter.categoryBits = entityCategory::FRIENDLY_PLAYER;
-    fixdef_[Nivel::contadorEn].filter.maskBits = entityCategory::BOUNDARY | entityCategory::STAIRS;
-
-    fix_[Nivel::contadorEn] = bdy[Nivel::contadorEn]->CreateFixture(&fixdef_[Nivel::contadorEn]);
-
-    b2PolygonShape polygonShape;
-
-    
-    shp_personaje.SetAsBox(4.3, 4.3, b2Vec2(0,8.f), 0);
-    
-    fixdef_[Nivel::contadorEn].isSensor=false;
-    fixdef_[Nivel::contadorEn].friction=1.f;
-    bdy[Nivel::contadorEn]->CreateFixture(&fixdef_[Nivel::contadorEn]);
-    
-
-    bdy[Nivel::contadorEn]->SetGravityScale(1.5f);
-
-    ensambladores[Nivel::contadorEn] = new Ensamblador(bdy[Nivel::contadorEn], personaje->getSprite(), weight, height);
-    ensambladores[Nivel::contadorEn]->setEntidad(personaje);
-    ensambladores[Nivel::contadorEn]->set_id_id(identificador::jugador);
-    
-    intptr_t aux=3;
-    ensambladores[Nivel::contadorEn]->getBody()->GetFixtureList()->SetUserData((void*)aux);
-    
+    entidades[Nivel::contadorEn]->setFixture(&shp_personaje, 0.5f, 0.0f, 0.f);
 
 }
 
