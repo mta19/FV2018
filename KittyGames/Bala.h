@@ -14,13 +14,21 @@
 #ifndef BALA_H
 #define BALA_H
 
-class Bala {
+
+#include "SFML/Graphics.hpp"
+#include "Box2D/Box2D.h"
+#include "Entidad.h"
+
+class Bala : public Entidad {
 public:
     Bala();
     Bala(const Bala& orig);
     virtual ~Bala();
-private:
+protected:
 
+    void setBody(b2World * mundo, float x, float y)=0;
+    virtual void setFixture(b2PolygonShape * forma, float density, float restitution, float friction)=0;
+    
 };
 
 #endif /* BALA_H */

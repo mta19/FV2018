@@ -14,11 +14,14 @@
 #ifndef PISTOLA_H
 #define PISTOLA_H
 
-class Pistola {
+#include "Weapon.h"
+
+class Pistola : public Weapon {
 public:
-    Pistola();
+    Pistola(String nombre);
     Pistola(const Pistola& orig);
     virtual ~Pistola();
+    void setFixture(b2PolygonShape * forma, float density, float restitution, float friction);
 private:
 
 };

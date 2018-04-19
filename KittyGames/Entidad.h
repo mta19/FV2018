@@ -25,7 +25,7 @@ enum entityCategory {
     FRIENDLY_PLAYER = 0x0002,
     ENEMY_PLAYER = 0x0004,
     STAIRS = 0x0008,
-    ENEMY_AIRCRAFT = 0x0010,
+    WEAPON = 0x0010,
 };
 
 

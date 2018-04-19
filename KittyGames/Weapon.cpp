@@ -22,3 +22,13 @@ Weapon::Weapon(const Weapon& orig) {
 Weapon::~Weapon() {
 }
 
+
+void Weapon::setBody(b2World * mundo, float x, float y){
+    
+    bdydef_.type = b2_staticBody;
+    bdydef_.position = b2Vec2(x, y);
+
+    bdy = mundo->CreateBody(&bdydef_);
+
+}
+

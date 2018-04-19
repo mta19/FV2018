@@ -20,6 +20,7 @@
 #include "Collision.h"
 #include "Caja.h"
 #include "Entidad.h"
+#include "Personaje.h"
 
 using namespace sf;
 
@@ -33,6 +34,7 @@ public:
     void anyadirPlataforma(float x, float y, float weight, float height);
     void anyadirObjetoDinamico(float x, float y, float weight, float height);
     void anyadirEscalera(float x, float y, float weight, float height);
+    void anyadirArma(float x, float y, float weight, float height);
     void anyadirPersonaje(Personaje * personaje);
 
 

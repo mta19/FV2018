@@ -15,6 +15,7 @@
 #include "EstadoPersonaje.h"
 #include <iostream>
 #include "EstadoStanding.h"
+#include "Nivel.h"
 
 Personaje::Personaje() {
     vida = 100;
@@ -122,7 +123,7 @@ void Personaje::setFixture(b2PolygonShape * forma, float density, float restitut
 
 
     fixdef_.filter.categoryBits = entityCategory::FRIENDLY_PLAYER;
-    fixdef_.filter.maskBits = entityCategory::BOUNDARY | entityCategory::STAIRS;
+    fixdef_.filter.maskBits = entityCategory::BOUNDARY | entityCategory::STAIRS | entityCategory::WEAPON;
 
 
     fix_ = bdy->CreateFixture(&fixdef_);

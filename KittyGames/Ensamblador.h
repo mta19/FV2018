@@ -17,10 +17,9 @@
 #include "SFML/Graphics.hpp"
 #include "Box2D/Box2D.h"
 
-class Personaje;
 
 enum identificador {
-    jugador, enemigo, caja, plataforma, escalera
+    jugador, enemigo, caja, plataforma, escalera, pistola, balaPistola
 };
 
 using namespace sf;
@@ -45,10 +44,6 @@ public:
         return id_id;
     };
     
-   
-  
-    
-    
     void isOnStair(bool aux) {
         onStair = aux;
     };
@@ -56,6 +51,15 @@ public:
     bool getisOnstair() {
         return onStair;
     };
+    
+    void isOnWeapon(bool aux) {
+        onWeapon = aux;
+    };
+
+    bool getisOnWeapon() {
+        return onWeapon;
+    };
+
 
     
     int getNumFoot() {
@@ -80,13 +84,12 @@ private:
     b2Vec2 posicion;
 
     identificador id_id;
-    
-    Personaje* entidad;
-    
+ 
     
     int numFootContacts;
     
     bool onStair = false;
+    bool onWeapon=false;
 
  
 };

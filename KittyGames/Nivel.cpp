@@ -16,6 +16,7 @@
 #include "Entidad.h"
 #include "Escalera.h"
 #include "Caja.h"
+#include "Pistola.h"
 #include "Plataforma.h"
 #include <cstdint>
 
@@ -76,6 +77,19 @@ void Nivel::anyadirEscalera(float x, float y, float weight, float height) {
 
     entidades[Nivel::contadorEn]->setFixture(&shp_[contadorEn], 1.f, 0.f, 0.3f);
 
+
+}
+
+void Nivel::anyadirArma(float x, float y, float weight, float height) {
+
+
+
+    entidades[Nivel::contadorEn] = new Pistola("Partlist2.png");
+    entidades[Nivel::contadorEn]->setBody(mundo, x, y);
+
+    shp_[contadorEn].SetAsBox(weight, height); // esto estaba en el de antes
+
+    entidades[Nivel::contadorEn]->setFixture(&shp_[contadorEn], 1.f, 0.f, 0.3f);
 
 
 }

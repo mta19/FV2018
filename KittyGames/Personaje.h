@@ -18,13 +18,13 @@
 #include "SpawnerMonstruo.h"
 #include "SFML/Graphics.hpp"
 #include "Animacion.h"
-#include "Nivel.h"
 #include "Entidad.h"
 #include "Box2D/Box2D.h"
 
 using namespace sf;
 
 class EstadoPersonaje;
+class Nivel;
 
 class Personaje : public Entidad {
 public:

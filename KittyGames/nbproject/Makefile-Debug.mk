@@ -39,6 +39,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/AlienRojo.o \
 	${OBJECTDIR}/Animacion.o \
 	${OBJECTDIR}/Bala.o \
+	${OBJECTDIR}/BalaPistola.o \
 	${OBJECTDIR}/Caja.o \
 	${OBJECTDIR}/Collision.o \
 	${OBJECTDIR}/Ensamblador.o \
@@ -115,6 +116,11 @@ ${OBJECTDIR}/Bala.o: Bala.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/usr/include/Box2D -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Bala.o Bala.cpp
+
+${OBJECTDIR}/BalaPistola.o: BalaPistola.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/usr/include/Box2D -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/BalaPistola.o BalaPistola.cpp
 
 ${OBJECTDIR}/Caja.o: Caja.cpp
 	${MKDIR} -p ${OBJECTDIR}

@@ -48,17 +48,37 @@ void Collision::BeginContact(b2Contact* contacto) {
 
             if (sensorA == true || sensorB == true) {
 
-                std::cout << "hay sensor" << std::endl;
+                
 
-                if (cuerpoA->get_id_id() == identificador::jugador) {
+                if (cuerpoA->get_id_id() == identificador::jugador && cuerpoB->get_id_id()==identificador::escalera) {
                     
+                                   std::cout << "hay sensor " << std::endl;
+                   
                     cuerpoA->isOnStair(sensorA);
 
-                }
+                } 
 
-                if (cuerpoB->get_id_id() == identificador::jugador) {
+                if (cuerpoB->get_id_id() == identificador::jugador && cuerpoA->get_id_id() == identificador::escalera) {
+                    
+                                   std::cout << "hay sensor " << std::endl;
 
                     cuerpoB->isOnStair(sensorB);
+
+                }
+                
+                 if (cuerpoA->get_id_id() == identificador::jugador && cuerpoB->get_id_id()==identificador::pistola) {
+                     
+                     std::cout << "hay sensor Pistola" << std::endl;
+                   
+                    cuerpoA->isOnWeapon(sensorA);
+
+                } 
+
+                if (cuerpoB->get_id_id() == identificador::jugador && cuerpoA->get_id_id() == identificador::pistola) {
+                    
+                                   std::cout << "hay sensor Pistola" << std::endl;
+
+                    cuerpoB->isOnWeapon(sensorB);
 
                 }
 
@@ -103,9 +123,33 @@ void Collision::EndContact(b2Contact* contacto) {
 
             if (sensorA || sensorB) {
                 
-                cuerpoA->isOnStair(false);
-                
-                cuerpoB->isOnStair(false);
+                 if (cuerpoA->get_id_id() == identificador::jugador && cuerpoB->get_id_id()==identificador::escalera) {
+                   
+                    cuerpoA->isOnStair(false);
+
+                } 
+
+                if (cuerpoB->get_id_id() == identificador::jugador && cuerpoA->get_id_id() == identificador::escalera) {
+
+                    cuerpoB->isOnStair(false);
+
+                }
+                 
+                    if (cuerpoA->get_id_id() == identificador::jugador && cuerpoB->get_id_id()==identificador::pistola) {
+                     
+                     std::cout << "hay sensor Pistola" << std::endl;
+                   
+                    cuerpoA->isOnWeapon(false);
+
+                } 
+
+                if (cuerpoB->get_id_id() == identificador::jugador && cuerpoA->get_id_id() == identificador::pistola) {
+                    
+                                   std::cout << "hay sensor Pistola" << std::endl;
+
+                    cuerpoB->isOnWeapon(false);
+
+                }
 
             }
 

@@ -14,15 +14,18 @@
 #ifndef WEAPON_H
 #define WEAPON_H
 
-#include "Bala.h";
-class Weapon {
+#include "Bala.h"
+#include "Entidad.h"
+class Weapon : public Entidad{
 public:
     Weapon();
     Weapon(const Weapon& orig);
     virtual ~Weapon();
-private:
+     void setBody(b2World * mundo, float x, float y);
+    virtual void setFixture(b2PolygonShape * forma, float density, float restitution, float friction)=0;
+protected:
 
-    Bala bala;
+    Bala * bala;
     
     int cargador;
     

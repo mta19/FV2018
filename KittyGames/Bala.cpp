@@ -22,3 +22,15 @@ Bala::Bala(const Bala& orig) {
 Bala::~Bala() {
 }
 
+
+void Bala::setBody(b2World * mundo, float x, float y){
+    
+    bdydef_.type = b2_dynamicBody;
+    bdydef_.position = b2Vec2(x, y);
+
+    bdy = mundo->CreateBody(&bdydef_);
+
+}
+
+
+
