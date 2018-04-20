@@ -21,6 +21,7 @@
 #include "Caja.h"
 #include "Entidad.h"
 #include "Personaje.h"
+#include "Pistola.h"
 
 using namespace sf;
 
@@ -53,6 +54,18 @@ public:
         }
         return NULL;
     };
+    
+    Entidad* getPistola(){
+        
+        for (int i = 0; i < 10; i++) {
+
+            if (this->getEntidades()[i]!= NULL && this->getEntidades()[i]->getCuerpo()->get_id_id() == identificador::pistola)
+
+                return this->getEntidades()[i];
+        }
+        return NULL;
+        
+    }
 
     Collision* getColisiones() {
 

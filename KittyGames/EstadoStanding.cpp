@@ -118,12 +118,13 @@ EstadoPersonaje* EstadoStanding::handleInput(Personaje& persona, Event* tecla, N
 
 
         } else if (Keyboard::isKeyPressed(Keyboard::D)) {
-
+            
             vel.x = 20;
 
             body->SetLinearVelocity(vel);
             persona.setface(true);
-
+            /*if(persona.getArma()!=NULL)
+            persona.getArma()->getCuerpo()->getBody()->SetLinearVelocity(vel);*/
             persona.setFila(5);
             return new EstadoMoving();
 

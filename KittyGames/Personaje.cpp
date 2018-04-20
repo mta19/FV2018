@@ -120,12 +120,11 @@ void Personaje::setFixture(b2PolygonShape * forma, float density, float restitut
     fixdef_.density = density;
     fixdef_.restitution = restitution;
     fixdef_.friction = friction;
-
+    
 
     fixdef_.filter.categoryBits = entityCategory::FRIENDLY_PLAYER;
     fixdef_.filter.maskBits = entityCategory::BOUNDARY | entityCategory::STAIRS | entityCategory::WEAPON;
-
-
+   
     fix_ = bdy->CreateFixture(&fixdef_);
 
 
@@ -159,4 +158,10 @@ void Personaje::setFrame(Sprite& spr) {
     spr.setTextureRect(posicion);
 
 
+}
+
+void Personaje::setArma(Entidad* weapon){
+    
+    arma= weapon;
+    
 }

@@ -35,7 +35,7 @@ public:
     void gameLoop();
     void dibujar();
     Nivel get_Nivel();
-
+    void Update();
 
 private:
 
@@ -44,10 +44,13 @@ private:
     Nivel * niveles;
     int numRondas;
     int tiempoRonda;
-  
- Collision procesadorColisiones;
+
+    Collision procesadorColisiones;
 
     Event * evento;
+
+    Clock clock;
+    float deltaTime;
 };
 
 

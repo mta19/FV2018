@@ -17,6 +17,7 @@
 
 #include "SpawnerMonstruo.h"
 #include "SFML/Graphics.hpp"
+#include "Weapon.h"
 #include "Animacion.h"
 #include "Entidad.h"
 #include "Box2D/Box2D.h"
@@ -39,6 +40,7 @@ public:
      void setFrame(Sprite &spr);
     virtual void handleInput(Event* tecla, Nivel* nivel);
     void setBody(b2World * mundo, float x, float y);
+    void setArma(Entidad* weapon);
 
     b2Vec2 getspeed() {
         return speed;
@@ -84,7 +86,8 @@ public:
     void setFila(int r) {
         row = r;
     };
-
+    
+    Entidad * getArma(){return arma;};
     void setFixture(b2PolygonShape * forma, float density, float restitution, float friction);
 
 
@@ -107,6 +110,8 @@ protected:
 
     b2Vec2 speed;
     bool faceRight;
+    
+    Entidad * arma;
 
 
 

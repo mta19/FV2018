@@ -23,6 +23,7 @@ public:
     virtual ~Weapon();
      void setBody(b2World * mundo, float x, float y);
     virtual void setFixture(b2PolygonShape * forma, float density, float restitution, float friction)=0;
+    void Update(b2Vec2  vector);
 protected:
 
     Bala * bala;

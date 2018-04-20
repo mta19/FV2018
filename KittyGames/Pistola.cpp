@@ -19,7 +19,7 @@ Pistola::Pistola(String nombre) {
     txt->loadFromFile(nombre);
     spr = new Sprite(*txt);
     
-    IntRect posicion(0, 0, spr->getTexture()->getSize().x / 4, spr->getTexture()->getSize().y / 6.5);
+    IntRect posicion(0, 0, spr->getTexture()->getSize().x / 4, spr->getTexture()->getSize().y / 6.8);
     spr->setTextureRect(posicion);
 
     
@@ -46,7 +46,7 @@ void Pistola::setFixture(b2PolygonShape* forma, float density, float restitution
 
     
     fixdef_.filter.categoryBits = entityCategory::WEAPON;
-    fixdef_.filter.maskBits = entityCategory::FRIENDLY_PLAYER ;
+    fixdef_.filter.maskBits = entityCategory::FRIENDLY_PLAYER | entityCategory::BOUNDARY;
     fixdef_.isSensor = true;
     
     fix_ = bdy->CreateFixture(&fixdef_);

@@ -87,14 +87,14 @@ void Collision::BeginContact(b2Contact* contacto) {
             void* fixtureUserData = contacto->GetFixtureA()->GetUserData();
 
 
-            if ((intptr_t) fixtureUserData == 3) {
+            if ((intptr_t) fixtureUserData == 3 && cuerpoB->get_id_id()!=identificador::pistola) {
                
                     cuerpoA->subirNumFoot();
             }
 
             fixtureUserData = contacto->GetFixtureB()->GetUserData();
 
-            if ((intptr_t) fixtureUserData == 3) {
+            if ((intptr_t) fixtureUserData == 3 && cuerpoA->get_id_id()!=identificador::pistola) {
                 //std::cout << "sube" << std::endl;
            
                     cuerpoB->subirNumFoot();
@@ -154,7 +154,7 @@ void Collision::EndContact(b2Contact* contacto) {
             }
 
             void *fixtureUserData = contacto->GetFixtureA()->GetUserData();
-            if ((intptr_t) fixtureUserData == 3) {
+            if ((intptr_t) fixtureUserData == 3 && cuerpoB->get_id_id()!=identificador::pistola) {
             //    std::cout << "baja" << std::endl;
                 
                     cuerpoA->bajarNumFoot();
@@ -163,7 +163,7 @@ void Collision::EndContact(b2Contact* contacto) {
 
             //check if fixture B was the foot sensor
             fixtureUserData = contacto->GetFixtureB()->GetUserData();
-            if ((intptr_t) fixtureUserData == 3) {
+            if ((intptr_t) fixtureUserData == 3 && cuerpoA->get_id_id()!=identificador::pistola) {
               //  std::cout << "baja" << std::endl;
            
                     cuerpoB->bajarNumFoot();
@@ -172,6 +172,7 @@ void Collision::EndContact(b2Contact* contacto) {
         }
 
 
+        
     }
 
 

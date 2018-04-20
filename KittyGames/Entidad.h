@@ -28,26 +28,36 @@ enum entityCategory {
     WEAPON = 0x0010,
 };
 
-
-
 class Entidad {
 public:
     Entidad();
     Entidad(const Entidad& orig);
- 
+
     virtual ~Entidad();
-    Ensamblador* getCuerpo(){return cuerpo;};
-    void setCuerpo(Ensamblador * ensamblador){cuerpo=ensamblador;};
+
+    Ensamblador* getCuerpo() {
+        return cuerpo;
+    };
+
+    void setCuerpo(Ensamblador * ensamblador) {
+        cuerpo = ensamblador;
+    };
     void setPosition(float x, float y);
-    virtual void setBody(b2World * mundo, float x, float y)=0;
-    virtual void setFixture(b2PolygonShape * forma, float density, float restitution, float friction)=0;
+    virtual void setBody(b2World * mundo, float x, float y) = 0;
+    virtual void setFixture(b2PolygonShape * forma, float density, float restitution, float friction) = 0;
+
+    void Update(b2Vec2 vector) {
+
+        this->getCuerpo()->getBody()->SetLinearVelocity(vector);
+
+    };
 protected:
 
     Texture * txt;
     Sprite * spr;
 
     Ensamblador * cuerpo;
-    
+
 
     b2Body * bdy;
     b2BodyDef bdydef_;
@@ -56,8 +66,7 @@ protected:
 
     b2PolygonShape shp_;
 
- 
-    
+
 };
 
 #endif /* ENTIDAD_H */

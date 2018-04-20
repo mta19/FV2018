@@ -12,6 +12,8 @@
  */
 
 #include "Weapon.h"
+#include "Box2D/Box2D.h"
+#include <iostream>
 
 Weapon::Weapon() {
 }
@@ -25,10 +27,15 @@ Weapon::~Weapon() {
 
 void Weapon::setBody(b2World * mundo, float x, float y){
     
-    bdydef_.type = b2_staticBody;
+    bdydef_.type = b2_kinematicBody;
     bdydef_.position = b2Vec2(x, y);
 
     bdy = mundo->CreateBody(&bdydef_);
 
+}
+
+void Weapon::Update(b2Vec2 vector){
+  
+    
 }
 

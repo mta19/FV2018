@@ -21,6 +21,8 @@
 
 Partida::Partida(Vector2i resolucion, std::string titulo) {
 
+    deltaTime=0.0f;
+
     evento = new Event;
     fps = 60;
     frameRate = 1 / fps;
@@ -34,14 +36,16 @@ Partida::Partida(Vector2i resolucion, std::string titulo) {
     personajes = new Personaje*[2];
 
     personajes[0] = new Alien();
-      
+
     personajes[1] = new AlienRojo();
-    
+
     personajes[0]->setSprite();
 
     personajes[1]->setSprite();
 
-    niveles->anyadirArma(350.f,155.f,40.f,40.f);
+
+
+    niveles->anyadirArma(350.f, 170.f, 40.f, 52.f);
     Nivel::contadorEn++;
     niveles->anyadirEscalera(400.f, 220.f, 12.f, 105.f);
     Nivel::contadorEn++;
@@ -60,6 +64,9 @@ Partida::Partida(Vector2i resolucion, std::string titulo) {
     niveles->anyadirPersonaje(personajes[0]);
     Nivel::contadorEn++;
     niveles->anyadirPersonaje(personajes[1]);
+
+
+
     gameLoop();
 
 }
@@ -93,10 +100,8 @@ Nivel Partida::get_Nivel() {
 
 void Partida::gameLoop() {
 
-    Clock clock;
-    float deltaTime = 0.0f;
 
-    Animacion * animacion = personajes[0]->getAnimacion();
+
     while (ventana->isOpen()) {
 
         while (ventana->pollEvent(*evento)) {
@@ -104,15 +109,23 @@ void Partida::gameLoop() {
             if (evento->type == Event::Closed) {
                 ventana->close();
             }
-            
+
 
             if (evento->type == Event::KeyPressed) {
-                
+
                 this->personajes[0]->handleInput(evento, this->niveles);
 
-                if (this->personajes[0]->getCuerpo()->getNumFoot()>= 1) {
+                if (this->personajes[0]->getCuerpo()->getNumFoot() >= 1) {
 
                     this->personajes[0]->handleInput(evento, this->niveles);
+                }
+
+                if (evento->key.code == Keyboard::R) {
+                    if (this->personajes[0]->getCuerpo()->getisOnWeapon()) {
+                        std::cout << "HOLA ENTRO" << std::endl;
+
+                        this->personajes[0]->setArma(this->niveles->getPistola());
+                    }
                 }
             }
         }
@@ -130,29 +143,7 @@ void Partida::gameLoop() {
         if (vel.x <= 1 && vel.x >= -1) this->personajes[0]->setFila(0);
         if (!this->personajes[0]->getCuerpo()->getisOnstair()) this->niveles->getPersonaje()->getBody()->SetGravityScale(1.5f);
 
-
-
-        //fin del testeo
-        deltaTime = clock.restart().asSeconds();
-
-        *tiempo1 = reloj1->getElapsedTime();
-
-        if (tiempo2 + frameRate < tiempo1->asSeconds()) {
-
-            tiempo2 = tiempo1->asSeconds();
-
-            ventana->clear();
-
-            this->niveles->actualizar_fisica();
-
-            animacion->Update(personajes[0]->getFila(), deltaTime, personajes[0]->getSprite(), personajes[0]->getface());
-
-            dibujar();
-            
-            
-            ventana->display();
-
-        }
+        this->Update();
 
     }
 
@@ -160,23 +151,63 @@ void Partida::gameLoop() {
 
 void Partida::dibujar() {
 
-
-    //nivel->dibujar
-    //Personajes->dibujar
-    /*niveles->getCaja()->dibujar(*ventana);
-
-    niveles->getSuelo()[0]->dibujar(*ventana);
-
-    niveles->getPersonaje()->dibujar(*ventana);
-     */
+    bool aux = false;
 
     for (int i = 0; i <= Nivel::contadorEn; i++) {
+        if (niveles->getEntidades()[i]->getCuerpo() != NULL) {
+            //modificar para array de personajes
+            if (personajes[0]->getArma() == NULL)
+                niveles->getEntidades()[i]->getCuerpo()->dibujar(*ventana);
+            else {
+                if (niveles->getEntidades()[i]->getCuerpo()->get_id_id() != identificador::pistola)
+                    niveles->getEntidades()[i]->getCuerpo()->dibujar(*ventana);
+                aux = true;
+            }
+        }
 
-       /* if (niveles->getEnsambladores()[i] != NULL)
-            niveles->getEnsambladores()[i]->dibujar(*ventana);*/
-        
-        if(niveles->getEntidades()[i]->getCuerpo()!=NULL)
-            niveles->getEntidades()[i]->getCuerpo()->dibujar(*ventana);
+    }
+
+    if (aux == true) {
+        for (int i = 0; i <= Nivel::contadorEn; i++) {
+            if (niveles->getEntidades()[i]->getCuerpo()->get_id_id() == identificador::pistola)
+                niveles->getEntidades()[i]->getCuerpo()->dibujar(*ventana);
+        }
+    }
+
+
+}
+
+void Partida::Update() {
+
+
+
+
+
+    Animacion * animacion = personajes[0]->getAnimacion();
+
+
+    //fin del testeo
+    deltaTime = clock.restart().asSeconds();
+
+    *tiempo1 = reloj1->getElapsedTime();
+
+    if (tiempo2 + frameRate < tiempo1->asSeconds()) {
+
+        tiempo2 = tiempo1->asSeconds();
+
+        ventana->clear();
+
+        this->niveles->actualizar_fisica();
+
+        animacion->Update(personajes[0]->getFila(), deltaTime, personajes[0]->getSprite(), personajes[0]->getface());
+
+        dibujar();
+
+        if (personajes[0]->getArma() != NULL) {
+
+            this->niveles->getPistola()->Update(personajes[0]->getCuerpo()->getBody()->GetLinearVelocity());
+        }
+        ventana->display();
 
     }
 

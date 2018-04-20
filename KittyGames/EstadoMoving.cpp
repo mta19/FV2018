@@ -96,7 +96,8 @@ EstadoPersonaje* EstadoMoving::handleInput(Personaje& persona, Event* tecla, Niv
 
             body->SetLinearVelocity(vel);
             persona.setface(true);
-
+            /*if(persona.getArma()!=NULL)
+            persona.getArma()->getCuerpo()->getBody()->SetLinearVelocity(vel);*/
 
             persona.setFila(5);
             return new EstadoMoving();

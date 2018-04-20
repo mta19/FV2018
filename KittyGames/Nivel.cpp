@@ -40,7 +40,6 @@ Nivel::Nivel() {
 
     mundo->SetContactListener(procesadorColisiones);
 
-
     entidades = new Entidad*[10];
 
     bdy = new b2Body*[10];
@@ -89,7 +88,7 @@ void Nivel::anyadirArma(float x, float y, float weight, float height) {
 
     shp_[contadorEn].SetAsBox(weight, height); // esto estaba en el de antes
 
-    entidades[Nivel::contadorEn]->setFixture(&shp_[contadorEn], 1.f, 0.f, 0.3f);
+    entidades[Nivel::contadorEn]->setFixture(&shp_[contadorEn], 0.5f, 0.f, 0.3f);
 
 
 }
