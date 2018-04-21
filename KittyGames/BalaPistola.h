@@ -18,6 +18,7 @@
 #include "SFML/Graphics.hpp"
 #include "Box2D/Box2D.h"
 #include "Bala.h"
+#include "BalaPistola.h"
 
 
 class BalaPistola : public Bala {

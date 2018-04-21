@@ -17,6 +17,9 @@ BalaPistola::BalaPistola(String nombre) {
         txt = new Texture;
     txt->loadFromFile(nombre);
     spr = new Sprite(*txt);
+    
+    IntRect posicion(0, 0, spr->getTexture()->getSize().x / 8, spr->getTexture()->getSize().y / 3.5);
+    spr->setTextureRect(posicion);
 }
 
 BalaPistola::BalaPistola(const BalaPistola& orig) {
@@ -40,6 +43,7 @@ void BalaPistola::setFixture(b2PolygonShape* forma, float density, float restitu
 
     fix_ = bdy->CreateFixture(&fixdef_);
 
+    bdy->SetGravityScale(0);
 
     cuerpo = new Ensamblador(bdy, spr, weight, height);
     cuerpo->set_id_id(balaPistola);

@@ -30,7 +30,7 @@ public:
     void setAnimacion();
     Animacion * getAnimacion(){ return animacion;};
     void setFrame(Sprite &spr);
-    void handleInput(Event* tecla, Nivel* nivel);
+    
 private:
 
     Animacion * animacion;

@@ -21,6 +21,11 @@
 #include "Animacion.h"
 #include "Entidad.h"
 #include "Box2D/Box2D.h"
+#include "Bala.h"
+#include "BalaPistola.h"
+#include <vector>
+#include <iostream>
+#include <cmath>
 
 using namespace sf;
 
@@ -41,6 +46,7 @@ public:
     virtual void handleInput(Event* tecla, Nivel* nivel);
     void setBody(b2World * mundo, float x, float y);
     void setArma(Entidad* weapon);
+    void disparar();
 
     b2Vec2 getspeed() {
         return speed;
@@ -92,6 +98,10 @@ public:
     };
     void setFixture(b2PolygonShape * forma, float density, float restitution, float friction);
 
+    std::vector<Bala*> getBalas(){
+        
+        return balas;
+    }
 
 private:
 
@@ -115,6 +125,9 @@ protected:
     Animacion * animacion;
 
     Entidad * arma;
+    
+    std::vector<Bala*> balas;    
+    
 
 
 

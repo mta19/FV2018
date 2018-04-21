@@ -27,7 +27,6 @@ public:
     void setSprite();
     Animacion * getAnimacion(){ return animacion;};
    
-    void handleInput(Event* tecla, Nivel* nivel);
 private:
     
 

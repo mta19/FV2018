@@ -43,20 +43,3 @@ void Alien::setSprite() {
 
 
 
-void Alien::handleInput(Event* tecla, Nivel* nivel) {
-
-
-    EstadoPersonaje* estado = estado_->handleInput(*this, tecla, nivel);
-
-
-    if (estado != NULL) {
-
-        delete estado_;
-
-        estado_ = estado;
-
-    }
-
-
-}
-

@@ -19,15 +19,17 @@
 #include "Box2D/Box2D.h"
 #include "Entidad.h"
 
+
 class Bala : public Entidad {
 public:
     Bala();
     Bala(const Bala& orig);
     virtual ~Bala();
+    
+    void setBody(b2World * mundo, float x, float y);
+    virtual void setFixture(b2PolygonShape * forma, float density, float restitution, float friction)=0;
 protected:
 
-    void setBody(b2World * mundo, float x, float y)=0;
-    virtual void setFixture(b2PolygonShape * forma, float density, float restitution, float friction)=0;
     
 };
 
