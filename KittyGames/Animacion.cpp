@@ -31,7 +31,7 @@ Animacion::Animacion(const Animacion& orig) {
 Animacion::~Animacion() {
 }
 
-void Animacion::Update (int row, float deltatime, Sprite *sprite, bool faceRight){
+void Animacion::UpdateAnimacion(int row, float deltatime, Sprite *sprite, bool faceRight){
     
     
     currentImage.y=row;
@@ -62,6 +62,5 @@ void Animacion::Update (int row, float deltatime, Sprite *sprite, bool faceRight
         
     }
     sprite->setTextureRect(uvRect);
-    
-    
+       
 }

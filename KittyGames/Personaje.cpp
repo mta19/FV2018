@@ -21,8 +21,8 @@ Personaje::Personaje() {
     vida = 100;
     vidaActual = vida;
     puntuacion = 0;
-
-
+    arma = NULL;
+    row = 0;
     estado_ = new EstadoStanding();
 
 }
@@ -120,11 +120,11 @@ void Personaje::setFixture(b2PolygonShape * forma, float density, float restitut
     fixdef_.density = density;
     fixdef_.restitution = restitution;
     fixdef_.friction = friction;
-    
+
 
     fixdef_.filter.categoryBits = entityCategory::FRIENDLY_PLAYER;
     fixdef_.filter.maskBits = entityCategory::BOUNDARY | entityCategory::STAIRS | entityCategory::WEAPON;
-   
+
     fix_ = bdy->CreateFixture(&fixdef_);
 
 
@@ -150,8 +150,6 @@ void Personaje::setFixture(b2PolygonShape * forma, float density, float restitut
 
 }
 
-
-
 void Personaje::setFrame(Sprite& spr) {
 
     IntRect posicion(0, 0, spr.getTexture()->getSize().x / 3, spr.getTexture()->getSize().y / 7);
@@ -160,8 +158,10 @@ void Personaje::setFrame(Sprite& spr) {
 
 }
 
-void Personaje::setArma(Entidad* weapon){
-    
-    arma= weapon;
-    
+void Personaje::setArma(Entidad* weapon) {
+
+    arma = weapon;
+    arma->getCuerpo()->getBody()->SetActive(false);
+
+
 }

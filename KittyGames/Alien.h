@@ -30,7 +30,6 @@ public:
     void handleInput(Event* tecla, Nivel* nivel);
 private:
     
-    Animacion * animacion;
 
     
     //Animacion * animacion;

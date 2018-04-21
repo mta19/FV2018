@@ -33,11 +33,11 @@ public:
     Personaje();
     Personaje(const Personaje& orig);
     virtual ~Personaje();
-    virtual void setSprite()=0;
+    virtual void setSprite() = 0;
     Sprite* getSprite();
     Texture* getTextura();
     virtual Animacion * getAnimacion() = 0;
-     void setFrame(Sprite &spr);
+    void setFrame(Sprite &spr);
     virtual void handleInput(Event* tecla, Nivel* nivel);
     void setBody(b2World * mundo, float x, float y);
     void setArma(Entidad* weapon);
@@ -86,8 +86,10 @@ public:
     void setFila(int r) {
         row = r;
     };
-    
-    Entidad * getArma(){return arma;};
+
+    Entidad * getArma() {
+        return arma;
+    };
     void setFixture(b2PolygonShape * forma, float density, float restitution, float friction);
 
 
@@ -110,7 +112,8 @@ protected:
 
     b2Vec2 speed;
     bool faceRight;
-    
+    Animacion * animacion;
+
     Entidad * arma;
 
 

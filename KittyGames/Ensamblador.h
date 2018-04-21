@@ -32,7 +32,7 @@ public:
     virtual ~Ensamblador();
 
     float rad2deg(float radianes);
-    void dibujar(RenderWindow& r);
+    void dibujar(RenderWindow& r, float x, float y);
 
     b2Body* getBody();
 

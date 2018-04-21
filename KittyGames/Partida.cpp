@@ -21,7 +21,7 @@
 
 Partida::Partida(Vector2i resolucion, std::string titulo) {
 
-    deltaTime=0.0f;
+    deltaTime = 0.0f;
 
     evento = new Event;
     fps = 60;
@@ -122,8 +122,7 @@ void Partida::gameLoop() {
 
                 if (evento->key.code == Keyboard::R) {
                     if (this->personajes[0]->getCuerpo()->getisOnWeapon()) {
-                        std::cout << "HOLA ENTRO" << std::endl;
-
+                  
                         this->personajes[0]->setArma(this->niveles->getPistola());
                     }
                 }
@@ -157,10 +156,10 @@ void Partida::dibujar() {
         if (niveles->getEntidades()[i]->getCuerpo() != NULL) {
             //modificar para array de personajes
             if (personajes[0]->getArma() == NULL)
-                niveles->getEntidades()[i]->getCuerpo()->dibujar(*ventana);
+                niveles->getEntidades()[i]->getCuerpo()->dibujar(*ventana,0,0);
             else {
                 if (niveles->getEntidades()[i]->getCuerpo()->get_id_id() != identificador::pistola)
-                    niveles->getEntidades()[i]->getCuerpo()->dibujar(*ventana);
+                    niveles->getEntidades()[i]->getCuerpo()->dibujar(*ventana,0,0);
                 aux = true;
             }
         }
@@ -170,7 +169,7 @@ void Partida::dibujar() {
     if (aux == true) {
         for (int i = 0; i <= Nivel::contadorEn; i++) {
             if (niveles->getEntidades()[i]->getCuerpo()->get_id_id() == identificador::pistola)
-                niveles->getEntidades()[i]->getCuerpo()->dibujar(*ventana);
+                niveles->getEntidades()[i]->getCuerpo()->dibujar(*ventana,personajes[0]->getCuerpo()->getBody()->GetPosition().x+30, personajes[0]->getCuerpo()->getBody()->GetPosition().y+50);
         }
     }
 
@@ -198,15 +197,23 @@ void Partida::Update() {
         ventana->clear();
 
         this->niveles->actualizar_fisica();
+        for (int i = 0; i < 2; i++){
+            
+            if (personajes[i] != NULL){ 
+}
 
-        animacion->Update(personajes[0]->getFila(), deltaTime, personajes[0]->getSprite(), personajes[0]->getface());
+               personajes[i]->getAnimacion()->UpdateAnimacion(personajes[i]->getFila(), deltaTime, personajes[i]->getSprite(), personajes[i]->getface());
+             
+        }
+
+         if (personajes[0]->getArma() != NULL) {
+                         this->niveles->getPistola()->UpdateArma(personajes[0]->getCuerpo()->getBody()->GetLinearVelocity(), personajes[0]->getface());
+                         
+        }
 
         dibujar();
 
-        if (personajes[0]->getArma() != NULL) {
-
-            this->niveles->getPistola()->Update(personajes[0]->getCuerpo()->getBody()->GetLinearVelocity());
-        }
+       
         ventana->display();
 
     }

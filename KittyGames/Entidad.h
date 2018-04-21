@@ -46,10 +46,9 @@ public:
     virtual void setBody(b2World * mundo, float x, float y) = 0;
     virtual void setFixture(b2PolygonShape * forma, float density, float restitution, float friction) = 0;
 
-    void Update(b2Vec2 vector) {
-
-        this->getCuerpo()->getBody()->SetLinearVelocity(vector);
-
+    void UpdateArma(b2Vec2 vector, bool face) {
+        
+        
     };
 protected:
 
@@ -65,6 +64,8 @@ protected:
     b2FixtureDef fixdef_;
 
     b2PolygonShape shp_;
+    
+       IntRect uvRect;
 
 
 };

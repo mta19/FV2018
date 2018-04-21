@@ -49,6 +49,8 @@ void Pistola::setFixture(b2PolygonShape* forma, float density, float restitution
     fixdef_.filter.maskBits = entityCategory::FRIENDLY_PLAYER | entityCategory::BOUNDARY;
     fixdef_.isSensor = true;
     
+    bdy->SetGravityScale(200.f);
+    
     fix_ = bdy->CreateFixture(&fixdef_);
 
 

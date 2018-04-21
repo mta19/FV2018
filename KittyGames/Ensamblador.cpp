@@ -40,7 +40,7 @@ Ensamblador::Ensamblador(b2Body * cuerpo, Sprite * sprite, float  weight, float 
 
         
     }
-    std::cout << "Por ahora funciona7" << std::endl;
+
     spr_actor->setScale(dimension.GetExtents().x * 2.0f / aux, dimension.GetExtents().y * 2.0f / aux2);
 
 
@@ -50,6 +50,7 @@ Ensamblador::Ensamblador(b2Body * cuerpo, Sprite * sprite, float  weight, float 
 }
 
 Ensamblador::Ensamblador(const Ensamblador& orig) {
+    std::cout<<"hola entro"<<std::endl;
 }
 
 Ensamblador::~Ensamblador() {
@@ -60,13 +61,15 @@ float Ensamblador::rad2deg(float radianes) {
     return radianes * 100 / 3.14;
 }
 
-void Ensamblador::dibujar(RenderWindow& r) {
+void Ensamblador::dibujar(RenderWindow& r, float x, float y) {
 
-
+    if(bdy_actor->IsActive()){
     posicion = bdy_actor->GetPosition();
     spr_actor->setPosition(posicion.x, posicion.y);
-
     spr_actor->setRotation(rad2deg(bdy_actor->GetAngle()));
+    }
+    else spr_actor->setPosition(x,y);
+    
     r.draw(*spr_actor);
 }
 
