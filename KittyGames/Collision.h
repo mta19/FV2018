@@ -31,7 +31,7 @@ public:
     
     void BeginContact(b2Contact* contacto);
     void EndContact(b2Contact* contacto);
-    void checkaabb(Ensamblador& ensambladorA, Ensamblador& ensambladorB);
+    void checkaabb(Ensamblador* ensambladorA, Ensamblador* ensambladorB);
 
     int getId() {
         return id;

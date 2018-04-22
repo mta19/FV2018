@@ -24,9 +24,9 @@ Personaje::Personaje() {
     arma = NULL;
     row = 0;
     estado_ = new EstadoStanding();
-    
-    
-
+    flagAux=true;
+    tiempoAux=0;
+   
 }
 
 Personaje::Personaje(const Personaje& orig) {
@@ -36,7 +36,6 @@ Personaje::~Personaje() {
 }
 
 void Personaje::handleInput(Event* tecla, Nivel* nivel) {
-    std::cout << "estoy apuntito de saltar" << std::endl;
 
     EstadoPersonaje* estado = estado_->handleInput(*this, tecla, nivel);
 
@@ -49,16 +48,21 @@ void Personaje::handleInput(Event* tecla, Nivel* nivel) {
 
         estado_ = estado;
 
+     
+       
+   
+        
+        if (this->getArma() != NULL && tecla->key.code == Keyboard::Q && flagAux==true ){
 
-        if (this->getArma() != NULL && tecla->key.code == Keyboard::Q) {
-
-            std::cout << "estoy disparando" << std::endl;
+        
             disparar();
+            flagAux=false;
+            }
         }
 
     }
 
-}
+
 
 int Personaje::getVida() {
     return vida;
@@ -178,13 +182,13 @@ void Personaje::disparar() {
     
     Bala *bala = new BalaPistola("balas.png");
     if(this->getface()==true)
-    bala->setBody(this->getArma()->getCuerpo()->getBody()->GetWorld(), this->getSprite()->getPosition().x, this->getSprite()->getPosition().y);
+    bala->setBody(this->getArma()->getCuerpo()->getBody()->GetWorld(), this->getSprite()->getPosition().x+15, this->getSprite()->getPosition().y+5);
     else
-            bala->setBody(this->getArma()->getCuerpo()->getBody()->GetWorld(), this->getSprite()->getPosition().x-10, this->getSprite()->getPosition().y);
+            bala->setBody(this->getArma()->getCuerpo()->getBody()->GetWorld(), this->getSprite()->getPosition().x-15, this->getSprite()->getPosition().y+5);
 
 
     b2PolygonShape shp_;
-    shp_.SetAsBox(3.f, 3.f);
+    shp_.SetAsBox(3.f, 6.f);
     bala->setFixture(&shp_, 1.f, 0.f, 0.f);
     if(this->getface()==true)
     bala->getCuerpo()->getBody()->SetLinearVelocity({30,0});

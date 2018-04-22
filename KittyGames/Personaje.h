@@ -102,6 +102,8 @@ public:
         
         return balas;
     }
+    
+    bool setFlag(bool aux){flagAux=aux;};
 
 private:
 
@@ -128,8 +130,11 @@ protected:
     
     std::vector<Bala*> balas;    
     
+    bool flagAux;
+    float tiempoAux;
+    float deltaTime;
 
-
+    
 
 };
 

@@ -16,6 +16,10 @@
 #include <iostream>
 
 Weapon::Weapon() {
+   
+    tiempo= new Time;
+    reloj= new Clock;
+    
 }
 
 Weapon::Weapon(const Weapon& orig) {

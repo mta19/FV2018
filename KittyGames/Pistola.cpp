@@ -22,7 +22,7 @@ Pistola::Pistola(String nombre) {
     IntRect posicion(0, 0, spr->getTexture()->getSize().x / 4, spr->getTexture()->getSize().y / 6.8);
     spr->setTextureRect(posicion);
 
-    
+    cadencia=100;
 }
 
 Pistola::Pistola(const Pistola& orig) {

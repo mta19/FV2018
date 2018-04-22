@@ -40,8 +40,8 @@ void Collision::BeginContact(b2Contact* contacto) {
         if (Ensamblador * cuerpoB = (Ensamblador*) contacto->GetFixtureB()->GetBody()->GetUserData()) {
 
 
-            checkaabb(*cuerpoA, *cuerpoB);
-            checkaabb(*cuerpoB, *cuerpoA);
+            checkaabb(cuerpoA, cuerpoB);
+            checkaabb(cuerpoB, cuerpoA);
 
             sensorA = contacto->GetFixtureA()->IsSensor();
             sensorB = contacto->GetFixtureA()->IsSensor();
@@ -179,11 +179,11 @@ void Collision::EndContact(b2Contact* contacto) {
 
 }
 
-void Collision::checkaabb(Ensamblador& a, Ensamblador& b) {
+void Collision::checkaabb(Ensamblador* a, Ensamblador* b) {
 
-    if (a.get_id_id() == identificador::jugador) {
+    if (a->get_id_id() == identificador::jugador) {
 
-        switch (b.get_id_id()) {
+        switch (b->get_id_id()) {
 
             case identificador::plataforma:
 
@@ -198,6 +198,13 @@ void Collision::checkaabb(Ensamblador& a, Ensamblador& b) {
                 id = 1;
 
                 break;
+                
+                
+            case identificador::balaPistola:
+                
+                std::cout<<"hay colision"<<std::endl;
+                break;
+                
             default:
                 id = 0;
                 break;

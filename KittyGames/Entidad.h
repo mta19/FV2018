@@ -50,6 +50,11 @@ public:
         
         
     };
+    
+    Clock * getReloj(){};
+    Time* getTiempo(){};
+    float getCadencia(){};
+    float getDelta(){};
 protected:
 
     Texture * txt;

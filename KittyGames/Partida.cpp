@@ -121,12 +121,14 @@ void Partida::gameLoop() {
                 }
 
                 if (evento->key.code == Keyboard::R) {
-                    if (this->personajes[0]->getCuerpo()->getisOnWeapon()) {
-
+                    if (this->personajes[0]->getCuerpo()->getisOnWeapon()) {   
                         this->personajes[0]->setArma(this->niveles->getPistola());
                     }
                 }
+               
             }
+            
+             if(evento->type==Event::KeyReleased && evento->key.code==Keyboard::Q) this->personajes[0]->setFlag(true);
         }
 
         if (Keyboard::isKeyPressed(Keyboard::D) || Keyboard::isKeyPressed(Keyboard::A)) {
@@ -169,9 +171,10 @@ void Partida::dibujar() {
     }
     
     for (int i = 0; i < personajes[0]->getBalas().size(); i++) {
-         if(personajes[0]->getBalas().size()>0 && personajes[0]->getBalas()[i]!=NULL)
+         if(personajes[0]->getBalas().size()>0 && personajes[0]->getBalas()[i]!=NULL){
                     personajes[0]->getBalas()[i]->getCuerpo()->dibujar(*ventana,0,0);
-
+        
+         }
     }
 
 
@@ -193,6 +196,8 @@ void Partida::Update() {
     //fin del testeo
     deltaTime = clock.restart().asSeconds();
 
+ 
+        
     *tiempo1 = reloj1->getElapsedTime();
 
     if (tiempo2 + frameRate < tiempo1->asSeconds()) {

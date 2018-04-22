@@ -16,6 +16,7 @@
 
 #include "Bala.h"
 #include "Entidad.h"
+#include "SFML/Graphics.hpp"
 class Weapon : public Entidad{
 public:
     Weapon();
@@ -24,6 +25,10 @@ public:
      void setBody(b2World * mundo, float x, float y);
     virtual void setFixture(b2PolygonShape * forma, float density, float restitution, float friction)=0;
     void Update(b2Vec2  vector);
+    sf::Clock * getReloj(){return reloj;};
+    sf::Time * getTiempo(){return tiempo;};
+    float getCadencia(){return cadencia;};
+ 
 protected:
 
     Bala * bala;
@@ -32,6 +37,12 @@ protected:
     
     int rango;
     
+    sf::Clock * reloj;
+    
+    sf::Time * tiempo;
+    
+    float cadencia;
+  
     
     
 };
