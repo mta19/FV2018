@@ -59,7 +59,7 @@ Partida::Partida(Vector2i resolucion, std::string titulo) {
     int auxCont = 0;
 
     for (int i = 1; i < 4; i++) {
-        if (sf::Joystick::isConnected(i)) {
+        if (sf::Joystick::isConnected(i - 1)) {
             auxCont++;
         }
 
@@ -118,7 +118,7 @@ Partida::Partida(Vector2i resolucion, std::string titulo) {
 
     }
 
-    
+
 
 
 
@@ -167,7 +167,7 @@ void Partida::gameLoop() {
             }
 
 
-            if (evento->type == Event::KeyPressed) {
+            if (evento->type == Event::KeyPressed) {        
 
                 this->personajes[0]->handleInput(evento, this->niveles);
 
@@ -181,16 +181,25 @@ void Partida::gameLoop() {
                         this->personajes[0]->setArma(this->niveles->getPistola());
                     }
                 }
-
+                                            
             }
 
-            if (evento->type == Event::KeyReleased && evento->key.code == Keyboard::Q) this->personajes[0]->setFlag(true);
+            if (evento->type == Event::KeyReleased && evento->key.code == Keyboard::Q) {
+
+                this->personajes[0]->setFlag(true);
+
+            }
         }
 
         if (Keyboard::isKeyPressed(Keyboard::D) || Keyboard::isKeyPressed(Keyboard::A)) {
 
             this->personajes[0]->handleInput(evento, this->niveles);
 
+        }
+        
+        if(evento->type == Event::JoystickConnected){
+         
+            
         }
 
 
@@ -276,14 +285,14 @@ void Partida::Update() {
             this->niveles->getPistola()->UpdateArma(personajes[0]->getCuerpo()->getBody()->GetLinearVelocity(), personajes[0]->getface());
 
         }
-        
-      
 
 
-                personajes[0]->borrarBala();
-               
 
-       
+
+        personajes[0]->borrarBala();
+
+
+
 
 
         dibujar();
