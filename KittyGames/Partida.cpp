@@ -39,87 +39,22 @@ Partida::Partida(Vector2i resolucion, std::string titulo) {
 
 
 
-    niveles->anyadirArma(350.f, 170.f, 40.f, 52.f);
-    Nivel::contadorEn++;
-    niveles->anyadirEscalera(400.f, 220.f, 12.f, 105.f);
-    Nivel::contadorEn++;
-    niveles->anyadirEscalera(273.f, 240.f, 12.f, 85.f);
-    Nivel::contadorEn++;
-    niveles->anyadirPlataforma(340.f, 300.0f, 80.f, 8.f);
-    Nivel::contadorEn++;
-    niveles->anyadirPlataforma(347.f, 140.0f, 40.f, 8.f);
-    Nivel::contadorEn++;
-    niveles->anyadirPlataforma(220.f, 177.0f, 40.f, 8.f);
-    Nivel::contadorEn++;
-    niveles->anyadirPlataforma(500.f, 250.0f, 40.f, 8.f);
-    Nivel::contadorEn++;
-    niveles->anyadirObjetoDinamico(350.0f, 250.0f, 12.5f, 8.f);
-    Nivel::contadorEn++;
-
-    int auxCont = 0;
+    personajes.push_back(new Alien());
+    personajes[0]->setSprite();
+    this->niveles->anyadirPersonaje(personajes[0]);
+    
 
     for (int i = 1; i < 4; i++) {
         if (sf::Joystick::isConnected(i - 1)) {
-            auxCont++;
+            Nivel::contadorEn++;
+            personajes.push_back(new AlienRojo());
+            personajes[i]->setSprite();
+            this->niveles->anyadirPersonaje(personajes[i]);
+
         }
 
 
     }
-
-    switch (auxCont) {
-
-        case 0:
-
-            personajes = new Personaje*[1];
-
-            personajes[0] = new Alien();
-
-
-            personajes[0]->setSprite();
-
-            niveles->anyadirPersonaje(personajes[0]);
-
-            numJ = 1;
-
-            break;
-
-        case 1:
-
-            personajes = new Personaje*[2];
-
-            personajes[0] = new Alien();
-
-
-            personajes[1] = new AlienRojo();
-
-
-            personajes[0]->setSprite();
-
-            personajes[1]->setSprite();
-
-
-            niveles->anyadirPersonaje(personajes[0]);
-            Nivel::contadorEn++;
-            niveles->anyadirPersonaje(personajes[1]);
-
-            numJ = 1;
-
-            break;
-
-        case 2:
-
-
-
-            break;
-
-        case 3:
-
-            break;
-
-    }
-
-
-
 
 
 
@@ -167,7 +102,7 @@ void Partida::gameLoop() {
             }
 
 
-            if (evento->type == Event::KeyPressed) {        
+            if (evento->type == Event::KeyPressed) {
 
                 this->personajes[0]->handleInput(evento, this->niveles);
 
@@ -181,7 +116,7 @@ void Partida::gameLoop() {
                         this->personajes[0]->setArma(this->niveles->getPistola());
                     }
                 }
-                                            
+
             }
 
             if (evento->type == Event::KeyReleased && evento->key.code == Keyboard::Q) {
@@ -196,13 +131,24 @@ void Partida::gameLoop() {
             this->personajes[0]->handleInput(evento, this->niveles);
 
         }
-        
-        if(evento->type == Event::JoystickConnected){
-         
-            
+
+        if (evento->type == Event::JoystickConnected) {
+
+            Nivel::contadorEn++;
+            personajes.push_back(new AlienRojo());
+            personajes[1]->setSprite();
+            this->niveles->anyadirPersonaje(personajes[1]);
+
         }
+        
+        
+        
+        
+        
+        //cosas aparte
 
-
+        
+        
         b2Vec2 vel = this->niveles->getPersonaje()->getBody()->GetLinearVelocity();
 
 
@@ -272,7 +218,7 @@ void Partida::Update() {
         ventana->clear();
 
         this->niveles->actualizar_fisica();
-        for (int i = 0; i < numJ; i++) {
+        for (int i = 0; i < personajes.size(); i++) {
 
             if (personajes[i] != NULL) {
             }

@@ -42,7 +42,6 @@ public:
 private:
 
 
-    Personaje **personajes;
     Nivel * niveles;
     int numRondas;
     int tiempoRonda;
@@ -54,7 +53,7 @@ private:
     Clock clock;
     float deltaTime;
     
-    std::vector<Bala*> auxiliarBalas;
+    std::vector<Personaje*> personajes;
     int numJ;
 };
 

@@ -43,6 +43,26 @@ Nivel::Nivel() {
     entidades = new Entidad*[10];
 
     bdy = new b2Body*[10];
+    
+    
+    this->anyadirArma(350.f, 170.f, 40.f, 52.f);
+    Nivel::contadorEn++;
+    this->anyadirEscalera(400.f, 220.f, 12.f, 105.f);
+    Nivel::contadorEn++;
+    this->anyadirEscalera(273.f, 240.f, 12.f, 85.f);
+    Nivel::contadorEn++;
+    this->anyadirPlataforma(340.f, 300.0f, 80.f, 8.f);
+    Nivel::contadorEn++;
+    this->anyadirPlataforma(347.f, 140.0f, 40.f, 8.f);
+    Nivel::contadorEn++;
+    this->anyadirPlataforma(220.f, 177.0f, 40.f, 8.f);
+    Nivel::contadorEn++;
+    this->anyadirPlataforma(500.f, 250.0f, 40.f, 8.f);
+    Nivel::contadorEn++;
+    this->anyadirObjetoDinamico(350.0f, 250.0f, 12.5f, 8.f);
+    Nivel::contadorEn++;
+
+
 
 }
 
