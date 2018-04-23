@@ -40,7 +40,7 @@ public:
 
 
 
-    Entidad** getEntidades() {
+    std::vector<Entidad*>& getEntidades() {
         return entidades;
     };
 
@@ -76,12 +76,14 @@ public:
 
         return mundo;
     }
+    
+    
 
     static int contadorEn;
 
 private:
 
-    Entidad ** entidades;
+    std::vector<Entidad*> entidades;
  
     int marcadores;
 

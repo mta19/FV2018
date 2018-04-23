@@ -34,11 +34,6 @@ Partida::Partida(Vector2i resolucion, std::string titulo) {
     set_camera();
 
     niveles = new Nivel();
-
-
-
-
-
     personajes.push_back(new Alien());
     personajes[0]->setSprite();
     this->niveles->anyadirPersonaje(personajes[0]);
@@ -46,18 +41,12 @@ Partida::Partida(Vector2i resolucion, std::string titulo) {
 
     for (int i = 1; i < 4; i++) {
         if (sf::Joystick::isConnected(i - 1)) {
-            Nivel::contadorEn++;
             personajes.push_back(new AlienRojo());
             personajes[i]->setSprite();
             this->niveles->anyadirPersonaje(personajes[i]);
 
         }
-
-
     }
-
-
-
     gameLoop();
 
 }
@@ -133,8 +122,6 @@ void Partida::gameLoop() {
         }
 
         if (evento->type == Event::JoystickConnected) {
-
-            Nivel::contadorEn++;
             personajes.push_back(new AlienRojo());
             personajes[1]->setSprite();
             this->niveles->anyadirPersonaje(personajes[1]);
@@ -165,7 +152,7 @@ void Partida::dibujar() {
 
     bool aux = false;
 
-    for (int i = 0; i <= Nivel::contadorEn; i++) {
+    for (int i = 0; i < niveles->getEntidades().size(); i++) {
         if (niveles->getEntidades()[i]->getCuerpo() != NULL) {
             //modificar para array de personajes
             if (personajes[0]->getArma() == NULL)
