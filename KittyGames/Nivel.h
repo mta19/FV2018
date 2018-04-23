@@ -44,7 +44,7 @@ public:
         return entidades;
     };
 
-    Ensamblador* getPersonaje() {
+    Ensamblador* getPersonaje() {  //conseguimos el cuerpo
 
         for (int i = 0; i < 10; i++) {
 
@@ -55,7 +55,7 @@ public:
         return NULL;
     };
     
-    Entidad* getPistola(){
+    Entidad* getPistola(){ //conseguimos la entidad
         
         for (int i = 0; i < 10; i++) {
 

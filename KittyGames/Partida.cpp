@@ -134,13 +134,18 @@ void Partida::gameLoop() {
         
         //cosas aparte
 
-        
-        
-        b2Vec2 vel = this->niveles->getPersonaje()->getBody()->GetLinearVelocity();
+       
+        //b2Vec2 vel = this->niveles->getPersonaje()->getBody()->GetLinearVelocity();
+
+        for (int i = 0; i < personajes.size(); i++) {
+            b2Vec2 vel= personajes[i]->getCuerpo()->getBody()->GetLinearVelocity();
+            
+             if (vel.x <= 1 && vel.x >= -1) this->personajes[i]->setFila(0);
+        if (!this->personajes[i]->getCuerpo()->getisOnstair()) personajes[i]->getCuerpo()->getBody()->SetGravityScale(1.5f);
+        }
 
 
-        if (vel.x <= 1 && vel.x >= -1) this->personajes[0]->setFila(0);
-        if (!this->personajes[0]->getCuerpo()->getisOnstair()) this->niveles->getPersonaje()->getBody()->SetGravityScale(1.5f);
+       
 
         this->Update();
 
