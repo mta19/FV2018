@@ -104,6 +104,9 @@ public:
     }
     
     bool setFlag(bool aux){flagAux=aux;};
+    
+    
+    void borrarBala();
 
 private:
 

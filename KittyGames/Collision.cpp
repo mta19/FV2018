@@ -12,7 +12,7 @@
  */
 
 #include "Collision.h"
-#include "Ensamblador.h"
+#include "Entidad.h"
 #include "EstadoStanding.h"
 #include "EstadoMoving.h"
 
@@ -34,10 +34,10 @@ void Collision::BeginContact(b2Contact* contacto) {
 
 
 
-    if (Ensamblador * cuerpoA = (Ensamblador*) contacto->GetFixtureA()->GetBody()->GetUserData()) {
+    if (Entidad * cuerpoA = (Entidad*) contacto->GetFixtureA()->GetBody()->GetUserData()) {
 
 
-        if (Ensamblador * cuerpoB = (Ensamblador*) contacto->GetFixtureB()->GetBody()->GetUserData()) {
+        if (Entidad * cuerpoB = (Entidad*) contacto->GetFixtureB()->GetBody()->GetUserData()) {
 
 
             checkaabb(cuerpoA, cuerpoB);
@@ -48,37 +48,37 @@ void Collision::BeginContact(b2Contact* contacto) {
 
             if (sensorA == true || sensorB == true) {
 
-                
 
-                if (cuerpoA->get_id_id() == identificador::jugador && cuerpoB->get_id_id()==identificador::escalera) {
-                    
-                                   std::cout << "hay sensor " << std::endl;
-                   
-                    cuerpoA->isOnStair(sensorA);
 
-                } 
+                if (cuerpoA->getCuerpo()->get_id_id() == identificador::jugador && cuerpoB->getCuerpo()->get_id_id() == identificador::escalera) {
 
-                if (cuerpoB->get_id_id() == identificador::jugador && cuerpoA->get_id_id() == identificador::escalera) {
-                    
-                                   std::cout << "hay sensor " << std::endl;
+                    std::cout << "hay sensor " << std::endl;
 
-                    cuerpoB->isOnStair(sensorB);
+                    cuerpoA->getCuerpo()->isOnStair(sensorA);
 
                 }
-                
-                 if (cuerpoA->get_id_id() == identificador::jugador && cuerpoB->get_id_id()==identificador::pistola) {
-                     
-                     std::cout << "hay sensor Pistola" << std::endl;
-                   
-                    cuerpoA->isOnWeapon(sensorA);
 
-                } 
+                if (cuerpoB->getCuerpo()->get_id_id() == identificador::jugador && cuerpoA->getCuerpo()->get_id_id() == identificador::escalera) {
 
-                if (cuerpoB->get_id_id() == identificador::jugador && cuerpoA->get_id_id() == identificador::pistola) {
-                    
-                                   std::cout << "hay sensor Pistola" << std::endl;
+                    std::cout << "hay sensor " << std::endl;
 
-                    cuerpoB->isOnWeapon(sensorB);
+                    cuerpoB->getCuerpo()->isOnStair(sensorB);
+
+                }
+
+                if (cuerpoA->getCuerpo()->get_id_id() == identificador::jugador && cuerpoB->getCuerpo()->get_id_id() == identificador::pistola) {
+
+                    std::cout << "hay sensor Pistola" << std::endl;
+
+                    cuerpoA->getCuerpo()->isOnWeapon(sensorA);
+
+                }
+
+                if (cuerpoB->getCuerpo()->get_id_id() == identificador::jugador && cuerpoA->getCuerpo()->get_id_id() == identificador::pistola) {
+
+                    std::cout << "hay sensor Pistola" << std::endl;
+
+                    cuerpoB->getCuerpo()->isOnWeapon(sensorB);
 
                 }
 
@@ -87,17 +87,17 @@ void Collision::BeginContact(b2Contact* contacto) {
             void* fixtureUserData = contacto->GetFixtureA()->GetUserData();
 
 
-            if ((intptr_t) fixtureUserData == 3 && cuerpoB->get_id_id()!=identificador::pistola) {
-               
-                    cuerpoA->subirNumFoot();
+            if ((intptr_t) fixtureUserData == 3 && cuerpoB->getCuerpo()->get_id_id() != identificador::pistola) {
+
+                cuerpoA->getCuerpo()->subirNumFoot();
             }
 
             fixtureUserData = contacto->GetFixtureB()->GetUserData();
 
-            if ((intptr_t) fixtureUserData == 3 && cuerpoA->get_id_id()!=identificador::pistola) {
+            if ((intptr_t) fixtureUserData == 3 && cuerpoA->getCuerpo()->get_id_id() != identificador::pistola) {
                 //std::cout << "sube" << std::endl;
-           
-                    cuerpoB->subirNumFoot();
+
+                cuerpoB->getCuerpo()->subirNumFoot();
             }
 
         }
@@ -111,10 +111,10 @@ void Collision::BeginContact(b2Contact* contacto) {
 void Collision::EndContact(b2Contact* contacto) {
 
 
-    if (Ensamblador * cuerpoA = (Ensamblador*) contacto->GetFixtureA()->GetBody()->GetUserData()) {
+    if (Entidad * cuerpoA = (Entidad*) contacto->GetFixtureA()->GetBody()->GetUserData()) {
 
 
-        if (Ensamblador * cuerpoB = (Ensamblador*) contacto->GetFixtureB()->GetBody()->GetUserData()) {
+        if (Entidad * cuerpoB = (Entidad*) contacto->GetFixtureB()->GetBody()->GetUserData()) {
 
 
 
@@ -122,68 +122,68 @@ void Collision::EndContact(b2Contact* contacto) {
             sensorB = contacto->GetFixtureA()->IsSensor();
 
             if (sensorA || sensorB) {
-                
-                 if (cuerpoA->get_id_id() == identificador::jugador && cuerpoB->get_id_id()==identificador::escalera) {
-                   
-                    cuerpoA->isOnStair(false);
 
-                } 
+                if (cuerpoA->getCuerpo()->get_id_id() == identificador::jugador && cuerpoB->getCuerpo()->get_id_id() == identificador::escalera) {
 
-                if (cuerpoB->get_id_id() == identificador::jugador && cuerpoA->get_id_id() == identificador::escalera) {
-
-                    cuerpoB->isOnStair(false);
+                    cuerpoA->getCuerpo()->isOnStair(false);
 
                 }
-                 
-                    if (cuerpoA->get_id_id() == identificador::jugador && cuerpoB->get_id_id()==identificador::pistola) {
-                     
-                     std::cout << "hay sensor Pistola" << std::endl;
-                   
-                    cuerpoA->isOnWeapon(false);
 
-                } 
+                if (cuerpoB->getCuerpo()->get_id_id() == identificador::jugador && cuerpoA->getCuerpo()->get_id_id() == identificador::escalera) {
 
-                if (cuerpoB->get_id_id() == identificador::jugador && cuerpoA->get_id_id() == identificador::pistola) {
-                    
-                                   std::cout << "hay sensor Pistola" << std::endl;
+                    cuerpoB->getCuerpo()->isOnStair(false);
 
-                    cuerpoB->isOnWeapon(false);
+                }
+
+                if (cuerpoA->getCuerpo()->get_id_id() == identificador::jugador && cuerpoB->getCuerpo()->get_id_id() == identificador::pistola) {
+
+                    std::cout << "hay sensor Pistola" << std::endl;
+
+                    cuerpoA->getCuerpo()->isOnWeapon(false);
+
+                }
+
+                if (cuerpoB->getCuerpo()->get_id_id() == identificador::jugador && cuerpoA->getCuerpo()->get_id_id() == identificador::pistola) {
+
+                    std::cout << "hay sensor Pistola" << std::endl;
+
+                    cuerpoB->getCuerpo()->isOnWeapon(false);
 
                 }
 
             }
 
             void *fixtureUserData = contacto->GetFixtureA()->GetUserData();
-            if ((intptr_t) fixtureUserData == 3 && cuerpoB->get_id_id()!=identificador::pistola) {
-            //    std::cout << "baja" << std::endl;
-                
-                    cuerpoA->bajarNumFoot();
+            if ((intptr_t) fixtureUserData == 3 && cuerpoB->getCuerpo()->get_id_id() != identificador::pistola) {
+                //    std::cout << "baja" << std::endl;
+
+                cuerpoA->getCuerpo()->bajarNumFoot();
 
             }
 
             //check if fixture B was the foot sensor
             fixtureUserData = contacto->GetFixtureB()->GetUserData();
-            if ((intptr_t) fixtureUserData == 3 && cuerpoA->get_id_id()!=identificador::pistola) {
-              //  std::cout << "baja" << std::endl;
-           
-                    cuerpoB->bajarNumFoot();
+            if ((intptr_t) fixtureUserData == 3 && cuerpoA->getCuerpo()->get_id_id() != identificador::pistola) {
+                //  std::cout << "baja" << std::endl;
+
+                cuerpoB->getCuerpo()->bajarNumFoot();
             }
 
         }
 
 
-        
+
     }
 
 
 
 }
 
-void Collision::checkaabb(Ensamblador* a, Ensamblador* b) {
+void Collision::checkaabb(Entidad* a, Entidad* b) {
 
-    if (a->get_id_id() == identificador::jugador) {
+    if (a->getCuerpo()->get_id_id() == identificador::jugador) {
 
-        switch (b->get_id_id()) {
+        switch (b->getCuerpo()->get_id_id()) {
 
             case identificador::plataforma:
 
@@ -198,18 +198,26 @@ void Collision::checkaabb(Ensamblador* a, Ensamblador* b) {
                 id = 1;
 
                 break;
-                
-                
+
+
             case identificador::balaPistola:
-                
-                std::cout<<"hay colision"<<std::endl;
+
+                std::cout << "hay colision" << std::endl;
+
                 break;
-                
+
             default:
                 id = 0;
                 break;
 
         }
+    }
+    
+    if(a->getCuerpo()->get_id_id()==identificador::balaPistola){
+        
+       
+        
+        a->setDestroy(true);
     }
 }
 

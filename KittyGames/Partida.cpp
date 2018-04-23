@@ -21,6 +21,7 @@
 
 Partida::Partida(Vector2i resolucion, std::string titulo) {
 
+    numJ = 0;
     deltaTime = 0.0f;
 
     evento = new Event;
@@ -33,15 +34,8 @@ Partida::Partida(Vector2i resolucion, std::string titulo) {
     set_camera();
 
     niveles = new Nivel();
-    personajes = new Personaje*[2];
 
-    personajes[0] = new Alien();
 
-    personajes[1] = new AlienRojo();
-
-    personajes[0]->setSprite();
-
-    personajes[1]->setSprite();
 
 
 
@@ -61,9 +55,71 @@ Partida::Partida(Vector2i resolucion, std::string titulo) {
     Nivel::contadorEn++;
     niveles->anyadirObjetoDinamico(350.0f, 250.0f, 12.5f, 8.f);
     Nivel::contadorEn++;
-    niveles->anyadirPersonaje(personajes[0]);
-    Nivel::contadorEn++;
-    niveles->anyadirPersonaje(personajes[1]);
+
+    int auxCont = 0;
+
+    for (int i = 1; i < 4; i++) {
+        if (sf::Joystick::isConnected(i)) {
+            auxCont++;
+        }
+
+
+    }
+
+    switch (auxCont) {
+
+        case 0:
+
+            personajes = new Personaje*[1];
+
+            personajes[0] = new Alien();
+
+
+            personajes[0]->setSprite();
+
+            niveles->anyadirPersonaje(personajes[0]);
+
+            numJ = 1;
+
+            break;
+
+        case 1:
+
+            personajes = new Personaje*[2];
+
+            personajes[0] = new Alien();
+
+
+            personajes[1] = new AlienRojo();
+
+
+            personajes[0]->setSprite();
+
+            personajes[1]->setSprite();
+
+
+            niveles->anyadirPersonaje(personajes[0]);
+            Nivel::contadorEn++;
+            niveles->anyadirPersonaje(personajes[1]);
+
+            numJ = 1;
+
+            break;
+
+        case 2:
+
+
+
+            break;
+
+        case 3:
+
+            break;
+
+    }
+
+    
+
 
 
 
@@ -121,14 +177,14 @@ void Partida::gameLoop() {
                 }
 
                 if (evento->key.code == Keyboard::R) {
-                    if (this->personajes[0]->getCuerpo()->getisOnWeapon()) {   
+                    if (this->personajes[0]->getCuerpo()->getisOnWeapon()) {
                         this->personajes[0]->setArma(this->niveles->getPistola());
                     }
                 }
-               
+
             }
-            
-             if(evento->type==Event::KeyReleased && evento->key.code==Keyboard::Q) this->personajes[0]->setFlag(true);
+
+            if (evento->type == Event::KeyReleased && evento->key.code == Keyboard::Q) this->personajes[0]->setFlag(true);
         }
 
         if (Keyboard::isKeyPressed(Keyboard::D) || Keyboard::isKeyPressed(Keyboard::A)) {
@@ -160,21 +216,21 @@ void Partida::dibujar() {
             if (personajes[0]->getArma() == NULL)
                 niveles->getEntidades()[i]->getCuerpo()->dibujar(*ventana, 0, 0);
             else {
-                if (niveles->getEntidades()[i]->getCuerpo()->get_id_id() != identificador::pistola){
+                if (niveles->getEntidades()[i]->getCuerpo()->get_id_id() != identificador::pistola) {
                     niveles->getEntidades()[i]->getCuerpo()->dibujar(*ventana, 0, 0);
-                   
+
                 }
                 aux = true;
             }
         }
 
     }
-    
+
     for (int i = 0; i < personajes[0]->getBalas().size(); i++) {
-         if(personajes[0]->getBalas().size()>0 && personajes[0]->getBalas()[i]!=NULL){
-                    personajes[0]->getBalas()[i]->getCuerpo()->dibujar(*ventana,0,0);
-        
-         }
+        if (personajes[0]->getBalas().size() > 0 && personajes[0]->getBalas()[i] != NULL) {
+            personajes[0]->getBalas()[i]->getCuerpo()->dibujar(*ventana, 0, 0);
+
+        }
     }
 
 
@@ -196,8 +252,8 @@ void Partida::Update() {
     //fin del testeo
     deltaTime = clock.restart().asSeconds();
 
- 
-        
+
+
     *tiempo1 = reloj1->getElapsedTime();
 
     if (tiempo2 + frameRate < tiempo1->asSeconds()) {
@@ -207,7 +263,7 @@ void Partida::Update() {
         ventana->clear();
 
         this->niveles->actualizar_fisica();
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < numJ; i++) {
 
             if (personajes[i] != NULL) {
             }
@@ -220,6 +276,15 @@ void Partida::Update() {
             this->niveles->getPistola()->UpdateArma(personajes[0]->getCuerpo()->getBody()->GetLinearVelocity(), personajes[0]->getface());
 
         }
+        
+      
+
+
+                personajes[0]->borrarBala();
+               
+
+       
+
 
         dibujar();
 

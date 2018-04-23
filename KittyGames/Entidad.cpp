@@ -14,7 +14,7 @@
 #include "Entidad.h"
 
 Entidad::Entidad() {
-
+    destroy=false;
 }
 
 Entidad::Entidad(const Entidad& orig) {

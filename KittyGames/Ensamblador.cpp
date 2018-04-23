@@ -44,8 +44,6 @@ Ensamblador::Ensamblador(b2Body * cuerpo, Sprite * sprite, float  weight, float 
     spr_actor->setScale(dimension.GetExtents().x * 2.0f / aux, dimension.GetExtents().y * 2.0f / aux2);
 
 
-    bdy_actor->SetUserData((void*) this);
-    bdy_actor->GetFixtureList()->SetUserData((void*) this);
     
 }
 

@@ -57,6 +57,10 @@ void Pistola::setFixture(b2PolygonShape* forma, float density, float restitution
     cuerpo = new Ensamblador(bdy, spr, weight, height);
     cuerpo->set_id_id(pistola);
 
+    
+    bdy->SetUserData((void*) this);
+    bdy->GetFixtureList()->SetUserData((void*) this);
+
 }
 
 

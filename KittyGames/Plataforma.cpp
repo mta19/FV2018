@@ -54,6 +54,10 @@ void Plataforma::setFixture(b2PolygonShape* forma, float density, float restitut
 
     cuerpo = new Ensamblador(bdy, spr, weight, height);
     cuerpo->set_id_id(plataforma);
+    
+    
+    bdy->SetUserData((void*) this);
+    bdy->GetFixtureList()->SetUserData((void*) this);
 
 }
 

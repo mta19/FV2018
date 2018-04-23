@@ -17,6 +17,8 @@
 #include "motor2D.h"
 #include "Personaje.h"
 #include "Alien.h"
+#include <iostream>
+#include "Bala.h"
 using namespace sf;
 
 #ifndef PARTIDA_H
@@ -51,6 +53,9 @@ private:
 
     Clock clock;
     float deltaTime;
+    
+    std::vector<Bala*> auxiliarBalas;
+    int numJ;
 };
 
 

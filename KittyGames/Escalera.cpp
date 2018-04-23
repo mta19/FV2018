@@ -61,5 +61,9 @@ void Escalera::setFixture(b2PolygonShape* forma, float density, float restitutio
 
     cuerpo = new Ensamblador(bdy, spr, weight, height);
     cuerpo->set_id_id(escalera);
+    
+    
+    bdy->SetUserData((void*) this);
+    bdy->GetFixtureList()->SetUserData((void*) this);
 
 }

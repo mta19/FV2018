@@ -18,7 +18,7 @@
 #include "Box2D/Box2D.h"
 #include <cstdint>
 
-
+#include "Entidad.h"
 
 class Ensamblador;
 
@@ -31,7 +31,7 @@ public:
     
     void BeginContact(b2Contact* contacto);
     void EndContact(b2Contact* contacto);
-    void checkaabb(Ensamblador* ensambladorA, Ensamblador* ensambladorB);
+    void checkaabb(Entidad* ensambladorA, Entidad* ensambladorB);
 
     int getId() {
         return id;

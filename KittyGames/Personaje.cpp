@@ -151,6 +151,10 @@ void Personaje::setFixture(b2PolygonShape * forma, float density, float restitut
     bdy->SetGravityScale(1.5f);
 
     cuerpo = new Ensamblador(bdy, this->getSprite(), weight, height);
+    
+    
+    bdy->SetUserData((void*) this);
+    bdy->GetFixtureList()->SetUserData((void*) this);
 
     cuerpo->set_id_id(identificador::jugador);
 
@@ -178,8 +182,7 @@ void Personaje::setArma(Entidad* weapon) {
 
 void Personaje::disparar() {
 
-    std::cout<<"estoy disparando"<<std::endl;
-    
+  
     Bala *bala = new BalaPistola("balas.png");
     if(this->getface()==true)
     bala->setBody(this->getArma()->getCuerpo()->getBody()->GetWorld(), this->getSprite()->getPosition().x+15, this->getSprite()->getPosition().y+5);
@@ -197,5 +200,25 @@ void Personaje::disparar() {
     }
     
     balas.push_back(bala);
+
+}
+
+
+void Personaje::borrarBala(){
+    
+    
+    for (int i = 0; i < balas.size(); i++) {
+       
+        if(balas[i]->getDestroy()){
+            
+            delete balas[i];
+            
+            balas[i]=NULL;
+            
+            balas.erase(balas.begin()+i);
+            
+        }
+
+    }
 
 }

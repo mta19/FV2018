@@ -47,14 +47,29 @@ public:
     virtual void setFixture(b2PolygonShape * forma, float density, float restitution, float friction) = 0;
 
     void UpdateArma(b2Vec2 vector, bool face) {
-        
-        
+
+
     };
-    
-    Clock * getReloj(){};
-    Time* getTiempo(){};
-    float getCadencia(){};
-    float getDelta(){};
+
+    Clock * getReloj() {
+    };
+
+    Time* getTiempo() {
+    };
+
+    float getCadencia() {
+    };
+
+    float getDelta() {
+    };
+
+    bool getDestroy() {
+        return destroy;
+    };
+
+    void setDestroy(bool aux) {
+        destroy = aux;
+    };
 protected:
 
     Texture * txt;
@@ -69,9 +84,10 @@ protected:
     b2FixtureDef fixdef_;
 
     b2PolygonShape shp_;
-    
-       IntRect uvRect;
 
+    IntRect uvRect;
+
+    bool destroy;
 
 };
 
