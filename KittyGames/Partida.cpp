@@ -19,6 +19,17 @@
 #include "AlienRojo.h"
 #include "AlienRojo.h"
 
+Partida* Partida::pinstance = 0; //Inicializamos el puntero
+
+//Metodo que controla la cantidad de instancias (Patron Singleton)
+Partida* Partida::Instance(Vector2i resolucion, std::string titulo){
+    if(pinstance==0){
+        pinstance = new Partida(resolucion, titulo);
+    }
+    
+    return pinstance; //Retomamos la direccion de la instancia
+}
+
 Partida::Partida(Vector2i resolucion, std::string titulo) {
 
     numJ = 0;

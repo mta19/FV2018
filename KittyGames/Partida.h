@@ -28,6 +28,9 @@ using namespace sf;
 
 class Partida : public Estado {
 public:
+    //Patron Singleton --Mirar PDF Sesion 6
+    static Partida* Instance(Vector2i resolucion, std::string titulo);
+    
     Partida(Vector2i resolucion, std::string titulo);
     Partida(const Partida& orig);
     virtual ~Partida();
@@ -40,7 +43,8 @@ public:
     void Update();
 
 private:
-
+    //Singleton --Mirar PDF Sesion 6
+    static Partida* pinstance;
 
     Nivel * niveles;
     int numRondas;

@@ -26,8 +26,9 @@ using namespace sf;
  */
 int main(int argc, char** argv) {
 
-    Estado * partida=new Partida({1920,1080},"Empieza la partida");
-
+    Estado * partida= Partida::Instance({1920,1080},"Empieza la partida");
+    
+    
     delete partida;
     
     
