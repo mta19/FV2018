@@ -19,19 +19,37 @@
 #include "Partida.h"
 using namespace sf;
 
-
+#include "Ventana.h"
+#include "Evento.h"
+#include "Sprite2D.h"
 
 /*
  * 
  */
 int main(int argc, char** argv) {
 
-    Estado * partida= Partida::Instance({1920,1080},"Empieza la partida");
-    
-    
+    Estado * partida=new Partida({1920,1080},"Empieza la partida");
+
     delete partida;
     
+    Ventana window = Ventana(600,600,"Hola que tal");
     
+    Sprite2D sprite = Sprite2D("suelo.jpg", 0, 0, 50,50);
+    
+    while(window.isOpen()){
+        
+        Evento* event = new Evento();
+        
+        while(window.pollEvent(event)){
+        
+            if(event->isClosed())
+                window.close();
+        }
+        
+        window.clear();
+        sprite.draw(window);
+        window.display();
+    }
     
     return 0;
 }

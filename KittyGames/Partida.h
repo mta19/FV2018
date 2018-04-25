@@ -14,7 +14,6 @@
 #include "SFML/Graphics.hpp"
 #include "Nivel.h"
 #include "Estado.h"
-#include "motor2D.h"
 #include "Personaje.h"
 #include "Alien.h"
 #include <iostream>
