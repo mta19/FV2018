@@ -35,8 +35,7 @@ public:
     
 public:
     
-   static EstadoStanding parado;
-   static EstadoJumping saltando;
+
     
 private:
 
