@@ -19,25 +19,34 @@
 #include "Animacion.h"
 #include <iostream>
 
-class AlienRojo: public Personaje {
+class AlienRojo : public Personaje {
 public:
     AlienRojo();
     AlienRojo(const AlienRojo& orig);
     virtual ~AlienRojo();
-    void setSprite ();
+    void setSprite();
     Sprite* getSprite();
     Texture* getTextura();
     void setAnimacion();
-    Animacion * getAnimacion(){ return animacion;};
+
+    Animacion * getAnimacion() {
+        return animacion;
+    };
     void setFrame(Sprite &spr);
-    
+    void disparar();
+    void dispararEscopeta();
+    void dispararM4();
+    void dispararLanzaCohetes();
+    void handleInput(Event* tecla, Nivel* nivel);
+    void handleInput(Event * tecla, Nivel* nivel, int mando);
+
 private:
 
     Animacion * animacion;
     Texture * textura;
     Sprite * sprite;
-    
-    
+
+
 };
 
 #endif /* ALIENROJO_H */

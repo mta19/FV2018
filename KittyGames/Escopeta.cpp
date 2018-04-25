@@ -5,39 +5,34 @@
  */
 
 /* 
- * File:   BalaPistola.cpp
+ * File:   Escopeta.cpp
  * Author: pedro
  * 
- * Created on 19 de abril de 2018, 13:07
+ * Created on 25 de abril de 2018, 21:44
  */
 
-#include <iostream>
+#include "Escopeta.h"
 
-#include "BalaPistola.h"
+Escopeta::Escopeta(String nombre) {
 
-BalaPistola::BalaPistola(String nombre, int i) {
+
     txt = new Texture;
     txt->loadFromFile(nombre);
     spr = new Sprite(*txt);
 
-    IntRect posicion(0, i*spr->getTexture()->getSize().y/4, spr->getTexture()->getSize().x, spr->getTexture()->getSize().y / 4);
-    spr->setTextureRect(posicion);
+    //IntRect posicion(0, 0, spr->getTexture()->getSize().x / 4, spr->getTexture()->getSize().y / 6.8);
+    //spr->setTextureRect(posicion);
 
-    destroy = false;
+    cadencia = 100;
 }
 
-BalaPistola::BalaPistola(const BalaPistola& orig) {
-
-
+Escopeta::Escopeta(const Escopeta& orig) {
 }
 
-BalaPistola::~BalaPistola() {
-
-    bdy->GetWorld()->DestroyBody(bdy);
-
+Escopeta::~Escopeta() {
 }
 
-void BalaPistola::setFixture(b2PolygonShape* forma, float density, float restitution, float friction) {
+void Escopeta::setFixture(b2PolygonShape* forma, float density, float restitution, float friction) {
 
 
     float weight = spr->getTexture()->getSize().x;
@@ -49,18 +44,20 @@ void BalaPistola::setFixture(b2PolygonShape* forma, float density, float restitu
     fixdef_.friction = friction;
 
 
+    fixdef_.filter.categoryBits = entityCategory::WEAPON;
+    fixdef_.filter.maskBits = entityCategory::FRIENDLY_PLAYER | entityCategory::BOUNDARY;
+    fixdef_.isSensor = true;
+
+    bdy->SetGravityScale(200.f);
+
     fix_ = bdy->CreateFixture(&fixdef_);
 
-    bdy->SetGravityScale(0);
 
     cuerpo = new Ensamblador(bdy, spr, weight, height);
-    cuerpo->set_id_id(balaPistola);
-
+    cuerpo->set_id_id(escopeta);
 
 
     bdy->SetUserData((void*) this);
     bdy->GetFixtureList()->SetUserData((void*) this);
+
 }
-
-
-

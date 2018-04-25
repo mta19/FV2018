@@ -39,12 +39,14 @@ OBJECTFILES= \
 	${OBJECTDIR}/AlienRojo.o \
 	${OBJECTDIR}/Animacion.o \
 	${OBJECTDIR}/Bala.o \
+	${OBJECTDIR}/BalaEscopeta.o \
 	${OBJECTDIR}/BalaPistola.o \
 	${OBJECTDIR}/Caja.o \
 	${OBJECTDIR}/Collision.o \
 	${OBJECTDIR}/Ensamblador.o \
 	${OBJECTDIR}/Entidad.o \
 	${OBJECTDIR}/Escalera.o \
+	${OBJECTDIR}/Escopeta.o \
 	${OBJECTDIR}/Estado.o \
 	${OBJECTDIR}/EstadoJumping.o \
 	${OBJECTDIR}/EstadoMoving.o \
@@ -119,6 +121,11 @@ ${OBJECTDIR}/Bala.o: Bala.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/usr/include/Box2D -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Bala.o Bala.cpp
 
+${OBJECTDIR}/BalaEscopeta.o: BalaEscopeta.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/usr/include/Box2D -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/BalaEscopeta.o BalaEscopeta.cpp
+
 ${OBJECTDIR}/BalaPistola.o: BalaPistola.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -148,6 +155,11 @@ ${OBJECTDIR}/Escalera.o: Escalera.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/usr/include/Box2D -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Escalera.o Escalera.cpp
+
+${OBJECTDIR}/Escopeta.o: Escopeta.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/usr/include/Box2D -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Escopeta.o Escopeta.cpp
 
 ${OBJECTDIR}/Estado.o: Estado.cpp
 	${MKDIR} -p ${OBJECTDIR}

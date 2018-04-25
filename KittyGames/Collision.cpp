@@ -82,6 +82,54 @@ void Collision::BeginContact(b2Contact* contacto) {
 
                 }
 
+                if (cuerpoA->getCuerpo()->get_id_id() == identificador::jugador && cuerpoB->getCuerpo()->get_id_id() == identificador::escopeta) {
+
+                    std::cout << "hay sensor escopeta" << std::endl;
+
+                    cuerpoA->getCuerpo()->isOnWeaponSG(sensorA);
+
+                }
+
+                if (cuerpoB->getCuerpo()->get_id_id() == identificador::jugador && cuerpoA->getCuerpo()->get_id_id() == identificador::escopeta) {
+
+                    std::cout << "hay sensor escopeta" << std::endl;
+
+                    cuerpoB->getCuerpo()->isOnWeaponSG(sensorB);
+
+                }
+
+                if (cuerpoA->getCuerpo()->get_id_id() == identificador::jugador && cuerpoB->getCuerpo()->get_id_id() == identificador::M4) {
+
+                    std::cout << "hay sensor M4" << std::endl;
+
+                    cuerpoA->getCuerpo()->isOnWeaponM4(sensorA);
+
+                }
+
+                if (cuerpoB->getCuerpo()->get_id_id() == identificador::jugador && cuerpoA->getCuerpo()->get_id_id() == identificador::M4) {
+
+                    std::cout << "hay sensor M4" << std::endl;
+
+                    cuerpoB->getCuerpo()->isOnWeaponM4(sensorB);
+
+                }
+
+                if (cuerpoA->getCuerpo()->get_id_id() == identificador::jugador && cuerpoB->getCuerpo()->get_id_id() == identificador::lanzaCohetes) {
+
+                    std::cout << "hay sensor lanzaCohetes" << std::endl;
+
+                    cuerpoA->getCuerpo()->isOnWeaponRL(sensorA);
+
+                }
+
+                if (cuerpoB->getCuerpo()->get_id_id() == identificador::jugador && cuerpoA->getCuerpo()->get_id_id() == identificador::lanzaCohetes) {
+
+                    std::cout << "hay sensor lanzaCohetes" << std::endl;
+
+                    cuerpoB->getCuerpo()->isOnWeaponRL(sensorB);
+
+                }
+
             }
 
             void* fixtureUserData = contacto->GetFixtureA()->GetUserData();
@@ -151,6 +199,56 @@ void Collision::EndContact(b2Contact* contacto) {
 
                 }
 
+                //no se si esta bien
+
+                if (cuerpoA->getCuerpo()->get_id_id() == identificador::jugador && cuerpoB->getCuerpo()->get_id_id() == identificador::escopeta) {
+
+                    std::cout << "hay sensor escopeta" << std::endl;
+
+                    cuerpoA->getCuerpo()->isOnWeaponSG(false);
+
+                }
+
+                if (cuerpoB->getCuerpo()->get_id_id() == identificador::jugador && cuerpoA->getCuerpo()->get_id_id() == identificador::escopeta) {
+
+                    std::cout << "hay sensor escopeta" << std::endl;
+
+                    cuerpoB->getCuerpo()->isOnWeaponSG(false);
+
+                }
+
+                if (cuerpoA->getCuerpo()->get_id_id() == identificador::jugador && cuerpoB->getCuerpo()->get_id_id() == identificador::M4) {
+
+                    std::cout << "hay sensor M4" << std::endl;
+
+                    cuerpoA->getCuerpo()->isOnWeaponM4(false);
+
+                }
+
+                if (cuerpoB->getCuerpo()->get_id_id() == identificador::jugador && cuerpoA->getCuerpo()->get_id_id() == identificador::M4) {
+
+                    std::cout << "hay sensor M4" << std::endl;
+
+                    cuerpoB->getCuerpo()->isOnWeaponM4(false);
+
+                }
+
+                if (cuerpoA->getCuerpo()->get_id_id() == identificador::jugador && cuerpoB->getCuerpo()->get_id_id() == identificador::lanzaCohetes) {
+
+                    std::cout << "hay sensor lanzaCohetes" << std::endl;
+
+                    cuerpoA->getCuerpo()->isOnWeaponRL(false);
+
+                }
+
+                if (cuerpoB->getCuerpo()->get_id_id() == identificador::jugador && cuerpoA->getCuerpo()->get_id_id() == identificador::lanzaCohetes) {
+
+                    std::cout << "hay sensor lanzaCohetes" << std::endl;
+
+                    cuerpoB->getCuerpo()->isOnWeaponRL(false);
+
+                }
+
             }
 
             void *fixtureUserData = contacto->GetFixtureA()->GetUserData();
@@ -202,7 +300,24 @@ void Collision::checkaabb(Entidad* a, Entidad* b) {
 
             case identificador::balaPistola:
 
-                std::cout << "hay colision" << std::endl;
+
+
+                break;
+
+            case identificador::balaCohete:
+
+;
+
+                break;
+
+            case identificador::balaEscopeta:
+
+       
+
+                break;
+
+            case identificador::balaM4:
+
 
                 break;
 
@@ -212,13 +327,14 @@ void Collision::checkaabb(Entidad* a, Entidad* b) {
 
         }
     }
-    
-    if(a->getCuerpo()->get_id_id()==identificador::balaPistola){
-        
-       
-       std::cout << "hay colision2" << std::endl;
+
+    if (a->getCuerpo()->get_id_id() == identificador::balaPistola || a->getCuerpo()->get_id_id() == identificador::balaCohete || a->getCuerpo()->get_id_id() == identificador::balaEscopeta
+            || a->getCuerpo()->get_id_id() == identificador::balaM4) {
+
         a->setDestroy(true);
+        
     }
+
 }
 
 

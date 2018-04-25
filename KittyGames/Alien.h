@@ -25,12 +25,20 @@ public:
     Alien(const Alien& orig);
     virtual ~Alien();
     void setSprite();
-    Animacion * getAnimacion(){ return animacion;};
-   
-private:
-    
 
-    
+    Animacion * getAnimacion() {
+        return animacion;
+    };
+    void handleInput(Event* tecla, Nivel* nivel);
+    void handleInput(Event * tecla, Nivel* nivel, int mando);
+    void disparar();
+    void dispararEscopeta();
+    void dispararM4();
+    void dispararLanzaCohetes();
+private:
+
+
+
     //Animacion * animacion;
 };
 

@@ -37,7 +37,7 @@ Personaje::~Personaje() {
 
 void Personaje::handleInput(Event* tecla, Nivel* nivel) {
 
-    EstadoPersonaje* estado = estado_->handleInput(*this, tecla, nivel);
+    /*EstadoPersonaje* estado = estado_->handleInput(*this, tecla, nivel);
 
 
     if (estado != NULL) {
@@ -53,35 +53,34 @@ void Personaje::handleInput(Event* tecla, Nivel* nivel) {
 
         if (this->getArma() != NULL && tecla->key.code == Keyboard::Q && flagAux == true) {
 
+            if (this->getArma()->getCuerpo()->get_id_id() == identificador::pistola) {
+                disparar();
+                flagAux = false;
 
-            disparar();
-            flagAux = false;
+            }
 
+            if (this->getArma()->getCuerpo()->get_id_id() == identificador::M4) {
+                disparar();
+                flagAux = false;
 
+            }
+
+            if (this->getArma()->getCuerpo()->get_id_id() == identificador::escopeta) {
+                disparar();
+                flagAux = false;
+
+            }
+
+            if (this->getArma()->getCuerpo()->get_id_id() == identificador::lanzaCohetes) {
+                disparar();
+                flagAux = false;
+
+            }
         }
     }
-
+*/
 }
 
-void Personaje::handleInput(Event* tecla, Nivel* nivel, int mando) {
-
-    EstadoPersonaje* estado = estado_->handleInputJoystick(*this, tecla, nivel, mando);
-
-    if (estado != NULL) {
-
-        delete estado_;
-
-        estado_ = estado;
-
-        if (this->getArma() != NULL && Joystick::isButtonPressed(mando, 2) && flagAux == true) {
-
-
-            disparar();
-            flagAux = false;
-
-        }
-    }
-}
 
 int Personaje::getVida() {
     return vida;
@@ -211,23 +210,12 @@ void Personaje::tirarArma() {
 void Personaje::disparar() {
 
 
-    Bala *bala = new BalaPistola("balas.png");
-    if (this->getface() == true)
-        bala->setBody(this->getArma()->getCuerpo()->getBody()->GetWorld(), this->getSprite()->getPosition().x + 15, this->getSprite()->getPosition().y + 5);
-    else
-        bala->setBody(this->getArma()->getCuerpo()->getBody()->GetWorld(), this->getSprite()->getPosition().x - 15, this->getSprite()->getPosition().y + 5);
+
+}
+
+void Personaje::dispararEscopeta() {
 
 
-    b2PolygonShape shp_;
-    shp_.SetAsBox(3.f, 6.f);
-    bala->setFixture(&shp_, 1.f, 0.f, 0.f);
-    if (this->getface() == true)
-        bala->getCuerpo()->getBody()->SetLinearVelocity({50, 0});
-    else {
-        bala->getCuerpo()->getBody()->SetLinearVelocity({-50, 0});
-    }
-
-    balas.push_back(bala);
 
 }
 
@@ -257,7 +245,6 @@ void Personaje::updateArma() {
     uvRect.height = this->getArma()->getTexture()->getSize().y;
     if (this->getface() == true) {
 
-        std::cout << "entro wey" << std::endl;
         uvRect.left = 0;
         uvRect.width = abs(uvRect.width);
     } else {

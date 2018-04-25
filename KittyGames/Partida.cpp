@@ -24,11 +24,12 @@
 Partida* Partida::pinstance = 0; //Inicializamos el puntero
 
 //Metodo que controla la cantidad de instancias (Patron Singleton)
-Partida* Partida::Instance(Vector2i resolucion, std::string titulo){
-    if(pinstance==0){
+
+Partida* Partida::Instance(Vector2i resolucion, std::string titulo) {
+    if (pinstance == 0) {
         pinstance = new Partida(resolucion, titulo);
     }
-    
+
     return pinstance; //Retomamos la direccion de la instancia
 }
 
@@ -51,13 +52,13 @@ Partida::Partida(Vector2i resolucion, std::string titulo) {
     personajes[0]->setSprite();
     this->niveles->anyadirPersonaje(personajes[0]);
 
-    
+
     //Cargamos la fuente
-    if(fuente.loadFromFile("fonts/PrStart.ttf")==false){
+    if (fuente.loadFromFile("fonts/PrStart.ttf") == false) {
         std::cerr << "Error cargando la la fuente fonts/PrStart.ttf";
         exit(0);
     }
-    
+
 
 
     for (int i = 1; i < 4; i++) {
@@ -104,7 +105,7 @@ Nivel Partida::get_Nivel() {
 void Partida::gameLoop() {
 
     while (ventana->isOpen()) {
-       
+
         while (ventana->pollEvent(*evento)) {
 
             if (evento->type == Event::Closed) {
@@ -133,6 +134,41 @@ void Partida::gameLoop() {
                         }
 
                     }
+
+                    if (this->personajes[0]->getCuerpo()->getisOnWeaponSG()) {
+                        int auxiliar2 = this->niveles->getEscopeta().size();
+                        for (int i = 0; i < auxiliar2; i++) {
+
+                            this->personajes[0]->setArma(this->niveles->getEscopeta()[i]);
+
+
+                        }
+
+                    }
+
+                    if (this->personajes[0]->getCuerpo()->getisOnWeaponM4()) {
+
+                        int auxiliar3 = this->niveles->getM4().size();
+                        for (int i = 0; i < auxiliar3; i++) {
+
+                            this->personajes[0]->setArma(this->niveles->getM4()[i]);
+
+
+                        }
+
+                    }
+
+                    if (this->personajes[0]->getCuerpo()->getisOnWeaponM4()) {
+
+                        int auxiliar4 = this->niveles->getLanzaCohetes().size();
+                        for (int i = 0; i < auxiliar4; i++) {
+
+                            this->personajes[0]->setArma(this->niveles->getLanzaCohetes()[i]);
+
+
+                        }
+
+                    }
                 }
 
 
@@ -144,9 +180,9 @@ void Partida::gameLoop() {
 
                 this->personajes[0]->setFlag(true);
 
-    
-    
-    
+
+
+
             }
 
             for (int i = 0; i < personajes.size(); i++) {
@@ -166,6 +202,41 @@ void Partida::gameLoop() {
                             }
 
                         }
+                        
+                         if (this->personajes[i+1]->getCuerpo()->getisOnWeaponSG()) {
+                        int auxiliar2 = this->niveles->getEscopeta().size();
+                        for (int z = 0; z < auxiliar2; z++) {
+
+                            this->personajes[i+1]->setArma(this->niveles->getEscopeta()[z]);
+
+
+                        }
+
+                    }
+
+                    if (this->personajes[i+1]->getCuerpo()->getisOnWeaponM4()) {
+
+                        int auxiliar3 = this->niveles->getM4().size();
+                        for (int z = 0; z < auxiliar3; z++) {
+
+                            this->personajes[i+1]->setArma(this->niveles->getM4()[z]);
+
+
+                        }
+
+                    }
+
+                    if (this->personajes[i+1]->getCuerpo()->getisOnWeaponM4()) {
+
+                        int auxiliar4 = this->niveles->getLanzaCohetes().size();
+                        for (int z = 0; z < auxiliar4; z++) {
+
+                            this->personajes[i+1]->setArma(this->niveles->getLanzaCohetes()[z]);
+
+
+                        }
+
+                    }
                     }
 
 
@@ -194,7 +265,7 @@ void Partida::gameLoop() {
 
         if (Event::JoystickButtonPressed || Event::JoystickMoved) {
 
-
+            
             for (int i = 0; i < personajes.size(); i++) {
                 if (sf::Joystick::isConnected(i)) {
 
@@ -204,8 +275,7 @@ void Partida::gameLoop() {
 
                         if (sf::Joystick::isButtonPressed(i, z)) {
 
-
-
+                            
                             this->personajes[i + 1]->handleInput(evento, this->niveles, i);
 
                             if (this->personajes[i + 1]->getCuerpo()->getNumFoot() >= 1) {
@@ -229,9 +299,6 @@ void Partida::gameLoop() {
 
             if (sf::Joystick::isConnected(i)) {
 
-
-
-
                 if (Joystick::isButtonPressed(i, 5) || Joystick::isButtonPressed(i, 4)) {
 
                     this->personajes[i + 1]->handleInput(evento, this->niveles, i);
@@ -254,7 +321,7 @@ void Partida::gameLoop() {
             if (!this->personajes[i]->getCuerpo()->getisOnstair()) personajes[i]->getCuerpo()->getBody()->SetGravityScale(1.5f);
         }
 
-        
+
         this->Update();
 
 
@@ -263,30 +330,29 @@ void Partida::gameLoop() {
 
 }
 
-void Partida::definirTexto(int pos, String texto){
-    
-    
-    
-    if(pos>0 && pos<= sizeof(textopantalla)-1){
-    textopantalla[pos].setFont(this->fuente);
-    textopantalla[pos].setScale(0.5, 0.5);
-    textopantalla[pos].setPosition(350, 75);
-    textopantalla[pos].setString(texto);
-    }
-    else if(pos==0){
-    textopantalla[pos].setFont(this->fuente);
-    textopantalla[pos].setScale(0.5, 0.5);
-    textopantalla[pos].setPosition(350, 75);
-         textopantalla[0].setString(  std::to_string((int)trunc(reloj1->getElapsedTime().asSeconds())));
+void Partida::definirTexto(int pos, String texto) {
+
+
+
+    if (pos > 0 && pos <= sizeof (textopantalla) - 1) {
+        textopantalla[pos].setFont(this->fuente);
+        textopantalla[pos].setScale(0.5, 0.5);
+        textopantalla[pos].setPosition(350, 75);
+        textopantalla[pos].setString(texto);
+    } else if (pos == 0) {
+        textopantalla[pos].setFont(this->fuente);
+        textopantalla[pos].setScale(0.5, 0.5);
+        textopantalla[pos].setPosition(350, 75);
+        textopantalla[0].setString(std::to_string((int) trunc(reloj1->getElapsedTime().asSeconds())));
     }
 }
 
-void Partida::configurarTexto(int pos, float x, float y, String texto){
-    
-     if(pos>0 && pos<= sizeof(textopantalla)-1){
-         textopantalla[pos].setPosition(x, y);
-         textopantalla[pos].setString(texto);
-     }
+void Partida::configurarTexto(int pos, float x, float y, String texto) {
+
+    if (pos > 0 && pos <= sizeof (textopantalla) - 1) {
+        textopantalla[pos].setPosition(x, y);
+        textopantalla[pos].setString(texto);
+    }
 }
 
 void Partida::dibujar() {
@@ -400,17 +466,17 @@ void Partida::Update() {
         personajes[0]->borrarBala();
 
 
-       //Contador de tiempo original
+        //Contador de tiempo original
         definirTexto(0, "NULL");
         ventana->draw(textopantalla[0]);
-        
-        
+
+
         //Resto de textos en pantalla
         definirTexto(1, "Hola");
-        configurarTexto(1, 50, 50 , "GUAY");
+        configurarTexto(1, 50, 50, "GUAY");
         ventana->draw(textopantalla[1]);
-        
-        
+
+
         dibujar();
 
 

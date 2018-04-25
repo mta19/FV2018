@@ -22,6 +22,7 @@
 #include "Entidad.h"
 #include "Personaje.h"
 #include "Pistola.h"
+#include "Escopeta.h"
 
 using namespace sf;
 
@@ -36,6 +37,7 @@ public:
     void anyadirObjetoDinamico(float x, float y, float weight, float height);
     void anyadirEscalera(float x, float y, float weight, float height);
     void anyadirArma(float x, float y, float weight, float height);
+    void anyadirEscopeta(float x, float y, float weight, float height);
     void anyadirPersonaje(Personaje * personaje);
 
     std::vector<Entidad*>& getEntidades() {
@@ -58,6 +60,42 @@ public:
         for (int i = 0; i < entidades.size(); i++) {
 
             if (this->getEntidades()[i] != NULL && this->getEntidades()[i]->getCuerpo()->get_id_id() == identificador::pistola)
+                armas.push_back(this->getEntidades()[i]);
+
+        }
+
+        return armas;
+    }
+
+    std::vector<Entidad*>& getEscopeta() { //conseguimos la entidad
+
+        for (int i = 0; i < entidades.size(); i++) {
+
+            if (this->getEntidades()[i] != NULL && this->getEntidades()[i]->getCuerpo()->get_id_id() == identificador::escopeta)
+                armas.push_back(this->getEntidades()[i]);
+
+        }
+
+        return armas;
+    }
+
+    std::vector<Entidad*>& getLanzaCohetes() { //conseguimos la entidad
+
+        for (int i = 0; i < entidades.size(); i++) {
+
+            if (this->getEntidades()[i] != NULL && this->getEntidades()[i]->getCuerpo()->get_id_id() == identificador::lanzaCohetes)
+                armas.push_back(this->getEntidades()[i]);
+
+        }
+
+        return armas;
+    }
+
+    std::vector<Entidad*>& getM4() { //conseguimos la entidad
+
+        for (int i = 0; i < entidades.size(); i++) {
+
+            if (this->getEntidades()[i] != NULL && this->getEntidades()[i]->getCuerpo()->get_id_id() == identificador::M4)
                 armas.push_back(this->getEntidades()[i]);
 
         }

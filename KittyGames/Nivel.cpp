@@ -45,7 +45,9 @@ Nivel::Nivel() {
     bdy = new b2Body*[10];
 
 
-    this->anyadirArma(350.f, 125.f, 10.f, 13.f);
+    this->anyadirArma(350.f, 125.f, 7.f, 6.f);
+    
+    this->anyadirEscopeta(220.f, 160.f, 12.f, 8.f);
 
     this->anyadirEscalera(400.f, 220.f, 12.f, 105.f);
 
@@ -104,9 +106,22 @@ void Nivel::anyadirEscalera(float x, float y, float weight, float height) {
 
 void Nivel::anyadirArma(float x, float y, float weight, float height) {
 
+    Entidad* entidad = new Pistola("pistola.png");
+    entidad->setBody(mundo, x, y);
+
+    shp_[contadorEn].SetAsBox(weight, height); // esto estaba en el de antes
+
+    entidad->setFixture(&shp_[contadorEn], 0.5f, 0.f, 0.3f);
+
+    entidades.push_back(entidad);
+
+}
+
+void Nivel::anyadirEscopeta(float x, float y, float weight, float height) {
 
 
-    Entidad* entidad = new Pistola("metralleta.png");
+
+    Entidad* entidad = new Escopeta("escopeta.png");
     entidad->setBody(mundo, x, y);
 
     shp_[contadorEn].SetAsBox(weight, height); // esto estaba en el de antes

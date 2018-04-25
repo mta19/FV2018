@@ -23,7 +23,7 @@
 
 class BalaPistola : public Bala {
 public:
-    BalaPistola(String nombre);
+    BalaPistola(String nombre, int i);
     BalaPistola(const BalaPistola& orig);
     virtual ~BalaPistola();
      void setFixture(b2PolygonShape * forma, float density, float restitution, float friction);
