@@ -34,6 +34,8 @@ public:
     Partida(const Partida& orig);
     virtual ~Partida();
 
+    void definirTexto(int pos, String texto);
+    void configurarTexto(int pos, float x, float y, String texto);
     void set_camera();
     void set_Nivel(Nivel* nivel);
     void gameLoop();
@@ -52,7 +54,9 @@ private:
     Collision procesadorColisiones;
 
     Event * evento;
-
+    
+    Font fuente;
+    Text textopantalla[10];
     Clock clock;
     float deltaTime;
     
