@@ -50,15 +50,17 @@ OBJECTFILES= \
 	${OBJECTDIR}/EstadoMoving.o \
 	${OBJECTDIR}/EstadoPersonaje.o \
 	${OBJECTDIR}/EstadoStanding.o \
+	${OBJECTDIR}/Evento.o \
 	${OBJECTDIR}/Nivel.o \
 	${OBJECTDIR}/Partida.o \
 	${OBJECTDIR}/Personaje.o \
 	${OBJECTDIR}/Pistola.o \
 	${OBJECTDIR}/Plataforma.o \
 	${OBJECTDIR}/SpawnerMonstruo.o \
+	${OBJECTDIR}/Sprite2D.o \
+	${OBJECTDIR}/Ventana.o \
 	${OBJECTDIR}/Weapon.o \
-	${OBJECTDIR}/main.o \
-	${OBJECTDIR}/motor2D.o
+	${OBJECTDIR}/main.o
 
 
 # C Compiler Flags
@@ -172,6 +174,11 @@ ${OBJECTDIR}/EstadoStanding.o: EstadoStanding.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/usr/include/Box2D -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/EstadoStanding.o EstadoStanding.cpp
 
+${OBJECTDIR}/Evento.o: Evento.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/usr/include/Box2D -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Evento.o Evento.cpp
+
 ${OBJECTDIR}/Nivel.o: Nivel.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -202,6 +209,16 @@ ${OBJECTDIR}/SpawnerMonstruo.o: SpawnerMonstruo.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/usr/include/Box2D -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/SpawnerMonstruo.o SpawnerMonstruo.cpp
 
+${OBJECTDIR}/Sprite2D.o: Sprite2D.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/usr/include/Box2D -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sprite2D.o Sprite2D.cpp
+
+${OBJECTDIR}/Ventana.o: Ventana.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/usr/include/Box2D -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Ventana.o Ventana.cpp
+
 ${OBJECTDIR}/Weapon.o: Weapon.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -211,11 +228,6 @@ ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/usr/include/Box2D -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
-
-${OBJECTDIR}/motor2D.o: motor2D.cpp
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/usr/include/Box2D -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/motor2D.o motor2D.cpp
 
 # Subprojects
 .build-subprojects:

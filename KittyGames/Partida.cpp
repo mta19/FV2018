@@ -11,6 +11,7 @@
  * Created on 19 de marzo de 2018, 19:36
  */
 #include <iostream>
+#include <stdio.h>
 #include "Partida.h"
 #include "Personaje.h"
 #include "Alien.h"
@@ -18,6 +19,18 @@
 #include "EstadoStanding.h"
 #include "AlienRojo.h"
 #include "AlienRojo.h"
+
+
+Partida* Partida::pinstance = 0; //Inicializamos el puntero
+
+//Metodo que controla la cantidad de instancias (Patron Singleton)
+Partida* Partida::Instance(Vector2i resolucion, std::string titulo){
+    if(pinstance==0){
+        pinstance = new Partida(resolucion, titulo);
+    }
+    
+    return pinstance; //Retomamos la direccion de la instancia
+}
 
 Partida::Partida(Vector2i resolucion, std::string titulo) {
 
@@ -37,6 +50,14 @@ Partida::Partida(Vector2i resolucion, std::string titulo) {
     personajes.push_back(new Alien());
     personajes[0]->setSprite();
     this->niveles->anyadirPersonaje(personajes[0]);
+
+    
+    //Cargamos la fuente
+    if(fuente.loadFromFile("fonts/PrStart.ttf")==false){
+        std::cerr << "Error cargando la la fuente fonts/PrStart.ttf";
+        exit(0);
+    }
+    
 
 
     for (int i = 1; i < 4; i++) {
@@ -82,17 +103,13 @@ Nivel Partida::get_Nivel() {
 
 void Partida::gameLoop() {
 
-
-
     while (ventana->isOpen()) {
-
+       
         while (ventana->pollEvent(*evento)) {
 
             if (evento->type == Event::Closed) {
                 ventana->close();
             }
-
-            //personaje0
 
             if (evento->type == Event::KeyPressed) {
 
@@ -127,6 +144,9 @@ void Partida::gameLoop() {
 
                 this->personajes[0]->setFlag(true);
 
+    
+    
+    
             }
 
             for (int i = 0; i < personajes.size(); i++) {
@@ -234,13 +254,39 @@ void Partida::gameLoop() {
             if (!this->personajes[i]->getCuerpo()->getisOnstair()) personajes[i]->getCuerpo()->getBody()->SetGravityScale(1.5f);
         }
 
-
-
-
+        
         this->Update();
+
 
     }
 
+
+}
+
+void Partida::definirTexto(int pos, String texto){
+    
+    
+    
+    if(pos>0 && pos<= sizeof(textopantalla)-1){
+    textopantalla[pos].setFont(this->fuente);
+    textopantalla[pos].setScale(0.5, 0.5);
+    textopantalla[pos].setPosition(350, 75);
+    textopantalla[pos].setString(texto);
+    }
+    else if(pos==0){
+    textopantalla[pos].setFont(this->fuente);
+    textopantalla[pos].setScale(0.5, 0.5);
+    textopantalla[pos].setPosition(350, 75);
+         textopantalla[0].setString(  std::to_string((int)trunc(reloj1->getElapsedTime().asSeconds())));
+    }
+}
+
+void Partida::configurarTexto(int pos, float x, float y, String texto){
+    
+     if(pos>0 && pos<= sizeof(textopantalla)-1){
+         textopantalla[pos].setPosition(x, y);
+         textopantalla[pos].setString(texto);
+     }
 }
 
 void Partida::dibujar() {
@@ -294,6 +340,7 @@ void Partida::dibujar() {
 
 
 
+
     /* if (aux == true) {
          std::cout << "entro aqui?" << std::endl;
          for (int i = 0; i < this->niveles->getEntidades().size(); i++) {
@@ -308,18 +355,13 @@ void Partida::dibujar() {
      }
      */
 
+
 }
 
 void Partida::Update() {
 
-
-
-
     //fin del testeo
     deltaTime = clock.restart().asSeconds();
-
-
-
     *tiempo1 = reloj1->getElapsedTime();
 
     if (tiempo2 + frameRate < tiempo1->asSeconds()) {
@@ -346,6 +388,7 @@ void Partida::Update() {
         }
 
 
+
         for (int i = 0; i < personajes.size(); i++) {
 
             personajes[i]->borrarBala();
@@ -354,10 +397,20 @@ void Partida::Update() {
         }
 
 
+        personajes[0]->borrarBala();
 
 
-
-
+       //Contador de tiempo original
+        definirTexto(0, "NULL");
+        ventana->draw(textopantalla[0]);
+        
+        
+        //Resto de textos en pantalla
+        definirTexto(1, "Hola");
+        configurarTexto(1, 50, 50 , "GUAY");
+        ventana->draw(textopantalla[1]);
+        
+        
         dibujar();
 
 

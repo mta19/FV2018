@@ -34,8 +34,7 @@ public:
     virtual void accion(Personaje& personaje, Nivel* nivel, Event * tecla)=0;
     
 public:
-    
-    
+
 private:
 
      

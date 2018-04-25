@@ -14,7 +14,6 @@
 #include "SFML/Graphics.hpp"
 #include "Nivel.h"
 #include "Estado.h"
-#include "motor2D.h"
 #include "Personaje.h"
 #include "Alien.h"
 #include <iostream>
@@ -28,10 +27,15 @@ using namespace sf;
 
 class Partida : public Estado {
 public:
+    //Patron Singleton --Mirar PDF Sesion 6
+    static Partida* Instance(Vector2i resolucion, std::string titulo);
+    
     Partida(Vector2i resolucion, std::string titulo);
     Partida(const Partida& orig);
     virtual ~Partida();
 
+    void definirTexto(int pos, String texto);
+    void configurarTexto(int pos, float x, float y, String texto);
     void set_camera();
     void set_Nivel(Nivel* nivel);
     void gameLoop();
@@ -40,7 +44,8 @@ public:
     void Update();
 
 private:
-
+    //Singleton --Mirar PDF Sesion 6
+    static Partida* pinstance;
 
     Nivel * niveles;
     int numRondas;
@@ -49,7 +54,9 @@ private:
     Collision procesadorColisiones;
 
     Event * evento;
-
+    
+    Font fuente;
+    Text textopantalla[10];
     Clock clock;
     float deltaTime;
     
