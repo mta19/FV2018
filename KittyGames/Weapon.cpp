@@ -20,6 +20,8 @@ Weapon::Weapon() {
     tiempo= new Time;
     reloj= new Clock;
     
+    cogida=false;
+    
 }
 
 Weapon::Weapon(const Weapon& orig) {
@@ -39,6 +41,7 @@ void Weapon::setBody(b2World * mundo, float x, float y){
 
 void Weapon::Update(b2Vec2 vector){
   
+    
     
 }
 

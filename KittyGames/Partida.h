@@ -53,6 +53,8 @@ private:
     Clock clock;
     float deltaTime;
     
+    std::vector<Joystick*> mandos;
+    
     std::vector<Personaje*> personajes;
     int numJ;
 };

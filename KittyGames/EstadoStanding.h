@@ -30,6 +30,7 @@ public:
     EstadoStanding(const EstadoStanding& orig);
     virtual ~EstadoStanding();
     EstadoPersonaje* handleInput(Personaje& persona, Event* tecla, Nivel * nivel);
+    EstadoPersonaje* handleInputJoystick(Personaje& persona, Event* tecla, Nivel * nivel, int mando);
     void accion(Personaje& personaje, Nivel* nivel, Event * tecla);
 private:
 

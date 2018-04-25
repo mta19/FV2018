@@ -44,9 +44,11 @@ public:
     virtual Animacion * getAnimacion() = 0;
     void setFrame(Sprite &spr);
     virtual void handleInput(Event* tecla, Nivel* nivel);
+    void handleInput(Event * tecla, Nivel* nivel, int mando);
     void setBody(b2World * mundo, float x, float y);
     void setArma(Entidad* weapon);
     void disparar();
+    void tirarArma();
 
     b2Vec2 getspeed() {
         return speed;
@@ -107,6 +109,8 @@ public:
     
     
     void borrarBala();
+    
+    void updateArma();
 
 private:
 
@@ -138,7 +142,8 @@ protected:
     float deltaTime;
 
     
-
+    
+    
 };
 
 #endif /* PERSONAJE_H */

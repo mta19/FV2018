@@ -216,7 +216,7 @@ void Collision::checkaabb(Entidad* a, Entidad* b) {
     if(a->getCuerpo()->get_id_id()==identificador::balaPistola){
         
        
-        
+       std::cout << "hay colision2" << std::endl;
         a->setDestroy(true);
     }
 }

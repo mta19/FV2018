@@ -12,7 +12,7 @@
  */
 
 #include "EstadoPersonaje.h"
-#include "EstadoStanding.h"
+
 
 EstadoPersonaje::EstadoPersonaje() {
 }
@@ -23,7 +23,3 @@ EstadoPersonaje::EstadoPersonaje(const EstadoPersonaje& orig) {
 EstadoPersonaje::~EstadoPersonaje() {
 }
 
-
-
-EstadoStanding EstadoPersonaje::parado;
-//EstadoJumping EstadoPersonaje::saltando;
