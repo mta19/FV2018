@@ -34,7 +34,10 @@ public:
     virtual void accion(Personaje& personaje, Nivel* nivel, Event * tecla)=0;
     
 public:
-
+    
+   static EstadoStanding parado;
+   static EstadoJumping saltando;
+    
 private:
 
      
