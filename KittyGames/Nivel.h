@@ -55,52 +55,56 @@ public:
         return NULL;
     };*/
 
-    std::vector<Entidad*>& getPistola() { //conseguimos la entidad
+    Entidad* getPistola() { //conseguimos la entidad
 
         for (int i = 0; i < entidades.size(); i++) {
 
-            if (this->getEntidades()[i] != NULL && this->getEntidades()[i]->getCuerpo()->get_id_id() == identificador::pistola)
+            if (this->getEntidades()[i] != NULL && this->getEntidades()[i]->getCuerpo()->get_id_id() == identificador::pistola) {
                 armas.push_back(this->getEntidades()[i]);
-
+                return (this->getEntidades()[i]);
+            }
         }
 
-        return armas;
+        return NULL;
     }
 
-    std::vector<Entidad*>& getEscopeta() { //conseguimos la entidad
+    Entidad* getEscopeta() { //conseguimos la entidad
 
         for (int i = 0; i < entidades.size(); i++) {
 
-            if (this->getEntidades()[i] != NULL && this->getEntidades()[i]->getCuerpo()->get_id_id() == identificador::escopeta)
+            if (this->getEntidades()[i] != NULL && this->getEntidades()[i]->getCuerpo()->get_id_id() == identificador::escopeta) {
                 armas.push_back(this->getEntidades()[i]);
-
+                return (this->getEntidades()[i]);
+            }
         }
 
-        return armas;
+        return NULL;
     }
 
-    std::vector<Entidad*>& getLanzaCohetes() { //conseguimos la entidad
+    Entidad* getLanzaCohetes() { //conseguimos la entidad
 
         for (int i = 0; i < entidades.size(); i++) {
 
-            if (this->getEntidades()[i] != NULL && this->getEntidades()[i]->getCuerpo()->get_id_id() == identificador::lanzaCohetes)
+            if (this->getEntidades()[i] != NULL && this->getEntidades()[i]->getCuerpo()->get_id_id() == identificador::lanzaCohetes) {
                 armas.push_back(this->getEntidades()[i]);
-
+                return (this->getEntidades()[i]);
+            }
         }
 
-        return armas;
+        return NULL;
     }
 
-    std::vector<Entidad*>& getM4() { //conseguimos la entidad
+    Entidad* getM4() { //conseguimos la entidad
 
         for (int i = 0; i < entidades.size(); i++) {
 
-            if (this->getEntidades()[i] != NULL && this->getEntidades()[i]->getCuerpo()->get_id_id() == identificador::M4)
+            if (this->getEntidades()[i] != NULL && this->getEntidades()[i]->getCuerpo()->get_id_id() == identificador::M4) {
                 armas.push_back(this->getEntidades()[i]);
-
+                return (this->getEntidades()[i]);
+            }
         }
 
-        return armas;
+        return NULL;
     }
 
     Collision* getColisiones() {

@@ -53,6 +53,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/EstadoPersonaje.o \
 	${OBJECTDIR}/EstadoStanding.o \
 	${OBJECTDIR}/Evento.o \
+	${OBJECTDIR}/LanzaCohetes.o \
+	${OBJECTDIR}/M4.o \
 	${OBJECTDIR}/Nivel.o \
 	${OBJECTDIR}/Partida.o \
 	${OBJECTDIR}/Personaje.o \
@@ -62,6 +64,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/Sprite2D.o \
 	${OBJECTDIR}/Ventana.o \
 	${OBJECTDIR}/Weapon.o \
+	${OBJECTDIR}/balaLC.o \
+	${OBJECTDIR}/balaM4.o \
 	${OBJECTDIR}/main.o
 
 
@@ -179,6 +183,16 @@ ${OBJECTDIR}/Evento.o: Evento.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Evento.o Evento.cpp
 
+${OBJECTDIR}/LanzaCohetes.o: LanzaCohetes.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/LanzaCohetes.o LanzaCohetes.cpp
+
+${OBJECTDIR}/M4.o: M4.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/M4.o M4.cpp
+
 ${OBJECTDIR}/Nivel.o: Nivel.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -223,6 +237,16 @@ ${OBJECTDIR}/Weapon.o: Weapon.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Weapon.o Weapon.cpp
+
+${OBJECTDIR}/balaLC.o: balaLC.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/balaLC.o balaLC.cpp
+
+${OBJECTDIR}/balaM4.o: balaM4.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/balaM4.o balaM4.cpp
 
 ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}
