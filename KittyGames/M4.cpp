@@ -1,0 +1,53 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/* 
+ * File:   M4.cpp
+ * Author: pedro
+ * 
+ * Created on 26 de abril de 2018, 18:24
+ */
+
+#include "M4.h"
+
+M4::M4(String nombre) {
+}
+
+M4::M4(const M4& orig) {
+}
+
+M4::~M4() {
+}
+
+void M4::setFixture(b2PolygonShape* forma, float density, float restitution, float friction) {
+
+
+    float weight = spr->getTexture()->getSize().x;
+    float height = spr->getTexture()->getSize().y;
+
+    fixdef_.shape = forma;
+    fixdef_.density = density;
+    fixdef_.restitution = restitution;
+    fixdef_.friction = friction;
+
+
+    fixdef_.filter.categoryBits = entityCategory::WEAPON;
+    fixdef_.filter.maskBits = entityCategory::FRIENDLY_PLAYER | entityCategory::BOUNDARY;
+    fixdef_.isSensor = true;
+
+    bdy->SetGravityScale(200.f);
+
+    fix_ = bdy->CreateFixture(&fixdef_);
+
+
+    cuerpo = new Ensamblador(bdy, spr, weight, height);
+    cuerpo->set_id_id(identificador::M4);
+
+
+    bdy->SetUserData((void*) this);
+    bdy->GetFixtureList()->SetUserData((void*) this);
+
+}
