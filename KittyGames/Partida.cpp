@@ -172,16 +172,15 @@ void Partida::gameLoop() {
 }
 
 void Partida::definirTexto(int pos, String texto){
+ 
     
-    
-    
-    if(pos>0 && pos<= sizeof(textopantalla)-1){
+    if(pos>0 && pos<= ( (sizeof(textopantalla)/sizeof(Text)) -1)){
     textopantalla[pos].setFont(this->fuente);
-    textopantalla[pos].setScale(0.5, 0.5);
+    textopantalla[pos].setScale(0.25, 0.25);
     textopantalla[pos].setPosition(350, 75);
     textopantalla[pos].setString(texto);
     }
-    else if(pos==0){
+    if(pos==0){
     textopantalla[pos].setFont(this->fuente);
     textopantalla[pos].setScale(0.5, 0.5);
     textopantalla[pos].setPosition(350, 75);
@@ -191,7 +190,7 @@ void Partida::definirTexto(int pos, String texto){
 
 void Partida::configurarTexto(int pos, float x, float y, String texto){
     
-     if(pos>0 && pos<= sizeof(textopantalla)-1){
+     if(pos>0 && pos<= ( (sizeof(textopantalla)/sizeof(Text)) -1) ){
          textopantalla[pos].setPosition(x, y);
          textopantalla[pos].setString(texto);
      }
@@ -264,15 +263,20 @@ void Partida::Update() {
 
         personajes[0]->borrarBala();
 
-       //Contador de tiempo original
+        //Contador de tiempo original
         definirTexto(0, "NULL");
+        //textopantalla[0].setString(std::to_string ( (sizeof(textopantalla)/sizeof(Text)) -1) );
         ventana->draw(textopantalla[0]);
         
         
-        //Resto de textos en pantalla
-        definirTexto(1, "Hola");
-        configurarTexto(1, 50, 50 , "GUAY");
-        ventana->draw(textopantalla[1]);
+        //Resto de textos en pantalla de los jugadores
+        for(int i=1; i<=4; i++){
+            int aux= 100;
+            
+            definirTexto(i, "Hola");
+            configurarTexto(i, 175+100*(i-1), 325 , "PLAYER " + std::to_string(i));
+            ventana->draw(textopantalla[i]);
+        }
         
         
         dibujar();
