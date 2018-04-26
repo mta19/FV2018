@@ -54,11 +54,14 @@ private:
     Collision procesadorColisiones;
 
     Event * evento;
+    Event * evento2;
     
     Font fuente;
     Text textopantalla[10];
     Clock clock;
     float deltaTime;
+    
+    std::vector<Joystick*> mandos;
     
     std::vector<Personaje*> personajes;
     int numJ;

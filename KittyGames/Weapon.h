@@ -28,6 +28,8 @@ public:
     sf::Clock * getReloj(){return reloj;};
     sf::Time * getTiempo(){return tiempo;};
     float getCadencia(){return cadencia;};
+    bool getCogida(){return cogida;};
+    bool setCogida(bool aux){cogida=aux;};
  
 protected:
 
@@ -42,7 +44,8 @@ protected:
     sf::Time * tiempo;
     
     float cadencia;
-  
+    
+    bool cogida;
     
     
 };

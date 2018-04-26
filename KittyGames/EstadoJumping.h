@@ -32,6 +32,7 @@ class EstadoJumping: public EstadoPersonaje{
     EstadoJumping(const EstadoJumping& orig);
     virtual ~EstadoJumping();
     EstadoPersonaje* handleInput(Personaje& personaje, Event* tecla, Nivel* nivel);
+    EstadoPersonaje* handleInputJoystick(Personaje& persona, Event* tecla, Nivel * nivel, int mando);
     void accion(Personaje& personaje, Nivel* nivel, Event * tecla);
 
 private:

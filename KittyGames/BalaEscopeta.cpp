@@ -5,39 +5,35 @@
  */
 
 /* 
- * File:   BalaPistola.cpp
+ * File:   BalaEscopeta.cpp
  * Author: pedro
  * 
- * Created on 19 de abril de 2018, 13:07
+ * Created on 25 de abril de 2018, 22:22
  */
 
-#include <iostream>
+#include "BalaEscopeta.h"
 
-#include "BalaPistola.h"
+BalaEscopeta::BalaEscopeta(String nombre, int i) {
 
-BalaPistola::BalaPistola(String nombre, int i) {
     txt = new Texture;
     txt->loadFromFile(nombre);
     spr = new Sprite(*txt);
 
-    IntRect posicion(0, i*spr->getTexture()->getSize().y/4, spr->getTexture()->getSize().x, spr->getTexture()->getSize().y / 4);
+    IntRect posicion(0, i*spr->getTexture()->getSize().y / 4.f, spr->getTexture()->getSize().y, spr->getTexture()->getSize().y / 4.f);
     spr->setTextureRect(posicion);
 
     destroy = false;
 }
 
-BalaPistola::BalaPistola(const BalaPistola& orig) {
-
-
+BalaEscopeta::BalaEscopeta(const BalaEscopeta& orig) {
+    
 }
 
-BalaPistola::~BalaPistola() {
-
-    bdy->GetWorld()->DestroyBody(bdy);
-
+BalaEscopeta::~BalaEscopeta() {
+      bdy->GetWorld()->DestroyBody(bdy);
 }
 
-void BalaPistola::setFixture(b2PolygonShape* forma, float density, float restitution, float friction) {
+void BalaEscopeta::setFixture(b2PolygonShape* forma, float density, float restitution, float friction) {
 
 
     float weight = spr->getTexture()->getSize().x;

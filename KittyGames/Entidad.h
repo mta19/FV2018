@@ -50,6 +50,9 @@ public:
 
 
     };
+    
+    bool getCogida(){return false;};
+    bool setCogida(bool aux){};
 
     Clock * getReloj() {
     };
@@ -70,6 +73,8 @@ public:
     void setDestroy(bool aux) {
         destroy = aux;
     };
+    Sprite* getSprite(){return spr;};
+    Texture* getTexture(){return txt;};
 protected:
 
     Texture * txt;

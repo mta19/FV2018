@@ -5,36 +5,34 @@
  */
 
 /* 
- * File:   Pistola.cpp
+ * File:   Escopeta.cpp
  * Author: pedro
  * 
- * Created on 21 de marzo de 2018, 15:48
+ * Created on 25 de abril de 2018, 21:44
  */
 
-#include "Pistola.h"
-#include "SFML/Graphics.hpp"
-Pistola::Pistola(String nombre) {
-    
-     txt = new Texture;
+#include "Escopeta.h"
+
+Escopeta::Escopeta(String nombre) {
+
+
+    txt = new Texture;
     txt->loadFromFile(nombre);
     spr = new Sprite(*txt);
-    
+
     //IntRect posicion(0, 0, spr->getTexture()->getSize().x / 4, spr->getTexture()->getSize().y / 6.8);
     //spr->setTextureRect(posicion);
 
-    cadencia=100;
+    cadencia = 100;
 }
 
-Pistola::Pistola(const Pistola& orig) {
+Escopeta::Escopeta(const Escopeta& orig) {
 }
 
-Pistola::~Pistola() {
-    bdy->GetWorld()->DestroyBody(bdy);
+Escopeta::~Escopeta() {
 }
 
-
-
-void Pistola::setFixture(b2PolygonShape* forma, float density, float restitution, float friction) {
+void Escopeta::setFixture(b2PolygonShape* forma, float density, float restitution, float friction) {
 
 
     float weight = spr->getTexture()->getSize().x;
@@ -45,27 +43,21 @@ void Pistola::setFixture(b2PolygonShape* forma, float density, float restitution
     fixdef_.restitution = restitution;
     fixdef_.friction = friction;
 
-    
+
     fixdef_.filter.categoryBits = entityCategory::WEAPON;
     fixdef_.filter.maskBits = entityCategory::FRIENDLY_PLAYER | entityCategory::BOUNDARY;
     fixdef_.isSensor = true;
-    
+
     bdy->SetGravityScale(200.f);
-    
+
     fix_ = bdy->CreateFixture(&fixdef_);
 
 
     cuerpo = new Ensamblador(bdy, spr, weight, height);
-    cuerpo->set_id_id(pistola);
+    cuerpo->set_id_id(escopeta);
 
-    
+
     bdy->SetUserData((void*) this);
     bdy->GetFixtureList()->SetUserData((void*) this);
 
 }
-
-
-
-
-
-

@@ -24,9 +24,9 @@ Personaje::Personaje() {
     arma = NULL;
     row = 0;
     estado_ = new EstadoStanding();
-    flagAux=true;
-    tiempoAux=0;
-   
+    flagAux = true;
+    tiempoAux = 0;
+
 }
 
 Personaje::Personaje(const Personaje& orig) {
@@ -37,7 +37,7 @@ Personaje::~Personaje() {
 
 void Personaje::handleInput(Event* tecla, Nivel* nivel) {
 
-    EstadoPersonaje* estado = estado_->handleInput(*this, tecla, nivel);
+    /*EstadoPersonaje* estado = estado_->handleInput(*this, tecla, nivel);
 
 
     if (estado != NULL) {
@@ -48,20 +48,38 @@ void Personaje::handleInput(Event* tecla, Nivel* nivel) {
 
         estado_ = estado;
 
-     
-       
-   
-        
-        if (this->getArma() != NULL && tecla->key.code == Keyboard::Q && flagAux==true ){
 
-        
-            disparar();
-            flagAux=false;
+
+
+        if (this->getArma() != NULL && tecla->key.code == Keyboard::Q && flagAux == true) {
+
+            if (this->getArma()->getCuerpo()->get_id_id() == identificador::pistola) {
+                disparar();
+                flagAux = false;
+
+            }
+
+            if (this->getArma()->getCuerpo()->get_id_id() == identificador::M4) {
+                disparar();
+                flagAux = false;
+
+            }
+
+            if (this->getArma()->getCuerpo()->get_id_id() == identificador::escopeta) {
+                disparar();
+                flagAux = false;
+
+            }
+
+            if (this->getArma()->getCuerpo()->get_id_id() == identificador::lanzaCohetes) {
+                disparar();
+                flagAux = false;
+
             }
         }
-
     }
-
+*/
+}
 
 
 int Personaje::getVida() {
@@ -151,8 +169,8 @@ void Personaje::setFixture(b2PolygonShape * forma, float density, float restitut
     bdy->SetGravityScale(1.5f);
 
     cuerpo = new Ensamblador(bdy, this->getSprite(), weight, height);
-    
-    
+
+
     bdy->SetUserData((void*) this);
     bdy->GetFixtureList()->SetUserData((void*) this);
 
@@ -178,47 +196,64 @@ void Personaje::setArma(Entidad* weapon) {
     arma->getCuerpo()->getBody()->SetActive(false);
 
 
+
+
+}
+
+void Personaje::tirarArma() {
+
+    delete arma;
+    arma = NULL;
+
 }
 
 void Personaje::disparar() {
 
-  
-    Bala *bala = new BalaPistola("balas.png");
-    if(this->getface()==true)
-    bala->setBody(this->getArma()->getCuerpo()->getBody()->GetWorld(), this->getSprite()->getPosition().x+15, this->getSprite()->getPosition().y+5);
-    else
-            bala->setBody(this->getArma()->getCuerpo()->getBody()->GetWorld(), this->getSprite()->getPosition().x-15, this->getSprite()->getPosition().y+5);
 
-
-    b2PolygonShape shp_;
-    shp_.SetAsBox(3.f, 6.f);
-    bala->setFixture(&shp_, 1.f, 0.f, 0.f);
-    if(this->getface()==true)
-    bala->getCuerpo()->getBody()->SetLinearVelocity({30,0});
-    else{
-        bala->getCuerpo()->getBody()->SetLinearVelocity({-30,0});
-    }
-    
-    balas.push_back(bala);
 
 }
 
+void Personaje::dispararEscopeta() {
 
-void Personaje::borrarBala(){
-    
-    
+
+
+}
+
+void Personaje::borrarBala() {
+
+
     for (int i = 0; i < balas.size(); i++) {
-       
-        if(balas[i]->getDestroy()){
-            
+
+        if (balas[i]->getDestroy()) {
+
             delete balas[i];
-            
-            balas[i]=NULL;
-            
-            balas.erase(balas.begin()+i);
-            
+
+            balas[i] = NULL;
+
+            balas.erase(balas.begin() + i);
+
         }
 
     }
+
+}
+
+void Personaje::updateArma() {
+
+    IntRect uvRect;
+    uvRect.width = this->getArma()->getTexture()->getSize().x;
+    uvRect.height = this->getArma()->getTexture()->getSize().y;
+    if (this->getface() == true) {
+
+        uvRect.left = 0;
+        uvRect.width = abs(uvRect.width);
+    } else {
+        uvRect.left = abs(uvRect.width);
+        uvRect.width = -abs(uvRect.width);
+
+    }
+    this->getArma()->getSprite()->setTextureRect(uvRect);
+
+
 
 }

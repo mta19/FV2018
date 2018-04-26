@@ -17,13 +17,11 @@
 #include "SFML/Graphics.hpp"
 #include "Box2D/Box2D.h"
 
-
 enum identificador {
-    jugador, enemigo, caja, plataforma, escalera, pistola, balaPistola
+    jugador, enemigo, caja, plataforma, escalera, pistola, balaPistola, escopeta, balaEscopeta, lanzaCohetes, balaCohete, M4, balaM4
 };
 
 using namespace sf;
-
 
 class Ensamblador {
 public:
@@ -43,7 +41,7 @@ public:
     identificador get_id_id() {
         return id_id;
     };
-    
+
     void isOnStair(bool aux) {
         onStair = aux;
     };
@@ -51,7 +49,9 @@ public:
     bool getisOnstair() {
         return onStair;
     };
-    
+
+    //pistola
+
     void isOnWeapon(bool aux) {
         onWeapon = aux;
     };
@@ -61,7 +61,38 @@ public:
     };
 
 
-    
+    //M4
+
+    void isOnWeaponM4(bool aux) {
+        onWeaponM4 = aux;
+    };
+
+    bool getisOnWeaponM4() {
+        return onWeaponM4;
+    };
+
+
+    //Escopeta
+
+    void isOnWeaponSG(bool aux) {
+        onWeaponSG = aux;
+    };
+
+    bool getisOnWeaponSG() {
+        return onWeaponSG;
+    };
+
+
+    //LanzaCohetes
+
+    void isOnWeaponRL(bool aux) {
+        onWeaponRL = aux;
+    };
+
+    bool getisOnWeaponRL() {
+        return onWeaponRL;
+    };
+
     int getNumFoot() {
         return numFootContacts;
     };
@@ -73,10 +104,10 @@ public:
     void bajarNumFoot() {
         numFootContacts--;
     };
- 
+
 
 private:
-    
+
 
     Sprite * spr_actor;
     b2Body * bdy_actor;
@@ -84,14 +115,17 @@ private:
     b2Vec2 posicion;
 
     identificador id_id;
- 
-    
-    int numFootContacts;
-    
-    bool onStair = false;
-    bool onWeapon=false;
 
- 
+
+    int numFootContacts;
+
+    bool onStair = false;
+    bool onWeapon = false;
+    bool onWeaponSG = false;
+    bool onWeaponRL = false;
+    bool onWeaponM4 = false;
+
+
 };
 
 #endif /* ENSAMBLADOR_H */

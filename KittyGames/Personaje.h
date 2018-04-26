@@ -26,6 +26,7 @@
 #include <vector>
 #include <iostream>
 #include <cmath>
+#include "BalaEscopeta.h"
 
 using namespace sf;
 
@@ -44,9 +45,14 @@ public:
     virtual Animacion * getAnimacion() = 0;
     void setFrame(Sprite &spr);
     virtual void handleInput(Event* tecla, Nivel* nivel);
+    virtual void handleInput(Event * tecla, Nivel* nivel, int mando)=0;
     void setBody(b2World * mundo, float x, float y);
     void setArma(Entidad* weapon);
     void disparar();
+    void dispararEscopeta();
+    void dispararM4();
+    void dispararLanzaCohetes();
+    void tirarArma();
 
     b2Vec2 getspeed() {
         return speed;
@@ -107,6 +113,8 @@ public:
     
     
     void borrarBala();
+    
+    void updateArma();
 
 private:
 
@@ -138,7 +146,8 @@ protected:
     float deltaTime;
 
     
-
+    
+    
 };
 
 #endif /* PERSONAJE_H */

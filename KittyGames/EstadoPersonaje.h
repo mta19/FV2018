@@ -23,8 +23,6 @@
 #include "Nivel.h"
 //#include "EstadoStanding.h"
 
-class EstadoStanding;
-class EstadoJumping;
 using namespace sf;
 class EstadoPersonaje {
 public:
@@ -32,12 +30,11 @@ public:
     EstadoPersonaje(const EstadoPersonaje& orig);
     virtual ~EstadoPersonaje();
     virtual EstadoPersonaje* handleInput(Personaje& persona, Event* tecla, Nivel * nivel)=0;
+    virtual EstadoPersonaje* handleInputJoystick(Personaje& persona, Event* tecla, Nivel * nivel, int mando)=0;
     virtual void accion(Personaje& personaje, Nivel* nivel, Event * tecla)=0;
     
 public:
     
-   static EstadoStanding parado;
-   static EstadoJumping saltando;
 
     
 private:
