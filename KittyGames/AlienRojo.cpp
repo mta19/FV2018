@@ -12,9 +12,12 @@
  */
 
 #include "AlienRojo.h"
+#include "Animacion.h"
+#include "Personaje.h"
 #include "EstadoPersonaje.h"
 
 AlienRojo::AlienRojo() {
+    Personaje::setNombre("ALIEN ROJO");
 }
 
 AlienRojo::AlienRojo(const AlienRojo& orig) {
