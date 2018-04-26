@@ -39,6 +39,7 @@ Partida::Partida(Vector2i resolucion, std::string titulo) {
     deltaTime = 0.0f;
 
     evento = new Event;
+    evento = new Event;
     fps = 60;
     frameRate = 1 / fps;
 
@@ -143,9 +144,7 @@ void Partida::gameLoop() {
 
 
                         }
-
                     }
-
                     if (this->personajes[0]->getCuerpo()->getisOnWeaponM4()) {
 
                         int auxiliar3 = this->niveles->getM4().size();
@@ -172,8 +171,6 @@ void Partida::gameLoop() {
                 }
 
 
-
-
             }
 
             if (evento->type == Event::KeyReleased && evento->key.code == Keyboard::Q) {
@@ -185,67 +182,109 @@ void Partida::gameLoop() {
 
             }
 
-            for (int i = 0; i < personajes.size(); i++) {
+            if (evento->type == Event::JoystickButtonPressed) {
 
-                if (sf::Joystick::isConnected(i)) {
+                for (int i = 0; i < personajes.size(); i++) {
 
-                    if (Joystick::isButtonPressed(i, 3)) {
+                    if (Joystick::isConnected(i)) {
 
-                        //hay que haber varios "getIsOn Weapon", uno para pistola, uno para la escopeta, uno para..)
-                        if (this->personajes[i + 1]->getCuerpo()->getisOnWeapon()) {
-                            int auxiliar = this->niveles->getPistola().size();
-                            for (int z = 0; z < auxiliar; z++) {
+                        this->personajes[evento->joystickButton.joystickId + 1]->handleInput(evento, this->niveles, evento->joystickButton.joystickId);
+
+                        if (this->personajes[evento->joystickButton.joystickId + 1]->getCuerpo()->getNumFoot() >= 1) {
+
+                            this->personajes[evento->joystickButton.joystickId + 1]->handleInput(evento, this->niveles, evento->joystickButton.joystickId);
+
+                        }
 
 
-                                this->personajes[i + 1]->setArma(this->niveles->getPistola()[z]);
+
+                        if (evento->joystickButton.button == 3) {
+                            std::cout << "entro aqui weys" << std::endl;
+                            //hay que haber varios "getIsOn Weapon", uno para pistola, uno para la escopeta, uno para..)
+                            if (this->personajes[evento->joystickButton.joystickId + 1]->getCuerpo()->getisOnWeapon()) {
+                                int auxiliar = this->niveles->getPistola().size();
+                                for (int z = 0; z < auxiliar; z++) {
+
+
+                                    this->personajes[evento->joystickButton.joystickId + 1]->setArma(this->niveles->getPistola()[z]);
+
+                                }
 
                             }
 
+                            if (this->personajes[i + 1]->getCuerpo()->getisOnWeaponSG()) {
+                                int auxiliar2 = this->niveles->getEscopeta().size();
+                                for (int z = 0; z < auxiliar2; z++) {
+
+                                    this->personajes[i + 1]->setArma(this->niveles->getEscopeta()[z]);
+
+
+                                }
+
+                            }
+
+                            if (this->personajes[i + 1]->getCuerpo()->getisOnWeaponM4()) {
+
+                                int auxiliar3 = this->niveles->getM4().size();
+                                for (int z = 0; z < auxiliar3; z++) {
+
+                                    this->personajes[i + 1]->setArma(this->niveles->getM4()[z]);
+
+
+                                }
+
+                            }
+
+                            if (this->personajes[i + 1]->getCuerpo()->getisOnWeaponM4()) {
+
+                                int auxiliar4 = this->niveles->getLanzaCohetes().size();
+                                for (int z = 0; z < auxiliar4; z++) {
+
+                                    this->personajes[i + 1]->setArma(this->niveles->getLanzaCohetes()[z]);
+
+
+                                }
+
+                            }
                         }
-                        
-                         if (this->personajes[i+1]->getCuerpo()->getisOnWeaponSG()) {
-                        int auxiliar2 = this->niveles->getEscopeta().size();
-                        for (int z = 0; z < auxiliar2; z++) {
-
-                            this->personajes[i+1]->setArma(this->niveles->getEscopeta()[z]);
 
 
-                        }
-
-                    }
-
-                    if (this->personajes[i+1]->getCuerpo()->getisOnWeaponM4()) {
-
-                        int auxiliar3 = this->niveles->getM4().size();
-                        for (int z = 0; z < auxiliar3; z++) {
-
-                            this->personajes[i+1]->setArma(this->niveles->getM4()[z]);
-
-
-                        }
-
-                    }
-
-                    if (this->personajes[i+1]->getCuerpo()->getisOnWeaponM4()) {
-
-                        int auxiliar4 = this->niveles->getLanzaCohetes().size();
-                        for (int z = 0; z < auxiliar4; z++) {
-
-                            this->personajes[i+1]->setArma(this->niveles->getLanzaCohetes()[z]);
-
-
-                        }
-
-                    }
-                    }
-
-
-                    if (Event::JoystickButtonReleased && Joystick::isButtonPressed(i, 2)) {
-
-                        this->personajes[i + 1]->setFlag(true);
 
                     }
                 }
+            }
+
+            for (int z = 0; z < personajes.size(); z++) {
+
+
+                if (sf::Joystick::isConnected(z)) {
+
+                    if (evento->type == Event::JoystickButtonReleased && evento->joystickButton.button == 2) {
+
+                        this->personajes[evento->joystickButton.joystickId + 1]->setFlag(true);
+
+                    }
+
+                }
+
+            }
+
+
+
+
+        }
+
+
+        for (int i = 0; i < personajes.size(); i++) {
+
+            if (sf::Joystick::isConnected(i)) {
+
+                if (Joystick::isButtonPressed(i, 5) || Joystick::isButtonPressed(i, 4)) {
+
+                    this->personajes[i + 1]->handleInput(evento, this->niveles, i);
+
+                }
+
             }
         }
 
@@ -263,50 +302,77 @@ void Partida::gameLoop() {
          }*/
 
 
-        if (Event::JoystickButtonPressed || Event::JoystickMoved) {
-
-            
-            for (int i = 0; i < personajes.size(); i++) {
-                if (sf::Joystick::isConnected(i)) {
+        //de aqui
 
 
 
-                    for (int z = 0; z < sf::Joystick::getButtonCount(i); z++) {
 
-                        if (sf::Joystick::isButtonPressed(i, z)) {
+        //aqui
+        /* for (int i = 0; i < personajes.size(); i++) {
 
-                            
-                            this->personajes[i + 1]->handleInput(evento, this->niveles, i);
+             if (sf::Joystick::isConnected(i)) {
 
-                            if (this->personajes[i + 1]->getCuerpo()->getNumFoot() >= 1) {
+                 /*  if (Joystick::isButtonPressed(i, 3)) {
 
-                                this->personajes[i + 1]->handleInput(evento, this->niveles, i);
+                       //hay que haber varios "getIsOn Weapon", uno para pistola, uno para la escopeta, uno para..)
+                       if (this->personajes[i + 1]->getCuerpo()->getisOnWeapon()) {
+                           int auxiliar = this->niveles->getPistola().size();
+                           for (int z = 0; z < auxiliar; z++) {
 
-                            }
+
+                               this->personajes[i + 1]->setArma(this->niveles->getPistola()[z]);
+
+                           }
+
+                       }
+
+                       if (this->personajes[i + 1]->getCuerpo()->getisOnWeaponSG()) {
+                           int auxiliar2 = this->niveles->getEscopeta().size();
+                           for (int z = 0; z < auxiliar2; z++) {
+
+                               this->personajes[i + 1]->setArma(this->niveles->getEscopeta()[z]);
 
 
+                           }
 
-                        }
+                       }
 
-                    }
+                       if (this->personajes[i + 1]->getCuerpo()->getisOnWeaponM4()) {
 
-                }
+                           int auxiliar3 = this->niveles->getM4().size();
+                           for (int z = 0; z < auxiliar3; z++) {
+
+                               this->personajes[i + 1]->setArma(this->niveles->getM4()[z]);
+
+
+                           }
+
+                       }
+
+                       if (this->personajes[i + 1]->getCuerpo()->getisOnWeaponM4()) {
+
+                           int auxiliar4 = this->niveles->getLanzaCohetes().size();
+                           for (int z = 0; z < auxiliar4; z++) {
+
+                               this->personajes[i + 1]->setArma(this->niveles->getLanzaCohetes()[z]);
+
+
+                           }
+
+                       }
+                   }*/
+
+
+        /*    if (Event::JoystickButtonReleased && Joystick::isButtonPressed(i, 2)) {
+
+                this->personajes[i + 1]->setFlag(true);
 
             }
         }
+    }*/
 
-        for (int i = 0; i < personajes.size(); i++) {
 
-            if (sf::Joystick::isConnected(i)) {
 
-                if (Joystick::isButtonPressed(i, 5) || Joystick::isButtonPressed(i, 4)) {
-
-                    this->personajes[i + 1]->handleInput(evento, this->niveles, i);
-
-                }
-
-            }
-        }
 
 
         //cosas aparte
@@ -324,10 +390,7 @@ void Partida::gameLoop() {
 
         this->Update();
 
-
     }
-
-
 }
 
 void Partida::definirTexto(int pos, String texto) {

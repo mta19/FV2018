@@ -54,6 +54,7 @@ private:
     Collision procesadorColisiones;
 
     Event * evento;
+    Event * evento2;
     
     Font fuente;
     Text textopantalla[10];
