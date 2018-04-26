@@ -57,7 +57,7 @@ void Alien::handleInput(Event* tecla, Nivel* nivel) {
 
 
 
-        if (this->getArma() != NULL && tecla->key.code == Keyboard::Q && flagAux == true) {
+        if (this->getArma() != NULL  && Keyboard::isKeyPressed(Keyboard::Q)  && flagAux == true) {
 
             if (this->getArma()->getCuerpo()->get_id_id() == identificador::pistola) {
                 disparar();

@@ -22,6 +22,8 @@
       <itemPath>EstadoPersonaje.h</itemPath>
       <itemPath>EstadoStanding.h</itemPath>
       <itemPath>Evento.h</itemPath>
+      <itemPath>LanzaCohetes.h</itemPath>
+      <itemPath>M4.h</itemPath>
       <itemPath>Nivel.h</itemPath>
       <itemPath>Partida.h</itemPath>
       <itemPath>Personaje.h</itemPath>
@@ -31,6 +33,8 @@
       <itemPath>Sprite2D.h</itemPath>
       <itemPath>Ventana.h</itemPath>
       <itemPath>Weapon.h</itemPath>
+      <itemPath>balaLC.h</itemPath>
+      <itemPath>balaM4.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -57,6 +61,8 @@
       <itemPath>EstadoPersonaje.cpp</itemPath>
       <itemPath>EstadoStanding.cpp</itemPath>
       <itemPath>Evento.cpp</itemPath>
+      <itemPath>LanzaCohetes.cpp</itemPath>
+      <itemPath>M4.cpp</itemPath>
       <itemPath>Nivel.cpp</itemPath>
       <itemPath>Partida.cpp</itemPath>
       <itemPath>Personaje.cpp</itemPath>
@@ -66,6 +72,8 @@
       <itemPath>Sprite2D.cpp</itemPath>
       <itemPath>Ventana.cpp</itemPath>
       <itemPath>Weapon.cpp</itemPath>
+      <itemPath>balaLC.cpp</itemPath>
+      <itemPath>balaM4.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -192,6 +200,14 @@
       </item>
       <item path="Evento.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="LanzaCohetes.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="LanzaCohetes.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="M4.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="M4.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Nivel.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Nivel.h" ex="false" tool="3" flavor2="0">
@@ -227,6 +243,14 @@
       <item path="Weapon.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Weapon.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="balaLC.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="balaLC.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="balaM4.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="balaM4.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -323,6 +347,14 @@
       </item>
       <item path="Evento.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="LanzaCohetes.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="LanzaCohetes.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="M4.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="M4.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Nivel.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Nivel.h" ex="false" tool="3" flavor2="0">
@@ -358,6 +390,14 @@
       <item path="Weapon.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Weapon.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="balaLC.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="balaLC.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="balaM4.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="balaM4.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
