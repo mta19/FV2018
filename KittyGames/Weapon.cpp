@@ -21,6 +21,7 @@ Weapon::Weapon() {
     reloj= new Clock;
     
     cogida=false;
+   
     
 }
 

@@ -98,17 +98,17 @@ void Collision::BeginContact(b2Contact* contacto) {
 
                 }
 
-                if (cuerpoA->getCuerpo()->get_id_id() == identificador::jugador && cuerpoB->getCuerpo()->get_id_id() == identificador::M4) {
+                if (cuerpoA->getCuerpo()->get_id_id() == identificador::jugador && cuerpoB->getCuerpo()->get_id_id() == identificador::m4) {
 
-                    std::cout << "hay sensor M4" << std::endl;
+                    std::cout << "hay sensor m4" << std::endl;
 
                     cuerpoA->getCuerpo()->isOnWeaponM4(sensorA);
 
                 }
 
-                if (cuerpoB->getCuerpo()->get_id_id() == identificador::jugador && cuerpoA->getCuerpo()->get_id_id() == identificador::M4) {
+                if (cuerpoB->getCuerpo()->get_id_id() == identificador::jugador && cuerpoA->getCuerpo()->get_id_id() == identificador::m4) {
 
-                    std::cout << "hay sensor M4" << std::endl;
+                    std::cout << "hay sensor m4" << std::endl;
 
                     cuerpoB->getCuerpo()->isOnWeaponM4(sensorB);
 
@@ -217,17 +217,17 @@ void Collision::EndContact(b2Contact* contacto) {
 
                 }
 
-                if (cuerpoA->getCuerpo()->get_id_id() == identificador::jugador && cuerpoB->getCuerpo()->get_id_id() == identificador::M4) {
+                if (cuerpoA->getCuerpo()->get_id_id() == identificador::jugador && cuerpoB->getCuerpo()->get_id_id() == identificador::m4) {
 
-                    std::cout << "hay sensor M4" << std::endl;
+                    std::cout << "hay sensor m4" << std::endl;
 
                     cuerpoA->getCuerpo()->isOnWeaponM4(false);
 
                 }
 
-                if (cuerpoB->getCuerpo()->get_id_id() == identificador::jugador && cuerpoA->getCuerpo()->get_id_id() == identificador::M4) {
+                if (cuerpoB->getCuerpo()->get_id_id() == identificador::jugador && cuerpoA->getCuerpo()->get_id_id() == identificador::m4) {
 
-                    std::cout << "hay sensor M4" << std::endl;
+                    std::cout << "hay sensor m4" << std::endl;
 
                     cuerpoB->getCuerpo()->isOnWeaponM4(false);
 

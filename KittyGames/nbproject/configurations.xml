@@ -9,6 +9,7 @@
       <itemPath>Animacion.h</itemPath>
       <itemPath>Bala.h</itemPath>
       <itemPath>BalaEscopeta.h</itemPath>
+      <itemPath>BalaM4.h</itemPath>
       <itemPath>BalaPistola.h</itemPath>
       <itemPath>Caja.h</itemPath>
       <itemPath>Collision.h</itemPath>
@@ -34,7 +35,6 @@
       <itemPath>Ventana.h</itemPath>
       <itemPath>Weapon.h</itemPath>
       <itemPath>balaLC.h</itemPath>
-      <itemPath>balaM4.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -48,6 +48,7 @@
       <itemPath>Animacion.cpp</itemPath>
       <itemPath>Bala.cpp</itemPath>
       <itemPath>BalaEscopeta.cpp</itemPath>
+      <itemPath>BalaM4.cpp</itemPath>
       <itemPath>BalaPistola.cpp</itemPath>
       <itemPath>Caja.cpp</itemPath>
       <itemPath>Collision.cpp</itemPath>
@@ -73,7 +74,6 @@
       <itemPath>Ventana.cpp</itemPath>
       <itemPath>Weapon.cpp</itemPath>
       <itemPath>balaLC.cpp</itemPath>
-      <itemPath>balaM4.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -148,6 +148,10 @@
       </item>
       <item path="BalaEscopeta.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="BalaM4.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="BalaM4.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="BalaPistola.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="BalaPistola.h" ex="false" tool="3" flavor2="0">
@@ -247,10 +251,6 @@
       <item path="balaLC.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="balaLC.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="balaM4.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="balaM4.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -295,6 +295,10 @@
       </item>
       <item path="BalaEscopeta.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="BalaM4.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="BalaM4.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="BalaPistola.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="BalaPistola.h" ex="false" tool="3" flavor2="0">
@@ -394,10 +398,6 @@
       <item path="balaLC.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="balaLC.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="balaM4.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="balaM4.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>

@@ -26,6 +26,8 @@ enum entityCategory {
     ENEMY_PLAYER = 0x0004,
     STAIRS = 0x0008,
     WEAPON = 0x0010,
+    BULLET_N=0x0012,
+    BULLET_S=0x0014,
 };
 
 class Entidad {

@@ -18,7 +18,7 @@
 #include "Box2D/Box2D.h"
 
 enum identificador {
-    jugador, enemigo, caja, plataforma, escalera, pistola, balaPistola, escopeta, balaEscopeta, lanzaCohetes, balaCohete, M4, balaM4
+    jugador, enemigo, caja, plataforma, escalera, pistola, balaPistola, escopeta, balaEscopeta, lanzaCohetes, balaCohete, m4, balaM4
 };
 
 using namespace sf;

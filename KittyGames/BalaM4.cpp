@@ -5,34 +5,35 @@
  */
 
 /* 
- * File:   LanzaCohetes.cpp
+ * File:   BalaM4.cpp
  * Author: pedro
  * 
- * Created on 26 de abril de 2018, 18:25
+ * Created on 26 de abril de 2018, 18:24
  */
 
-#include "LanzaCohetes.h"
-#include "Ensamblador.h"
+#include "BalaM4.h"
 
-LanzaCohetes::LanzaCohetes(String nombre) {
-    
+BalaM4::BalaM4(String nombre, int i) {
+
     txt = new Texture;
     txt->loadFromFile(nombre);
     spr = new Sprite(*txt);
 
-    //IntRect posicion(0, 0, spr->getTexture()->getSize().x / 4, spr->getTexture()->getSize().y / 6.8);
-    //spr->setTextureRect(posicion);
+    IntRect posicion(0, i * spr->getTexture()->getSize().y / 4, spr->getTexture()->getSize().x, spr->getTexture()->getSize().y / 4);
+    spr->setTextureRect(posicion);
 
-    cadencia = 100;
+    destroy = false;
 }
 
-LanzaCohetes::LanzaCohetes(const LanzaCohetes& orig) {
+BalaM4::BalaM4(const BalaM4& orig) {
 }
 
-LanzaCohetes::~LanzaCohetes() {
+BalaM4::~BalaM4() {
+
+    bdy->GetWorld()->DestroyBody(bdy);
 }
 
-void LanzaCohetes::setFixture(b2PolygonShape* forma, float density, float restitution, float friction) {
+void BalaM4::setFixture(b2PolygonShape* forma, float density, float restitution, float friction) {
 
 
     float weight = spr->getTexture()->getSize().x;
@@ -44,17 +45,16 @@ void LanzaCohetes::setFixture(b2PolygonShape* forma, float density, float restit
     fixdef_.friction = friction;
 
 
-    fixdef_.isSensor = true;
-
-    
     fix_ = bdy->CreateFixture(&fixdef_);
 
+    bdy->SetGravityScale(0);
 
     cuerpo = new Ensamblador(bdy, spr, weight, height);
-    cuerpo->set_id_id(identificador::lanzaCohetes);
+    cuerpo->set_id_id(identificador::balaM4);
+
 
 
     bdy->SetUserData((void*) this);
     bdy->GetFixtureList()->SetUserData((void*) this);
-
 }
+

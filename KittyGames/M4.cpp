@@ -14,6 +14,15 @@
 #include "M4.h"
 
 M4::M4(String nombre) {
+
+    txt = new Texture;
+    txt->loadFromFile(nombre);
+    spr = new Sprite(*txt);
+
+    //IntRect posicion(0, 0, spr->getTexture()->getSize().x / 4, spr->getTexture()->getSize().y / 6.8);
+    //spr->setTextureRect(posicion);
+
+    cadencia = 100;
 }
 
 M4::M4(const M4& orig) {
@@ -44,7 +53,7 @@ void M4::setFixture(b2PolygonShape* forma, float density, float restitution, flo
 
 
     cuerpo = new Ensamblador(bdy, spr, weight, height);
-    cuerpo->set_id_id(identificador::M4);
+    cuerpo->set_id_id(identificador::m4);
 
 
     bdy->SetUserData((void*) this);

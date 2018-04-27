@@ -136,17 +136,19 @@ void Partida::gameLoop() {
                         if (this->personajes[0]->getArma() == NULL)
                             this->personajes[0]->setArma(this->niveles->getEscopeta());
                     }
-                }
-                if (this->personajes[0]->getCuerpo()->getisOnWeaponM4()) {
+                    
+                        if (this->personajes[0]->getCuerpo()->getisOnWeaponM4()) {
                     if (this->personajes[0]->getArma() == NULL)
                         this->personajes[0]->setArma(this->niveles->getM4());
                 }
 
-                if (this->personajes[0]->getCuerpo()->getisOnWeaponM4()) {
+                if (this->personajes[0]->getCuerpo()->getisOnWeaponRL()) {
 
                     if (this->personajes[0]->getArma() == NULL)
                         this->personajes[0]->setArma(this->niveles->getLanzaCohetes());
                 }
+                }
+            
             }
 
 
@@ -197,7 +199,7 @@ void Partida::gameLoop() {
 
                         }
 
-                        if (this->personajes[i + 1]->getCuerpo()->getisOnWeaponM4()) {
+                        if (this->personajes[i + 1]->getCuerpo()->getisOnWeaponRL()) {
                             if (this->personajes[evento->joystickButton.joystickId + 1]->getArma() == NULL)
                                 this->personajes[evento->joystickButton.joystickId + 1]->setArma(this->niveles->getLanzaCohetes());
 

@@ -4,4 +4,39 @@
         <activeConfTypeElem>1</activeConfTypeElem>
         <activeConfIndexElem>0</activeConfIndexElem>
     </data>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/home/pedro/Escritorio/FV2018/KittyGames/Nivel.cpp</file>
+            <file>file:/home/pedro/Escritorio/FV2018/KittyGames/EstadoJumping.cpp</file>
+            <file>file:/home/pedro/Escritorio/FV2018/KittyGames/Escopeta.h</file>
+            <file>file:/home/pedro/Escritorio/FV2018/KittyGames/BalaEscopeta.h</file>
+            <file>file:/home/pedro/Escritorio/FV2018/KittyGames/Pistola.cpp</file>
+            <file>file:/home/pedro/Escritorio/FV2018/KittyGames/LanzaCohetes.h</file>
+            <file>file:/home/pedro/Escritorio/FV2018/KittyGames/balaM4.h</file>
+            <file>file:/home/pedro/Escritorio/FV2018/KittyGames/balaM4.cpp</file>
+            <file>file:/home/pedro/Escritorio/FV2018/KittyGames/Partida.h</file>
+            <file>file:/home/pedro/Escritorio/FV2018/KittyGames/Weapon.h</file>
+            <file>file:/home/pedro/Escritorio/FV2018/KittyGames/M4.cpp</file>
+            <file>file:/home/pedro/Escritorio/FV2018/KittyGames/Bala.h</file>
+            <file>file:/home/pedro/Escritorio/FV2018/KittyGames/Weapon.cpp</file>
+            <file>file:/home/pedro/Escritorio/FV2018/KittyGames/balaLC.h</file>
+            <file>file:/home/pedro/Escritorio/FV2018/KittyGames/EstadoMoving.cpp</file>
+            <file>file:/home/pedro/Escritorio/FV2018/KittyGames/Nivel.h</file>
+            <file>file:/home/pedro/Escritorio/FV2018/KittyGames/balaLC.cpp</file>
+            <file>file:/home/pedro/Escritorio/FV2018/KittyGames/BalaPistola.h</file>
+            <file>file:/home/pedro/Escritorio/FV2018/KittyGames/Partida.cpp</file>
+            <file>file:/home/pedro/Escritorio/FV2018/KittyGames/LanzaCohetes.cpp</file>
+            <file>file:/home/pedro/Escritorio/FV2018/KittyGames/Alien.cpp</file>
+            <file>file:/home/pedro/Escritorio/FV2018/KittyGames/Evento.h</file>
+            <file>file:/home/pedro/Escritorio/FV2018/KittyGames/Ensamblador.h</file>
+            <file>file:/home/pedro/Escritorio/FV2018/KittyGames/BalaPistola.cpp</file>
+            <file>file:/home/pedro/Escritorio/FV2018/KittyGames/EstadoJumping.h</file>
+            <file>file:/home/pedro/Escritorio/FV2018/KittyGames/M4.h</file>
+            <file>file:/home/pedro/Escritorio/FV2018/KittyGames/Personaje.h</file>
+            <file>file:/home/pedro/Escritorio/FV2018/KittyGames/AlienRojo.cpp</file>
+            <file>file:/home/pedro/Escritorio/FV2018/KittyGames/Alien.h</file>
+            <file>file:/home/pedro/Escritorio/FV2018/KittyGames/Escopeta.cpp</file>
+        </group>
+    </open-files>
 </project-private>

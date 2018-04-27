@@ -40,6 +40,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Animacion.o \
 	${OBJECTDIR}/Bala.o \
 	${OBJECTDIR}/BalaEscopeta.o \
+	${OBJECTDIR}/BalaM4.o \
 	${OBJECTDIR}/BalaPistola.o \
 	${OBJECTDIR}/Caja.o \
 	${OBJECTDIR}/Collision.o \
@@ -65,7 +66,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/Ventana.o \
 	${OBJECTDIR}/Weapon.o \
 	${OBJECTDIR}/balaLC.o \
-	${OBJECTDIR}/balaM4.o \
 	${OBJECTDIR}/main.o
 
 
@@ -129,6 +129,11 @@ ${OBJECTDIR}/BalaEscopeta.o: BalaEscopeta.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/usr/include/Box2D -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/BalaEscopeta.o BalaEscopeta.cpp
+
+${OBJECTDIR}/BalaM4.o: BalaM4.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/usr/include/Box2D -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/BalaM4.o BalaM4.cpp
 
 ${OBJECTDIR}/BalaPistola.o: BalaPistola.cpp
 	${MKDIR} -p ${OBJECTDIR}
@@ -254,11 +259,6 @@ ${OBJECTDIR}/balaLC.o: balaLC.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/usr/include/Box2D -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/balaLC.o balaLC.cpp
-
-${OBJECTDIR}/balaM4.o: balaM4.cpp
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/usr/include/Box2D -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/balaM4.o balaM4.cpp
 
 ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}

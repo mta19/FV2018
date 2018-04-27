@@ -5,7 +5,7 @@
  */
 
 /* 
- * File:   balaM4.h
+ * File:   BalaM4.h
  * Author: pedro
  *
  * Created on 26 de abril de 2018, 18:24
@@ -14,11 +14,14 @@
 #ifndef BALAM4_H
 #define BALAM4_H
 
-class balaM4 {
+#include "Bala.h"
+
+class BalaM4 : public Bala {
 public:
-    balaM4();
-    balaM4(const balaM4& orig);
-    virtual ~balaM4();
+    BalaM4(String nombre, int i);
+    BalaM4(const BalaM4& orig);
+    virtual ~BalaM4();
+    void setFixture(b2PolygonShape * forma, float density, float restitution, float friction);
 private:
 
 };

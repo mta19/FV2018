@@ -23,6 +23,8 @@
 #include "Personaje.h"
 #include "Pistola.h"
 #include "Escopeta.h"
+#include "M4.h"
+#include "LanzaCohetes.h"
 
 using namespace sf;
 
@@ -37,6 +39,8 @@ public:
     void anyadirObjetoDinamico(float x, float y, float weight, float height);
     void anyadirEscalera(float x, float y, float weight, float height);
     void anyadirArma(float x, float y, float weight, float height);
+    void anyadirLanzaCohetes(float x, float y, float weight, float height);
+    void anyadirM4(float x, float y, float weight, float height);
     void anyadirEscopeta(float x, float y, float weight, float height);
     void anyadirPersonaje(Personaje * personaje);
 
@@ -98,7 +102,7 @@ public:
 
         for (int i = 0; i < entidades.size(); i++) {
 
-            if (this->getEntidades()[i] != NULL && this->getEntidades()[i]->getCuerpo()->get_id_id() == identificador::M4) {
+            if (this->getEntidades()[i] != NULL && this->getEntidades()[i]->getCuerpo()->get_id_id() == identificador::m4) {
                 armas.push_back(this->getEntidades()[i]);
                 return (this->getEntidades()[i]);
             }

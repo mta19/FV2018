@@ -48,6 +48,8 @@ void BalaPistola::setFixture(b2PolygonShape* forma, float density, float restitu
     fixdef_.restitution = restitution;
     fixdef_.friction = friction;
 
+    fixdef_.filter.categoryBits=entityCategory::BULLET_S;
+    fixdef_.filter.maskBits=entityCategory::FRIENDLY_PLAYER;
 
     fix_ = bdy->CreateFixture(&fixdef_);
 

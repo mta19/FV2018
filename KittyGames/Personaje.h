@@ -27,6 +27,8 @@
 #include <iostream>
 #include <cmath>
 #include "BalaEscopeta.h"
+#include "BalaM4.h"
+#include "balaLC.h"
 
 using namespace sf;
 

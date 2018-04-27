@@ -14,11 +14,14 @@
 #ifndef LANZACOHETES_H
 #define LANZACOHETES_H
 
-class LanzaCohetes {
+#include "Weapon.h"
+
+class LanzaCohetes : public Weapon {
 public:
-    LanzaCohetes();
+    LanzaCohetes(String nombre);
     LanzaCohetes(const LanzaCohetes& orig);
     virtual ~LanzaCohetes();
+    void setFixture(b2PolygonShape * forma, float density, float restitution, float friction);
 private:
 
 };

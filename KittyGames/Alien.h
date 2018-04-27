@@ -16,6 +16,7 @@
 #include "Personaje.h"
 #include "SFML/Graphics.hpp"
 #include "Animacion.h"
+
 #include <iostream>
 using namespace sf;
 

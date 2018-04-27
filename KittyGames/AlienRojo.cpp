@@ -85,13 +85,14 @@ void AlienRojo::handleInput(Event* tecla, Nivel* nivel) {
         if (this->getArma() != NULL && tecla->key.code == Keyboard::Q && flagAux == true) {
 
             if (this->getArma()->getCuerpo()->get_id_id() == identificador::pistola) {
+       
                 disparar();
                 flagAux = false;
 
             }
 
-            if (this->getArma()->getCuerpo()->get_id_id() == identificador::M4) {
-                disparar();
+            if (this->getArma()->getCuerpo()->get_id_id() == identificador::m4) {
+                dispararM4();
                 flagAux = false;
 
             }
@@ -103,7 +104,8 @@ void AlienRojo::handleInput(Event* tecla, Nivel* nivel) {
             }
 
             if (this->getArma()->getCuerpo()->get_id_id() == identificador::lanzaCohetes) {
-                disparar();
+                
+                dispararLanzaCohetes();
                 flagAux = false;
 
             }
@@ -132,12 +134,12 @@ void AlienRojo::handleInput(Event* tecla, Nivel* nivel, int mando) {
                 this->dispararEscopeta();
                 flagAux = false;
             }
-            if (this->getArma()->getCuerpo()->get_id_id() == identificador::M4) {
-                disparar();
+            if (this->getArma()->getCuerpo()->get_id_id() == identificador::m4) {
+                dispararM4();
                 flagAux = false;
             }
             if (this->getArma()->getCuerpo()->get_id_id() == identificador::lanzaCohetes) {
-                disparar();
+                dispararLanzaCohetes();
                 flagAux = false;
             }
         }
@@ -159,9 +161,9 @@ void AlienRojo::disparar() {
     shp_.SetAsBox(3.f, 6.f);
     bala->setFixture(&shp_, 1.f, 0.f, 0.f);
     if (this->getface() == true)
-        bala->getCuerpo()->getBody()->SetLinearVelocity({70, 0});
+        bala->getCuerpo()->getBody()->SetLinearVelocity({22, 0});
     else {
-        bala->getCuerpo()->getBody()->SetLinearVelocity({-70, 0});
+        bala->getCuerpo()->getBody()->SetLinearVelocity({-22, 0});
     }
 
     balas.push_back(bala);
@@ -172,6 +174,52 @@ void AlienRojo::dispararEscopeta() {
 
 
     Bala *bala = new BalaEscopeta("balasM4.png",0);
+    if (this->getface() == true)
+        bala->setBody(this->getArma()->getCuerpo()->getBody()->GetWorld(), this->getSprite()->getPosition().x + 20, this->getSprite()->getPosition().y + 5);
+    else
+        bala->setBody(this->getArma()->getCuerpo()->getBody()->GetWorld(), this->getSprite()->getPosition().x - 25, this->getSprite()->getPosition().y + 5);
+
+
+    b2PolygonShape shp_;
+    shp_.SetAsBox(3.f, 6.f);
+    bala->setFixture(&shp_, 1.f, 0.f, 0.f);
+    if (this->getface() == true)
+        bala->getCuerpo()->getBody()->SetLinearVelocity({200, 0});
+    else {
+        bala->getCuerpo()->getBody()->SetLinearVelocity({-200, 0});
+    }
+
+    balas.push_back(bala);
+
+}
+
+void AlienRojo::dispararM4() {
+
+
+    Bala *bala = new BalaM4("balasM4.png",0);
+    if (this->getface() == true)
+        bala->setBody(this->getArma()->getCuerpo()->getBody()->GetWorld(), this->getSprite()->getPosition().x + 20, this->getSprite()->getPosition().y + 5);
+    else
+        bala->setBody(this->getArma()->getCuerpo()->getBody()->GetWorld(), this->getSprite()->getPosition().x - 25, this->getSprite()->getPosition().y + 5);
+
+
+    b2PolygonShape shp_;
+    shp_.SetAsBox(3.f, 6.f);
+    bala->setFixture(&shp_, 1.f, 0.f, 0.f);
+    if (this->getface() == true)
+        bala->getCuerpo()->getBody()->SetLinearVelocity({170, 0});
+    else {
+        bala->getCuerpo()->getBody()->SetLinearVelocity({-170, 0});
+    }
+
+    balas.push_back(bala);
+
+}
+
+void AlienRojo::dispararLanzaCohetes() {
+
+
+    Bala *bala = new balaLC("balasM4.png",0);
     if (this->getface() == true)
         bala->setBody(this->getArma()->getCuerpo()->getBody()->GetWorld(), this->getSprite()->getPosition().x + 20, this->getSprite()->getPosition().y + 5);
     else

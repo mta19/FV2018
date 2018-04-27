@@ -14,11 +14,14 @@
 #ifndef BALALC_H
 #define BALALC_H
 
-class balaLC {
+#include "Bala.h"
+
+class balaLC: public Bala {
 public:
-    balaLC();
+    balaLC(String nombre, int i);
     balaLC(const balaLC& orig);
     virtual ~balaLC();
+    void setFixture(b2PolygonShape * forma, float density, float restitution, float friction);
 private:
 
 };
