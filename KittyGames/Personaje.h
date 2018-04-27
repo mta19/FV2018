@@ -55,7 +55,10 @@ public:
     void dispararM4();
     void dispararLanzaCohetes();
     void tirarArma();
-
+    void setNombre(String nombre);
+    String getNombre();
+    
+    
     b2Vec2 getspeed() {
         return speed;
     };
@@ -126,7 +129,10 @@ protected:
 
 
     EstadoPersonaje * estado_;
-
+    
+    Font fuente;
+    Text nombre;
+    
     int vida;
     int vidaActual;
     int velocidad;

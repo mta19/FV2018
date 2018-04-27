@@ -414,12 +414,22 @@ void Partida::Update() {
 
 
         //Resto de textos en pantalla de los jugadores
-        for (int i = 1; i <= 4; i++) {
-            int aux = 100;
 
+        for(int i=1; i<=4; i++){
+            int aux= 115;
+            
             definirTexto(i, "Hola");
-            configurarTexto(i, 175 + 100 * (i - 1), 325, "PLAYER " + std::to_string(i));
+            
+            if(  i<=personajes.size() ){
+                configurarTexto(i, 150+aux*(i-1), 325 , personajes[i-1]->getNombre());
+            }
+            
+            else{
+                configurarTexto(i, 150+aux*(i-1), 325 , "PLAYER " + std::to_string(i));
+            }
+
             ventana->draw(textopantalla[i]);
+           
         }
 
 

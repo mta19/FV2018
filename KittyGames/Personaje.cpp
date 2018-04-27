@@ -26,6 +26,15 @@ Personaje::Personaje() {
     estado_ = new EstadoStanding();
     flagAux = true;
     tiempoAux = 0;
+    
+    //Cargamos la fuente
+    if (fuente.loadFromFile("fonts/PrStart.ttf") == false) {
+        std::cerr << "Error cargando la la fuente fonts/PrStart.ttf";
+        exit(0);
+    }
+    
+    nombre.setFont(fuente);
+    nombre.setString("ALIEN COLOR");
 
 }
 
@@ -254,6 +263,12 @@ void Personaje::updateArma() {
     }
     this->getArma()->getSprite()->setTextureRect(uvRect);
 
-
-
 }
+
+ void Personaje::setNombre(String nombre){
+     this->nombre.setString(nombre);
+}
+
+String Personaje::getNombre(){
+    return this->nombre.getString();
+ }

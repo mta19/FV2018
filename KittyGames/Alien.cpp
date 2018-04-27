@@ -13,10 +13,12 @@
 
 #include "Alien.h"
 #include "Animacion.h"
+#include "Personaje.h"
 #include "EstadoPersonaje.h"
 
 
 Alien::Alien() {
+    Personaje::setNombre("ALIEN VERDE");
 }
 
 Alien::Alien(const Alien& orig) {
@@ -211,3 +213,5 @@ void Alien::dispararLanzaCohetes() {
     balas.push_back(bala);
 
 }
+
+ 

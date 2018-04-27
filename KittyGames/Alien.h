@@ -36,9 +36,9 @@ public:
     void dispararEscopeta();
     void dispararM4();
     void dispararLanzaCohetes();
+    
+    
 private:
-
-
 
     //Animacion * animacion;
 };
