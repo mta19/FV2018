@@ -56,6 +56,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Evento.o \
 	${OBJECTDIR}/LanzaCohetes.o \
 	${OBJECTDIR}/M4.o \
+	${OBJECTDIR}/Menu.o \
 	${OBJECTDIR}/Nivel.o \
 	${OBJECTDIR}/Partida.o \
 	${OBJECTDIR}/Personaje.o \
@@ -197,6 +198,11 @@ ${OBJECTDIR}/M4.o: M4.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/M4.o M4.cpp
+
+${OBJECTDIR}/Menu.o: Menu.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Menu.o Menu.cpp
 
 ${OBJECTDIR}/Nivel.o: Nivel.cpp
 	${MKDIR} -p ${OBJECTDIR}

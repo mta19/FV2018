@@ -17,6 +17,8 @@
 #include "Estado.h"
 #include "Nivel.h"
 #include "Partida.h"
+#include "Menu.h"
+
 using namespace sf;
 
 #include "Ventana.h"
@@ -27,8 +29,60 @@ using namespace sf;
  * 
  */
 int main(int argc, char** argv) {
-
-    Estado * partida=new Partida({1920,1080},"Empieza la partida");
+    
+    sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML Funciona!!");
+    
+    Menu menu(window.getSize().x, window.getSize().y);
+    
+    while(window.isOpen()){
+        sf::Event event;
+        
+        while(window.pollEvent(event)){
+            switch(event.type){
+                
+                case sf::Event::KeyReleased:switch(event.key.code){
+                    case sf::Keyboard::Up:menu.MoveUp();
+                    break;
+                    
+                    case sf::Keyboard::Down:menu.MoveDown();
+                    break;
+                    
+                    case sf::Keyboard::Return:switch(menu.GetPressedItem()){
+                        case 0:
+                            std::cout << "El boton de JUGAR ha sido pulsado" << std::endl;
+                            
+                            menu.Jugar();
+                            //La ventana sigue abierta porque luego si sales es como si volvieras al menú, se puede cambiar.
+                        break;
+                        
+                        case 1:
+                            std::cout << "El boton de OPCIONES ha sido pulsado" << std::endl;
+                        break;
+                        
+                        case 2:
+                            std::cout << "El boton de OPCIONES ha sido pulsado" << std::endl;
+                            window.close();
+                        break;
+                    }
+                    break;
+                }
+                break;
+                
+                case sf::Event::Closed:window.close();
+                break;
+            }
+        }
+        
+        window.clear();
+        
+        menu.draw(window);
+        
+        window.display();
+    }
+    
+    return 0;
+    
+    /*Estado * partida=new Partida({1920,1080},"Empieza la partida");
 
     delete partida;
     
@@ -51,6 +105,6 @@ int main(int argc, char** argv) {
         window.display();
     }
     
-    return 0;
+    return 0;*/
 }
 
