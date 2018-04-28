@@ -153,7 +153,9 @@ protected:
     float tiempoAux;
     float deltaTime;
 
+    Clock clock;
     
+    Time tiempo;
     
     
 };

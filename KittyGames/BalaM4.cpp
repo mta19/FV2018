@@ -21,7 +21,7 @@ BalaM4::BalaM4(String nombre, int i) {
 
     IntRect posicion(0, i * spr->getTexture()->getSize().y / 4, spr->getTexture()->getSize().x, spr->getTexture()->getSize().y / 4);
     spr->setTextureRect(posicion);
-
+    lifeTime=sf::seconds(1.f);
     destroy = false;
 }
 

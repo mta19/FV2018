@@ -35,6 +35,8 @@ Personaje::Personaje() {
     
     nombre.setFont(fuente);
     nombre.setString("ALIEN COLOR");
+    
+    tiempo=clock.getElapsedTime();
 
 }
 
@@ -46,48 +48,7 @@ Personaje::~Personaje() {
 
 void Personaje::handleInput(Event* tecla, Nivel* nivel) {
 
-    /*EstadoPersonaje* estado = estado_->handleInput(*this, tecla, nivel);
-
-
-    if (estado != NULL) {
-
-
-
-        delete estado_;
-
-        estado_ = estado;
-
-
-
-
-        if (this->getArma() != NULL && tecla->key.code == Keyboard::Q && flagAux == true) {
-
-            if (this->getArma()->getCuerpo()->get_id_id() == identificador::pistola) {
-                disparar();
-                flagAux = false;
-
-            }
-
-            if (this->getArma()->getCuerpo()->get_id_id() == identificador::M4) {
-                disparar();
-                flagAux = false;
-
-            }
-
-            if (this->getArma()->getCuerpo()->get_id_id() == identificador::escopeta) {
-                disparar();
-                flagAux = false;
-
-            }
-
-            if (this->getArma()->getCuerpo()->get_id_id() == identificador::lanzaCohetes) {
-                disparar();
-                flagAux = false;
-
-            }
-        }
-    }
-*/
+  
 }
 
 
@@ -233,7 +194,7 @@ void Personaje::borrarBala() {
 
     for (int i = 0; i < balas.size(); i++) {
 
-        if (balas[i]->getDestroy()) {
+        if (balas[i]->getDestroy() || balas[i]->getReloj()->getElapsedTime()>balas[i]->getlifetime()) {
 
             delete balas[i];
 

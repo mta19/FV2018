@@ -19,9 +19,9 @@ balaLC::balaLC(String nombre, int i) {
     txt->loadFromFile(nombre);
     spr = new Sprite(*txt);
 
-    IntRect posicion(0, i * spr->getTexture()->getSize().y / 4, spr->getTexture()->getSize().x, spr->getTexture()->getSize().y / 4);
+    IntRect posicion(i * spr->getTexture()->getSize().x / 4, 0, spr->getTexture()->getSize().x/4, spr->getTexture()->getSize().y );
     spr->setTextureRect(posicion);
-
+    lifeTime=sf::seconds(5.f);
     destroy = false;
 
 }

@@ -28,9 +28,13 @@ public:
     
     void setBody(b2World * mundo, float x, float y);
     virtual void setFixture(b2PolygonShape * forma, float density, float restitution, float friction)=0;
+    Time& getlifetime(){return lifeTime;};
+    Clock* getReloj(){return reloj;};
+    
 protected:
 
-    
+    Clock * reloj;
+    Time lifeTime;
     
 };
 

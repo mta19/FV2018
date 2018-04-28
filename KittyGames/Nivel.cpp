@@ -46,7 +46,10 @@ Nivel::Nivel() {
 
 
     this->anyadirArma(350.f, 125.f, 8.f, 6.f);
-    this->anyadirLanzaCohetes(490.f,235.f, 15.f, 8.f);
+    
+    this->anyadirLanzaCohetes(490.f,235.f, 12.f, 8.f);
+    
+    this->anyadirM4(300.f,285.f,12.f,8);
     
     this->anyadirEscopeta(220.f, 160.f, 12.f, 8.f);
 
@@ -64,8 +67,6 @@ Nivel::Nivel() {
 
     this->anyadirObjetoDinamico(350.0f, 250.0f, 12.5f, 8.f);
    
-
-
 
 }
 

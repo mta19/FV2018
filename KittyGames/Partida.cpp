@@ -88,8 +88,10 @@ void Partida::set_camera() {
 
     camara1 = new View({349.f, 210.f},
     {
-        450.f, 325.f
+        480.f, 360.f
     });
+
+
     ventana->setView(*camara1);
 
 }
@@ -136,19 +138,19 @@ void Partida::gameLoop() {
                         if (this->personajes[0]->getArma() == NULL)
                             this->personajes[0]->setArma(this->niveles->getEscopeta());
                     }
-                    
-                        if (this->personajes[0]->getCuerpo()->getisOnWeaponM4()) {
-                    if (this->personajes[0]->getArma() == NULL)
-                        this->personajes[0]->setArma(this->niveles->getM4());
+
+                    if (this->personajes[0]->getCuerpo()->getisOnWeaponM4()) {
+                        if (this->personajes[0]->getArma() == NULL)
+                            this->personajes[0]->setArma(this->niveles->getM4());
+                    }
+
+                    if (this->personajes[0]->getCuerpo()->getisOnWeaponRL()) {
+
+                        if (this->personajes[0]->getArma() == NULL)
+                            this->personajes[0]->setArma(this->niveles->getLanzaCohetes());
+                    }
                 }
 
-                if (this->personajes[0]->getCuerpo()->getisOnWeaponRL()) {
-
-                    if (this->personajes[0]->getArma() == NULL)
-                        this->personajes[0]->setArma(this->niveles->getLanzaCohetes());
-                }
-                }
-            
             }
 
 
@@ -415,21 +417,20 @@ void Partida::Update() {
 
         //Resto de textos en pantalla de los jugadores
 
-        for(int i=1; i<=4; i++){
-            int aux= 115;
-            
+        for (int i = 1; i <= 4; i++) {
+            int aux = 115;
+
             definirTexto(i, "Hola");
-            
-            if(  i<=personajes.size() ){
-                configurarTexto(i, 150+aux*(i-1), 325 , personajes[i-1]->getNombre());
+
+            if (i <= personajes.size()) {
+                configurarTexto(i, 150 + aux * (i - 1), 325, personajes[i - 1]->getNombre());
             }
-            
-            else{
-                configurarTexto(i, 150+aux*(i-1), 325 , "PLAYER " + std::to_string(i));
+            else {
+                configurarTexto(i, 150 + aux * (i - 1), 325, "PLAYER " + std::to_string(i));
             }
 
             ventana->draw(textopantalla[i]);
-           
+
         }
 
 

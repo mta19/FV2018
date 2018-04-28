@@ -14,6 +14,7 @@
 #include "Bala.h"
 
 Bala::Bala() {
+    reloj=new Clock();
 }
 
 Bala::Bala(const Bala& orig) {

@@ -23,6 +23,7 @@ BalaPistola::BalaPistola(String nombre, int i) {
     IntRect posicion(0, i*spr->getTexture()->getSize().y/4, spr->getTexture()->getSize().x, spr->getTexture()->getSize().y / 4);
     spr->setTextureRect(posicion);
 
+    lifeTime=sf::seconds(2.f);
     destroy = false;
 }
 

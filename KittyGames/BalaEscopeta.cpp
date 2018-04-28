@@ -19,9 +19,10 @@ BalaEscopeta::BalaEscopeta(String nombre, int i) {
     txt->loadFromFile(nombre);
     spr = new Sprite(*txt);
 
-    IntRect posicion(0, i*spr->getTexture()->getSize().y / 4.f, spr->getTexture()->getSize().y, spr->getTexture()->getSize().y / 4.f);
-    spr->setTextureRect(posicion);
-
+   // IntRect posicion(0, 0, spr->getTexture()->getSize().x, spr->getTexture()->getSize().y/4);
+    //spr->setTextureRect(posicion);
+     spr->setScale(2.f / spr->getTexture()->getSize().x, 2.f / spr->getTexture()->getSize().y);
+    lifeTime=sf::seconds(0.2f);
     destroy = false;
 }
 
