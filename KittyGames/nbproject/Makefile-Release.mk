@@ -66,7 +66,9 @@ OBJECTFILES= \
 	${OBJECTDIR}/Ventana.o \
 	${OBJECTDIR}/Weapon.o \
 	${OBJECTDIR}/balaLC.o \
-	${OBJECTDIR}/main.o
+	${OBJECTDIR}/main.o \
+	${OBJECTDIR}/map.o \
+	${OBJECTDIR}/tinyxml2-master/tinyxml2.o
 
 
 # C Compiler Flags
@@ -252,6 +254,16 @@ ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+
+${OBJECTDIR}/map.o: map.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/map.o map.cpp
+
+${OBJECTDIR}/tinyxml2-master/tinyxml2.o: tinyxml2-master/tinyxml2.cpp
+	${MKDIR} -p ${OBJECTDIR}/tinyxml2-master
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/tinyxml2-master/tinyxml2.o tinyxml2-master/tinyxml2.cpp
 
 # Subprojects
 .build-subprojects:

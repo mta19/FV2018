@@ -19,7 +19,6 @@
 #include "Pistola.h"
 #include "Plataforma.h"
 #include <cstdint>
-
 #include "Box2D/Box2D.h"
 
 
@@ -40,33 +39,49 @@ Nivel::Nivel() {
 
     mundo->SetContactListener(procesadorColisiones);
 
-    
+
 
     bdy = new b2Body*[10];
 
 
+
+
     this->anyadirArma(350.f, 125.f, 8.f, 6.f);
-    
-    this->anyadirLanzaCohetes(490.f,235.f, 12.f, 8.f);
-    
-    this->anyadirM4(300.f,285.f,12.f,8);
-    
+
+    this->anyadirLanzaCohetes(490.f, 235.f, 12.f, 8.f);
+
+    this->anyadirM4(300.f, 285.f, 12.f, 8);
+
     this->anyadirEscopeta(220.f, 160.f, 12.f, 8.f);
 
     this->anyadirEscalera(400.f, 220.f, 12.f, 105.f);
 
     this->anyadirEscalera(273.f, 240.f, 12.f, 85.f);
- 
-    this->anyadirPlataforma(340.f, 300.0f, 80.f, 8.f);
-   
-    this->anyadirPlataforma(347.f, 140.0f, 40.f, 8.f);
-  
-    this->anyadirPlataforma(220.f, 177.0f, 40.f, 8.f);
 
-    this->anyadirPlataforma(500.f, 250.0f, 40.f, 8.f);
+    mapa = new Map("resources/conboolcapa.tmx");
+
 
     this->anyadirObjetoDinamico(350.0f, 250.0f, 12.5f, 8.f);
-   
+
+
+
+    for (int z = 0; z < mapa->_numPlats; z++) {
+        float x = mapa->getX(z);
+        float y = mapa->getY(z);
+        float w = mapa->getWidth(z);
+        float h = mapa->getHeight(z);
+        this->anyadirPlataforma(x + w / 2, y + h / 2, w / 2, h / 2);
+
+    }
+
+    //this->anyadirPlataforma(340.f, 300.0f, 80.f, 8.f);
+
+    //this->anyadirPlataforma(347.f, 140.0f, 40.f, 8.f);
+
+    //this->anyadirPlataforma(220.f, 177.0f, 40.f, 8.f);
+
+    // this->anyadirPlataforma(500.f, 250.0f, 40.f, 8.f);
+
 
 }
 

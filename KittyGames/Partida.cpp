@@ -46,7 +46,7 @@ Partida::Partida(Vector2i resolucion, std::string titulo) {
     ventana = new RenderWindow(VideoMode(resolucion.x, resolucion.y), titulo);
     ventana->setFramerateLimit(fps);
 
-    set_camera();
+    //set_camera();
 
     niveles = new Nivel();
     personajes.push_back(new Alien());
@@ -302,6 +302,7 @@ void Partida::dibujar() {
 
     bool aux = false;
 
+    niveles->getMapa()->dibujarMapa(ventana);
     //modificar para array de personajes
     for (int z = 0; z < personajes.size(); z++) {
         if (personajes[z]->getArma() == NULL) aux = false;
