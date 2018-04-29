@@ -14,6 +14,7 @@
 #ifndef NIVEL_H
 #define NIVEL_H
 
+
 #include "SFML/Graphics.hpp"
 #include "Box2D/Box2D.h"
 #include "Ensamblador.h"
@@ -25,6 +26,8 @@
 #include "Escopeta.h"
 #include "M4.h"
 #include "LanzaCohetes.h"
+#include "map.h"
+
 
 using namespace sf;
 
@@ -121,11 +124,17 @@ public:
         return mundo;
     }
 
+      Map* getMapa(){
+        return mapa;
+    }
+
 
 
     static int contadorEn;
 
 private:
+    
+      Map *mapa;
 
     std::vector<Entidad*> entidades;
     std::vector<Entidad*> armas;

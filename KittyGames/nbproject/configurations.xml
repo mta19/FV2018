@@ -37,10 +37,21 @@
       <itemPath>Ventana.h</itemPath>
       <itemPath>Weapon.h</itemPath>
       <itemPath>balaLC.h</itemPath>
+      <itemPath>map.h</itemPath>
+      <itemPath>tinyxml2-master/tinyxml2.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
                    projectFiles="true">
+      <logicalFolder name="resources" displayName="resources" projectFiles="true">
+        <itemPath>resources/PlatformTiles_Preview.xml</itemPath>
+        <itemPath>resources/conboolcapa.tmx</itemPath>
+        <itemPath>resources/enano.tmx</itemPath>
+        <itemPath>resources/escenario1.tmx</itemPath>
+        <itemPath>resources/escenarioalien1920.tmx</itemPath>
+        <itemPath>resources/intentofinal.tmx</itemPath>
+        <itemPath>resources/tileS.png</itemPath>
+      </logicalFolder>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
@@ -78,6 +89,8 @@
       <itemPath>Weapon.cpp</itemPath>
       <itemPath>balaLC.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
+      <itemPath>map.cpp</itemPath>
+      <itemPath>tinyxml2-master/tinyxml2.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -102,6 +115,9 @@
       <itemPath>Makefile</itemPath>
     </logicalFolder>
   </logicalFolder>
+  <sourceRootList>
+    <Elem>resources</Elem>
+  </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
     <conf name="Debug" type="1">
@@ -263,6 +279,31 @@
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="map.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="map.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="resources/PlatformTiles_Preview.xml"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="resources/conboolcapa.tmx" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="resources/enano.tmx" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="resources/escenario1.tmx" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="resources/escenarioalien1920.tmx" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="resources/intentofinal.tmx" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="resources/tileS.png" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tinyxml2-master/tinyxml2.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tinyxml2-master/tinyxml2.h" ex="false" tool="3" flavor2="0">
+      </item>
     </conf>
     <conf name="Release" type="1">
       <toolsSet>
@@ -415,6 +456,31 @@
       <item path="balaLC.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="map.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="map.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="resources/PlatformTiles_Preview.xml"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="resources/conboolcapa.tmx" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="resources/enano.tmx" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="resources/escenario1.tmx" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="resources/escenarioalien1920.tmx" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="resources/intentofinal.tmx" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="resources/tileS.png" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tinyxml2-master/tinyxml2.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tinyxml2-master/tinyxml2.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>
