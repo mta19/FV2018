@@ -388,13 +388,13 @@ void Partida::Update() {
 
         }
 
-        if (encendido == 1 || tiempoRonda==0) {
+        //if (encendido == 1 || tiempoRonda==0) {
 
             //PONER WINNER Y EL NOMBRE DE JUGADOR, EN VEZ DE CERRARSE LA VENTANA.
 
-            ventana->close();
+            //ventana->close();
 
-        }
+        //}
 
 
         dibujar();

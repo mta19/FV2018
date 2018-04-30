@@ -28,6 +28,7 @@
       <itemPath>Menu.h</itemPath>
       <itemPath>MenuDefine.h</itemPath>
       <itemPath>Nivel.h</itemPath>
+      <itemPath>Opciones.h</itemPath>
       <itemPath>Partida.h</itemPath>
       <itemPath>Personaje.h</itemPath>
       <itemPath>Pistola.h</itemPath>
@@ -77,6 +78,7 @@
       <itemPath>M4.cpp</itemPath>
       <itemPath>Menu.cpp</itemPath>
       <itemPath>Nivel.cpp</itemPath>
+      <itemPath>Opciones.cpp</itemPath>
       <itemPath>Partida.cpp</itemPath>
       <itemPath>Personaje.cpp</itemPath>
       <itemPath>Pistola.cpp</itemPath>
@@ -235,6 +237,10 @@
       <item path="Nivel.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Nivel.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Opciones.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Opciones.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Partida.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -413,6 +419,10 @@
       <item path="Nivel.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Nivel.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Opciones.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Opciones.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Partida.cpp" ex="false" tool="1" flavor2="0">
       </item>

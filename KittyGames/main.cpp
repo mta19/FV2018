@@ -13,6 +13,7 @@
 #include <iostream>
 #include <cstdlib>
 #include "SFML/Graphics.hpp"
+#include "SFML/Audio.hpp"
 #include "Box2D/Box2D.h"
 #include "Estado.h"
 #include "Nivel.h"
@@ -25,14 +26,48 @@ using namespace sf;
 #include "Evento.h"
 #include "Sprite2D.h"
 
+#define EXIT_SUCCESS 0
+#define EXIT_FAILURE 0
+
 /*
  * 
  */
 int main(int argc, char** argv) {
     
+    //Crear la ventana del main!
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML Funciona!!");
     
     Menu menu(window.getSize().x, window.getSize().y);
+    
+    //Vamos a probar a poner una textura de fondo xD
+    /*sf::Texture texture;
+    if(!texture.loadFromFile("Recursos/FondoMenu.jpg")){
+        std::cout <<"No carga la imagen de fondo" << std::endl;
+        return EXIT_FAILURE;
+    }
+    sf::Sprite sprite(texture);*/
+    
+    //Creamos la textura
+    sf::Texture texture_back;
+    sf::Sprite background;
+    //Cargamos la textura desde un archivo
+    texture_back.loadFromFile("Recursos/FondoMenu.jpg");
+    //Asignamos la textura al sprite de fondo
+    background.setTexture(texture_back);
+    
+    
+    
+    //Sonido
+        
+        //Cargar la musica
+        sf::Music music;
+        music.setVolume(80);
+        if(!music.openFromFile("Recursos/Concussive.wav"))
+            return EXIT_FAILURE;
+        
+        //Que suene la musica!
+        music.setLoop(true);
+        music.play();
     
     while(window.isOpen()){
         sf::Event event;
@@ -71,16 +106,23 @@ int main(int argc, char** argv) {
                 case sf::Event::Closed:window.close();
                 break;
             }
+        
         }
         
+        //Terminar las cositas
+        
+        //Limpiar la ventana
         window.clear();
         
+        //Dibujar la ventana y el sprite
+        window.draw(background);
         menu.draw(window);
         
+        //Actualizar la ventana
         window.display();
     }
     
-    return 0;
+    return EXIT_SUCCESS;
     
     /*Estado * partida=new Partida({1920,1080},"Empieza la partida");
 

@@ -58,6 +58,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/M4.o \
 	${OBJECTDIR}/Menu.o \
 	${OBJECTDIR}/Nivel.o \
+	${OBJECTDIR}/Opciones.o \
 	${OBJECTDIR}/Partida.o \
 	${OBJECTDIR}/Personaje.o \
 	${OBJECTDIR}/Pistola.o \
@@ -210,6 +211,11 @@ ${OBJECTDIR}/Nivel.o: Nivel.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Nivel.o Nivel.cpp
+
+${OBJECTDIR}/Opciones.o: Opciones.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Opciones.o Opciones.cpp
 
 ${OBJECTDIR}/Partida.o: Partida.cpp
 	${MKDIR} -p ${OBJECTDIR}

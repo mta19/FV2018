@@ -5,26 +5,27 @@
  */
 
 /* 
- * File:   Menu.h
+ * File:   Opciones.h
  * Author: manjaro
  *
- * Created on 18 de abril de 2018, 16:21
+ * Created on 30 de abril de 2018, 21:02
  */
 
 #include <SFML/Graphics.hpp>
 
 #define MAX_NUMBER_OF_ITEMS 3
 
-class Menu{
+class Opciones{
     public:
-        Menu(float width, float height);
-        ~Menu();
+        Opciones(float width, float height);
+        ~Opciones();
         
         void draw(sf::RenderWindow &window);
         void MoveUp();
         void MoveDown();
-        void Jugar();
-        void Opciones();
+        void Audio();
+        void Creditos();
+        void Atras();
         int GetPressedItem() {return selectedItemIndex;}
         
         //Hacer un metodo nuevo para que empice la partida desde aqui
@@ -32,9 +33,5 @@ class Menu{
     private:
         int selectedItemIndex;
         sf::Font font;
-        sf::Text menu[MAX_NUMBER_OF_ITEMS];
+        sf::Text opciones[MAX_NUMBER_OF_ITEMS];
 };
-
-
-
-
