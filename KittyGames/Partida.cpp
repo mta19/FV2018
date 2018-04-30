@@ -388,7 +388,7 @@ void Partida::Update() {
 
         }
 
-        if (encendido == 1) {
+        if (encendido == 1 || tiempoRonda==0) {
 
             //PONER WINNER Y EL NOMBRE DE JUGADOR, EN VEZ DE CERRARSE LA VENTANA.
 
@@ -426,6 +426,10 @@ void Partida::dibujarTexto() {
         }
         ventana->draw(textopantalla[i]);
     }
+    
+    
+    
+    
 
     for (int i = 5; i <= 8; i++) {
         int aux = 115;
@@ -441,7 +445,7 @@ void Partida::dibujarTexto() {
             vidaString = convert.str();
             configurarTexto(i, 150 + aux * (i - 5), 350, vidaString);
         } else {
-            configurarTexto(i, 150 + aux * (i - 5), 350, "PLAYER " + std::to_string(i));
+            configurarTexto(i, 150 + aux * (i - 5), 350, "0 ");
         }
         ventana->draw(textopantalla[i]);
     }

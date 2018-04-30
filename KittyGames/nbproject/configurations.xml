@@ -43,15 +43,13 @@
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
                    projectFiles="true">
-      <logicalFolder name="resources" displayName="resources" projectFiles="true">
-        <itemPath>resources/PlatformTiles_Preview.xml</itemPath>
-        <itemPath>resources/conboolcapa.tmx</itemPath>
-        <itemPath>resources/enano.tmx</itemPath>
-        <itemPath>resources/escenario1.tmx</itemPath>
-        <itemPath>resources/escenarioalien1920.tmx</itemPath>
-        <itemPath>resources/intentofinal.tmx</itemPath>
-        <itemPath>resources/tileS.png</itemPath>
-      </logicalFolder>
+      <itemPath>resources/PlatformTiles_Preview.xml</itemPath>
+      <itemPath>resources/conboolcapa.tmx</itemPath>
+      <itemPath>resources/enano.tmx</itemPath>
+      <itemPath>resources/escenario1.tmx</itemPath>
+      <itemPath>resources/escenarioalien1920.tmx</itemPath>
+      <itemPath>resources/intentofinal.tmx</itemPath>
+      <itemPath>resources/tileS.png</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
@@ -115,9 +113,6 @@
       <itemPath>Makefile</itemPath>
     </logicalFolder>
   </logicalFolder>
-  <sourceRootList>
-    <Elem>resources</Elem>
-  </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
     <conf name="Debug" type="1">
