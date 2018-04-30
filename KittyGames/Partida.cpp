@@ -288,8 +288,8 @@ void Partida::definirTexto(int pos, String texto) {
             clock2.restart();
         }
     }
-    
-    
+
+
 }
 
 void Partida::configurarTexto(int pos, float x, float y, String texto) {
@@ -423,6 +423,25 @@ void Partida::dibujarTexto() {
             configurarTexto(i, 150 + aux * (i - 1), 325, personajes[i - 1]->getNombre());
         } else {
             configurarTexto(i, 150 + aux * (i - 1), 325, "PLAYER " + std::to_string(i));
+        }
+        ventana->draw(textopantalla[i]);
+    }
+
+    for (int i = 5; i <= 8; i++) {
+        int aux = 115;
+
+        definirTexto(i, "Hola");
+
+        std::string vidaString;
+        std::ostringstream convert;
+
+
+        if (i - 4 <= personajes.size()) {
+            convert << personajes[i - 5]->getVida();
+            vidaString = convert.str();
+            configurarTexto(i, 150 + aux * (i - 5), 350, vidaString);
+        } else {
+            configurarTexto(i, 150 + aux * (i - 5), 350, "PLAYER " + std::to_string(i));
         }
         ventana->draw(textopantalla[i]);
     }

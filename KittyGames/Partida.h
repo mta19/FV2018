@@ -58,7 +58,7 @@ private:
     Event * evento2;
     
     Font fuente;
-    Text textopantalla[10];
+    Text textopantalla[20];
     Clock clock;
     Clock clock2;
     float deltaTime;
