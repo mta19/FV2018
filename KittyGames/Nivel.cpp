@@ -46,19 +46,19 @@ Nivel::Nivel() {
 
 
 
-    this->anyadirArma(350.f, 125.f, 8.f, 6.f);
+    this->anyadirArma(250.f, 240.f, 8.f, 6.f);
 
-    this->anyadirLanzaCohetes(490.f, 235.f, 12.f, 8.f);
+    this->anyadirLanzaCohetes(100.f, 245.f, 12.f, 8.f);
 
-    this->anyadirM4(300.f, 285.f, 12.f, 8);
+    this->anyadirM4(200.f, 245.f, 12.f, 8);
 
-    this->anyadirEscopeta(220.f, 160.f, 12.f, 8.f);
+    this->anyadirEscopeta(150.f, 245.f, 12.f, 8.f);
 
     this->anyadirEscalera(400.f, 220.f, 12.f, 105.f);
 
     this->anyadirEscalera(273.f, 240.f, 12.f, 85.f);
 
-    mapa = new Map("resources/conboolcapa.tmx");
+    mapa = new Map("resources/koala.tmx");
 
 
     this->anyadirObjetoDinamico(350.0f, 250.0f, 12.5f, 8.f);

@@ -48,7 +48,7 @@ Partida::Partida(Vector2i resolucion, std::string titulo) {
     ventana = new RenderWindow(VideoMode(resolucion.x, resolucion.y), titulo);
     ventana->setFramerateLimit(fps);
 
-    //    set_camera();
+       set_camera();
 
     niveles = new Nivel();
     personajes.push_back(new Alien());
@@ -87,9 +87,9 @@ Partida::~Partida() {
 
 void Partida::set_camera() {
 
-    camara1 = new View({349.f, 210.f},
+    camara1 = new View({225.f, 192.f},
     {
-        480.f, 360.f
+        448.f, 384.f
     });
     ventana->setView(*camara1);
 
@@ -297,6 +297,7 @@ void Partida::configurarTexto(int pos, float x, float y, String texto) {
     if (pos > 0 && pos <= ((sizeof (textopantalla) / sizeof (Text)) - 1)) {
         textopantalla[pos].setPosition(x, y);
         textopantalla[pos].setString(texto);
+        textopantalla[pos].setColor(Color::Black);
     }
 
 }
@@ -420,9 +421,9 @@ void Partida::dibujarTexto() {
         definirTexto(i, "Hola");
 
         if (i <= personajes.size()) {
-            configurarTexto(i, 150 + aux * (i - 1), 325, personajes[i - 1]->getNombre());
+            configurarTexto(i, 20 + aux * (i - 1), 270, personajes[i - 1]->getNombre());
         } else {
-            configurarTexto(i, 150 + aux * (i - 1), 325, "PLAYER " + std::to_string(i));
+            configurarTexto(i, 20 + aux * (i - 1), 270, "PLAYER " + std::to_string(i));
         }
         ventana->draw(textopantalla[i]);
     }
@@ -443,9 +444,9 @@ void Partida::dibujarTexto() {
         if (i - 4 <= personajes.size()) {
             convert << personajes[i - 5]->getVida();
             vidaString = convert.str();
-            configurarTexto(i, 150 + aux * (i - 5), 350, vidaString);
+            configurarTexto(i, 20 + aux * (i - 5), 290, vidaString);
         } else {
-            configurarTexto(i, 150 + aux * (i - 5), 350, "0 ");
+            configurarTexto(i, 20 + aux * (i - 5), 290, "0 ");
         }
         ventana->draw(textopantalla[i]);
     }

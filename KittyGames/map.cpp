@@ -126,10 +126,10 @@ void Map::matrizSprites(){
     //NEED PUNTERO
     sf::Texture *_tilesetTexture= new sf::Texture;
     
-    _tilesetTexture->loadFromFile("resources/tileS.png");
+    _tilesetTexture->loadFromFile("resources/tileSenano.png");
     
     //NEED PUNTERO
-    sf::Rect <float> *medidas = new sf::Rect <float>(0, 0, 128, 128); 
+    sf::Rect <float> *medidas = new sf::Rect <float>(0, 0, 64, 64); 
     _tilemapSprite = new sf::Sprite***[_numLayers];
     //Rellenando el array de sprites
     for(int l=0; l<_numLayers; l++){
@@ -150,10 +150,10 @@ void Map::matrizSprites(){
                     newY = NewCoordY(gid);
                     
                     
-                    medidas->left=newX-128;
+                    medidas->left=newX-64;
                     medidas->top=newY;
-                    medidas->width=128;
-                    medidas->height= 128;
+                    medidas->width=64;
+                    medidas->height= 64;
                     
 //                     
                     
@@ -193,9 +193,9 @@ int Map::NewCoordX(int gid){
     }
 
     if(newX>0){
-        newX = 128*(gid-(newX*8)); 
+        newX = 64*(gid-(newX*8)); 
     }else{
-        newX = (gid*128);
+        newX = (gid*64);
     }
     
     return newX;
@@ -205,10 +205,10 @@ int Map::NewCoordY(int gid){
     
     int newY;
     
-    newY = (gid/8)*128;
+    newY = (gid/8)*64;
                   
     if(gid%8==0){
-        newY = newY-128;
+        newY = newY-64;
     }
     
     return newY;
