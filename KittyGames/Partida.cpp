@@ -48,7 +48,7 @@ Partida::Partida(Vector2i resolucion, std::string titulo) {
     ventana = new RenderWindow(VideoMode(resolucion.x, resolucion.y), titulo);
     ventana->setFramerateLimit(fps);
 
-    //    set_camera();
+       set_camera();
 
     niveles = new Nivel();
     personajes.push_back(new Alien());
@@ -87,9 +87,9 @@ Partida::~Partida() {
 
 void Partida::set_camera() {
 
-    camara1 = new View({349.f, 210.f},
+    camara1 = new View({225.f, 192.f},
     {
-        480.f, 360.f
+        448.f, 384.f
     });
     ventana->setView(*camara1);
 

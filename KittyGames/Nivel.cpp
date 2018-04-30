@@ -58,7 +58,7 @@ Nivel::Nivel() {
 
     this->anyadirEscalera(273.f, 240.f, 12.f, 85.f);
 
-    mapa = new Map("resources/conboolcapa.tmx");
+    mapa = new Map("resources/koala.tmx");
 
 
     this->anyadirObjetoDinamico(350.0f, 250.0f, 12.5f, 8.f);
