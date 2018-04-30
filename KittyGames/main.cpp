@@ -60,7 +60,7 @@ int main(int argc, char** argv) {
                         break;
                         
                         case 2:
-                            std::cout << "El boton de OPCIONES ha sido pulsado" << std::endl;
+                            std::cout << "El boton de SALIR ha sido pulsado" << std::endl;
                             window.close();
                         break;
                     }
