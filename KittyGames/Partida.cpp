@@ -43,10 +43,12 @@ Partida::Partida(Vector2i resolucion, std::string titulo) {
     fps = 60;
     frameRate = 1 / fps;
 
+    tiempoRonda = 60;
+
     ventana = new RenderWindow(VideoMode(resolucion.x, resolucion.y), titulo);
     ventana->setFramerateLimit(fps);
 
-//    set_camera();
+    //    set_camera();
 
     niveles = new Nivel();
     personajes.push_back(new Alien());
@@ -66,7 +68,6 @@ Partida::Partida(Vector2i resolucion, std::string titulo) {
 
     for (int i = 1; i < 4; i++) {
         if (sf::Joystick::isConnected(i - 1)) {
-            std::cout << "conectado" << std::endl;
             personajes.push_back(new AlienRojo());
             personajes[i]->setSprite();
             this->niveles->anyadirPersonaje(personajes[i]);
@@ -90,8 +91,6 @@ void Partida::set_camera() {
     {
         480.f, 360.f
     });
-
-
     ventana->setView(*camara1);
 
 }
@@ -283,8 +282,14 @@ void Partida::definirTexto(int pos, String texto) {
         textopantalla[pos].setFont(this->fuente);
         textopantalla[pos].setScale(0.5, 0.5);
         textopantalla[pos].setPosition(350, 75);
-        textopantalla[0].setString(std::to_string((int) trunc(reloj1->getElapsedTime().asSeconds())));
+
+        if (clock2.getElapsedTime().asSeconds() >= 1) {
+            textopantalla[0].setString(std::to_string((int) trunc(--tiempoRonda)));
+            clock2.restart();
+        }
     }
+    
+    
 }
 
 void Partida::configurarTexto(int pos, float x, float y, String texto) {
@@ -294,15 +299,11 @@ void Partida::configurarTexto(int pos, float x, float y, String texto) {
         textopantalla[pos].setString(texto);
     }
 
-
-
 }
 
 void Partida::dibujar() {
 
     bool aux = false;
-    
-    std::cout<<this->personajes[0]->getVida()<<std::endl;
 
     niveles->getMapa()->dibujarMapa(ventana);
     //modificar para array de personajes
@@ -321,7 +322,7 @@ void Partida::dibujar() {
 
 
         for (int z = 0; z < personajes.size(); z++) {
-            if (personajes[z]->getArma() != NULL )
+            if (personajes[z]->getArma() != NULL)
                 personajes[z]->getArma()->getCuerpo()->dibujar(*ventana, personajes[z]->getCuerpo()->getBody()->GetPosition().x + 1, personajes[z]->getCuerpo()->getBody()->GetPosition().y + 5);
         }
 
@@ -342,7 +343,7 @@ void Partida::dibujar() {
 
 void Partida::Update() {
 
-    int encendido=0;
+    int encendido = 0;
     //fin del testeo
     deltaTime = clock.restart().asSeconds();
     *tiempo1 = reloj1->getElapsedTime();
@@ -368,73 +369,61 @@ void Partida::Update() {
 
                 personajes[i]->updateArma();
             }
-            
-            
-              personajes[i]->borrarBala();
 
-            if(personajes[i]->getVida()<=0){
-            
-              this->personajes[i]->getCuerpo()->getBody()->SetActive(false);
-            
+
+            personajes[i]->borrarBala();
+
+            if (personajes[i]->getVida() <= 0) {
+
+                this->personajes[i]->getCuerpo()->getBody()->SetActive(false);
+
             }
-                 if(Keyboard::isKeyPressed(Keyboard::P)){
-        
-            this->personajes[i]->setVida(100);
-            
-              this->personajes[i]->getCuerpo()->getBody()->SetActive(true);
-        
-        }
-            
-            
+            if (Keyboard::isKeyPressed(Keyboard::P)) {
+
+                this->personajes[i]->setVida(100);
+
+                this->personajes[i]->getCuerpo()->getBody()->SetActive(true);
+
+            }
 
         }
 
+        if (encendido == 1) {
 
-
-        if(encendido==1){
-        
             //PONER WINNER Y EL NOMBRE DE JUGADOR, EN VEZ DE CERRARSE LA VENTANA.
-            
+
             ventana->close();
-        
-        }
-        
-
-   
-        
-        personajes[0]->borrarBala();
-
-        //Contador de tiempo original
-        definirTexto(0, "NULL");
-        //textopantalla[0].setString(std::to_string ( (sizeof(textopantalla)/sizeof(Text)) -1) );
-        ventana->draw(textopantalla[0]);
-
-
-
-        //Resto de textos en pantalla de los jugadores
-
-        for (int i = 1; i <= 4; i++) {
-            int aux = 115;
-
-            definirTexto(i, "Hola");
-
-            if (i <= personajes.size()) {
-                configurarTexto(i, 150 + aux * (i - 1), 325, personajes[i - 1]->getNombre());
-            }
-            else {
-                configurarTexto(i, 150 + aux * (i - 1), 325, "PLAYER " + std::to_string(i));
-            }
-
-            ventana->draw(textopantalla[i]);
 
         }
 
 
         dibujar();
+        dibujarTexto();
 
 
         ventana->display();
 
     }
 
+}
+
+void Partida::dibujarTexto() {
+
+    definirTexto(0, "NULL");
+    //textopantalla[0].setString(std::to_string ( (sizeof(textopantalla)/sizeof(Text)) -1) );
+    ventana->draw(textopantalla[0]);
+
+
+    for (int i = 1; i <= 4; i++) {
+        int aux = 115;
+
+        definirTexto(i, "Hola");
+
+        if (i <= personajes.size()) {
+            configurarTexto(i, 150 + aux * (i - 1), 325, personajes[i - 1]->getNombre());
+        } else {
+            configurarTexto(i, 150 + aux * (i - 1), 325, "PLAYER " + std::to_string(i));
+        }
+        ventana->draw(textopantalla[i]);
+    }
 }

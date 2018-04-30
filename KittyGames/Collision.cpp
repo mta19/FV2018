@@ -337,12 +337,9 @@ void Collision::checkaabb(Entidad* a, Entidad* b) {
 
             case identificador::balaM4:
 
-                
-                
                 auxiliar=a->getVida()-b->getDamage();
                 
                 a->setVida(auxiliar);
-
 
                 break;
 

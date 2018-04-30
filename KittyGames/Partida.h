@@ -43,6 +43,7 @@ public:
     Nivel get_Nivel();
     void Update();
 
+    void dibujarTexto();
 private:
     //Singleton --Mirar PDF Sesion 6
     static Partida* pinstance;
@@ -59,8 +60,9 @@ private:
     Font fuente;
     Text textopantalla[10];
     Clock clock;
+    Clock clock2;
     float deltaTime;
-    
+  
     std::vector<Joystick*> mandos;
     
     std::vector<Personaje*> personajes;
