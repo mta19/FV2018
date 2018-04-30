@@ -26,8 +26,8 @@ enum entityCategory {
     ENEMY_PLAYER = 0x0004,
     STAIRS = 0x0008,
     WEAPON = 0x0010,
-    BULLET_N=0x0012,
-    BULLET_S=0x0014,
+    BULLET_N = 0x0012,
+    BULLET_S = 0x0014,
 };
 
 class Entidad {
@@ -52,9 +52,13 @@ public:
 
 
     };
-    
-    bool getCogida(){return false;};
-    bool setCogida(bool aux){};
+
+    bool getCogida() {
+        return false;
+    };
+
+    bool setCogida(bool aux) {
+    };
 
     Clock * getReloj() {
     };
@@ -75,8 +79,27 @@ public:
     void setDestroy(bool aux) {
         destroy = aux;
     };
-    Sprite* getSprite(){return spr;};
-    Texture* getTexture(){return txt;};
+
+    Sprite* getSprite() {
+        return spr;
+    };
+
+    Texture* getTexture() {
+        return txt;
+    };
+
+    int getVida() {
+        return vida;
+    };
+
+    void setVida(int aux) {
+        vida = aux;
+    };
+
+    int getDamage() {
+        return damage;
+    };
+
 protected:
 
     Texture * txt;
@@ -94,6 +117,8 @@ protected:
 
     IntRect uvRect;
 
+    int damage;
+    int vida;
     bool destroy;
 
 };

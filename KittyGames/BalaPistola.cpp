@@ -25,6 +25,8 @@ BalaPistola::BalaPistola(String nombre, int i) {
 
     lifeTime=sf::seconds(2.f);
     destroy = false;
+    
+    damage=7;
 }
 
 BalaPistola::BalaPistola(const BalaPistola& orig) {

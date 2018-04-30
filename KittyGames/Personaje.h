@@ -79,8 +79,7 @@ public:
     //UpdateVida
     virtual void updateVidaActual(int);
     //GetVida
-    virtual int getVida();
-    virtual int getVidaActual();
+   
     //Muerte (?)
     virtual void morir();
     //UpdatePuntuacion
@@ -133,7 +132,7 @@ protected:
     Font fuente;
     Text nombre;
     
-    int vida;
+
     int vidaActual;
     int velocidad;
     int puntuacion;

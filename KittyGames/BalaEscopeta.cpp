@@ -24,6 +24,8 @@ BalaEscopeta::BalaEscopeta(String nombre, int i) {
      spr->setScale(2.f / spr->getTexture()->getSize().x, 2.f / spr->getTexture()->getSize().y);
     lifeTime=sf::seconds(0.2f);
     destroy = false;
+    
+    damage=13;
 }
 
 BalaEscopeta::BalaEscopeta(const BalaEscopeta& orig) {

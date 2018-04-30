@@ -68,6 +68,7 @@ void Ensamblador::dibujar(RenderWindow& r, float x, float y) {
     }
     else spr_actor->setPosition(x,y);
     
+    
     r.draw(*spr_actor);
 }
 

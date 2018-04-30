@@ -23,6 +23,8 @@ balaLC::balaLC(String nombre, int i) {
     spr->setTextureRect(posicion);
     lifeTime=sf::seconds(5.f);
     destroy = false;
+    
+    damage=18;
 
 }
 

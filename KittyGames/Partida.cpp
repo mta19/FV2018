@@ -46,7 +46,7 @@ Partida::Partida(Vector2i resolucion, std::string titulo) {
     ventana = new RenderWindow(VideoMode(resolucion.x, resolucion.y), titulo);
     ventana->setFramerateLimit(fps);
 
-    //set_camera();
+//    set_camera();
 
     niveles = new Nivel();
     personajes.push_back(new Alien());
@@ -301,6 +301,8 @@ void Partida::configurarTexto(int pos, float x, float y, String texto) {
 void Partida::dibujar() {
 
     bool aux = false;
+    
+    std::cout<<this->personajes[0]->getVida()<<std::endl;
 
     niveles->getMapa()->dibujarMapa(ventana);
     //modificar para array de personajes
@@ -319,21 +321,9 @@ void Partida::dibujar() {
 
 
         for (int z = 0; z < personajes.size(); z++) {
-            if (personajes[z]->getArma() != NULL)
+            if (personajes[z]->getArma() != NULL )
                 personajes[z]->getArma()->getCuerpo()->dibujar(*ventana, personajes[z]->getCuerpo()->getBody()->GetPosition().x + 1, personajes[z]->getCuerpo()->getBody()->GetPosition().y + 5);
         }
-
-
-
-
-        /* if (aux == false)
-             niveles->getEntidades()[i]->getCuerpo()->dibujar(*ventana, 0, 0);
-         else {
-             if (niveles->getEntidades()[i]->getCuerpo()->get_id_id() != identificador::pistola) {
-                 niveles->getEntidades()[i]->getCuerpo()->dibujar(*ventana, 0, 0);
-
-
-             }*/
 
     }
 
@@ -348,28 +338,11 @@ void Partida::dibujar() {
 
     }
 
-
-
-
-    /* if (aux == true) {
-         std::cout << "entro aqui?" << std::endl;
-         for (int i = 0; i < this->niveles->getEntidades().size(); i++) {
-             if (niveles->getEntidades()[i]->getCuerpo()->get_id_id() == identificador::pistola) {
-                 for (int z = 0; z < personajes.size(); z++) {
-                     if (personajes[z]->getArma() != NULL)
-                         niveles->getEntidades()[i]->getCuerpo()->dibujar(*ventana, personajes[z]->getCuerpo()->getBody()->GetPosition().x + 30, personajes[z]->getCuerpo()->getBody()->GetPosition().y + 50);
-                 }
-
-             }
-         }
-     }
-     */
-
-
 }
 
 void Partida::Update() {
 
+    int encendido=0;
     //fin del testeo
     deltaTime = clock.restart().asSeconds();
     *tiempo1 = reloj1->getElapsedTime();
@@ -383,7 +356,8 @@ void Partida::Update() {
         this->niveles->actualizar_fisica();
         for (int i = 0; i < personajes.size(); i++) {
 
-            if (personajes[i] != NULL) {
+            if (personajes[i] != NULL && personajes[i]->getCuerpo()->getBody()->IsActive()) {
+                encendido++;
             }
 
             personajes[i]->getAnimacion()->UpdateAnimacion(personajes[i]->getFila(), deltaTime, personajes[i]->getSprite(), personajes[i]->getface());
@@ -394,19 +368,40 @@ void Partida::Update() {
 
                 personajes[i]->updateArma();
             }
+            
+            
+              personajes[i]->borrarBala();
+
+            if(personajes[i]->getVida()<=0){
+            
+              this->personajes[i]->getCuerpo()->getBody()->SetActive(false);
+            
+            }
+                 if(Keyboard::isKeyPressed(Keyboard::P)){
+        
+            this->personajes[i]->setVida(100);
+            
+              this->personajes[i]->getCuerpo()->getBody()->SetActive(true);
+        
+        }
+            
+            
 
         }
 
 
 
-        for (int i = 0; i < personajes.size(); i++) {
-
-            personajes[i]->borrarBala();
-
-
+        if(encendido==1){
+        
+            //PONER WINNER Y EL NOMBRE DE JUGADOR, EN VEZ DE CERRARSE LA VENTANA.
+            
+            ventana->close();
+        
         }
+        
 
-
+   
+        
         personajes[0]->borrarBala();
 
         //Contador de tiempo original

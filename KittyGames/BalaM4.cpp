@@ -23,6 +23,8 @@ BalaM4::BalaM4(String nombre, int i) {
     spr->setTextureRect(posicion);
     lifeTime=sf::seconds(1.f);
     destroy = false;
+    
+    damage=3;
 }
 
 BalaM4::BalaM4(const BalaM4& orig) {

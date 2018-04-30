@@ -279,6 +279,8 @@ void Collision::EndContact(b2Contact* contacto) {
 
 void Collision::checkaabb(Entidad* a, Entidad* b) {
 
+     int auxiliar;
+    
     if (a->getCuerpo()->get_id_id() == identificador::jugador) {
 
         switch (b->getCuerpo()->get_id_id()) {
@@ -292,6 +294,8 @@ void Collision::checkaabb(Entidad* a, Entidad* b) {
                 break;
 
             case identificador::caja:
+                
+                
 
                 id = 1;
 
@@ -300,23 +304,44 @@ void Collision::checkaabb(Entidad* a, Entidad* b) {
 
             case identificador::balaPistola:
 
-
+               
+                
+                auxiliar=a->getVida()-b->getDamage();
+                
+                a->setVida(auxiliar);
 
                 break;
 
             case identificador::balaCohete:
 
-;
+                
+                
+                
+                auxiliar=a->getVida()-b->getDamage();
+                
+                a->setVida(auxiliar);
+
 
                 break;
 
             case identificador::balaEscopeta:
 
        
+                
+                auxiliar=a->getVida()-b->getDamage();
+                
+                a->setVida(auxiliar);
+
 
                 break;
 
             case identificador::balaM4:
+
+                
+                
+                auxiliar=a->getVida()-b->getDamage();
+                
+                a->setVida(auxiliar);
 
 
                 break;

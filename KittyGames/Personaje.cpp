@@ -52,13 +52,6 @@ void Personaje::handleInput(Event* tecla, Nivel* nivel) {
 }
 
 
-int Personaje::getVida() {
-    return vida;
-}
-
-int Personaje::getVidaActual() {
-    return vidaActual;
-}
 
 void Personaje::updateVidaActual(int cambio) {
     //Si recibe un entero negativo, se le resta por signo
