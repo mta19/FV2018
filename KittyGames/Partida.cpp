@@ -43,8 +43,8 @@ Partida::Partida(Vector2i resolucion, std::string titulo) {
     fps = 60;
     frameRate = 1 / fps;
 
-    tiempoRonda = 5;
-    tiempoPrep = 5;
+    tiempoRonda = 60;
+    tiempoPrep = 15;
 
     ventana = new RenderWindow(VideoMode(resolucion.x, resolucion.y), titulo);
     ventana->setFramerateLimit(fps);
@@ -287,11 +287,14 @@ void Partida::definirTexto(int pos, String texto) {
             if (clock2.getElapsedTime().asSeconds() >= 1) {
                 textopantalla[0].setString(" Preparate: " + std::to_string((int) trunc(--tiempoPrep)));
                 if(tiempoPrep==0) this->niveles->setEmpezado(true);
+                if(tiempoPrep<=3) textopantalla[0].setColor(Color::Red);
                 clock2.restart();
             }
         } else {
             if (clock2.getElapsedTime().asSeconds() >= 1) {
+                if(tiempoRonda>3) textopantalla[0].setColor(Color::White);
                 textopantalla[0].setString("Fin Ronda: "+std::to_string((int) trunc(--tiempoRonda)));
+                if(tiempoRonda<=3) textopantalla[0].setColor(Color::Red);
                 clock2.restart();
             }
         }
