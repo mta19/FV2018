@@ -37,6 +37,8 @@ Nivel::Nivel() {
 
     procesadorColisiones = new Collision();
 
+    empezado=false;
+    
     mundo->SetContactListener(procesadorColisiones);
 
 

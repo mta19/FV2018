@@ -44,6 +44,7 @@ Partida::Partida(Vector2i resolucion, std::string titulo) {
     frameRate = 1 / fps;
 
     tiempoRonda = 60;
+    tiempoPrep = 15;
 
     ventana = new RenderWindow(VideoMode(resolucion.x, resolucion.y), titulo);
     ventana->setFramerateLimit(fps);
@@ -281,16 +282,22 @@ void Partida::definirTexto(int pos, String texto) {
     if (pos == 0) {
         textopantalla[pos].setFont(this->fuente);
         textopantalla[pos].setScale(0.5, 0.5);
-        textopantalla[pos].setPosition(350, 75);
-
-        if (clock2.getElapsedTime().asSeconds() >= 1) {
-            textopantalla[0].setString(std::to_string((int) trunc(--tiempoRonda)));
-            clock2.restart();
+        textopantalla[pos].setPosition(120, 75);
+        if (this->niveles->getEmpezado() == false) {
+            if (clock2.getElapsedTime().asSeconds() >= 1) {
+                textopantalla[0].setString(" Preparate: " + std::to_string((int) trunc(--tiempoPrep)));
+                if(tiempoPrep==0) this->niveles->setEmpezado(true);
+                clock2.restart();
+            }
+        } else {
+            if (clock2.getElapsedTime().asSeconds() >= 1) {
+                textopantalla[0].setString("Fin Ronda: "+std::to_string((int) trunc(--tiempoRonda)));
+                clock2.restart();
+            }
         }
     }
 
     if (pos == 13) {
-
 
         textopantalla[pos].setFont(this->fuente);
         textopantalla[pos].setScale(2.f, 2.f);
@@ -410,7 +417,7 @@ void Partida::Update() {
 
 
         dibujar();
-        
+
 
 
         if (encendido == 1 || tiempoRonda == 0) {
@@ -429,13 +436,13 @@ void Partida::Update() {
 
                         configurarTexto(13, 50, 100, "WINNER");
 
-                        configurarTexto(i+1,110,200, personajes[i]->getNombre());
-                        textopantalla[i+1].setScale(0.8f,0.8f);
-                        textopantalla[i+1].setColor(Color::Blue);
-                        
+                        configurarTexto(i + 1, 110, 200, personajes[i]->getNombre());
+                        textopantalla[i + 1].setScale(0.8f, 0.8f);
+                        textopantalla[i + 1].setColor(Color::Blue);
+
                         ventana->draw(textopantalla[13]);
-                        ventana->draw(textopantalla[i+1]);
-                        
+                        ventana->draw(textopantalla[i + 1]);
+
 
                     }
 

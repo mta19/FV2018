@@ -51,7 +51,7 @@ private:
     Nivel * niveles;
     int numRondas;
     int tiempoRonda;
-
+    int tiempoPrep;
     Collision procesadorColisiones;
 
     Event * evento;
@@ -61,6 +61,7 @@ private:
     Text textopantalla[20];
     Clock clock;
     Clock clock2;
+    
     float deltaTime;
   
     std::vector<Joystick*> mandos;

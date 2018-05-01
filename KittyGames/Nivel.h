@@ -124,17 +124,25 @@ public:
         return mundo;
     }
 
-      Map* getMapa(){
+    Map* getMapa() {
         return mapa;
     }
+
+    bool getEmpezado() {
+        return empezado;
+    };
+
+    bool setEmpezado(bool aux) {
+        empezado = aux;
+    };
 
 
 
     static int contadorEn;
 
 private:
-    
-      Map *mapa;
+
+    Map *mapa;
 
     std::vector<Entidad*> entidades;
     std::vector<Entidad*> armas;
@@ -156,6 +164,11 @@ private:
     b2PolygonShape shp_[10];
 
     Collision * procesadorColisiones;
+
+    bool empezado;
+
+    
+
 
 };
 
