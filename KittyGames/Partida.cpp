@@ -298,6 +298,7 @@ void Partida::configurarTexto(int pos, float x, float y, String texto) {
         textopantalla[pos].setPosition(x, y);
         textopantalla[pos].setString(texto);
         textopantalla[pos].setColor(Color::Black);
+
     }
 
 }
@@ -389,13 +390,34 @@ void Partida::Update() {
 
         }
 
-        //if (encendido == 1 || tiempoRonda==0) {
+        if (encendido == 1 || tiempoRonda==0) {
 
             //PONER WINNER Y EL NOMBRE DE JUGADOR, EN VEZ DE CERRARSE LA VENTANA.
 
-            //ventana->close();
+            if(encendido==1){
+                
+                std::cout<<"entro aqui?"<<std::endl;
+            
+                for (int i = 0; i < personajes.size(); i++) {
+                    
+                    if(personajes[i]->getCuerpo()->getBody()->IsActive()){
+                    
+                         definirTexto(14, "Hola");
+                    
+                            configurarTexto(14, 20 + 200 * (i+1), 200, "WINNER "+personajes[i]->getNombre());
+                            
+                              ventana->draw(textopantalla[14]);
+                    
+                    }
 
-        //}
+                }
+
+            
+            
+            }
+            
+            
+        }
 
 
         dibujar();
