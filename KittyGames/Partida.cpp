@@ -48,7 +48,7 @@ Partida::Partida(Vector2i resolucion, std::string titulo) {
     ventana = new RenderWindow(VideoMode(resolucion.x, resolucion.y), titulo);
     ventana->setFramerateLimit(fps);
 
-       set_camera();
+    set_camera();
 
     niveles = new Nivel();
     personajes.push_back(new Alien());
@@ -289,6 +289,15 @@ void Partida::definirTexto(int pos, String texto) {
         }
     }
 
+    if (pos == 13) {
+
+
+        textopantalla[pos].setFont(this->fuente);
+        textopantalla[pos].setScale(2.f, 2.f);
+        textopantalla[pos].setPosition(350, 75);
+        textopantalla[pos].setString(texto);
+    }
+
 
 }
 
@@ -298,6 +307,14 @@ void Partida::configurarTexto(int pos, float x, float y, String texto) {
         textopantalla[pos].setPosition(x, y);
         textopantalla[pos].setString(texto);
         textopantalla[pos].setColor(Color::Black);
+
+    }
+
+    if (pos == 13) {
+
+        textopantalla[pos].setPosition(x, y);
+        textopantalla[pos].setString(texto);
+        textopantalla[pos].setColor(Color::Red);
 
     }
 
@@ -390,39 +407,46 @@ void Partida::Update() {
 
         }
 
-        if (encendido == 1 || tiempoRonda==0) {
+
+
+        dibujar();
+        
+
+
+        if (encendido == 1 || tiempoRonda == 0) {
 
             //PONER WINNER Y EL NOMBRE DE JUGADOR, EN VEZ DE CERRARSE LA VENTANA.
 
-            if(encendido==1){
-                
-                std::cout<<"entro aqui?"<<std::endl;
-            
+            if (encendido == 1) {
+
+
+
                 for (int i = 0; i < personajes.size(); i++) {
-                    
-                    if(personajes[i]->getCuerpo()->getBody()->IsActive()){
-                    
-                         definirTexto(14, "Hola");
-                    
-                            configurarTexto(14, 20 + 200 * (i+1), 200, "WINNER "+personajes[i]->getNombre());
-                            
-                              ventana->draw(textopantalla[14]);
-                    
+
+                    if (personajes[i]->getCuerpo()->getBody()->IsActive()) {
+
+                        definirTexto(13, "Hola");
+
+                        configurarTexto(13, 50, 100, "WINNER");
+
+                        configurarTexto(i+1,110,200, personajes[i]->getNombre());
+                        textopantalla[i+1].setScale(0.8f,0.8f);
+                        textopantalla[i+1].setColor(Color::Blue);
+                        
+                        ventana->draw(textopantalla[13]);
+                        ventana->draw(textopantalla[i+1]);
+                        
+
                     }
 
                 }
 
-            
-            
+
+
             }
-            
-            
-        }
 
 
-        dibujar();
-        dibujarTexto();
-
+        } else dibujarTexto();
 
         ventana->display();
 
@@ -449,10 +473,7 @@ void Partida::dibujarTexto() {
         }
         ventana->draw(textopantalla[i]);
     }
-    
-    
-    
-    
+
 
     for (int i = 5; i <= 8; i++) {
         int aux = 115;
