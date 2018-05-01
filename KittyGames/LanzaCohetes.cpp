@@ -46,6 +46,9 @@ void LanzaCohetes::setFixture(b2PolygonShape* forma, float density, float restit
 
     fixdef_.isSensor = true;
 
+
+    fixdef_.filter.categoryBits = entityCategory::WEAPON;
+    fixdef_.filter.maskBits = entityCategory::FRIENDLY_PLAYER | entityCategory::BOUNDARY;
     
     fix_ = bdy->CreateFixture(&fixdef_);
 

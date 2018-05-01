@@ -61,7 +61,7 @@ private:
     Text textopantalla[20];
     Clock clock;
     Clock clock2;
-    
+    bool eliminadas;
     float deltaTime;
   
     std::vector<Joystick*> mandos;

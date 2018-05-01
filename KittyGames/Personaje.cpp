@@ -108,7 +108,7 @@ void Personaje::setFixture(b2PolygonShape * forma, float density, float restitut
     float height = (this->getSprite()->getTexture()->getSize().y / 7);
 
     fixdef_.shape = forma;
-    fixdef_.density = density;
+    fixdef_.density = 0.1;
     fixdef_.restitution = restitution;
     fixdef_.friction = friction;
 
@@ -156,6 +156,7 @@ void Personaje::setFrame(Sprite& spr) {
 void Personaje::setArma(Entidad* weapon) {
 
     arma = weapon;
+   
     arma->getCuerpo()->getBody()->SetActive(false);
 
 

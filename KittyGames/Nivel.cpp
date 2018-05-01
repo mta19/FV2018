@@ -68,8 +68,9 @@ Nivel::Nivel() {
 
     
 
-    //this->anyadirObjetoDinamico(350.0f, 250.0f, 12.5f, 8.f);
-
+    this->anyadirObjetoDinamico(270.0f, 100.0f, 11.5f, 18.f);
+    this->anyadirObjetoDinamico(325.0f, 100.0f, 9.5f, 16.f);
+    this->anyadirObjetoDinamico(120.0f, 100.0f, 7.5f, 10.f);
 
     char k='p';
     for (int z = 0; z < mapa->_numPlats; z++) {

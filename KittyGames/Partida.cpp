@@ -44,7 +44,8 @@ Partida::Partida(Vector2i resolucion, std::string titulo) {
     frameRate = 1 / fps;
 
     tiempoRonda = 60;
-    tiempoPrep = 15;
+    tiempoPrep = 5;
+    eliminadas=false;
 
     ventana = new RenderWindow(VideoMode(resolucion.x, resolucion.y), titulo);
     ventana->setFramerateLimit(fps);
@@ -127,7 +128,7 @@ void Partida::gameLoop() {
                     this->personajes[0]->handleInput(evento, this->niveles);
                 }
 
-                if (evento->key.code == Keyboard::R) {
+                if (evento->key.code == Keyboard::R && !this->niveles->getEmpezado()) {
                     //el getIsOnWeaponPistola, getisOnEscopeta...
                     if (this->personajes[0]->getCuerpo()->getisOnWeapon()) {
                         if (this->personajes[0]->getArma() == NULL)
@@ -178,7 +179,7 @@ void Partida::gameLoop() {
 
 
 
-                    if (evento->joystickButton.button == 3) {
+                    if (evento->joystickButton.button == 3 && !this->niveles->getEmpezado()) {
                         std::cout << "entro aqui weys" << std::endl;
                         //hay que haber varios "getIsOn Weapon", uno para pistola, uno para la escopeta, uno para..)
                         if (this->personajes[evento->joystickButton.joystickId + 1]->getCuerpo()->getisOnWeapon()) {
@@ -316,8 +317,9 @@ void Partida::configurarTexto(int pos, float x, float y, String texto) {
     if (pos > 0 && pos <= ((sizeof (textopantalla) / sizeof (Text)) - 1)) {
         textopantalla[pos].setPosition(x, y);
         textopantalla[pos].setString(texto);
-        textopantalla[pos].setColor(Color::Black);
-        textopantalla[pos].setColor(Color::Blue);
+        textopantalla[pos].setColor(Color::Green);
+   
+        
 
     }
 

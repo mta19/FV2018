@@ -19,12 +19,12 @@ balaLC::balaLC(String nombre, int i) {
     txt->loadFromFile(nombre);
     spr = new Sprite(*txt);
 
-    IntRect posicion(i * spr->getTexture()->getSize().x / 4, 0, spr->getTexture()->getSize().x/4, spr->getTexture()->getSize().y );
+    IntRect posicion(i * spr->getTexture()->getSize().x / 4, 0, spr->getTexture()->getSize().x / 4, spr->getTexture()->getSize().y);
     spr->setTextureRect(posicion);
-    lifeTime=sf::seconds(5.f);
+    lifeTime = sf::seconds(5.f);
     destroy = false;
-    
-    damage=18;
+
+    damage = 18;
 
 }
 
@@ -32,7 +32,7 @@ balaLC::balaLC(const balaLC& orig) {
 }
 
 balaLC::~balaLC() {
-    
+
     bdy->GetWorld()->DestroyBody(bdy);
 }
 
@@ -47,6 +47,9 @@ void balaLC::setFixture(b2PolygonShape* forma, float density, float restitution,
     fixdef_.restitution = restitution;
     fixdef_.friction = friction;
 
+
+    fixdef_.filter.categoryBits = entityCategory::BULLET_N;
+    fixdef_.filter.maskBits = entityCategory::FRIENDLY_PLAYER | entityCategory::BOUNDARY;
 
     fix_ = bdy->CreateFixture(&fixdef_);
 

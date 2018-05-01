@@ -46,6 +46,8 @@ void BalaM4::setFixture(b2PolygonShape* forma, float density, float restitution,
     fixdef_.restitution = restitution;
     fixdef_.friction = friction;
 
+     fixdef_.filter.categoryBits=entityCategory::BULLET_N;
+    fixdef_.filter.maskBits=entityCategory::FRIENDLY_PLAYER | entityCategory::BOUNDARY;
 
     fix_ = bdy->CreateFixture(&fixdef_);
 

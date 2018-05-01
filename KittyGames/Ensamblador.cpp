@@ -61,7 +61,7 @@ float Ensamblador::rad2deg(float radianes) {
 
 void Ensamblador::dibujar(RenderWindow& r, float x, float y) {
 
-    if(bdy_actor->IsActive()){
+    if(bdy_actor!=NULL && bdy_actor->IsActive()){
     posicion = bdy_actor->GetPosition();
     spr_actor->setPosition(posicion.x, posicion.y);
     spr_actor->setRotation(rad2deg(bdy_actor->GetAngle()));

@@ -62,12 +62,27 @@ public:
         return NULL;
     };*/
 
+    std::vector<Entidad*>& getArmas() { //conseguimos la entidad
+
+        for (int i = 0; i < entidades.size(); i++) {
+
+            if (this->getEntidades()[i] != NULL && (this->getEntidades()[i]->getCuerpo()->get_id_id() == identificador::pistola || this->getEntidades()[i]->getCuerpo()->get_id_id() == identificador::escopeta
+                    || this->getEntidades()[i]->getCuerpo()->get_id_id() == identificador::lanzaCohetes || this->getEntidades()[i]->getCuerpo()->get_id_id() == identificador::m4)) {
+
+                    armas2.push_back(this->getEntidades()[i]);
+
+                }
+        }
+        return armas2;
+    }
+
     Entidad* getPistola() { //conseguimos la entidad
 
         for (int i = 0; i < entidades.size(); i++) {
 
             if (this->getEntidades()[i] != NULL && this->getEntidades()[i]->getCuerpo()->get_id_id() == identificador::pistola) {
                 armas.push_back(this->getEntidades()[i]);
+
                 return (this->getEntidades()[i]);
             }
         }
@@ -75,12 +90,15 @@ public:
         return NULL;
     }
 
+
+
     Entidad* getEscopeta() { //conseguimos la entidad
 
         for (int i = 0; i < entidades.size(); i++) {
 
             if (this->getEntidades()[i] != NULL && this->getEntidades()[i]->getCuerpo()->get_id_id() == identificador::escopeta) {
                 armas.push_back(this->getEntidades()[i]);
+
                 return (this->getEntidades()[i]);
             }
         }
@@ -94,6 +112,7 @@ public:
 
             if (this->getEntidades()[i] != NULL && this->getEntidades()[i]->getCuerpo()->get_id_id() == identificador::lanzaCohetes) {
                 armas.push_back(this->getEntidades()[i]);
+
                 return (this->getEntidades()[i]);
             }
         }
@@ -107,6 +126,7 @@ public:
 
             if (this->getEntidades()[i] != NULL && this->getEntidades()[i]->getCuerpo()->get_id_id() == identificador::m4) {
                 armas.push_back(this->getEntidades()[i]);
+
                 return (this->getEntidades()[i]);
             }
         }
@@ -125,10 +145,12 @@ public:
     }
 
     Map* getMapa() {
+
         return mapa;
     }
 
     bool getEmpezado() {
+
         return empezado;
     };
 
@@ -140,34 +162,35 @@ public:
 
     static int contadorEn;
 
-private:
+        private:
 
-    Map *mapa;
+            Map *mapa;
 
-    std::vector<Entidad*> entidades;
-    std::vector<Entidad*> armas;
-    int marcadores;
+            std::vector<Entidad*> entidades;
+            std::vector<Entidad*> armas;
+            std::vector<Entidad*> armas2;
+            int marcadores;
 
-    Texture * txt_;
-    Sprite **spr_;
+            Texture * txt_;
+            Sprite **spr_;
 
 
-    //fisicas de los distintos objetos del mapa
+            //fisicas de los distintos objetos del mapa
 
-    b2World * mundo;
+            b2World * mundo;
 
-    b2Body ** bdy;
-    b2BodyDef bdydef_[10];
-    b2Fixture * fix_[10];
-    b2FixtureDef fixdef_[10];
+            b2Body ** bdy;
+            b2BodyDef bdydef_[10];
+            b2Fixture * fix_[10];
+            b2FixtureDef fixdef_[10];
 
-    b2PolygonShape shp_[10];
+            b2PolygonShape shp_[10];
 
-    Collision * procesadorColisiones;
+            Collision * procesadorColisiones;
 
-    bool empezado;
+            bool empezado;
 
-    
+
 
 
 };

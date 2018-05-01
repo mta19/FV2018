@@ -296,8 +296,12 @@ void Collision::checkaabb(Entidad* a, Entidad* b) {
             case identificador::caja:
                 
                 
-
-                id = 1;
+                if(b->getCuerpo()->getBody()->GetLinearVelocity().y>15){
+                    
+                    auxiliar=a->getVida()-100;
+                    a->setVida(auxiliar);
+                }
+                
 
                 break;
 

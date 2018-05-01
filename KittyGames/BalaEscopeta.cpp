@@ -19,21 +19,21 @@ BalaEscopeta::BalaEscopeta(String nombre, int i) {
     txt->loadFromFile(nombre);
     spr = new Sprite(*txt);
 
-   // IntRect posicion(0, 0, spr->getTexture()->getSize().x, spr->getTexture()->getSize().y/4);
+    // IntRect posicion(0, 0, spr->getTexture()->getSize().x, spr->getTexture()->getSize().y/4);
     //spr->setTextureRect(posicion);
-     spr->setScale(2.f / spr->getTexture()->getSize().x, 2.f / spr->getTexture()->getSize().y);
-    lifeTime=sf::seconds(0.2f);
+    spr->setScale(2.f / spr->getTexture()->getSize().x, 2.f / spr->getTexture()->getSize().y);
+    lifeTime = sf::seconds(0.2f);
     destroy = false;
-    
-    damage=13;
+
+    damage = 13;
 }
 
 BalaEscopeta::BalaEscopeta(const BalaEscopeta& orig) {
-    
+
 }
 
 BalaEscopeta::~BalaEscopeta() {
-      bdy->GetWorld()->DestroyBody(bdy);
+    bdy->GetWorld()->DestroyBody(bdy);
 }
 
 void BalaEscopeta::setFixture(b2PolygonShape* forma, float density, float restitution, float friction) {
@@ -48,12 +48,17 @@ void BalaEscopeta::setFixture(b2PolygonShape* forma, float density, float restit
     fixdef_.friction = friction;
 
 
+    fixdef_.filter.categoryBits = entityCategory::BULLET_N;
+    fixdef_.filter.maskBits = entityCategory::FRIENDLY_PLAYER | entityCategory::BOUNDARY;
+
     fix_ = bdy->CreateFixture(&fixdef_);
 
     bdy->SetGravityScale(0);
 
     cuerpo = new Ensamblador(bdy, spr, weight, height);
     cuerpo->set_id_id(balaPistola);
+
+
 
 
 

@@ -29,6 +29,9 @@ Weapon::Weapon(const Weapon& orig) {
 }
 
 Weapon::~Weapon() {
+    
+    bdy->GetWorld()->DestroyBody(this->bdy);
+    bdy=NULL;
 }
 
 

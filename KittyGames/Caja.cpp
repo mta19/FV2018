@@ -44,7 +44,7 @@ void Caja::setFixture(b2PolygonShape* forma, float density, float restitution, f
     float height = spr->getTexture()->getSize().y;
 
     fixdef_.shape = forma;
-    fixdef_.density = density;
+    fixdef_.density = 0.001;
     fixdef_.restitution = restitution;
     fixdef_.friction = friction;
 
