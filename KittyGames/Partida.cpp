@@ -282,7 +282,7 @@ void Partida::definirTexto(int pos, String texto) {
     if (pos == 0) {
         textopantalla[pos].setFont(this->fuente);
         textopantalla[pos].setScale(0.5, 0.5);
-        textopantalla[pos].setPosition(120, 75);
+        textopantalla[pos].setPosition(120, 25);
         if (this->niveles->getEmpezado() == false) {
             if (clock2.getElapsedTime().asSeconds() >= 1) {
                 textopantalla[0].setString(" Preparate: " + std::to_string((int) trunc(--tiempoPrep)));
@@ -513,9 +513,9 @@ void Partida::dibujarTexto() {
         definirTexto(i, "Hola");
 
         if (i <= personajes.size()) {
-            configurarTexto(i, 20 + aux * (i - 1), 270, personajes[i - 1]->getNombre());
+            configurarTexto(i, 20 + aux * (i - 1), 330, personajes[i - 1]->getNombre());
         } else {
-            configurarTexto(i, 20 + aux * (i - 1), 270, "PLAYER " + std::to_string(i));
+            configurarTexto(i, 20 + aux * (i - 1), 330, "PLAYER " + std::to_string(i));
         }
         ventana->draw(textopantalla[i]);
     }
@@ -533,9 +533,9 @@ void Partida::dibujarTexto() {
         if (i - 4 <= personajes.size()) {
             convert << personajes[i - 5]->getVida();
             vidaString = convert.str();
-            configurarTexto(i, 20 + aux * (i - 5), 290, vidaString);
+            configurarTexto(i, 20 + aux * (i - 5), 350, vidaString);
         } else {
-            configurarTexto(i, 20 + aux * (i - 5), 290, "0 ");
+            configurarTexto(i, 20 + aux * (i - 5), 350, "0 ");
         }
         ventana->draw(textopantalla[i]);
     }

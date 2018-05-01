@@ -131,7 +131,6 @@
    <tile gid="11"/>
    <tile gid="11"/>
    <tile gid="11"/>
-   <tile gid="11"/>
    <tile gid="3"/>
    <tile gid="3"/>
    <tile gid="3"/>
@@ -144,8 +143,6 @@
    <tile gid="3"/>
    <tile gid="3"/>
    <tile gid="3"/>
-   <tile gid="11"/>
-   <tile gid="11"/>
    <tile gid="3"/>
    <tile gid="3"/>
    <tile gid="3"/>
@@ -158,8 +155,6 @@
    <tile gid="3"/>
    <tile gid="3"/>
    <tile gid="3"/>
-   <tile gid="11"/>
-   <tile gid="11"/>
    <tile gid="3"/>
    <tile gid="3"/>
    <tile gid="3"/>
@@ -172,7 +167,12 @@
    <tile gid="3"/>
    <tile gid="3"/>
    <tile gid="3"/>
-   <tile gid="11"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
   </data>
  </layer>
  <objectgroup name="colisiones">
