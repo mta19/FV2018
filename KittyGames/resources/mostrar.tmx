@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.4" orientation="orthogonal" renderorder="left-up" width="14" height="12" tilewidth="32" tileheight="32" infinite="0" nextobjectid="10">
+ <tileset firstgid="1" source="tileSdiminuto.tsx"width="448" height="384" tilewidth="32" tileheight="32" name="bien">
+     <image source="tileSenano.png" width="256" height="128"/>
+ </tileset>
+ <layer name="Capa de Patrones 1" width="14" height="12">
+  <data>
+   <tile gid="11"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="4"/>
+   <tile gid="5"/>
+   <tile gid="3"/>
+   <tile gid="4"/>
+   <tile gid="5"/>
+   <tile gid="3"/>
+   <tile gid="4"/>
+   <tile gid="5"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="11"/>
+   <tile gid="11"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="28"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="29"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="28"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="11"/>
+   <tile gid="11"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="28"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="29"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="28"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="11"/>
+   <tile gid="11"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="12"/>
+   <tile gid="12"/>
+   <tile gid="12"/>
+   <tile gid="11"/>
+   <tile gid="29"/>
+   <tile gid="12"/>
+   <tile gid="12"/>
+   <tile gid="12"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="11"/>
+   <tile gid="11"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="28"/>
+   <tile gid="4"/>
+   <tile gid="5"/>
+   <tile gid="3"/>
+   <tile gid="29"/>
+   <tile gid="3"/>
+   <tile gid="4"/>
+   <tile gid="5"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="11"/>
+   <tile gid="11"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="28"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="29"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="28"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="11"/>
+   <tile gid="11"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="28"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="29"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="28"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="11"/>
+   <tile gid="11"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="28"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="29"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="28"/>
+   <tile gid="3"/>
+   <tile gid="16"/>
+   <tile gid="11"/>
+   <tile gid="11"/>
+   <tile gid="11"/>
+   <tile gid="11"/>
+   <tile gid="11"/>
+   <tile gid="11"/>
+   <tile gid="11"/>
+   <tile gid="11"/>
+   <tile gid="11"/>
+   <tile gid="11"/>
+   <tile gid="11"/>
+   <tile gid="11"/>
+   <tile gid="11"/>
+   <tile gid="11"/>
+   <tile gid="11"/>
+   <tile gid="11"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="11"/>
+   <tile gid="11"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="11"/>
+   <tile gid="11"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="3"/>
+   <tile gid="11"/>
+  </data>
+ </layer>
+ <objectgroup name="colisiones">
+  <object id="1" x="96.6667" y="96.6667" width="127.333" height="30"/>
+  <object id="3" x="256.667" y="96.3333" width="96" height="30.6667"/>
+  <object id="4" x="0" y="0.5" width="32" height="254"/>
+  <object id="5" x="415.5" y="0" width="32.5" height="256"/>
+  <object id="6" x="1.33333" y="255.333" width="446" height="31.3333"/>
+ </objectgroup>
+ <objectgroup name="caja">
+  <object id="7" x="162" y="65.3333" width="17.3333" height="28"/>
+ </objectgroup>
+ <objectgroup name="escalera">
+  <object id="8" x="352" y="62.6667" width="43.3333" height="210"/>
+  <object id="9" x="52" y="64" width="42" height="207.333"/>
+ </objectgroup>
+</map>

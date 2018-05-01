@@ -8,6 +8,7 @@ Map::Map(const char* ruta) {
    
     
     
+    tiles=32;
     
     doc.LoadFile(ruta);
 
@@ -70,6 +71,27 @@ Map::Map(const char* ruta) {
     }
     
     dataPlats();
+    //Cajas
+    box=map->FirstChildElement("objectgroup")->NextSiblingElement("objectgroup")->FirstChildElement("object");
+    _numBoxes=0;
+    
+    while(box){
+        _numBoxes++;
+        box = box->NextSiblingElement("object");
+    }
+    
+    dataBoxes();
+    
+    //escaleras
+    stair=map->FirstChildElement("objectgroup")->NextSiblingElement("objectgroup")->NextSiblingElement("objectgroup")->FirstChildElement("object");
+    _numStairs=0;
+    
+    while(stair){
+        _numStairs++;
+        stair = stair->NextSiblingElement("object");
+    }
+    
+    dataStairs();
     //Creamos el array de sprites
     matrizSprites();
     
@@ -103,33 +125,114 @@ void Map::dataPlats(){
     }
     
 } 
-float Map::getX(int z){
+
+void Map::dataStairs(){
+    dataStair = new XMLElement*[_numStairs];
     
-    return dataPlat[z]->FloatAttribute("x");
+    stairs = map->FirstChildElement("objectgroup")->NextSiblingElement("objectgroup")->NextSiblingElement("objectgroup")->FirstChildElement("object");
+    
+    for(int i=0; i<_numStairs; i++){
+        dataStair[i] = stairs;
+        
+        
+         stairs= stairs->NextSiblingElement("object");//NextSiblingElement("objectgroup");
+    }
+}  
+ void   Map::dataBoxes(){
+    dataBox = new XMLElement*[_numBoxes];
+    
+    boxes = map->FirstChildElement("objectgroup")->NextSiblingElement("objectgroup")->FirstChildElement("object");
+    
+    for(int i=0; i<_numBoxes; i++){
+        dataBox[i] = boxes;
+        
+        
+         boxes= boxes->NextSiblingElement("object");//NextSiblingElement("objectgroup");
+    }
+    
+} 
+float Map::getX(char x,int z){
+    float res=0;
+    switch(x){
+        case 'p':
+           res= dataPlat[z]->FloatAttribute("x");
+        break;
+        
+        case 's':
+            res= dataStair[z]->FloatAttribute("x");
+        break;
+        
+        case 'b':
+           res= dataBox[z]->FloatAttribute("x");
+        break;
+    }
+    return res;
     
 }
   
-float Map::getY(int z){
-    return dataPlat[z]->FloatAttribute("y");
+float Map::getY(char x,int z){
+    float res=0;
+    switch(x){
+        case 'p':
+           res= dataPlat[z]->FloatAttribute("y");
+        break;
+        
+        case 's':
+            res= dataStair[z]->FloatAttribute("y");
+        break;
+        
+        case 'b':
+           res= dataBox[z]->FloatAttribute("y");
+        break;
+    }
+    return res;
 }
 
-float Map::getWidth(int z)  
+float Map::getWidth(char x,int z)  
 {
-    return dataPlat[z]->FloatAttribute("width");
+    float res=0;
+    switch(x){
+        case 'p':
+           res= dataPlat[z]->FloatAttribute("width");
+        break;
+        
+        case 's':
+            res= dataStair[z]->FloatAttribute("width");
+        break;
+        
+        case 'b':
+           res= dataBox[z]->FloatAttribute("width");
+        break;
+    }
+    return res;
 }
 
-float Map::getHeight(int z){
-    return dataPlat[z]->FloatAttribute("height");
+float Map::getHeight(char x,int z){
+    float res=0;
+    switch(x){
+        case 'p':
+           res= dataPlat[z]->FloatAttribute("height");
+        break;
+        
+        case 's':
+            res= dataStair[z]->FloatAttribute("height");
+        break;
+        
+        case 'b':
+           res= dataBox[z]->FloatAttribute("height");
+        break;
+    }
+    return res;
 }
 
 void Map::matrizSprites(){
     //NEED PUNTERO
     sf::Texture *_tilesetTexture= new sf::Texture;
     
-    _tilesetTexture->loadFromFile("resources/tileSenano.png");
+    _tilesetTexture->loadFromFile("resources/tileSdiminuto.png");
     
     //NEED PUNTERO
-    sf::Rect <float> *medidas = new sf::Rect <float>(0, 0, 64, 64); 
+    sf::Rect <float> *medidas = new sf::Rect <float>(0, 0, tiles, tiles); 
     _tilemapSprite = new sf::Sprite***[_numLayers];
     //Rellenando el array de sprites
     for(int l=0; l<_numLayers; l++){
@@ -150,10 +253,10 @@ void Map::matrizSprites(){
                     newY = NewCoordY(gid);
                     
                     
-                    medidas->left=newX-64;
+                    medidas->left=newX-tiles;
                     medidas->top=newY;
-                    medidas->width=64;
-                    medidas->height= 64;
+                    medidas->width=tiles;
+                    medidas->height= tiles;
                     
 //                     
                     
@@ -193,9 +296,9 @@ int Map::NewCoordX(int gid){
     }
 
     if(newX>0){
-        newX = 64*(gid-(newX*8)); 
+        newX = tiles*(gid-(newX*8)); 
     }else{
-        newX = (gid*64);
+        newX = (gid*tiles);
     }
     
     return newX;
@@ -205,10 +308,10 @@ int Map::NewCoordY(int gid){
     
     int newY;
     
-    newY = (gid/8)*64;
+    newY = (gid/8)*tiles;
                   
     if(gid%8==0){
-        newY = newY-64;
+        newY = newY-tiles;
     }
     
     return newY;

@@ -11,6 +11,8 @@ using namespace tinyxml2;
 class Map {
     private:
        
+        int tiles;
+        
         XMLElement* map;
         XMLElement* img;       
         XMLElement *layer;
@@ -19,9 +21,20 @@ class Map {
         int ***_tilemap;  
         //bool colisiona;
         
+        //crear plataformas
         XMLElement *plat;
         XMLElement *platas;
         XMLElement **dataPlat;
+        
+        //crear plataformas
+        XMLElement *stair;
+        XMLElement *stairs;
+        XMLElement **dataStair;
+        
+        //crear plataformas
+        XMLElement *box;
+        XMLElement *boxes;
+        XMLElement **dataBox;
         
     public:
         XMLDocument doc;
@@ -34,6 +47,8 @@ class Map {
         sf::Sprite ****_tilemapSprite;
         
         int _numPlats;
+        int _numStairs;
+        int _numBoxes;
         
         Map(const char* ruta); //ToDo: Sergio map
         
@@ -59,20 +74,23 @@ class Map {
         
         void dataPlats();
         
-        float getX(int z);
         
-        float getY(int z);
+        void dataStairs();
         
-        float getWidth(int z);
         
-        float getHeight(int z);
+        void dataBoxes();
         
-        //PROX HITO
-        //Acceder al gid del tile en el que se encuentra el enemigo.
-//        int getGid(Enemy *enemy, int id1, int id2);
         
-        //Colocar las hitboxs
-//        bool putHitbox(Player *rath);
+        float getX(char x,int z);
+        
+        
+        float getY(char x,int z);
+        
+        float getWidth(char x,int z);
+        
+        float getHeight(char x,int z);
+        
+        
 };
 
 #endif /* MAP_H */

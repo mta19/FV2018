@@ -317,6 +317,7 @@ void Partida::configurarTexto(int pos, float x, float y, String texto) {
         textopantalla[pos].setPosition(x, y);
         textopantalla[pos].setString(texto);
         textopantalla[pos].setColor(Color::Black);
+        textopantalla[pos].setColor(Color::Blue);
 
     }
 

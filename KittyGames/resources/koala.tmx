@@ -56,8 +56,10 @@
  </objectgroup>
  <objectgroup name="caja">
   <object id="5" x="260.667" y="212.667" width="32" height="38.6667"/>
+  <object id="5" x="280.667" y="212.667" width="32" height="38.6667"/>
  </objectgroup>
  <objectgroup name="escalera">
   <object id="6" x="89.3333" y="92.6667" width="44" height="157.333"/>
+  <object id="6" x="89.3333" y="110.6667" width="44" height="157.333"/>
  </objectgroup>
 </map>

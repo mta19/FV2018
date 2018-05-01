@@ -56,23 +56,50 @@ Nivel::Nivel() {
 
     this->anyadirEscopeta(150.f, 245.f, 12.f, 8.f);
 
-    this->anyadirEscalera(400.f, 220.f, 12.f, 105.f);
+    
+    //this->anyadirEscalera(400.f, 220.f, 12.f, 105.f);
 
-    this->anyadirEscalera(273.f, 240.f, 12.f, 85.f);
+    
+    //this->anyadirEscalera(273.f, 240.f, 12.f, 85.f);
 
-    mapa = new Map("resources/koala.tmx");
-
-
-    this->anyadirObjetoDinamico(350.0f, 250.0f, 12.5f, 8.f);
-
+    
+    mapa = new Map("resources/mostrar.tmx");
 
 
+    
+
+    //this->anyadirObjetoDinamico(350.0f, 250.0f, 12.5f, 8.f);
+
+
+    char k='p';
     for (int z = 0; z < mapa->_numPlats; z++) {
-        float x = mapa->getX(z);
-        float y = mapa->getY(z);
-        float w = mapa->getWidth(z);
-        float h = mapa->getHeight(z);
+        
+        
+        float x = mapa->getX(k,z);
+        float y = mapa->getY(k,z);
+        float w = mapa->getWidth(k,z);
+        float h = mapa->getHeight(k,z);
         this->anyadirPlataforma(x + w / 2, y + h / 2, w / 2, h / 2);
+
+    }
+    k='s';
+    for (int o = 0; o < mapa->_numStairs; o++) {
+        
+        float x = mapa->getX(k,o);
+        float y = mapa->getY(k,o);
+        float w = mapa->getWidth(k,o);
+        float h = mapa->getHeight(k,o);
+        this->anyadirEscalera(x + w / 2, y + h / 2, w / 2, h / 2);
+
+    }
+    k='b';
+    for (int i = 0; i < mapa->_numBoxes; i++) {
+        
+        float x = mapa->getX(k,i);
+        float y = mapa->getY(k,i);
+        float w = mapa->getWidth(k,i);
+        float h = mapa->getHeight(k,i);
+        this->anyadirObjetoDinamico(x + w / 2, y + h / 2, w / 2, h / 2);
 
     }
 
@@ -186,7 +213,8 @@ void Nivel::anyadirPlataforma(float x, float y, float weight, float height) {
 
 
 
-    Entidad* entidad = new Plataforma("suelo.jpg");
+    
+    Entidad* entidad = new Plataforma("");
     entidad->setBody(mundo, x, y);
 
     shp_[contadorEn].SetAsBox(weight, height); // esto estaba en el de antes
