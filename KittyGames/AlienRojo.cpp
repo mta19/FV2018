@@ -126,7 +126,7 @@ void AlienRojo::handleInput(Event* tecla, Nivel* nivel, int mando) {
 
         estado_ = estado;
 
-        if (this->getArma() != NULL && Joystick::isButtonPressed(mando, 2) && Event::KeyReleased && flagAux == true) {
+        if (this->getArma() != NULL && Joystick::isButtonPressed(mando, 2) && Event::KeyReleased && flagAux == true && nivel->getEmpezado()) {
 
             if (this->getArma()->getCuerpo()->get_id_id() == identificador::pistola && clock.getElapsedTime() > sf::seconds(0.5f)) {
                 disparar();

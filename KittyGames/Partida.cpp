@@ -43,8 +43,8 @@ Partida::Partida(Vector2i resolucion, std::string titulo) {
     fps = 60;
     frameRate = 1 / fps;
 
-    tiempoRonda = 60;
-    tiempoPrep = 15;
+    tiempoRonda = 5;
+    tiempoPrep = 5;
 
     ventana = new RenderWindow(VideoMode(resolucion.x, resolucion.y), titulo);
     ventana->setFramerateLimit(fps);
@@ -436,7 +436,7 @@ void Partida::Update() {
 
                         configurarTexto(13, 50, 100, "WINNER");
 
-                        configurarTexto(i + 1, 110, 200, personajes[i]->getNombre());
+                        configurarTexto(i + 1, 105, 200, personajes[i]->getNombre());
                         textopantalla[i + 1].setScale(0.8f, 0.8f);
                         textopantalla[i + 1].setColor(Color::Blue);
 
@@ -447,10 +447,45 @@ void Partida::Update() {
                     }
 
                 }
-
-
-
             }
+                
+                if(tiempoRonda==0){
+                    
+                    std::cout<<"ENTRO AQUI O QUE"<<std::endl;
+                
+                    Personaje * ganador=personajes[0];
+                    
+                     for (int i = 0; i < personajes.size()-1; i++) {
+                     
+                     
+                         if(personajes[i]->getVida()<personajes[i+1]->getVida()){
+                         
+                             ganador=personajes[i+1];
+                             
+                         }
+                     
+                     
+                     }
+                    
+                       definirTexto(13, "Hola");
+                       definirTexto(14, "Hola");
+                        configurarTexto(13, 50, 100, "WINNER");
+
+                        configurarTexto(14, 105, 200, ganador->getNombre());
+                        textopantalla[14].setScale(0.8f, 0.8f);
+                        textopantalla[14].setColor(Color::Blue);
+
+                        ventana->draw(textopantalla[13]);
+                        ventana->draw(textopantalla[14]);
+                    
+                    
+                
+                
+                }
+
+
+
+            
 
 
         } else dibujarTexto();

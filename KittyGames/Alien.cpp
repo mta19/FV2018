@@ -59,7 +59,7 @@ void Alien::handleInput(Event* tecla, Nivel* nivel) {
 
 
 
-        if (this->getArma() != NULL && Keyboard::isKeyPressed(Keyboard::Q) && flagAux == true) {
+        if (this->getArma() != NULL && Keyboard::isKeyPressed(Keyboard::Q) && flagAux == true && nivel->getEmpezado()) {
 
             if (this->getArma()->getCuerpo()->get_id_id() == identificador::pistola && clock.getElapsedTime() > sf::seconds(0.5f)) {
                 disparar();
