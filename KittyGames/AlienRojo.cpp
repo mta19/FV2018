@@ -128,7 +128,7 @@ void AlienRojo::handleInput(Event* tecla, Nivel* nivel, int mando) {
 
         if (this->getArma() != NULL && Joystick::isButtonPressed(mando, 2) && Event::KeyReleased && flagAux == true && nivel->getEmpezado()) {
 
-            if (this->getArma()->getCuerpo()->get_id_id() == identificador::pistola && clock.getElapsedTime() > sf::seconds(0.5f)) {
+            if (this->getArma()->getCuerpo()->get_id_id() == identificador::pistola && clock.getElapsedTime() > sf::seconds(0.3f)) {
                 disparar();
                 flagAux = false;
                 clock.restart();
@@ -173,9 +173,9 @@ void AlienRojo::disparar() {
     shp_.SetAsBox(3.f, 6.f);
     bala->setFixture(&shp_, 1.f, 0.f, 0.f);
     if (this->getface() == true)
-        bala->getCuerpo()->getBody()->SetLinearVelocity({22, 0});
+        bala->getCuerpo()->getBody()->SetLinearVelocity({42, 0});
     else {
-        bala->getCuerpo()->getBody()->SetLinearVelocity({-22, 0});
+        bala->getCuerpo()->getBody()->SetLinearVelocity({-42, 0});
     }
 
     balas.push_back(bala);
@@ -265,7 +265,7 @@ void AlienRojo::dispararLanzaCohetes() {
 
 
     b2PolygonShape shp_;
-    shp_.SetAsBox(10.f, 4.f);
+    shp_.SetAsBox(4.f, 4.f);
     bala->setFixture(&shp_, 1.f, 0.f, 0.f);
     if (this->getface() == true)
         bala->getCuerpo()->getBody()->SetLinearVelocity({70, 0});

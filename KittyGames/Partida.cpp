@@ -44,7 +44,7 @@ Partida::Partida(Vector2i resolucion, std::string titulo) {
     frameRate = 1 / fps;
 
     tiempoRonda = 60;
-    tiempoPrep = 5;
+    tiempoPrep = 15;
     eliminadas=false;
 
     ventana = new RenderWindow(VideoMode(resolucion.x, resolucion.y), titulo);
@@ -157,7 +157,7 @@ void Partida::gameLoop() {
 
         }
 
-        if (evento->type == Event::KeyReleased && evento->key.code == Keyboard::Q) {
+        if (evento->type == Event::KeyReleased && evento->key.code == Keyboard::J) {
 
             this->personajes[0]->setFlag(true);
 

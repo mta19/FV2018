@@ -21,10 +21,10 @@ BalaM4::BalaM4(String nombre, int i) {
 
     IntRect posicion(0, i * spr->getTexture()->getSize().y / 4, spr->getTexture()->getSize().x, spr->getTexture()->getSize().y / 4);
     spr->setTextureRect(posicion);
-    lifeTime=sf::seconds(1.f);
+    lifeTime=sf::seconds(1.3f);
     destroy = false;
     
-    damage=3;
+    damage=4;
 }
 
 BalaM4::BalaM4(const BalaM4& orig) {

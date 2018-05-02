@@ -59,9 +59,9 @@ void Alien::handleInput(Event* tecla, Nivel* nivel) {
 
 
 
-        if (this->getArma() != NULL && Keyboard::isKeyPressed(Keyboard::Q) && flagAux == true && nivel->getEmpezado()) {
+        if (this->getArma() != NULL && Keyboard::isKeyPressed(Keyboard::J) && flagAux == true && nivel->getEmpezado()) {
 
-            if (this->getArma()->getCuerpo()->get_id_id() == identificador::pistola && clock.getElapsedTime() > sf::seconds(0.5f)) {
+            if (this->getArma()->getCuerpo()->get_id_id() == identificador::pistola && clock.getElapsedTime() > sf::seconds(0.3f)) {
                 disparar();
                 flagAux = false;
                 clock.restart();
@@ -139,9 +139,9 @@ void Alien::disparar() {
     shp_.SetAsBox(3.f, 6.f);
     bala->setFixture(&shp_, 1.f, 0.f, 0.f);
     if (this->getface() == true)
-        bala->getCuerpo()->getBody()->SetLinearVelocity({22, 0});
+        bala->getCuerpo()->getBody()->SetLinearVelocity({42, 0});
     else {
-        bala->getCuerpo()->getBody()->SetLinearVelocity({-22, 0});
+        bala->getCuerpo()->getBody()->SetLinearVelocity({-42, 0});
     }
 
     balas.push_back(bala);
@@ -230,7 +230,7 @@ void Alien::dispararLanzaCohetes() {
 
 
     b2PolygonShape shp_;
-    shp_.SetAsBox(10.f, 4.f);
+    shp_.SetAsBox(8.f, 4.f);
     bala->setFixture(&shp_, 1.f, 0.f, 0.f);
     if (this->getface() == true)
         bala->getCuerpo()->getBody()->SetLinearVelocity({70, 0});

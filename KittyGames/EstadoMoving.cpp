@@ -41,7 +41,7 @@ EstadoPersonaje* EstadoMoving::handleInput(Personaje& persona, Event* tecla, Niv
 
         body->SetFixedRotation(true); //YOU WORK
 
-        if (tecla->key.code == Keyboard::X && persona.getCuerpo()->getNumFoot() >= 1) {
+        if (tecla->key.code == Keyboard::Space && persona.getCuerpo()->getNumFoot() >= 1) {
 
             nivel->getColisiones()->setId(0);
 
@@ -92,7 +92,7 @@ EstadoPersonaje* EstadoMoving::handleInput(Personaje& persona, Event* tecla, Niv
 
         } else if (Keyboard::isKeyPressed(Keyboard::D)) {
 
-            vel.x = 20;
+            vel.x = 25;
 
             body->SetLinearVelocity(vel);
             persona.setface(true);
@@ -104,7 +104,7 @@ EstadoPersonaje* EstadoMoving::handleInput(Personaje& persona, Event* tecla, Niv
 
         } else if (Keyboard::isKeyPressed(Keyboard::A)) {
 
-            vel.x = -20;
+            vel.x = -25;
 
             persona.setface(false);
             body->SetLinearVelocity(vel);
@@ -126,7 +126,7 @@ EstadoPersonaje* EstadoMoving::handleInput(Personaje& persona, Event* tecla, Niv
 
         if (Keyboard::isKeyPressed(Keyboard::D)) {
 
-            vel.x = 20;
+            vel.x = 25;
 
             body->SetLinearVelocity(vel);
             persona.setface(true);
@@ -136,7 +136,7 @@ EstadoPersonaje* EstadoMoving::handleInput(Personaje& persona, Event* tecla, Niv
 
         } else if (Keyboard::isKeyPressed(Keyboard::A)) {
 
-            vel.x = -20;
+            vel.x = -25;
 
             persona.setFila(5);
             persona.setface(false);
@@ -219,7 +219,7 @@ EstadoPersonaje* EstadoMoving::handleInputJoystick(Personaje& persona, Event* te
 
         } else if (Joystick::isButtonPressed(mando, 5)) {
 
-            vel.x = 20;
+            vel.x = 25;
 
             body->SetLinearVelocity(vel);
             persona.setface(true);
@@ -231,7 +231,7 @@ EstadoPersonaje* EstadoMoving::handleInputJoystick(Personaje& persona, Event* te
 
         } else if (Joystick::isButtonPressed(mando, 4)) {
 
-            vel.x = -20;
+            vel.x = -25;
 
             persona.setface(false);
             body->SetLinearVelocity(vel);
@@ -253,7 +253,7 @@ EstadoPersonaje* EstadoMoving::handleInputJoystick(Personaje& persona, Event* te
 
         if (Joystick::isButtonPressed(mando, 5)) {
 
-            vel.x = 20;
+            vel.x = 25;
 
             body->SetLinearVelocity(vel);
             persona.setface(true);
@@ -263,7 +263,7 @@ EstadoPersonaje* EstadoMoving::handleInputJoystick(Personaje& persona, Event* te
 
         } else if (Joystick::isButtonPressed(mando, 4)) {
 
-            vel.x = -20;
+            vel.x = -25;
 
             persona.setFila(5);
             persona.setface(false);

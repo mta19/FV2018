@@ -24,7 +24,7 @@ balaLC::balaLC(String nombre, int i) {
     lifeTime = sf::seconds(5.f);
     destroy = false;
 
-    damage = 18;
+    damage = 25;
 
 }
 

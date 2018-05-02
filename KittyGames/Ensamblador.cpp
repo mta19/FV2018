@@ -36,14 +36,10 @@ Ensamblador::Ensamblador(b2Body * cuerpo, Sprite * sprite, float  weight, float 
 
     for (b2Fixture *f = bdy_actor->GetFixtureList(); f; f = f->GetNext()) {
 
-        dimension = f->GetAABB(0);
-
-        
+        dimension = f->GetAABB(0);       
     }
 
     spr_actor->setScale(dimension.GetExtents().x * 2.0f / aux, dimension.GetExtents().y * 2.0f / aux2);
-
-
     
 }
 
@@ -75,6 +71,6 @@ void Ensamblador::dibujar(RenderWindow& r, float x, float y) {
 b2Body* Ensamblador::getBody() {
 
     return bdy_actor;
-
+    
 }
 
