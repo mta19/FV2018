@@ -83,7 +83,7 @@ void Alien::handleInput(Event* tecla, Nivel* nivel) {
 
             }
 
-            if (this->getArma()->getCuerpo()->get_id_id() == identificador::lanzaCohetes && clock.getElapsedTime()>sf::seconds(1.5f)) {
+            if (this->getArma()->getCuerpo()->get_id_id() == identificador::lanzaCohetes && clock.getElapsedTime()>sf::seconds(1.2f)) {
                 dispararLanzaCohetes();
                 flagAux = false;
                 clock.restart();
@@ -233,9 +233,9 @@ void Alien::dispararLanzaCohetes() {
     shp_.SetAsBox(8.f, 4.f);
     bala->setFixture(&shp_, 1.f, 0.f, 0.f);
     if (this->getface() == true)
-        bala->getCuerpo()->getBody()->SetLinearVelocity({70, 0});
+        bala->getCuerpo()->getBody()->SetLinearVelocity({150, 0});
     else {
-        bala->getCuerpo()->getBody()->SetLinearVelocity({-70, 0});
+        bala->getCuerpo()->getBody()->SetLinearVelocity({-150, 0});
     }
 
     balas.push_back(bala);

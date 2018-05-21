@@ -24,7 +24,7 @@ balaLC::balaLC(String nombre, int i) {
     lifeTime = sf::seconds(5.f);
     destroy = false;
 
-    damage = 25;
+    damage = 50;
 
 }
 
@@ -53,7 +53,7 @@ void balaLC::setFixture(b2PolygonShape* forma, float density, float restitution,
 
     fix_ = bdy->CreateFixture(&fixdef_);
 
-    bdy->SetGravityScale(1.3f);
+    bdy->SetGravityScale(2.f);
 
     cuerpo = new Ensamblador(bdy, spr, weight, height);
     cuerpo->set_id_id(identificador::balaCohete);

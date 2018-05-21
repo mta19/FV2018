@@ -63,6 +63,10 @@ private:
     Clock clock2;
     bool eliminadas;
     float deltaTime;
+    bool mitad;
+    int random;
+    bool terminada;
+    int ganador2=0;
   
     std::vector<Joystick*> mandos;
     

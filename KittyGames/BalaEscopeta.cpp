@@ -25,7 +25,7 @@ BalaEscopeta::BalaEscopeta(String nombre, int i) {
     lifeTime = sf::seconds(0.2f);
     destroy = false;
 
-    damage = 13;
+    damage = 20;
 }
 
 BalaEscopeta::BalaEscopeta(const BalaEscopeta& orig) {

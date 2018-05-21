@@ -35,7 +35,7 @@ using namespace sf;
 int main(int argc, char** argv) {
     
     //Crear la ventana del main!
-    sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML Funciona!!");
+    sf::RenderWindow window(sf::VideoMode(1980, 1080), "SFML Funciona!!");
     
     Menu menu(window.getSize().x, window.getSize().y);
     

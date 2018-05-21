@@ -35,9 +35,11 @@ Partida* Partida::Instance(Vector2i resolucion, std::string titulo) {
 
 Partida::Partida(Vector2i resolucion, std::string titulo) {
 
+    mitad = false;
     numJ = 0;
     deltaTime = 0.0f;
-
+    srand(time(NULL));
+    random = rand() % 20 + 20;
     evento = new Event;
     evento = new Event;
     fps = 60;
@@ -45,8 +47,8 @@ Partida::Partida(Vector2i resolucion, std::string titulo) {
 
     tiempoRonda = 60;
     tiempoPrep = 15;
-    eliminadas=false;
-
+    eliminadas = false;
+    terminada = false;
     ventana = new RenderWindow(VideoMode(resolucion.x, resolucion.y), titulo);
     ventana->setFramerateLimit(fps);
 
@@ -287,15 +289,15 @@ void Partida::definirTexto(int pos, String texto) {
         if (this->niveles->getEmpezado() == false) {
             if (clock2.getElapsedTime().asSeconds() >= 1) {
                 textopantalla[0].setString(" Preparate: " + std::to_string((int) trunc(--tiempoPrep)));
-                if(tiempoPrep==0) this->niveles->setEmpezado(true);
-                if(tiempoPrep<=3) textopantalla[0].setColor(Color::Red);
+                if (tiempoPrep == 0) this->niveles->setEmpezado(true);
+                if (tiempoPrep <= 3) textopantalla[0].setColor(Color::Red);
                 clock2.restart();
             }
         } else {
             if (clock2.getElapsedTime().asSeconds() >= 1) {
-                if(tiempoRonda>3) textopantalla[0].setColor(Color::White);
-                textopantalla[0].setString("Fin Ronda: "+std::to_string((int) trunc(--tiempoRonda)));
-                if(tiempoRonda<=3) textopantalla[0].setColor(Color::Red);
+                if (tiempoRonda > 3) textopantalla[0].setColor(Color::White);
+                textopantalla[0].setString("Fin Ronda: " + std::to_string((int) trunc(--tiempoRonda)));
+                if (tiempoRonda <= 3) textopantalla[0].setColor(Color::Red);
                 clock2.restart();
             }
         }
@@ -318,8 +320,8 @@ void Partida::configurarTexto(int pos, float x, float y, String texto) {
         textopantalla[pos].setPosition(x, y);
         textopantalla[pos].setString(texto);
         textopantalla[pos].setColor(Color::Green);
-   
-        
+
+
 
     }
 
@@ -424,9 +426,24 @@ void Partida::Update() {
 
         dibujar();
 
+        if (tiempoRonda == random && mitad == false) {
 
+            niveles->anyadirObjetoDinamico(180.0f, 10.0f, 13.5f, 12.f);
 
-        if (encendido == 1 || tiempoRonda == 0) {
+            niveles->anyadirObjetoDinamico(260.0f, 10.0f, 13.5f, 12.f);
+
+            niveles->anyadirObjetoDinamico(375.0f, 20.0f, 7.5f, 10.f);
+            niveles->anyadirObjetoDinamico(310.0f, 130.0f, 7.5f, 10.f);
+            niveles->anyadirObjetoDinamico(120.0f, 130.0f, 7.5f, 10.f);
+            niveles->anyadirObjetoDinamico(180.0f, 130.0f, 7.5f, 10.f);
+            niveles->anyadirObjetoDinamico(245.0f, 130.0f, 7.5f, 10.f);
+            niveles->anyadirObjetoDinamico(60.0f, 20.0f, 7.5f, 10.f);
+
+            mitad = true;
+
+        }
+
+        if ((encendido == 1 || tiempoRonda == 0) && terminada == false) {
 
             //PONER WINNER Y EL NOMBRE DE JUGADOR, EN VEZ DE CERRARSE LA VENTANA.
 
@@ -438,6 +455,8 @@ void Partida::Update() {
 
                     if (personajes[i]->getCuerpo()->getBody()->IsActive()) {
 
+                        personajes[i]->setVida(1000);
+
                         definirTexto(13, "Hola");
 
                         configurarTexto(13, 50, 100, "WINNER");
@@ -448,54 +467,59 @@ void Partida::Update() {
 
                         ventana->draw(textopantalla[13]);
                         ventana->draw(textopantalla[i + 1]);
+                        //terminada=true;
 
 
                     }
 
                 }
             }
-                
-                if(tiempoRonda==0){
-                    
-                    std::cout<<"ENTRO AQUI O QUE"<<std::endl;
-                
-                    Personaje * ganador=personajes[0];
-                    
-                     for (int i = 0; i < personajes.size()-1; i++) {
-                     
-                     
-                         if(personajes[i]->getVida()<personajes[i+1]->getVida()){
-                         
-                             ganador=personajes[i+1];
-                             
-                         }
-                     
-                     
-                     }
-                    
-                       definirTexto(13, "Hola");
-                       definirTexto(14, "Hola");
-                        configurarTexto(13, 50, 100, "WINNER");
 
-                        configurarTexto(14, 105, 200, ganador->getNombre());
-                        textopantalla[14].setScale(0.8f, 0.8f);
-                        textopantalla[14].setColor(Color::Blue);
+            if (tiempoRonda == 0) {
 
-                        ventana->draw(textopantalla[13]);
-                        ventana->draw(textopantalla[14]);
-                    
-                    
-                
-                
+                std::cout << "ENTRO AQUI O QUE" << std::endl;
+
+                Personaje * ganador = personajes[0];
+
+                for (int i = 0; i < personajes.size() - 1; i++) {
+
+
+                    if (personajes[i]->getVida() < personajes[i + 1]->getVida()) {
+
+                        ganador = personajes[i + 1];
+
+                    }
+
+
                 }
 
+                definirTexto(13, "Hola");
+                definirTexto(14, "Hola");
+                configurarTexto(13, 50, 100, "WINNER");
+
+                configurarTexto(14, 105, 200, ganador->getNombre());
+                textopantalla[14].setScale(0.8f, 0.8f);
+                textopantalla[14].setColor(Color::Blue);
+
+                ventana->draw(textopantalla[13]);
+                ventana->draw(textopantalla[14]);
 
 
-            
+
+
+            }
+
+
+
+
 
 
         } else dibujarTexto();
 
+        if (terminada) {
+
+
+        }
         ventana->display();
 
     }
